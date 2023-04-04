@@ -2,6 +2,7 @@
   "name": "doc",
   "version": "0.0.1",
   "description": "ceisum plugins",
+  "private": true,
   "scripts": {
     "start": "npm run dev",
     "dev": "dumi dev",
