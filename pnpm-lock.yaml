@@ -8,7 +8,6 @@ importers:
       '@commitlint/config-conventional': ^17.1.0
       '@semantic-release/changelog': ^6.0.3
       '@semantic-release/git': ^10.0.1
-      '@semrel-extra/npm': ^1.2.2
       '@types/node': ^18.15.10
       '@vitest/coverage-c8': ^0.29.7
       esbuild: ^0.17.14
@@ -29,7 +28,6 @@ importers:
       '@commitlint/config-conventional': 17.4.4
       '@semantic-release/changelog': 6.0.3
       '@semantic-release/git': 10.0.1
-      '@semrel-extra/npm': 1.2.2
       '@types/node': 18.15.11
       '@vitest/coverage-c8': 0.29.8_vitest@0.29.8
       esbuild: 0.17.15
@@ -2069,10 +2067,6 @@ packages:
       semantic-release: 19.0.5
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /@semrel-extra/npm/1.2.2:
-    resolution: {integrity: sha512-QoOJFUd00ORaqOQUe2wYmwPwa7NRdGGfUhzjZ9UEZqoqymXaBDVmFF2hE3h8mFaTa/iWpAyRrrjTsg8HbSpZyw==}
     dev: true
 
   /@sinclair/typebox/0.25.24:
