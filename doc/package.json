@@ -1,6 +1,6 @@
 {
   "name": "doc",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "ceisum plugins",
   "private": true,
   "scripts": {
@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "cesium": "^1.103.0",
-    "cesium-extends": "workspace:*",
+    "cesium-extends": "1.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }

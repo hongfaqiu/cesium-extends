@@ -38,7 +38,7 @@
     "cesium": "^1.103.0"
   },
   "dependencies": {
-    "@cesium-extends/primitive-geojson": "workspace:*",
+    "@cesium-extends/primitive-geojson": "1.0.0",
     "@turf/turf": "^6.5.0"
   }
 }
