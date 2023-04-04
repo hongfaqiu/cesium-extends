@@ -1,0 +1,44 @@
+{
+  "name": "@cesium-extends/geojson-render",
+  "version": "1.0.0",
+  "description": "Load geojson on cesium with deep custom style",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hongfaqiu/cesium-extends.git",
+    "directory": "packages/geojson-render"
+  },
+  "scripts": {
+    "build": "rimraf dist && rollup -c",
+    "dev": "rollup -c --watch",
+    "prepublishOnly": "pnpm build"
+  },
+  "keywords": [
+    "cesium",
+    "primitive",
+    "geojson",
+    "render"
+  ],
+  "author": "hongfaqiu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hongfaqiu/cesium-extends/issues"
+  },
+  "homepage": "https://github.com/hongfaqiu/cesium-extends#readme",
+  "peerDependencies": {
+    "cesium": "*"
+  },
+  "devDependencies": {
+    "cesium": "^1.103.0"
+  },
+  "dependencies": {
+    "@cesium-extends/primitive-geojson": "workspace:*",
+    "@turf/turf": "^6.5.0"
+  }
+}

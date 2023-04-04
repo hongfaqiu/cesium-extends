@@ -1,0 +1,26 @@
+{
+  "name": "doc",
+  "version": "0.0.1",
+  "description": "ceisum plugins",
+  "scripts": {
+    "start": "npm run dev",
+    "dev": "dumi dev",
+    "build": "dumi build",
+    "preview": "dumi preview",
+    "prepare": "dumi setup"
+  },
+  "authors": [
+    "hongfaqiu"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react": "^18.0.31",
+    "dumi": "^2.0.2"
+  },
+  "dependencies": {
+    "cesium": "^1.103.0",
+    "cesium-extends": "workspace:*",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}

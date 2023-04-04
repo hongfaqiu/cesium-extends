@@ -1,0 +1,46 @@
+{
+  "name": "@cesium-extends/primitive-geojson",
+  "version": "1.0.0",
+  "description": "A faster method to load geojson on cesium by primitive",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hongfaqiu/cesium-extends.git",
+    "directory": "packages/primitive-geojson"
+  },
+  "scripts": {
+    "build": "rimraf dist && rollup -c",
+    "dev": "rollup -c --watch",
+    "prepublishOnly": "pnpm build"
+  },
+  "keywords": [
+    "cesium",
+    "primitive",
+    "geojson"
+  ],
+  "author": "hongfaqiu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hongfaqiu/cesium-extends/issues"
+  },
+  "homepage": "https://github.com/hongfaqiu/cesium-extends#readme",
+  "peerDependencies": {
+    "cesium": "*"
+  },
+  "devDependencies": {
+    "@cesium-extends/subscriber": "workspace:*",
+    "@types/geojson": "^7946.0.10",
+    "cesium": "^1.103.0"
+  },
+  "dependencies": {
+    "@turf/centroid": "^6.5.0",
+    "@turf/helpers": "^6.5.0",
+    "nanoid": "^4.0.2"
+  }
+}

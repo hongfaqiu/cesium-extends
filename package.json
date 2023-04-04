@@ -1,0 +1,48 @@
+{
+  "name": "cesium-extends-monorepo",
+  "private": true,
+  "npmClient": "pnpm",
+  "packageManager": "pnpm@7.26.3",
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm -r --parallel --filter \"./packages/**\" run dev",
+    "build": "pnpm -r --filter \"./packages/**\" run build",
+    "build:doc": "pnpm run build && pnpm run --dir doc build",
+    "test": "vitest",
+    "coverage": "vitest run --coverage",
+    "release": "multi-semantic-release --sequential-init --ignore-private-packages=true --deps.bump=ignore",
+    "prepare": "husky install"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "*.{md,json}": [
+      "prettier --write --no-error-on-unmatched-pattern"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.1.2",
+    "@commitlint/config-conventional": "^17.1.0",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semrel-extra/npm": "^1.2.2",
+    "@types/node": "^18.15.10",
+    "@vitest/coverage-c8": "^0.29.7",
+    "esbuild": "^0.17.14",
+    "happy-dom": "^8.9.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "multi-semantic-release": "^3.0.2",
+    "prettier": "^2.7.1",
+    "rimraf": "^4.4.1",
+    "rollup": "^3.20.2",
+    "rollup-plugin-dts": "^5.3.0",
+    "rollup-plugin-esbuild": "^5.0.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.2",
+    "vitest": "^0.29.7"
+  }
+}
