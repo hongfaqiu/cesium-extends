@@ -28,7 +28,6 @@
     "@commitlint/config-conventional": "^17.1.0",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
-    "@semrel-extra/npm": "^1.2.2",
     "@types/node": "^18.15.10",
     "@vitest/coverage-c8": "^0.29.7",
     "esbuild": "^0.17.14",

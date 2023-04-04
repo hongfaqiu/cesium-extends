@@ -2,43 +2,46 @@ name: Release
 on:
   push:
     branches:
-      - main
       - master
+      - next
+      - next-major
+      - alpha
+      - beta
+
+permissions:
+  packages: write
+  contents: write
+
 jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '18'
-
-      - name: Setup pnpm
+      - name: Install pnpm
         uses: pnpm/action-setup@v2
 
-      # npm 8 和 9 会在 `npm version` 时执行依赖树命令，进而报错退出
-      # Refs: https://github.com/semantic-release/npm/issues/540
-      - name: Setup npm 7
-        run: npm i -g npm@7 --registry=https://registry.npmjs.org
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "lts/*"
+          cache: pnpm
 
       - name: Install dependencies
         run: pnpm install
 
       - name: Build
-        run: pnpm build
+        run: pnpm run build
 
       - name: Test
-        run: pnpm test
-        
+        run: pnpm run test
+
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: pnpm release
