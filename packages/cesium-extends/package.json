@@ -1,6 +1,6 @@
 {
   "name": "cesium-extends",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -30,6 +30,6 @@
     "@cesium-extends/geojson-render": "1.0.0",
     "@cesium-extends/primitive-geojson": "1.0.0",
     "@cesium-extends/subscriber": "1.0.0",
-    "@cesium-extends/tooltip": "workspace:^1.0.0"
+    "@cesium-extends/tooltip": "^1.0.0"
   }
 }
