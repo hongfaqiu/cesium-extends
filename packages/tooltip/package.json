@@ -29,10 +29,10 @@
     "cesium": "*"
   },
   "devDependencies": {
-    "@cesium-extends/subscriber": "workspace:1.0.0",
+    "@cesium-extends/subscriber": "1.0.0",
     "cesium": "^1.103.0"
   },
   "dependencies": {
-    "@cesium-extends/common": "workspace:^1.0.0"
+    "@cesium-extends/common": "^1.0.0"
   }
 }
