@@ -1,5 +1,5 @@
 {
-  "name": "cesium-extends",
+  "name": "@cesium-extends/tooltip",
   "version": "1.0.0",
   "type": "module",
   "main": "./dist/index.js",
@@ -10,7 +10,8 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hongfaqiu/cesium-extends.git"
+    "url": "git+https://github.com/hongfaqiu/cesium-extends.git",
+    "directory": "packages/tooltip"
   },
   "scripts": {
     "build": "rimraf dist && rollup -c",
@@ -19,17 +20,19 @@
   },
   "keywords": [
     "cesium",
-    "plugin"
+    "widget",
+    "tooltip"
   ],
   "author": "hongfaqiu",
   "license": "MIT",
   "peerDependencies": {
     "cesium": "*"
   },
+  "devDependencies": {
+    "@cesium-extends/subscriber": "workspace:1.0.0",
+    "cesium": "^1.103.0"
+  },
   "dependencies": {
-    "@cesium-extends/geojson-render": "1.0.0",
-    "@cesium-extends/primitive-geojson": "1.0.0",
-    "@cesium-extends/subscriber": "1.0.0",
-    "@cesium-extends/tooltip": "workspace:^1.0.0"
+    "@cesium-extends/common": "workspace:^1.0.0"
   }
 }

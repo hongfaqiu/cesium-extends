@@ -1,5 +1,5 @@
 {
-  "name": "cesium-extends",
+  "name": "@cesium-extends/common",
   "version": "1.0.0",
   "type": "module",
   "main": "./dist/index.js",
@@ -10,7 +10,8 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hongfaqiu/cesium-extends.git"
+    "url": "git+https://github.com/hongfaqiu/cesium-extends.git",
+    "directory": "packages/common"
   },
   "scripts": {
     "build": "rimraf dist && rollup -c",
@@ -19,17 +20,14 @@
   },
   "keywords": [
     "cesium",
-    "plugin"
+    "widget"
   ],
   "author": "hongfaqiu",
   "license": "MIT",
   "peerDependencies": {
     "cesium": "*"
   },
-  "dependencies": {
-    "@cesium-extends/geojson-render": "1.0.0",
-    "@cesium-extends/primitive-geojson": "1.0.0",
-    "@cesium-extends/subscriber": "1.0.0",
-    "@cesium-extends/tooltip": "workspace:^1.0.0"
+  "devDependencies": {
+    "cesium": "^1.103.0"
   }
 }

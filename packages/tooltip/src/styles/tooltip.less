@@ -1,0 +1,26 @@
+.cesium-tool-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  min-width: 100px;
+  min-height: 30px;
+  padding: 0 10px;
+  color: #fff;
+  line-height: 30px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 4px;
+  visibility: hidden;
+  pointer-events: none;
+  &:before {
+    position: absolute;
+    top: calc(50% - 10px);
+    left: -10px;
+    display: block;
+    border-top: 10px solid transparent;
+    border-right: 10px solid rgba(0, 0, 0, 0.6);
+    border-bottom: 10px solid transparent;
+    content: '';
+    pointer-events: none;
+  }
+}
