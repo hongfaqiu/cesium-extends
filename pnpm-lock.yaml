@@ -67,16 +67,20 @@ importers:
 
   packages/cesium-extends:
     specifiers:
-      '@cesium-extends/compass': workspace:^1.1.0
-      '@cesium-extends/geojson-render': workspace:1.0.0
-      '@cesium-extends/popup': workspace:^1.0.0
-      '@cesium-extends/primitive-geojson': workspace:1.0.0
-      '@cesium-extends/subscriber': workspace:1.0.0
-      '@cesium-extends/tooltip': workspace:^1.2.0
-      '@cesium-extends/zoom-control': workspace:^1.1.0
+      '@cesium-extends/compass': ^1.1.0
+      '@cesium-extends/drawer': workspace:^1.0.0
+      '@cesium-extends/geojson-render': 1.0.0
+      '@cesium-extends/measure': workspace:^1.0.0
+      '@cesium-extends/popup': ^1.0.0
+      '@cesium-extends/primitive-geojson': 1.0.0
+      '@cesium-extends/subscriber': 1.0.0
+      '@cesium-extends/tooltip': ^1.2.0
+      '@cesium-extends/zoom-control': ^1.1.0
     dependencies:
       '@cesium-extends/compass': link:../compass
+      '@cesium-extends/drawer': link:../drawer
       '@cesium-extends/geojson-render': link:../geojson-render
+      '@cesium-extends/measure': link:../measure
       '@cesium-extends/popup': link:../popup
       '@cesium-extends/primitive-geojson': link:../primitive-geojson
       '@cesium-extends/subscriber': link:../subscriber
@@ -117,6 +121,29 @@ importers:
     dependencies:
       '@cesium-extends/primitive-geojson': link:../primitive-geojson
       '@turf/turf': 6.5.0
+    devDependencies:
+      cesium: 1.104.0
+
+  packages/measure:
+    specifiers:
+      '@cesium-extends/drawer': workspace:^1.0.0
+      '@cesium-extends/subscriber': ^1.0.0
+      '@cesium-extends/tooltip': ^1.2.0
+      '@turf/area': ^6.5.0
+      '@turf/helpers': ^6.5.0
+      '@turf/intersect': ^6.5.0
+      '@turf/random': ^6.5.0
+      '@turf/voronoi': ^6.5.0
+      cesium: ^1.104.0
+    dependencies:
+      '@cesium-extends/drawer': link:../drawer
+      '@cesium-extends/subscriber': link:../subscriber
+      '@cesium-extends/tooltip': link:../tooltip
+      '@turf/area': 6.5.0
+      '@turf/helpers': 6.5.0
+      '@turf/intersect': 6.5.0
+      '@turf/random': 6.5.0
+      '@turf/voronoi': 6.5.0
     devDependencies:
       cesium: 1.104.0
 

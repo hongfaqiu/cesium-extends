@@ -34,5 +34,5 @@ cesium-extends 提供了以下功能：
 - 指南针 `@cesium-extends/compass`
 - 缩放控制 `@cesium-extends/zoom-control`
 - 绘图工具 `@cesium-extends/drawer`
-- 测量工具(comming soon)
+- 测量工具 `@cesium-extends/measure`
 - ...

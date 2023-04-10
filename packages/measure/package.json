@@ -1,6 +1,6 @@
 {
-  "name": "cesium-extends",
-  "version": "1.4.0",
+  "name": "@cesium-extends/measure",
+  "version": "1.0.0",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -13,7 +13,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hongfaqiu/cesium-extends.git"
+    "url": "git+https://github.com/hongfaqiu/cesium-extends.git",
+    "directory": "packages/measure"
   },
   "scripts": {
     "build": "rimraf dist && rollup -c",
@@ -21,23 +22,24 @@
   },
   "keywords": [
     "cesium",
-    "plugin",
-    "extends"
+    "measure"
   ],
   "author": "hongfaqiu",
   "license": "MIT",
   "peerDependencies": {
     "cesium": "*"
   },
+  "devDependencies": {
+    "cesium": "^1.104.0"
+  },
   "dependencies": {
-    "@cesium-extends/compass": "^1.1.0",
     "@cesium-extends/drawer": "workspace:^1.0.0",
-    "@cesium-extends/geojson-render": "1.0.0",
-    "@cesium-extends/measure": "workspace:^1.0.0",
-    "@cesium-extends/popup": "^1.0.0",
-    "@cesium-extends/primitive-geojson": "1.0.0",
-    "@cesium-extends/subscriber": "1.0.0",
+    "@cesium-extends/subscriber": "^1.0.0",
     "@cesium-extends/tooltip": "^1.2.0",
-    "@cesium-extends/zoom-control": "^1.1.0"
+    "@turf/area": "^6.5.0",
+    "@turf/helpers": "^6.5.0",
+    "@turf/intersect": "^6.5.0",
+    "@turf/random": "^6.5.0",
+    "@turf/voronoi": "^6.5.0"
   }
 }

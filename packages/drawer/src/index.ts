@@ -20,6 +20,8 @@ import type {
   Status,
 } from './typings';
 
+export * from './typings';
+
 export const defaultOptions: DrawOption = {
   terrain: false,
   operateType: {
