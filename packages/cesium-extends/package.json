@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "@cesium-extends/compass": "^1.1.0",
-    "@cesium-extends/drawer": "^1.0.0",
+    "@cesium-extends/drawer": "^1.1.0",
     "@cesium-extends/geojson-render": "1.0.0",
     "@cesium-extends/measure": "^1.0.0",
     "@cesium-extends/popup": "^1.0.0",

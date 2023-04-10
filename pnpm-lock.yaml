@@ -68,9 +68,9 @@ importers:
   packages/cesium-extends:
     specifiers:
       '@cesium-extends/compass': ^1.1.0
-      '@cesium-extends/drawer': workspace:^1.0.0
+      '@cesium-extends/drawer': ^1.1.0
       '@cesium-extends/geojson-render': 1.0.0
-      '@cesium-extends/measure': workspace:^1.0.0
+      '@cesium-extends/measure': ^1.0.0
       '@cesium-extends/popup': ^1.0.0
       '@cesium-extends/primitive-geojson': 1.0.0
       '@cesium-extends/subscriber': 1.0.0
@@ -104,8 +104,8 @@ importers:
 
   packages/drawer:
     specifiers:
-      '@cesium-extends/subscriber': workspace:^1.0.0
-      '@cesium-extends/tooltip': workspace:^1.2.0
+      '@cesium-extends/subscriber': ^1.0.0
+      '@cesium-extends/tooltip': ^1.2.0
       cesium: ^1.104.0
     dependencies:
       '@cesium-extends/subscriber': link:../subscriber
@@ -126,7 +126,7 @@ importers:
 
   packages/measure:
     specifiers:
-      '@cesium-extends/drawer': workspace:^1.0.0
+      '@cesium-extends/drawer': ^1.0.0
       '@cesium-extends/subscriber': ^1.0.0
       '@cesium-extends/tooltip': ^1.2.0
       '@turf/area': ^6.5.0
