@@ -1,0 +1,39 @@
+{
+  "name": "@cesium-extends/drawer",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hongfaqiu/cesium-extends.git",
+    "directory": "packages/drawer"
+  },
+  "scripts": {
+    "build": "rimraf dist && rollup -c",
+    "dev": "rollup -c --watch"
+  },
+  "keywords": [
+    "cesium",
+    "drawer"
+  ],
+  "author": "hongfaqiu",
+  "license": "MIT",
+  "peerDependencies": {
+    "cesium": "*"
+  },
+  "devDependencies": {
+    "cesium": "^1.104.0"
+  },
+  "dependencies": {
+    "@cesium-extends/subscriber": "workspace:^1.0.0",
+    "@cesium-extends/tooltip": "workspace:^1.2.0"
+  }
+}

@@ -67,13 +67,13 @@ importers:
 
   packages/cesium-extends:
     specifiers:
-      '@cesium-extends/compass': ^1.0.0
-      '@cesium-extends/geojson-render': 1.0.0
-      '@cesium-extends/popup': ^1.0.0
-      '@cesium-extends/primitive-geojson': 1.0.0
-      '@cesium-extends/subscriber': 1.0.0
-      '@cesium-extends/tooltip': ^1.0.0
-      '@cesium-extends/zoom-control': ^1.0.0
+      '@cesium-extends/compass': workspace:^1.1.0
+      '@cesium-extends/geojson-render': workspace:1.0.0
+      '@cesium-extends/popup': workspace:^1.0.0
+      '@cesium-extends/primitive-geojson': workspace:1.0.0
+      '@cesium-extends/subscriber': workspace:1.0.0
+      '@cesium-extends/tooltip': workspace:^1.2.0
+      '@cesium-extends/zoom-control': workspace:^1.1.0
     dependencies:
       '@cesium-extends/compass': link:../compass
       '@cesium-extends/geojson-render': link:../geojson-render
@@ -91,10 +91,21 @@ importers:
 
   packages/compass:
     specifiers:
-      '@cesium-extends/common': workspace:^1.0.1
+      '@cesium-extends/common': ^1.0.1
       cesium: ^1.103.0
     dependencies:
       '@cesium-extends/common': link:../common
+    devDependencies:
+      cesium: 1.104.0
+
+  packages/drawer:
+    specifiers:
+      '@cesium-extends/subscriber': workspace:^1.0.0
+      '@cesium-extends/tooltip': workspace:^1.2.0
+      cesium: ^1.104.0
+    dependencies:
+      '@cesium-extends/subscriber': link:../subscriber
+      '@cesium-extends/tooltip': link:../tooltip
     devDependencies:
       cesium: 1.104.0
 
@@ -143,7 +154,7 @@ importers:
 
   packages/tooltip:
     specifiers:
-      '@cesium-extends/common': workspace:^1.0.1
+      '@cesium-extends/common': ^1.0.1
       '@cesium-extends/subscriber': 1.0.0
       cesium: ^1.103.0
     dependencies:
@@ -154,7 +165,7 @@ importers:
 
   packages/zoom-controller:
     specifiers:
-      '@cesium-extends/common': workspace:^1.0.1
+      '@cesium-extends/common': ^1.0.1
       cesium: ^1.103.0
     dependencies:
       '@cesium-extends/common': link:../common
