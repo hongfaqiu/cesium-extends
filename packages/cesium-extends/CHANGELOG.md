@@ -1,3 +1,10 @@
+## cesium-extends [1.5.1](https://github.com/hongfaqiu/cesium-extends/compare/cesium-extends@1.5.0...cesium-extends@1.5.1) (2023-04-10)
+
+
+### Bug Fixes
+
+* dep version ([19c99e9](https://github.com/hongfaqiu/cesium-extends/commit/19c99e962de9a0438fa1ad94ba0bda93d8125775))
+
 # cesium-extends [1.5.0](https://github.com/hongfaqiu/cesium-extends/compare/cesium-extends@1.4.0...cesium-extends@1.5.0) (2023-04-10)
 
 
