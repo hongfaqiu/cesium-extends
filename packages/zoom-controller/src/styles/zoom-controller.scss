@@ -1,0 +1,45 @@
+.cesium-zoom-controller {
+  position: absolute;
+  top: 187px;
+  right: 30px;
+  box-sizing: border-box;
+  line-height: 1.2rem;
+  text-align: center;
+  border-radius: 100px;
+  user-select: none;
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  .zoom-in,
+  .refresh,
+  .zoom-out {
+    margin-bottom: 5px;
+    border-radius: 14%;
+  }
+  .cesium-button {
+    margin-right: 0;
+    background: #2a2e39;
+    border: none;
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition-delay: 0s;
+    transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition-duration: 0.2s;
+    transition-property: all;
+  }
+  .cesium-button:hover {
+    box-shadow: none;
+    background: #48b;
+  }
+  .cesium-button:active {
+    color: #edffff;
+    fill: #edffff;
+    background: #adf;
+  }
+  .cesium-toolbar-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+  }
+}
