@@ -25,6 +25,7 @@ cesium-extends 提供了以下功能：
 - 缩放控制 `@cesium-extends/zoom-control`
 - 绘图工具 `@cesium-extends/drawer`
 - 测量工具 `@cesium-extends/measure`
+- 双屏联动工具 `@cesium-extends/sync-viewer`
 - ...
 
-详细信息，请参阅 API 文档。
+详细信息及 demo，请参阅 [API 文档](https://cesium-extends.vercel.app/)。
