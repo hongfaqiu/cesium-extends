@@ -3,4 +3,3 @@
 /dist
 /packages/**/node_modules
 /packages/**/dist
-pnpm-lock.yaml
