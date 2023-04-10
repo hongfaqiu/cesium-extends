@@ -1,3 +1,18 @@
+# cesium-extends [1.3.0](https://github.com/hongfaqiu/cesium-extends/compare/cesium-extends@1.2.0...cesium-extends@1.3.0) (2023-04-10)
+
+
+### Features
+
+* zoomControl ([1ce1f5b](https://github.com/hongfaqiu/cesium-extends/commit/1ce1f5bb22d1ea543321e95a4a196f3dc633b40e))
+
+
+
+
+
+### Dependencies
+
+* **@cesium-extends/zoom-control:** upgraded to 1.0.0
+
 # cesium-extends [1.2.0](https://github.com/hongfaqiu/cesium-extends/compare/cesium-extends@1.1.0...cesium-extends@1.2.0) (2023-04-10)
 
 
