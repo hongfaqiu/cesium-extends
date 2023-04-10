@@ -1,0 +1,78 @@
+$compass-size: 60px;
+
+.cesium-compass {
+  position: absolute;
+  top: 100px;
+  right: 45px - calc($compass-size / 2);
+  width: $compass-size;
+  height: $compass-size;
+  cursor: pointer;
+  user-select: none;
+  pointer-events: auto;
+
+  .out-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: $compass-size;
+    height: $compass-size;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 50%;
+    transition: all ease 0.3s;
+    fill: #173147b3;
+    svg {
+      width: $compass-size;
+      height: $compass-size;
+    }
+  }
+
+  &:hover .rotation_marker svg {
+    width: $compass-size * 1.17;
+    height: $compass-size * 1.17;
+  }
+
+  .gyro {
+    position: relative;
+    top: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: calc($compass-size / 2);
+    height: calc($compass-size / 2);
+    margin: 0 auto;
+    padding: 4px;
+    text-align: center;
+    background: #ffffff;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    transition: all ease 0.3s;
+    svg {
+      width: calc($compass-size / 3);
+      height: calc($compass-size / 3);
+    }
+  }
+}
+
+
+.rotation_marker {
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 50%;
+  svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: $compass-size;
+    height: $compass-size;
+    transform: translate(-50%, -50%);
+    transition: all ease 0.3s;
+  }
+}
+
+.cesium-compass .gyro-active,
+.cesium-compass .gyro:hover {
+  fill: #68adfe;
+}

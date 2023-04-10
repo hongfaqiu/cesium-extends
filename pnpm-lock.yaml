@@ -13,7 +13,6 @@ importers:
       esbuild: ^0.17.14
       happy-dom: ^8.9.0
       husky: ^8.0.1
-      less: ^4.1.3
       lint-staged: ^13.0.3
       multi-semantic-release: ^3.0.2
       prettier: ^2.7.1
@@ -22,6 +21,7 @@ importers:
       rollup-plugin-dts: ^5.3.0
       rollup-plugin-esbuild: ^5.0.0
       rollup-plugin-styles: ^4.0.0
+      sass: ^1.61.0
       ts-node: ^10.9.1
       typescript: ^5.0.2
       vitest: ^0.29.7
@@ -35,7 +35,6 @@ importers:
       esbuild: 0.17.15
       happy-dom: 8.9.0
       husky: 8.0.3
-      less: 4.1.3
       lint-staged: 13.2.0
       multi-semantic-release: 3.0.2
       prettier: 2.8.7
@@ -44,21 +43,22 @@ importers:
       rollup-plugin-dts: 5.3.0_veck7oukgpukn72f5inxoyux7q
       rollup-plugin-esbuild: 5.0.0_5zw4jabzuz2ebdah44cz4bpddu
       rollup-plugin-styles: 4.0.0_rollup@3.20.2
+      sass: 1.61.0
       ts-node: 10.9.1_pj3xut33gta66wns5w7rs6cilm
       typescript: 5.0.3
-      vitest: 0.29.8_happy-dom@8.9.0+less@4.1.3
+      vitest: 0.29.8_ougvu6eo5j2n5am4bvys2o3yfq
 
   doc:
     specifiers:
       '@types/react': ^18.0.31
       cesium: ^1.103.0
-      cesium-extends: 1.0.0
+      cesium-extends: workspace:*
       dumi: ^2.0.2
       react: ^18.2.0
       react-dom: ^18.2.0
     dependencies:
       cesium: 1.104.0
-      cesium-extends: 1.0.0_cesium@1.104.0
+      cesium-extends: link:../packages/cesium-extends
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     devDependencies:
@@ -67,12 +67,16 @@ importers:
 
   packages/cesium-extends:
     specifiers:
+      '@cesium-extends/compass': workspace:^1.0.0
       '@cesium-extends/geojson-render': 1.0.0
+      '@cesium-extends/popup': workspace:^1.0.0
       '@cesium-extends/primitive-geojson': 1.0.0
       '@cesium-extends/subscriber': 1.0.0
       '@cesium-extends/tooltip': ^1.0.0
     dependencies:
+      '@cesium-extends/compass': link:../compass
       '@cesium-extends/geojson-render': link:../geojson-render
+      '@cesium-extends/popup': link:../popup
       '@cesium-extends/primitive-geojson': link:../primitive-geojson
       '@cesium-extends/subscriber': link:../subscriber
       '@cesium-extends/tooltip': link:../tooltip
@@ -80,6 +84,15 @@ importers:
   packages/common:
     specifiers:
       cesium: ^1.103.0
+    devDependencies:
+      cesium: 1.104.0
+
+  packages/compass:
+    specifiers:
+      '@cesium-extends/common': ^1.0.0
+      cesium: ^1.103.0
+    dependencies:
+      '@cesium-extends/common': link:../common
     devDependencies:
       cesium: 1.104.0
 
@@ -91,6 +104,12 @@ importers:
     dependencies:
       '@cesium-extends/primitive-geojson': link:../primitive-geojson
       '@turf/turf': 6.5.0
+    devDependencies:
+      cesium: 1.104.0
+
+  packages/popup:
+    specifiers:
+      cesium: ^1.103.0
     devDependencies:
       cesium: 1.104.0
 
@@ -557,36 +576,6 @@ packages:
   /@bloomberg/record-tuple-polyfill/0.0.4:
     resolution: {integrity: sha512-h0OYmPR3A5Dfbetra/GzxBAzQk8sH7LhRkRUTdagX6nrtlUgJGYCTv4bBK33jsTQw9HDd8PE2x1Ma+iRKEDUsw==}
     dev: true
-
-  /@cesium-extends/geojson-render/1.0.0_cesium@1.104.0:
-    resolution: {integrity: sha512-cpxlSf1FgxBefGepWDq4tJazO95rfY0cHe8Q+B4wWfMK6nApFLlLgI6D6VWXz1FiW8OvTFTxLgXiuAFrYALqbg==}
-    peerDependencies:
-      cesium: '*'
-    dependencies:
-      '@cesium-extends/primitive-geojson': 1.0.0_cesium@1.104.0
-      '@turf/turf': 6.5.0
-      cesium: 1.104.0
-    dev: false
-
-  /@cesium-extends/primitive-geojson/1.0.0_cesium@1.104.0:
-    resolution: {integrity: sha512-qb5kRPTye27xNH/TgwhOU+jFViThxiJXADaCsvSajmW9Y5YYAE0Qaxxqik8BGO3GsNOXq7dQ0M7wWao7x1DeYQ==}
-    peerDependencies:
-      cesium: '*'
-    dependencies:
-      '@turf/centroid': 6.5.0
-      '@turf/helpers': 6.5.0
-      cesium: 1.104.0
-      nanoid: 4.0.2
-    dev: false
-
-  /@cesium-extends/subscriber/1.0.0_cesium@1.104.0:
-    resolution: {integrity: sha512-QsYyQdV1+CGtuR/WDk7l1tv+fp3THZFKG/aaQYHYDB+vFPTzxgQrOmSQoSLwrAf3iCAXzZqzYAV15GQ5SOVAQw==}
-    peerDependencies:
-      cesium: '*'
-    dependencies:
-      cesium: 1.104.0
-      nanoid: 4.0.2
-    dev: false
 
   /@cesium/engine/2.2.0:
     resolution: {integrity: sha512-4F/K06HURmtm7rSbFdqxMBLVTmkKbLi5WtoVqMHLl1ezA5Hed8j0niJaOh6WesK2kZgU9NWGTjvJ1PNPdYe2lQ==}
@@ -4284,7 +4273,7 @@ packages:
       c8: 7.13.0
       picocolors: 1.0.0
       std-env: 3.3.2
-      vitest: 0.29.8_happy-dom@8.9.0+less@4.1.3
+      vitest: 0.29.8_ougvu6eo5j2n5am4bvys2o3yfq
     dev: true
 
   /@vitest/expect/0.29.8:
@@ -5094,17 +5083,6 @@ packages:
   /ccount/2.0.1:
     resolution: {integrity: sha512-eyrF0jiFpY+3drT6383f1qhkbGsLSifNAjA61IUjZjmLCWjItY6LB9ft9YhoDgwfmclB2zhu51Lc7+95b8NRAg==}
     dev: true
-
-  /cesium-extends/1.0.0_cesium@1.104.0:
-    resolution: {integrity: sha512-okDIT3j8MHZHc9ZU0Y02VU/RRYXHTbe9hw4SeIYPHHWJHSk2zniy+rDBq+oXl/VoIrk0L2wOraenJXd1IOTk8Q==}
-    peerDependencies:
-      cesium: '*'
-    dependencies:
-      '@cesium-extends/geojson-render': 1.0.0_cesium@1.104.0
-      '@cesium-extends/primitive-geojson': 1.0.0_cesium@1.104.0
-      '@cesium-extends/subscriber': 1.0.0_cesium@1.104.0
-      cesium: 1.104.0
-    dev: false
 
   /cesium/1.104.0:
     resolution: {integrity: sha512-2E2bJiyPgcvakQFbkGUXpIlHkex2kTtbMcZ+POf0cJd6qMi2SfASuYtyjkejU8ZeaaaWnnRm2d156I2wEDdbJw==}
@@ -7919,7 +7897,7 @@ packages:
     dev: true
 
   /image-size/0.5.5:
-    resolution: {integrity: sha1-Cd/Uq50g4p6xw+gLiZA3jfnjy5w=}
+    resolution: {integrity: sha512-6TDAlDPZxUFCv+fuOkIoXT/V/f3Qbq8e37p+YOiYrUv3v9cc3/6x78VdfPgFVaB9dZYeLUfKgHRebpkm/oP2VQ==}
     engines: {node: '>=0.10.0'}
     hasBin: true
     requiresBuild: true
@@ -8185,7 +8163,7 @@ packages:
     dev: true
 
   /is-extglob/2.1.1:
-    resolution: {integrity: sha1-qIwCU1eR8C7TfHahueqXc8gz+MI=}
+    resolution: {integrity: sha512-SbKbANkN603Vi4jEZv49LeVJMn4yGwsbzZworEoyEiutsN3nJYdbO36zfhGJ6QEDpOZIFkDtnq5JRxmvl3jsoQ==}
     engines: {node: '>=0.10.0'}
     dev: true
 
@@ -10022,7 +10000,7 @@ packages:
     dev: true
 
   /normalize-path/2.1.1:
-    resolution: {integrity: sha1-GrKLVW4Zg2Oowab35vogE3/mrtk=}
+    resolution: {integrity: sha512-3pKJwH184Xo/lnH6oyP1q2pMd7HcypqqmRs91/6/i2CGtWwIKGCkOOMTm/zXbgTEWHw1uNpNi/igc3ePOYHb6w==}
     engines: {node: '>=0.10.0'}
     dependencies:
       remove-trailing-separator: 1.1.0
@@ -12934,6 +12912,16 @@ packages:
       source-map-js: 1.0.2
     dev: true
 
+  /sass/1.61.0:
+    resolution: {integrity: sha512-PDsN7BrVkNZK2+dj/dpKQAWZavbAQ87IXqVvw2+oEYI+GwlTWkvbQtL7F2cCNbMqJEYKPh1EcjSxsnqIb/kyaQ==}
+    engines: {node: '>=14.0.0'}
+    hasBin: true
+    dependencies:
+      chokidar: 3.5.3
+      immutable: 4.3.0
+      source-map-js: 1.0.2
+    dev: true
+
   /sax/1.2.4:
     resolution: {integrity: sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==}
     dev: true
@@ -14318,7 +14306,7 @@ packages:
       vfile-message: 3.1.4
     dev: true
 
-  /vite-node/0.29.8_6yunucjcl4g6chxuif73yri7xi:
+  /vite-node/0.29.8_4q5mxzltflcgkzvnigcbiggbqa:
     resolution: {integrity: sha512-b6OtCXfk65L6SElVM20q5G546yu10/kNrhg08afEoWlFRJXFq9/6glsvSVY+aI6YeC1tu2TtAqI2jHEQmOmsFw==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
@@ -14328,7 +14316,7 @@ packages:
       mlly: 1.2.0
       pathe: 1.1.0
       picocolors: 1.0.0
-      vite: 4.2.1_6yunucjcl4g6chxuif73yri7xi
+      vite: 4.2.1_4q5mxzltflcgkzvnigcbiggbqa
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -14374,7 +14362,7 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vite/4.2.1_6yunucjcl4g6chxuif73yri7xi:
+  /vite/4.2.1_4q5mxzltflcgkzvnigcbiggbqa:
     resolution: {integrity: sha512-7MKhqdy0ISo4wnvwtqZkjke6XN4taqQ2TBaTccLIpOKv7Vp2h4Y+NpmWCnGDeSvvn45KxvWgGyb0MkHvY1vgbg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -14401,15 +14389,15 @@ packages:
     dependencies:
       '@types/node': 18.15.11
       esbuild: 0.17.15
-      less: 4.1.3
       postcss: 8.4.21
       resolve: 1.22.1
       rollup: 3.20.2
+      sass: 1.61.0
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
 
-  /vitest/0.29.8_happy-dom@8.9.0+less@4.1.3:
+  /vitest/0.29.8_ougvu6eo5j2n5am4bvys2o3yfq:
     resolution: {integrity: sha512-JIAVi2GK5cvA6awGpH0HvH/gEG9PZ0a/WoxdiV3PmqK+3CjQMf8c+J/Vhv4mdZ2nRyXFw66sAg6qz7VNkaHfDQ==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
@@ -14462,8 +14450,8 @@ packages:
       tinybench: 2.4.0
       tinypool: 0.4.0
       tinyspy: 1.1.1
-      vite: 4.2.1_6yunucjcl4g6chxuif73yri7xi
-      vite-node: 0.29.8_6yunucjcl4g6chxuif73yri7xi
+      vite: 4.2.1_4q5mxzltflcgkzvnigcbiggbqa
+      vite-node: 0.29.8_4q5mxzltflcgkzvnigcbiggbqa
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
       - less
