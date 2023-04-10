@@ -24,6 +24,9 @@
       "prettier --write --no-error-on-unmatched-pattern"
     ]
   },
+  "engines": {
+    "node": ">= 16"
+  },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
