@@ -25,9 +25,9 @@ class DomUtil {
    * @param domStr
    * @param withWrapper
    * @param className
-   * @returns {HTMLDivElement|NodeListOf<ChildNode>}
+   * @returns {HTMLDivElement}
    */
-  static parseDom(domStr: string, className: string): HTMLDivElement | NodeListOf<ChildNode> {
+  static parseDom(domStr: string, className: string): HTMLDivElement {
     const el = document.createElement('div');
     el.className = className || '';
     el.innerHTML = domStr;
