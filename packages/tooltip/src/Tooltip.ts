@@ -45,12 +45,11 @@ class Tooltip extends Widget {
   }
 
   /**
-   *
    * @param windowPosition
    * @param content
    * @returns {Tooltip}
    */
-  showAt(windowPosition: Cartesian2, content: string | Element) {
+  showAt(windowPosition: Cartesian2, content: string | Element): Tooltip {
     if (!this._enabled) {
       return this;
     }

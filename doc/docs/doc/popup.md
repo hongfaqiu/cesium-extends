@@ -2,7 +2,7 @@
 title: popup
 nav: 指南
 group: 扩展
-order: 5
+order: 6
 ---
 
 # @cesium-extends/popup

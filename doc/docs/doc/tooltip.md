@@ -2,7 +2,7 @@
 title: tooltip
 nav: 指南
 group: 扩展
-order: 4
+order: 5
 ---
 
 # @cesium-extends/tooltip
@@ -61,6 +61,18 @@ tooltip.destroy();
 
 #### 方法
 
+#### `enabled`
+
+控制小部件是否启用的布尔值属性。
+
+#### `ready`
+
+小部件是否准备好的布尔值属性。
+
+#### `content`
+
+获取或更改 tooltip 的内容
+
 ##### showAt(windowPosition: Cartesian2, content: string | Element): Tooltip
 
 显示 Tooltip。接受两个参数：
@@ -70,11 +82,17 @@ tooltip.destroy();
 
 返回值为 `Tooltip` 实例。
 
-##### hide(): Tooltip
+##### show(): void
+
+显示 Tooltip。
+
+##### hide(): void
 
 隐藏 Tooltip。
 
-返回值为 `Tooltip` 实例。
+##### destroy(): void
+
+销毁 Tooltip。
 
 ### MouseTooltip
 
@@ -104,7 +122,19 @@ mouseTooltip.destroy();
 
 `MouseTooltip` 类继承自 `Tooltip`，接受相同的 options。
 
-#### 方法
+#### API
+
+#### `enabled`
+
+控制小部件是否启用的布尔值属性。
+
+#### `ready`
+
+小部件是否准备好的布尔值属性。
+
+#### `content`
+
+获取或更改 tooltip 的内容
 
 ##### show(): void
 
