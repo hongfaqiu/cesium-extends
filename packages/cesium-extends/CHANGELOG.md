@@ -1,3 +1,10 @@
+# cesium-extends [1.4.0](https://github.com/hongfaqiu/cesium-extends/compare/cesium-extends@1.3.0...cesium-extends@1.4.0) (2023-04-10)
+
+
+### Features
+
+* drawer ([f05841c](https://github.com/hongfaqiu/cesium-extends/commit/f05841cccea51a13a0eb9d858fa28a4f175418ae))
+
 # cesium-extends [1.3.0](https://github.com/hongfaqiu/cesium-extends/compare/cesium-extends@1.2.0...cesium-extends@1.3.0) (2023-04-10)
 
 
