@@ -1,3 +1,10 @@
+---
+title: drawer
+nav: 指南
+group: 扩展
+order: 9
+---
+
 # @cesium-extends/drawer
 
 一个基于 Cesium 的绘制工具库，支持勾画点、线、多边形、圆等常用图形。
@@ -13,18 +20,18 @@ npm install @cesium-extends/drawer --save
 ## 使用方法
 
 ```javascript
-import Drawer from "@cesium-extends/drawer";
-import Cesium from "cesium";
+import Drawer from '@cesium-extends/drawer';
+import Cesium from 'cesium';
 
 // 初始化Viewer
-const viewer = new Cesium.Viewer("cesiumContainer");
+const viewer = new Cesium.Viewer('cesiumContainer');
 
 // 创建Drawer实例
 const drawer = new Drawer(viewer);
 
 // 开始绘制
 drawer.start({
-  type: "POLYGON",
+  type: 'POLYGON',
   finalOptions: {
     material: Cesium.Color.RED.withAlpha(0.5),
   },
@@ -96,12 +103,12 @@ type DrawOption = {
 
 ```typescript
 type StartOption = {
-  type: "POLYGON" | "POLYLINE" | "POINT" | "CIRCLE" | "RECTANGLE";
+  type: 'POLYGON' | 'POLYLINE' | 'POINT' | 'CIRCLE' | 'RECTANGLE';
   once?: boolean;
   oneInstance?: boolean;
   finalOptions?: object;
   dynamicOptions?: object;
-  onPointsChange?: BasicGraphicesOptions["onPointsChange"];
+  onPointsChange?: BasicGraphicesOptions['onPointsChange'];
   onEnd?: (entity: Entity, positions: Cartesian3[]) => void;
 };
 ```
@@ -109,7 +116,7 @@ type StartOption = {
 ### Status
 
 ```typescript
-type Status = "INIT" | "START" | "PAUSE" | "DESTROY";
+type Status = 'INIT' | 'START' | 'PAUSE' | 'DESTROY';
 ```
 
 ### OperationType
@@ -129,7 +136,7 @@ type OperationType = {
 type OverrideEntityFunc = (
   this: Drawer,
   action: EventType,
-  entity: Entity
+  entity: Entity,
 ) => Entity | void;
 ```
 

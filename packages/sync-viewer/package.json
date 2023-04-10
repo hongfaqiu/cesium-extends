@@ -1,0 +1,35 @@
+{
+  "name": "@cesium-extends/sync-viewer",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hongfaqiu/cesium-extends.git",
+    "directory": "packages/sync-viewer"
+  },
+  "scripts": {
+    "build": "rimraf dist && rollup -c",
+    "dev": "rollup -c --watch"
+  },
+  "keywords": [
+    "cesium",
+    "sync-viewer"
+  ],
+  "author": "hongfaqiu",
+  "license": "MIT",
+  "peerDependencies": {
+    "cesium": "*"
+  },
+  "devDependencies": {
+    "cesium": "^1.103.0"
+  }
+}

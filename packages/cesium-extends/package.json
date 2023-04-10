@@ -37,6 +37,7 @@
     "@cesium-extends/popup": "^1.0.0",
     "@cesium-extends/primitive-geojson": "1.0.0",
     "@cesium-extends/subscriber": "1.0.0",
+    "@cesium-extends/sync-viewer": "^1.0.0",
     "@cesium-extends/tooltip": "^1.2.0",
     "@cesium-extends/zoom-control": "^1.1.0"
   }

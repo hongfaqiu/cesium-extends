@@ -74,6 +74,7 @@ importers:
       '@cesium-extends/popup': ^1.0.0
       '@cesium-extends/primitive-geojson': 1.0.0
       '@cesium-extends/subscriber': 1.0.0
+      '@cesium-extends/sync-viewer': ^1.0.0
       '@cesium-extends/tooltip': ^1.2.0
       '@cesium-extends/zoom-control': ^1.1.0
     dependencies:
@@ -84,6 +85,7 @@ importers:
       '@cesium-extends/popup': link:../popup
       '@cesium-extends/primitive-geojson': link:../primitive-geojson
       '@cesium-extends/subscriber': link:../subscriber
+      '@cesium-extends/sync-viewer': link:../sync-viewer
       '@cesium-extends/tooltip': link:../tooltip
       '@cesium-extends/zoom-control': link:../zoom-controller
 
@@ -176,6 +178,12 @@ importers:
       nanoid: ^4.0.2
     dependencies:
       nanoid: 4.0.2
+    devDependencies:
+      cesium: 1.104.0
+
+  packages/sync-viewer:
+    specifiers:
+      cesium: ^1.103.0
     devDependencies:
       cesium: 1.104.0
 
