@@ -9,23 +9,23 @@ import {
 
 import type { Viewer } from 'cesium';
 
-interface CesiumPopupOptions {
+interface PopupOptions {
   /** 经纬度坐标 */
   position: number[] | null;
   element: HTMLElement;
   offset?: [number, number];
 }
 
-export default class CesiumPopup {
+export default class Popup {
   private _position: Cartesian3 | null;
   private _screenPosition = new Cartesian2();
   private _element: HTMLElement;
   private _viewer: Viewer;
-  private _options: CesiumPopupOptions;
+  private _options: PopupOptions;
   private _destroyed = false;
   private _offset: [number, number];
 
-  constructor(viewer: Viewer, options: CesiumPopupOptions) {
+  constructor(viewer: Viewer, options: PopupOptions) {
     this._viewer = viewer;
     this._options = options;
     const { position, element, offset } = options;

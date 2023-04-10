@@ -1,0 +1,48 @@
+.popupComponent {
+  position: absolute;
+  z-index: 10;
+  min-width: 30px;
+  min-height: 32px;
+  padding: 6px 8px;
+  color: #fff;
+  text-align: left;
+  text-decoration: none;
+  word-wrap: break-word;
+  background: rgba(43, 44, 47, 0.8);
+  border-radius: 2px;
+  box-shadow: 0 3px 6px -4px #0000001f, 0 6px 16px #00000014, 0 9px 28px 8px #0000000d;
+
+  .pop-content {
+    min-width: 200px;
+    max-width: 400px;
+    min-height: 100px;
+    max-height: 200px;
+    overflow: hidden;
+  }
+  .pop-arrow {
+    position: absolute;
+    left: 50%;
+    display: block;
+    width: 16px;
+    height: 16px;
+    overflow: hidden;
+    background: 0 0;
+    transform: translate(-50%, 6px);
+    pointer-events: none;
+    .pop-arrow-content {
+      position: absolute;
+      display: block;
+      width: 11.3137085px;
+      height: 11.3137085px;
+      margin: auto;
+      background-color: #000000bf;
+      border-radius: 0 0 2px;
+      box-shadow: 3px 3px 7px #00000012;
+      transform: translateY(-8px) rotate(45deg);
+      content: '';
+      pointer-events: auto;
+      pointer-events: none;
+      inset: 0;
+    }
+  }
+}

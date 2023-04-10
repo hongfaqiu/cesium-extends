@@ -17,7 +17,6 @@ const Map: React.FC<MapProps> = () => {
     mouseTooltip = new MouseTooltip(viewer);
     mouseTooltip.content = '这是一个跟随鼠标的tooltip'
     mouseTooltip.show()
-    console.log(mouseTooltip)
 
     return () => {
       viewer?.destroy()
