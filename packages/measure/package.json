@@ -33,7 +33,7 @@
     "cesium": "^1.104.0"
   },
   "dependencies": {
-    "@cesium-extends/drawer": "workspace:^1.0.0",
+    "@cesium-extends/drawer": "^1.0.0",
     "@cesium-extends/subscriber": "^1.0.0",
     "@cesium-extends/tooltip": "^1.2.0",
     "@turf/area": "^6.5.0",
