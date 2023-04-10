@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "cesium": "^1.103.0",
-    "cesium-extends": "1.0.0",
+    "cesium-extends": "workspace:*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }
