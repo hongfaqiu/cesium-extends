@@ -35,6 +35,6 @@
     "cesium": "^1.103.0"
   },
   "dependencies": {
-    "@cesium-extends/common": "^1.0.0"
+    "@cesium-extends/common": "workspace:^1.0.1"
   }
 }

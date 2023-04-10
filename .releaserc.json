@@ -12,6 +12,12 @@
         "message": "release: ${nextRelease.version} [skip ci] [skip deploy] \n\n${nextRelease.notes}"
       }
     ],
-    "@semantic-release/github"
+    [
+      "@semantic-release/github",
+      {
+        "successComment": false,
+        "failTitle": false
+      }
+    ]
   ]
 }

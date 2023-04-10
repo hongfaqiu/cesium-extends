@@ -20,9 +20,9 @@ cesium-extends 提供了以下功能：
 - primitive 方式加速渲染 geojson `@cesium-extends/primitive-geojson`
 - 丰富的 geojson 样式渲染 `@cesium-extends/geojson-render`
 - tooltip `@cesium-extends/tooltip`
-- 指南针(comming soon)
-- 缩放控制(comming soon)
-- 弹出框(comming soon)
+- 弹出框 `@cesium-extends/popup`
+- 指南针 `@cesium-extends/compass`
+- 缩放控制 `@cesium-extends/zoom-control`
 - 绘图工具(comming soon)
 - 测量工具(comming soon)
 - ...
