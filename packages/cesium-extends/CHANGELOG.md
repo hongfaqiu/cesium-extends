@@ -1,3 +1,19 @@
+# cesium-extends [1.5.0](https://github.com/hongfaqiu/cesium-extends/compare/cesium-extends@1.4.0...cesium-extends@1.5.0) (2023-04-10)
+
+
+### Features
+
+* measure ([deb314f](https://github.com/hongfaqiu/cesium-extends/commit/deb314f29fbcb2425a502dc1cee00b856bf30d4d))
+
+
+
+
+
+### Dependencies
+
+* **@cesium-extends/drawer:** upgraded to 1.1.0
+* **@cesium-extends/measure:** upgraded to 1.0.0
+
 # cesium-extends [1.4.0](https://github.com/hongfaqiu/cesium-extends/compare/cesium-extends@1.3.0...cesium-extends@1.4.0) (2023-04-10)
 
 
