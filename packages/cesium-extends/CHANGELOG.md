@@ -1,3 +1,23 @@
+## cesium-extends [1.6.2](https://github.com/hongfaqiu/cesium-extends/compare/cesium-extends@1.6.1...cesium-extends@1.6.2) (2023-04-14)
+
+
+### Bug Fixes
+
+* bump deps version ([db7d794](https://github.com/hongfaqiu/cesium-extends/commit/db7d7947d13e82b85387a6c72b6a8c095aca62ec))
+* deps ([446a3b8](https://github.com/hongfaqiu/cesium-extends/commit/446a3b863746f79de78a16700e6244f3e704a8ec))
+
+
+
+
+
+### Dependencies
+
+* **@cesium-extends/drawer:** upgraded to 1.2.2
+* **@cesium-extends/geojson-render:** upgraded to 1.0.1
+* **@cesium-extends/measure:** upgraded to 1.0.1
+* **@cesium-extends/primitive-geojson:** upgraded to 1.0.1
+* **@cesium-extends/tooltip:** upgraded to 1.2.1
+
 ## cesium-extends [1.6.1](https://github.com/hongfaqiu/cesium-extends/compare/cesium-extends@1.6.0...cesium-extends@1.6.1) (2023-04-14)
 
 ### Bug Fixes
