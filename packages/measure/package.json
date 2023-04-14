@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@cesium-extends/drawer": "^1.0.0",
-    "@cesium-extends/subscriber": "^1.0.0",
+    "@cesium-extends/subscriber": "^1.0.1",
     "@cesium-extends/tooltip": "^1.2.0",
     "@turf/area": "^6.5.0",
     "@turf/helpers": "^6.5.0",

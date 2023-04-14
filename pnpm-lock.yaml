@@ -68,12 +68,12 @@ importers:
   packages/cesium-extends:
     specifiers:
       '@cesium-extends/compass': ^1.1.0
-      '@cesium-extends/drawer': ^1.1.0
+      '@cesium-extends/drawer': ^1.2.1
       '@cesium-extends/geojson-render': 1.0.0
       '@cesium-extends/measure': ^1.0.0
       '@cesium-extends/popup': ^1.0.0
       '@cesium-extends/primitive-geojson': 1.0.0
-      '@cesium-extends/subscriber': 1.0.0
+      '@cesium-extends/subscriber': 1.0.1
       '@cesium-extends/sync-viewer': ^1.0.0
       '@cesium-extends/tooltip': ^1.2.0
       '@cesium-extends/zoom-control': ^1.1.0
@@ -106,7 +106,7 @@ importers:
 
   packages/drawer:
     specifiers:
-      '@cesium-extends/subscriber': ^1.0.0
+      '@cesium-extends/subscriber': ^1.0.1
       '@cesium-extends/tooltip': ^1.2.0
       cesium: ^1.104.0
     dependencies:
@@ -129,7 +129,7 @@ importers:
   packages/measure:
     specifiers:
       '@cesium-extends/drawer': ^1.0.0
-      '@cesium-extends/subscriber': ^1.0.0
+      '@cesium-extends/subscriber': ^1.0.1
       '@cesium-extends/tooltip': ^1.2.0
       '@turf/area': ^6.5.0
       '@turf/helpers': ^6.5.0
@@ -157,7 +157,7 @@ importers:
 
   packages/primitive-geojson:
     specifiers:
-      '@cesium-extends/subscriber': 1.0.0
+      '@cesium-extends/subscriber': 1.0.1
       '@turf/centroid': ^6.5.0
       '@turf/helpers': ^6.5.0
       '@types/geojson': ^7946.0.10
@@ -190,7 +190,7 @@ importers:
   packages/tooltip:
     specifiers:
       '@cesium-extends/common': ^1.0.1
-      '@cesium-extends/subscriber': 1.0.0
+      '@cesium-extends/subscriber': 1.0.1
       cesium: ^1.103.0
     dependencies:
       '@cesium-extends/common': link:../common
