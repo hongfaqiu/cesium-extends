@@ -1,3 +1,10 @@
+## cesium-extends [1.6.1](https://github.com/hongfaqiu/cesium-extends/compare/cesium-extends@1.6.0...cesium-extends@1.6.1) (2023-04-14)
+
+
+### Bug Fixes
+
+* export Drawer ([99fe2e7](https://github.com/hongfaqiu/cesium-extends/commit/99fe2e719fe9c786ac9949dfab26d3e9635bfde8))
+
 # cesium-extends [1.6.0](https://github.com/hongfaqiu/cesium-extends/compare/cesium-extends@1.5.1...cesium-extends@1.6.0) (2023-04-10)
 
 
