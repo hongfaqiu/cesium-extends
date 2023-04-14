@@ -60,7 +60,7 @@ export class Subscriber {
     'PINCH_MOVE',
     'PINCH_END',
   ];
-  private _moveDebounce: number;
+  private _moveDebounce: number | undefined;
   private _lastTime: number;
   private _enablePickResult: boolean;
   private _lastResult: any;
@@ -86,7 +86,7 @@ export class Subscriber {
   ) {
     this._viewer = viewer;
     this._handler = new ScreenSpaceEventHandler(options.element || this._viewer.canvas);
-    this._moveDebounce = options.pickResult?.moveDebounce ?? 200;
+    this._moveDebounce = options.pickResult?.moveDebounce;
     this._enablePickResult = options.pickResult?.enable ?? false;
     this._lastTime = new Date().getTime();
     this._isDestroy = false;
@@ -101,6 +101,8 @@ export class Subscriber {
   }
 
   private _shouldUpdate(update = true) {
+    if (!this._moveDebounce) return true;
+    
     const timeNow = new Date().getTime();
     if (timeNow - this._lastTime < this._moveDebounce) {
       return false;

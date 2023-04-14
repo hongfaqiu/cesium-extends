@@ -3,8 +3,8 @@ import { CallbackProperty, Entity, JulianDate, Rectangle as CesiumRectangle } fr
 import BasicGraphices from '../base';
 
 import type { Cartesian3 } from 'cesium';
+import type { EventArgs } from '@cesium-extends/subscriber';
 import type { LifeCycle } from '../base';
-import type { EventArgs } from '../typings';
 
 export default class Rectangle extends BasicGraphices implements LifeCycle {
   dropPoint(move: EventArgs): void {

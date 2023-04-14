@@ -3,8 +3,8 @@ import { CallbackProperty, defined, Entity, PolygonHierarchy } from 'cesium';
 import BasicGraphices from '../base';
 
 import type { Cartesian3, Color, PolygonGraphics, PolylineGraphics } from 'cesium';
+import type { EventArgs } from '@cesium-extends/subscriber';
 import type { LifeCycle } from '../base';
-import type { EventArgs } from '../typings';
 
 export default class Polygon extends BasicGraphices implements LifeCycle {
   dropPoint(event: EventArgs): void {
