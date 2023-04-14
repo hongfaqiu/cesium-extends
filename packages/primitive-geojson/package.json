@@ -36,7 +36,7 @@
     "cesium": "*"
   },
   "devDependencies": {
-    "@cesium-extends/subscriber": "1.0.1",
+    "@cesium-extends/subscriber": "workspace:^",
     "@types/geojson": "^7946.0.10",
     "cesium": "^1.103.0"
   },

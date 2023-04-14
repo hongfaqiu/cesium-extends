@@ -31,7 +31,7 @@
     "cesium": "*"
   },
   "devDependencies": {
-    "@cesium-extends/subscriber": "1.0.1",
+    "@cesium-extends/subscriber": "workspace:^",
     "cesium": "^1.103.0"
   },
   "dependencies": {
