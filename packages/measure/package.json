@@ -1,6 +1,6 @@
 {
   "name": "@cesium-extends/measure",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -33,9 +33,9 @@
     "cesium": "^1.104.0"
   },
   "dependencies": {
-    "@cesium-extends/drawer": "^1.0.0",
-    "@cesium-extends/subscriber": "workspace:^",
-    "@cesium-extends/tooltip": "^1.2.0",
+    "@cesium-extends/drawer": "1.2.2",
+    "@cesium-extends/subscriber": "1.0.1",
+    "@cesium-extends/tooltip": "1.2.1",
     "@turf/area": "^6.5.0",
     "@turf/helpers": "^6.5.0",
     "@turf/intersect": "^6.5.0",
