@@ -11,7 +11,7 @@
     "build:doc": "pnpm run build && pnpm run --dir doc build",
     "test": "vitest",
     "coverage": "vitest run --coverage",
-    "release": "multi-semantic-release --ignore-private-packages=true",
+    "release": "multi-semantic-release --ignore-private-packages=true --deps.bump=inherit",
     "prepare": "husky install"
   },
   "commitlint": {
