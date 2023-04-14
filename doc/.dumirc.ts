@@ -20,5 +20,5 @@ export default defineConfig({
   define: {
     CESIUM_BASE_URL: '/cesium',
   },
-  jsMinifier: 'terser',
+  jsMinifier: 'terser'
 });

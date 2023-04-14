@@ -38,6 +38,12 @@ drawer.start({
 });
 ```
 
+## 示例
+
+你可以通过下面的示例体验点线面多边形的绘制
+
+<code src="@/components/Map/drawer/index.tsx"></code>
+
 ### DrawOption
 
 以下是 `options` 可配置选项:

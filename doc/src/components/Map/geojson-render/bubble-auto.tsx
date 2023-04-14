@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { renderGeoJson, GeoJsonPrimitiveLayer, renderPrimitiveGeoJson, GeoJsonStyle, GeoJsonRenderConfig, updateDataSourcePosition } from 'cesium-extends';
 import { GeoJsonDataSource } from 'cesium';
 
-import { initMap } from '../../utils/initMap';
+import { initMap } from '@/utils/initMap';
 
 const primitiveObj = new GeoJsonPrimitiveLayer();
 

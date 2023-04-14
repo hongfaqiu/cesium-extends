@@ -72,12 +72,6 @@ renderGeoJson(dataSource, config).then((entityStyle) => {
 });
 ```
 
-## 示例
-
-下面的示例中添加了一个地震数据的 geojson，并按照地震层级对点进行不同大小的渲染
-
-<code src="@/components/Map/geojson-render.tsx"></code>
-
 ### renderPrimitiveGeoJson(primitiveLayer, config)
 
 将 GeoJSON 数据渲染为 Cesium 原始几何体，并添加到指定的图元图层。
@@ -133,6 +127,20 @@ renderPrimitiveGeoJson(primitiveLayer, config).then((entityStyle) => {
   console.log(entityStyle);
 });
 ```
+
+## 示例
+
+### 点 bubble
+
+下面的示例中添加了一个地震数据的 geojson，并按照地震层级对点进行不同大小的渲染
+
+<code src="@/components/Map/geojson-render/bubble-auto.tsx"></code>
+
+### 面 height
+
+下面的示例中添加了一个大约有 4w 个面的美国加利福尼亚州地热数据的 geojson，并按照 est 字段对每个方格进行高度和颜色渲染
+
+<code src="@/components/Map/geojson-render/polygon-height.tsx"></code>
 
 ## GeoJsonStyle 配置说明
 
