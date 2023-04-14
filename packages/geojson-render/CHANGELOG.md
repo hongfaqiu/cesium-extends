@@ -1,3 +1,13 @@
+## @cesium-extends/geojson-render [1.0.1](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/geojson-render@1.0.0...@cesium-extends/geojson-render@1.0.1) (2023-04-14)
+
+
+
+
+
+### Dependencies
+
+* **@cesium-extends/primitive-geojson:** upgraded to 1.0.1
+
 # @cesium-extends/geojson-render 1.0.0 (2023-04-04)
 
 
