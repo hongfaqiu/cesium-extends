@@ -1,3 +1,10 @@
+## @cesium-extends/tooltip [1.2.1](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/tooltip@1.2.0...@cesium-extends/tooltip@1.2.1) (2023-04-14)
+
+
+### Bug Fixes
+
+* bump deps version ([db7d794](https://github.com/hongfaqiu/cesium-extends/commit/db7d7947d13e82b85387a6c72b6a8c095aca62ec))
+
 # @cesium-extends/tooltip [1.2.0](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/tooltip@1.1.0...@cesium-extends/tooltip@1.2.0) (2023-04-10)
 
 
