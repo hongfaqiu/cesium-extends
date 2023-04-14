@@ -1,3 +1,13 @@
+## @cesium-extends/drawer [1.2.2](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/drawer@1.2.1...@cesium-extends/drawer@1.2.2) (2023-04-14)
+
+
+
+
+
+### Dependencies
+
+* **@cesium-extends/tooltip:** upgraded to 1.2.1
+
 ## @cesium-extends/drawer [1.2.1](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/drawer@1.2.0...@cesium-extends/drawer@1.2.1) (2023-04-14)
 
 
