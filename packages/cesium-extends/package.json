@@ -39,6 +39,7 @@
     "@cesium-extends/subscriber": "workspace:^",
     "@cesium-extends/sync-viewer": "workspace:^",
     "@cesium-extends/tooltip": "workspace:^",
-    "@cesium-extends/zoom-control": "workspace:^"
+    "@cesium-extends/zoom-control": "workspace:^",
+    "@cesium-extends/heat": "workspace:^"
   }
 }

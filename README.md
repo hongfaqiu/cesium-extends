@@ -24,6 +24,7 @@ cesium-extends 提供了以下功能：
 - 绘图工具 `@cesium-extends/drawer`
 - 测量工具 `@cesium-extends/measure`
 - 双屏联动工具 `@cesium-extends/sync-viewer`
+- 热力图 `@cesium-extends/heat`
 - ...
 
 详细信息及 demo，请参阅 [API 文档](https://cesium-extends.vercel.app/)。
