@@ -93,37 +93,37 @@ importers:
   packages/cesium-extends:
     dependencies:
       '@cesium-extends/compass':
-        specifier: workspace:^
+        specifier: ^1.1.0
         version: link:../compass
       '@cesium-extends/drawer':
-        specifier: workspace:^
+        specifier: ^1.2.2
         version: link:../drawer
       '@cesium-extends/geojson-render':
-        specifier: workspace:^
+        specifier: ^1.0.1
         version: link:../geojson-render
       '@cesium-extends/heat':
-        specifier: workspace:^
+        specifier: ^1.0.1
         version: link:../heat
       '@cesium-extends/measure':
         specifier: workspace:^
         version: link:../measure
       '@cesium-extends/popup':
-        specifier: workspace:^
+        specifier: ^1.0.0
         version: link:../popup
       '@cesium-extends/primitive-geojson':
-        specifier: workspace:^
+        specifier: ^1.0.1
         version: link:../primitive-geojson
       '@cesium-extends/subscriber':
-        specifier: workspace:^
+        specifier: ^1.0.1
         version: link:../subscriber
       '@cesium-extends/sync-viewer':
-        specifier: workspace:^
+        specifier: ^1.0.0
         version: link:../sync-viewer
       '@cesium-extends/tooltip':
-        specifier: workspace:^
+        specifier: ^1.2.1
         version: link:../tooltip
       '@cesium-extends/zoom-control':
-        specifier: workspace:^
+        specifier: ^1.1.0
         version: link:../zoom-controller
       cesium:
         specifier: '*'
