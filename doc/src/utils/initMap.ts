@@ -1,6 +1,9 @@
-import { Viewer, Cartesian3, Math as CMath } from 'cesium';
+import { Viewer, Cartesian3, Math as CMath, Ion } from 'cesium';
 
 import 'cesium/Build/Cesium/Widgets/widgets.css';
+
+Ion.defaultAccessToken =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI4OGQwZTM2MC00NjkzLTRkZTgtYTU5MS0xZTA1NTljYWQyN2UiLCJpZCI6NTUwODUsImlhdCI6MTYyMDM5NjQ3NH0.lu_JBwyngYucPsvbCZt-xzmzgfwEKwcRXiYs5uV8uTM';
 
 /**
  * 初始化地图

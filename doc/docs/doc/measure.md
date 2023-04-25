@@ -133,6 +133,12 @@ const distanceSurfaceMeasure = new DistanceSurfaceMeasure(viewer, {
 distanceSurfaceMeasure.start();
 ```
 
+## 示例
+
+你可以通过下面的示例体验四种测量
+
+<code src="@/components/Map/measure/index.tsx"></code>
+
 ## API
 
 ### MeasureOptions

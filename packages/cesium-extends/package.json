@@ -33,13 +33,13 @@
     "@cesium-extends/compass": "^1.1.0",
     "@cesium-extends/drawer": "^1.2.2",
     "@cesium-extends/geojson-render": "^1.0.1",
-    "@cesium-extends/measure": "^1.0.1",
+    "@cesium-extends/measure": "^1.0.2",
     "@cesium-extends/popup": "^1.0.0",
     "@cesium-extends/primitive-geojson": "^1.0.1",
     "@cesium-extends/subscriber": "^1.0.1",
     "@cesium-extends/sync-viewer": "^1.0.0",
     "@cesium-extends/tooltip": "^1.2.1",
     "@cesium-extends/zoom-control": "^1.1.0",
-    "@cesium-extends/heat": "^1.0.0"
+    "@cesium-extends/heat": "^1.0.1"
   }
 }
