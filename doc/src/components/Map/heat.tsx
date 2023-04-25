@@ -52,9 +52,9 @@ const Map: React.FC<MapProps> = () => {
     heatMap.current = heatmap
 
     return () => {
-      viewer.current?.destroy();
       // 移除热力图
       heatMap.current?.destroy();
+      viewer.current?.destroy();
     }
   }, []);
 

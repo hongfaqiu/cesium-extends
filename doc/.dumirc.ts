@@ -7,6 +7,9 @@ const cesiumWorkers = '../Build/Cesium/Workers';
 export default defineConfig({
   themeConfig: {
     name: 'cesium-extends',
+    socialLinks: {
+      github: 'https://github.com/hongfaqiu/cesium-extends',
+    }
   },
   alias: {
     '@': path.resolve(__dirname, 'src'),

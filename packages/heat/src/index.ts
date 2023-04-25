@@ -52,6 +52,7 @@ export default class HeatMapLayer {
   };
   private _tolerance: number;
   private _canvasConfig: Required<CanvasConfig>;
+  private _destroyed: boolean = false;
 
   get viewer() {
     return this._viewer;
@@ -67,6 +68,10 @@ export default class HeatMapLayer {
 
   get show() {
     return this._layer?.show ?? false;
+  }
+
+  get destroyed() {
+    return this._destroyed;
   }
 
   set data(val: HeatMapDataItem[]) {
@@ -217,6 +222,7 @@ export default class HeatMapLayer {
    * 更新cesium显示
    */
   updateCesium() {
+    if (this._destroyed) return;
     if (this._layer) {
       this.viewer.scene.imageryLayers.remove(this._layer);
     }
@@ -276,16 +282,19 @@ export default class HeatMapLayer {
   remove() {
     let bool = false;
     this._viewer.camera.moveEnd.removeEventListener(this.cameraMoveEnd);
-    if (this.layer) {
+    if (this.layer && this._viewer) {
       bool = this._viewer.scene.imageryLayers.remove(this.layer);
       this.viewer.scene.requestRender();
+    } else {
+      bool = true
     }
     return bool;
   }
 
   destroy() {
     if (this._container) this._container.remove();
-    return this.remove();
+    this._destroyed = this.remove();
+    return this._destroyed;
   }
 }
 
