@@ -76,9 +76,9 @@ const Map: React.FC<MapProps> = () => {
     });
 
     return () => {
-      viewer.current?.destroy()
       measure.current?.destroy();
       measure.current = undefined;
+      viewer.current?.destroy()
     }
   }, []);
 
