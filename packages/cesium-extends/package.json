@@ -1,6 +1,6 @@
 {
   "name": "cesium-extends",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -33,7 +33,7 @@
     "@cesium-extends/compass": "^1.1.0",
     "@cesium-extends/drawer": "^1.2.2",
     "@cesium-extends/geojson-render": "^1.0.1",
-    "@cesium-extends/measure": "workspace:^",
+    "@cesium-extends/measure": "^1.0.2",
     "@cesium-extends/popup": "^1.0.0",
     "@cesium-extends/primitive-geojson": "^1.0.1",
     "@cesium-extends/subscriber": "^1.0.1",
