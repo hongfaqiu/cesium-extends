@@ -50,7 +50,32 @@ const Map: React.FC<MapProps> = () => {
     setActiveTool(newToolName);
 
     if (newToolName && Tool) {
-      measure.current = new Tool(viewer.current);
+      measure.current = new Tool(viewer.current, {
+        units: 'kilometers',
+        locale: {
+          start: '起点',
+          area: '面积',
+          total: '总计',
+          formatLength: (length, unitedLength) => {
+            if (length < 1000) {
+              return length + '米';
+            }
+            return unitedLength + '千米';
+          },
+          formatArea: (area, unitedArea) => {
+            if (area < 1000000) {
+              return area + '平方米';
+            }
+            return unitedArea + '平方千米';
+          }
+        },
+        drawerOptions: {
+          tips: {
+            init: '点击绘制',
+            start: '左键添加点，右键移除点，双击结束绘制',
+          }
+        }
+      });
       measure.current.start();
     }
   };

@@ -1,7 +1,7 @@
 import { Cartesian3 } from 'cesium';
+import { convertLength } from '@turf/helpers';
 
 import Measure from './Measure';
-import { formatLength } from './utils';
 
 import type { PolylineGraphics } from 'cesium';
 
@@ -37,16 +37,20 @@ class DistanceMeasure extends Measure {
     for (let i = 0; i < num; i += 1) {
       const label = this._labels.get(i);
       if (i === 0) {
-        label.text = 'start';
+        label.text = this._locale.start;
         continue;
       } else {
-        const newDis = this.getDistance(positions[i - 1], positions[i]);
+        const newDis = +this.getDistance(positions[i - 1], positions[i]).toFixed(2);
+        const unitedNewDis = +convertLength(newDis, 'meters', this._units).toFixed(2)
+
         distance += newDis;
+        distance = +distance.toFixed(2);
+        const unitedDistance = +convertLength(distance, 'meters', this._units).toFixed(2)
 
         label.text =
-          (i === num - 1 ? 'Total: ' : '') +
-          formatLength(distance, this._units) +
-          (i > 1 ? `\n(+${formatLength(newDis, this._units)})` : '');
+          (i === num - 1 ? `${this._locale.total}: ` : '') +
+          this._locale.formatLength(distance, unitedDistance, this._units) +
+        (i > 1 ? `\n(+${this._locale.formatLength(newDis, unitedNewDis, this._units)})` : '');
       }
     }
   }

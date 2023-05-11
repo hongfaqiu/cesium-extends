@@ -25,15 +25,6 @@ import { AreaMeasure } from "@cesium-extends/measure";
 
 const viewer = new Viewer("cesiumContainer");
 const areaMeasure = new AreaMeasure(viewer, {
-  units: "kilometers", // Set the unit of measure, default is 'meters'
-  labelStyle: {
-    font: "14px sans-serif",
-    fillColor: Cesium.Color.YELLOW,
-    outlineWidth: 2,
-    style: Cesium.LabelStyle.FILL_AND_OUTLINE,
-    pixelOffset: new Cesium.Cartesian2(0, -30),
-    heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
-  },
   onEnd: (entity) => {
     console.log(entity); // The callback function when the measurement is completed, returning the measurement result
   },
@@ -53,15 +44,6 @@ import { AreaSurfaceMeasure } from "@cesium-extends/measure";
 
 const viewer = new Viewer("cesiumContainer");
 const areaSurfaceMeasure = new AreaSurfaceMeasure(viewer, {
-  units: "kilometers", // Set the unit of measure, default is 'meters'
-  labelStyle: {
-    font: "14px sans-serif",
-    fillColor: Cesium.Color.YELLOW,
-    outlineWidth: 2,
-    style: Cesium.LabelStyle.FILL_AND_OUTLINE,
-    pixelOffset: new Cesium.Cartesian2(0, -30),
-    heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
-  },
   onEnd: (entity) => {
     console.log(entity); // The callback function when the measurement is completed, returning the measurement result
   },
@@ -81,15 +63,6 @@ import { DistanceMeasure } from "@cesium-extends/measure";
 
 const viewer = new Viewer("cesiumContainer");
 const distanceMeasure = new DistanceMeasure(viewer, {
-  units: "kilometers", // Set the unit of measure, default is 'meters'
-  labelStyle: {
-    font: "14px sans-serif",
-    fillColor: Cesium.Color.YELLOW,
-    outlineWidth: 2,
-    style: Cesium.LabelStyle.FILL_AND_OUTLINE,
-    pixelOffset: new Cesium.Cartesian2(0, -30),
-    heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
-  },
   onEnd: (entity) => {
     console.log(entity); // The callback function when the measurement is completed, returning the measurement result
   },
@@ -109,15 +82,6 @@ import { DistanceSurfaceMeasure } from "@cesium-extends/measure";
 
 const viewer = new Viewer("cesiumContainer");
 const distanceSurfaceMeasure = new DistanceSurfaceMeasure(viewer, {
-  units: "kilometers", // Set the unit of measure, default is 'meters'
-  labelStyle: {
-    font: "14px sans-serif",
-    fillColor: Cesium.Color.YELLOW,
-    outlineWidth: 2,
-    style: Cesium.LabelStyle.FILL_AND_OUTLINE,
-    pixelOffset: new Cesium.Cartesian2(0, -30),
-    heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
-  },
   onEnd: (entity) => {
     console.log(entity); // The callback function when the measurement is completed, returning the measurement result
   },
@@ -134,7 +98,8 @@ distanceSurfaceMeasure.start();
 | Parameter     | Type     | Description                                         |
 | ------------- | -------- | --------------------------------------------------- |
 | labelStyle    | object   | Label style                                         |
-| units         | string   | Unit of measure, default is 'meters'                |
+| units         | string   | Unit of measure, default is 'kilometers'            |
+| locale        | object   | Custom locale                                       |
 | onEnd         | function | Callback function when the measurement is completed |
 | drawerOptions | object   | Drawing tool options                                |
 

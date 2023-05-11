@@ -26,20 +26,35 @@ npm install @cesium-extends/measure --save
 用于不贴地的面积测量。
 
 ```typescript
-import { Viewer } from 'cesium';
-import { AreaMeasure } from '@cesium-extends/measure';
+import { Viewer } from "cesium";
+import { AreaMeasure } from "@cesium-extends/measure";
 
-const viewer = new Viewer('cesiumContainer');
+const viewer = new Viewer("cesiumContainer");
 const areaMeasure = new AreaMeasure(viewer, {
-  units: 'kilometers', // 设置测量单位，默认为'meters'
-  labelStyle: {
-    font: '14px sans-serif',
-    fillColor: Cesium.Color.YELLOW,
-    outlineWidth: 2,
-    style: Cesium.LabelStyle.FILL_AND_OUTLINE,
-    pixelOffset: new Cesium.Cartesian2(0, -30),
-    heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
+  units: 'kilometers', // 默认为kilometers
+  locale: {
+    start: '起点',
+    area: '面积',
+    total: '总计',
+    formatLength: (length, unitedLength) => {
+      if (length < 1000) {
+        return length + '米';
+      }
+      return unitedLength + '千米';
+    },
+    formatArea: (area, unitedArea) => {
+      if (area < 1000000) {
+        return area + '平方米';
+      }
+      return unitedArea + '平方千米';
+    }
   },
+  drawerOptions: {
+    tips: {
+      init: '点击绘制',
+      start: '左键添加点，右键移除点，双击结束绘制',
+    }
+  }
   onEnd: (entity) => {
     console.log(entity); // 测量完成回调函数，返回测量结果
   },
@@ -59,15 +74,6 @@ import { AreaSurfaceMeasure } from '@cesium-extends/measure';
 
 const viewer = new Viewer('cesiumContainer');
 const areaSurfaceMeasure = new AreaSurfaceMeasure(viewer, {
-  units: 'kilometers', // 设置测量单位，默认为'meters'
-  labelStyle: {
-    font: '14px sans-serif',
-    fillColor: Cesium.Color.YELLOW,
-    outlineWidth: 2,
-    style: Cesium.LabelStyle.FILL_AND_OUTLINE,
-    pixelOffset: new Cesium.Cartesian2(0, -30),
-    heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
-  },
   onEnd: (entity) => {
     console.log(entity); // 测量完成回调函数，返回测量结果
   },
@@ -87,15 +93,6 @@ import { DistanceMeasure } from '@cesium-extends/measure';
 
 const viewer = new Viewer('cesiumContainer');
 const distanceMeasure = new DistanceMeasure(viewer, {
-  units: 'kilometers', // 设置测量单位，默认为'meters'
-  labelStyle: {
-    font: '14px sans-serif',
-    fillColor: Cesium.Color.YELLOW,
-    outlineWidth: 2,
-    style: Cesium.LabelStyle.FILL_AND_OUTLINE,
-    pixelOffset: new Cesium.Cartesian2(0, -30),
-    heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
-  },
   onEnd: (entity) => {
     console.log(entity); // 测量完成回调函数，返回测量结果
   },
@@ -115,15 +112,6 @@ import { DistanceSurfaceMeasure } from '@cesium-extends/measure';
 
 const viewer = new Viewer('cesiumContainer');
 const distanceSurfaceMeasure = new DistanceSurfaceMeasure(viewer, {
-  units: 'kilometers', // 设置测量单位，默认为'meters'
-  labelStyle: {
-    font: '14px sans-serif',
-    fillColor: Cesium.Color.YELLOW,
-    outlineWidth: 2,
-    style: Cesium.LabelStyle.FILL_AND_OUTLINE,
-    pixelOffset: new Cesium.Cartesian2(0, -30),
-    heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
-  },
   onEnd: (entity) => {
     console.log(entity); // 测量完成回调函数，返回测量结果
   },
@@ -147,6 +135,7 @@ distanceSurfaceMeasure.start();
 | ------------- | -------- | ------------------------ |
 | labelStyle    | object   | 标签样式                 |
 | units         | string   | 测量单位，默认为'meters' |
+| locale        | string   | 国际化内容               |
 | onEnd         | function | 测量完成回调函数         |
 | drawerOptions | object   | 绘制工具### Measure      |
 

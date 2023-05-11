@@ -14,8 +14,27 @@ import Drawer from '@cesium-extends/drawer';
 import type { Units } from '@turf/helpers';
 import type { Cartesian3, Entity, Viewer } from 'cesium';
 import type { DrawOption } from '@cesium-extends/drawer';
+import { formatArea, formatLength } from './utils';
 
 export type MeasureUnits = Units;
+
+export type MeasureLocaleOptions = {
+  start: string;
+  total: string;
+  area: string;
+  /**
+ * 格式化显示长度
+ * @param length 单位米
+ * @param unit 目标单位
+ */
+  formatLength(length: number, unitedLength: number, unit: MeasureUnits): string;
+  /**
+ * 格式化显示面积
+ * @param area 单位米
+ * @param unit 目标单位
+ */
+  formatArea(area: number, unitedArea: number, unit: MeasureUnits): string;
+}
 
 export type MeasureOptions = {
   labelStyle?: {
@@ -30,9 +49,31 @@ export type MeasureOptions = {
     scaleByDistance?: NearFarScalar;
     heightReference?: HeightReference;
   };
-  units?: Units;
+  /** defaults to kilometers */
+  units?: MeasureUnits;
   onEnd?: (entity: Entity) => void;
   drawerOptions?: Partial<DrawOption>;
+  /**
+   * @example 
+   * {
+        start: '起点',
+        area: '面积',
+        total: '总计',
+        formatLength: (length, unitedLength) => {
+          if (length < 1000) {
+            return length + '米';
+          }
+          return unitedLength + '千米';
+        },
+        formatArea: (area, unitedArea) => {
+          if (area < 1000000) {
+            return area + '平方米';
+          }
+          return unitedArea + '平方千米';
+        }
+      }
+   */
+  locale?: Partial<MeasureLocaleOptions>
 };
 
 export type Status = 'INIT' | 'WORKING' | 'DESTROY';
@@ -49,7 +90,7 @@ const DefaultOptions: MeasureOptions = {
     scale: 1,
     scaleByDistance: new NearFarScalar(1, 0.85, 8.0e6, 0.75),
     heightReference : HeightReference.CLAMP_TO_GROUND,
-  },
+  }
 };
 
 export default class Measure {
@@ -58,6 +99,7 @@ export default class Measure {
   protected _labels: LabelCollection;
   protected _labelStyle: MeasureOptions['labelStyle'];
   protected _units: MeasureUnits;
+  protected _locale: MeasureLocaleOptions;
 
   mouseTooltip: MouseTooltip;
   drawer: Drawer;
@@ -66,7 +108,7 @@ export default class Measure {
   /**
    * 量算工具
    * @param viewer
-   * @param {MeasureTips} [options.tips] 绘制时的提示信息
+   * @param {MeasureOptions['locale']} [options.locale] 绘制时的提示信息
    */
   constructor(viewer: Viewer, options: MeasureOptions = {}) {
     if (!viewer) throw new Error('undefined viewer');
@@ -77,6 +119,14 @@ export default class Measure {
     };
     this._units = options.units ?? 'kilometers';
     this._onEnd = options.onEnd;
+    this._locale = {
+      area: 'Area',
+      start: 'start',
+      total: 'Total',
+      formatLength,
+      formatArea,
+      ...options.locale,
+    }
 
     this.mouseTooltip = new MouseTooltip(viewer);
     this.mouseTooltip.hide();

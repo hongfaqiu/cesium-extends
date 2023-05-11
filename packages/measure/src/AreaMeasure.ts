@@ -1,10 +1,10 @@
 import { Cartesian2, Cartesian3 } from 'cesium';
+import { convertArea, polygon } from '@turf/helpers';
 
 import Measure from './Measure';
-import { formatArea, mean } from './utils';
+import { mean } from './utils';
 
 import area from '@turf/area';
-import { polygon } from '@turf/helpers';
 
 import type { PolygonGraphics } from 'cesium';
 
@@ -40,7 +40,9 @@ class AreaMeasure extends Measure {
 
   protected _updateLabelTexts(positions: Cartesian3[]) {
     const label = this._labels.get(0);
-    label.text = `Area: ${formatArea(this.getArea(positions), this._units)}`;
+    const area = +this.getArea(positions).toFixed(2);
+    const unitedArea = +convertArea(area, 'meters', this._units).toFixed(2)
+    label.text = `${this._locale.area}: ${this._locale.formatArea(area, unitedArea, this._units)}`;
   }
 
   protected _getDistance(pos1: Cartesian3, pos2: Cartesian3): number {

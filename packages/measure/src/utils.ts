@@ -1,7 +1,5 @@
-import { convertArea, convertLength } from '@turf/helpers';
-
-import type { Units } from '@turf/helpers';
 import type { Cartesian2, Cartesian3, HeightReference, Viewer } from 'cesium';
+import { MeasureUnits } from './Measure';
 
 export type PickResult = {
   cartesian: Cartesian3;
@@ -34,11 +32,11 @@ export function getBounds(points: Cartesian2[]): number[] {
  * @param length 单位米
  * @param unit 目标单位
  */
-export function formatLength(length: number, unit: Units) {
+export function formatLength(length: number, unitedLength: number, unit: MeasureUnits) {
   if (length < 1000) {
-    return length.toFixed(2) + 'meters';
+    return length + 'meters';
   }
-  return convertLength(length, 'meters', unit).toFixed(2) + unit;
+  return unitedLength + unit;
 }
 
 /**
@@ -46,11 +44,11 @@ export function formatLength(length: number, unit: Units) {
  * @param area 单位米
  * @param unit 目标单位
  */
-export function formatArea(area: number, unit: Units) {
+export function formatArea(area: number, unitedArea: number, unit: MeasureUnits) {
   if (area < 1000000) {
-    return area.toFixed(2) + ' square meters ';
+    return area + ' square meters ';
   }
-  return convertArea(area, 'meters', unit).toFixed(2) + ' square ' + unit;
+  return unitedArea + ' square ' + unit;
 }
 
 export function mean(array: number[]): number {
