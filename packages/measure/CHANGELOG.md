@@ -1,3 +1,10 @@
+## @cesium-extends/measure [1.0.3](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/measure@1.0.2...@cesium-extends/measure@1.0.3) (2023-05-11)
+
+
+### Bug Fixes
+
+* add heightReference error [#1](https://github.com/hongfaqiu/cesium-extends/issues/1) ([8068c0c](https://github.com/hongfaqiu/cesium-extends/commit/8068c0ca7973195bf5587b697f86741fcc58b8a7))
+
 ## @cesium-extends/measure [1.0.2](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/measure@1.0.1...@cesium-extends/measure@1.0.2) (2023-04-25)
 
 
