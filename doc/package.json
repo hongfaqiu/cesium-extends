@@ -15,11 +15,11 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@types/react": "^18.0.31",
-    "dumi": "^2.0.2"
+    "@types/react": "^18.2.6",
+    "dumi": "^2.1.23"
   },
   "dependencies": {
-    "cesium": "^1.103.0",
+    "cesium": "^1.105.1",
     "cesium-extends": "workspace:*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

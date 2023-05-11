@@ -33,7 +33,7 @@
     "cesium": "^1.104.0"
   },
   "dependencies": {
-    "@cesium-extends/subscriber": "1.0.1",
-    "@cesium-extends/tooltip": "1.2.1"
+    "@cesium-extends/subscriber": "^1.0.1",
+    "@cesium-extends/tooltip": "^1.2.1"
   }
 }

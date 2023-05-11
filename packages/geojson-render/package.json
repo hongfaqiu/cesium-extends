@@ -40,7 +40,7 @@
     "cesium": "^1.103.0"
   },
   "dependencies": {
-    "@cesium-extends/primitive-geojson": "1.0.1",
+    "@cesium-extends/primitive-geojson": "^1.0.1",
     "@turf/turf": "^6.5.0"
   }
 }
