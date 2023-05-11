@@ -1,3 +1,10 @@
+## @cesium-extends/drawer [1.2.3](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/drawer@1.2.2...@cesium-extends/drawer@1.2.3) (2023-05-11)
+
+
+### Bug Fixes
+
+* use ^dep [#2](https://github.com/hongfaqiu/cesium-extends/issues/2) ([663c92c](https://github.com/hongfaqiu/cesium-extends/commit/663c92c0718c12174f45305a3b18d9fadcaf4ba2))
+
 ## @cesium-extends/drawer [1.2.2](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/drawer@1.2.1...@cesium-extends/drawer@1.2.2) (2023-04-14)
 
 
