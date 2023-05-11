@@ -1,3 +1,10 @@
+# @cesium-extends/measure [1.1.0](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/measure@1.0.3...@cesium-extends/measure@1.1.0) (2023-05-11)
+
+
+### Features
+
+* measure tool add locale option ([1ff46ed](https://github.com/hongfaqiu/cesium-extends/commit/1ff46eda2c5764804ebbd5c222bdbc30183cad1f))
+
 ## @cesium-extends/measure [1.0.3](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/measure@1.0.2...@cesium-extends/measure@1.0.3) (2023-05-11)
 
 
