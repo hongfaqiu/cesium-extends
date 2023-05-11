@@ -5,13 +5,14 @@ import {
   LabelStyle,
   Math as CMath,
   NearFarScalar,
+  HeightReference
 } from 'cesium';
 
 import {MouseTooltip} from '@cesium-extends/tooltip';
 import Drawer from '@cesium-extends/drawer';
 
 import type { Units } from '@turf/helpers';
-import type { Cartesian3, Entity, HeightReference, Viewer } from 'cesium';
+import type { Cartesian3, Entity, Viewer } from 'cesium';
 import type { DrawOption } from '@cesium-extends/drawer';
 
 export type MeasureUnits = Units;
@@ -47,7 +48,7 @@ const DefaultOptions: MeasureOptions = {
     pixelOffset: new Cartesian2(4, 0),
     scale: 1,
     scaleByDistance: new NearFarScalar(1, 0.85, 8.0e6, 0.75),
-    // heightReference : HeightReference.CLAMP_TO_GROUND,
+    heightReference : HeightReference.CLAMP_TO_GROUND,
   },
 };
 
@@ -86,7 +87,9 @@ export default class Measure {
       ...options.drawerOptions,
     });
 
-    this._labels = new LabelCollection();
+    this._labels = new LabelCollection({
+      scene: this._viewer.scene
+    });
     this._viewer.scene.primitives.add(this._labels);
 
     this._status = 'INIT';
@@ -161,7 +164,9 @@ export default class Measure {
   destroy() {
     this.end();
     this.mouseTooltip.destroy();
-    this._viewer.scene.primitives.remove(this._labels);
+    if (this._viewer && !this._viewer.isDestroyed()) {
+      this._viewer.scene.primitives.remove(this._labels);
+    }
     this._status = 'DESTROY';
   }
 }
