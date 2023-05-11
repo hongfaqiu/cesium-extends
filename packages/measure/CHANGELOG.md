@@ -1,3 +1,10 @@
+## @cesium-extends/measure [1.1.1](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/measure@1.1.0...@cesium-extends/measure@1.1.1) (2023-05-11)
+
+
+### Bug Fixes
+
+* use ^dep [#2](https://github.com/hongfaqiu/cesium-extends/issues/2) ([663c92c](https://github.com/hongfaqiu/cesium-extends/commit/663c92c0718c12174f45305a3b18d9fadcaf4ba2))
+
 # @cesium-extends/measure [1.1.0](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/measure@1.0.3...@cesium-extends/measure@1.1.0) (2023-05-11)
 
 
