@@ -1,3 +1,21 @@
+## cesium-extends [1.8.1](https://github.com/hongfaqiu/cesium-extends/compare/cesium-extends@1.8.0...cesium-extends@1.8.1) (2023-05-11)
+
+
+### Bug Fixes
+
+* use ^dep [#2](https://github.com/hongfaqiu/cesium-extends/issues/2) ([663c92c](https://github.com/hongfaqiu/cesium-extends/commit/663c92c0718c12174f45305a3b18d9fadcaf4ba2))
+
+
+
+
+
+### Dependencies
+
+* **@cesium-extends/drawer:** upgraded to 1.2.3
+* **@cesium-extends/geojson-render:** upgraded to 1.0.2
+* **@cesium-extends/measure:** upgraded to 1.1.1
+* **@cesium-extends/tooltip:** upgraded to 1.2.2
+
 # cesium-extends [1.8.0](https://github.com/hongfaqiu/cesium-extends/compare/cesium-extends@1.7.1...cesium-extends@1.8.0) (2023-05-11)
 
 
