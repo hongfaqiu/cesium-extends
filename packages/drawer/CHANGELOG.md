@@ -1,3 +1,10 @@
+## @cesium-extends/drawer [1.2.5](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/drawer@1.2.4...@cesium-extends/drawer@1.2.5) (2023-07-18)
+
+
+### Bug Fixes
+
+* **drawer:** rectangle drawer returns 4 vertices ([5056397](https://github.com/hongfaqiu/cesium-extends/commit/505639736d67b9d0cb4fc38f13723d3cb3a49bc1))
+
 ## @cesium-extends/drawer [1.2.4](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/drawer@1.2.3...@cesium-extends/drawer@1.2.4) (2023-07-18)
 
 
