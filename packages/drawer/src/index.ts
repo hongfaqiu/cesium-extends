@@ -15,6 +15,7 @@ import type { BasicGraphicesOptions } from './base';
 import type {
   ActionCallback,
   DrawOption,
+  OperationType,
   OverrideEntityFunc,
   StartOption,
   Status,
@@ -132,9 +133,7 @@ export default class Drawer {
     if (!viewer) throw new Error('请输入Viewer对象！');
 
     // 设置操作方式
-    this._operateType = defaultValue(this._option.operateType, {});
-
-    this._operateType = Object.assign(defaultOptions.operateType, this._operateType);
+    this._operateType = { ...defaultOptions.operateType, ...options?.operateType } as Required<OperationType>;
 
     this._viewer = viewer;
     this._terrain = defaultValue(this._option.terrain, defaultOptions.terrain);

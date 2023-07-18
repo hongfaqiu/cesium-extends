@@ -30,16 +30,16 @@
     "cesium": "*"
   },
   "dependencies": {
-    "@cesium-extends/compass": "^1.1.0",
-    "@cesium-extends/drawer": "^1.2.3",
-    "@cesium-extends/geojson-render": "^1.0.2",
-    "@cesium-extends/heat": "^1.0.1",
-    "@cesium-extends/measure": "^1.1.1",
-    "@cesium-extends/popup": "^1.0.0",
-    "@cesium-extends/primitive-geojson": "^1.0.1",
-    "@cesium-extends/subscriber": "^1.0.1",
-    "@cesium-extends/sync-viewer": "^1.0.0",
-    "@cesium-extends/tooltip": "^1.2.2",
-    "@cesium-extends/zoom-control": "^1.1.0"
+    "@cesium-extends/compass": "workspace:*",
+    "@cesium-extends/drawer": "workspace:*",
+    "@cesium-extends/geojson-render": "workspace:*",
+    "@cesium-extends/heat": "workspace:*",
+    "@cesium-extends/measure": "workspace:*",
+    "@cesium-extends/popup": "workspace:*",
+    "@cesium-extends/primitive-geojson": "workspace:*",
+    "@cesium-extends/subscriber": "workspace:*",
+    "@cesium-extends/sync-viewer": "workspace:*",
+    "@cesium-extends/tooltip": "workspace:*",
+    "@cesium-extends/zoom-control": "workspace:*"
   }
 }

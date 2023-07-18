@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from 'react';
 import { initMap } from '@/utils/initMap';
 import { StartOption, Drawer } from 'cesium-extends';
 import './index.less';
+import { CartesiantoLonlat } from '@/utils/funcs';
 
 interface MapProps {}
 
@@ -33,7 +34,7 @@ const Map: React.FC<MapProps> = () => {
     DrawerTool.current?.start({
       type: type,
       onEnd: (entity, positions) => {
-        console.log(entity, positions)
+        console.log(entity, positions.map(pos => CartesiantoLonlat(pos, viewer.current as Viewer)))
       },
     });
   }
