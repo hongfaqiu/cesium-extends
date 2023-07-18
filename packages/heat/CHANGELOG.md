@@ -1,3 +1,10 @@
+## @cesium-extends/heat [1.0.2](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/heat@1.0.1...@cesium-extends/heat@1.0.2) (2023-07-18)
+
+
+### Bug Fixes
+
+* support cesium@1.106+ ([c327b74](https://github.com/hongfaqiu/cesium-extends/commit/c327b74a6f0919407fdcab7333e2771db92bb91f))
+
 ## @cesium-extends/heat [1.0.1](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/heat@1.0.0...@cesium-extends/heat@1.0.1) (2023-04-25)
 
 
