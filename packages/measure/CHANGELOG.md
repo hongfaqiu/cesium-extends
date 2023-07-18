@@ -1,3 +1,10 @@
+## @cesium-extends/measure [1.1.2](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/measure@1.1.1...@cesium-extends/measure@1.1.2) (2023-07-18)
+
+
+### Bug Fixes
+
+* area measure inaccurate results [#3](https://github.com/hongfaqiu/cesium-extends/issues/3) ([d472209](https://github.com/hongfaqiu/cesium-extends/commit/d47220964f0498d002c0a2b9f7ce10cfe3e3e5ae))
+
 ## @cesium-extends/measure [1.1.1](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/measure@1.1.0...@cesium-extends/measure@1.1.1) (2023-05-11)
 
 
