@@ -162,8 +162,8 @@ export default class Measure {
   protected _cartesian2Lonlat(positions: Cartesian3[]) {
     return positions.map((pos) => {
       const cartographic = this._viewer.scene.globe.ellipsoid.cartesianToCartographic(pos);
-      const lon = +CMath.toDegrees(cartographic.longitude).toFixed(4);
-      const lat = +CMath.toDegrees(cartographic.latitude).toFixed(4);
+      const lon = +CMath.toDegrees(cartographic.longitude);
+      const lat = +CMath.toDegrees(cartographic.latitude);
       return [lon, lat];
     });
   }
