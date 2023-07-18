@@ -83,22 +83,22 @@ const Map: React.FC<MapProps> = () => {
   useEffect(() => {
     viewer.current = initMap('cesiumContainer')
     // 创建 TerrainProvider 对象
-    const terrainProvider = new CesiumTerrainProvider({
-      url: IonResource.fromAssetId(1),
-    });
+    CesiumTerrainProvider.fromIonAssetId(1).then(terrainProvider => {
+      if (viewer.current) {
+        // 将 TerrainProvider 对象添加到 Viewer 中
+        viewer.current.terrainProvider = terrainProvider;
 
-    // 将 TerrainProvider 对象添加到 Viewer 中
-    viewer.current.terrainProvider = terrainProvider;
+        viewer.current.camera.setView({
+          destination: Cartesian3.fromDegrees(120, 28, 50000),
+          orientation: {
+            heading: CMath.toRadians(0),
+            pitch: CMath.toRadians(-45),
+            roll: CMath.toRadians(0),
+          },
+        });
+      }
+    })
 
-
-    viewer.current.camera.setView({
-      destination: Cartesian3.fromDegrees(120, 28, 50000),
-      orientation: {
-        heading: CMath.toRadians(0),
-        pitch: CMath.toRadians(-45),
-        roll: CMath.toRadians(0),
-      },
-    });
 
     return () => {
       measure.current?.destroy();

@@ -97,37 +97,37 @@ importers:
   packages/cesium-extends:
     dependencies:
       '@cesium-extends/compass':
-        specifier: workspace:*
+        specifier: 1.1.0
         version: link:../compass
       '@cesium-extends/drawer':
-        specifier: workspace:*
+        specifier: 1.2.5
         version: link:../drawer
       '@cesium-extends/geojson-render':
-        specifier: workspace:*
+        specifier: 1.0.2
         version: link:../geojson-render
       '@cesium-extends/heat':
-        specifier: workspace:*
+        specifier: 1.0.1
         version: link:../heat
       '@cesium-extends/measure':
-        specifier: workspace:*
+        specifier: 1.1.2
         version: link:../measure
       '@cesium-extends/popup':
-        specifier: workspace:*
+        specifier: 1.0.0
         version: link:../popup
       '@cesium-extends/primitive-geojson':
-        specifier: workspace:*
+        specifier: 1.0.1
         version: link:../primitive-geojson
       '@cesium-extends/subscriber':
-        specifier: workspace:*
+        specifier: 1.0.1
         version: link:../subscriber
       '@cesium-extends/sync-viewer':
-        specifier: workspace:*
+        specifier: 1.0.0
         version: link:../sync-viewer
       '@cesium-extends/tooltip':
-        specifier: workspace:*
+        specifier: 1.2.2
         version: link:../tooltip
       '@cesium-extends/zoom-control':
-        specifier: workspace:*
+        specifier: 1.1.0
         version: link:../zoom-controller
       cesium:
         specifier: '*'
@@ -185,8 +185,8 @@ importers:
         specifier: ^2.0.37
         version: 2.0.37
       cesium:
-        specifier: ^1.104.0
-        version: 1.104.0
+        specifier: ^1.107.2
+        version: 1.107.2
 
   packages/measure:
     dependencies:
@@ -828,7 +828,6 @@ packages:
       rbush: 3.0.1
       topojson-client: 3.1.0
       urijs: 1.19.11
-    dev: false
 
   /@cesium/widgets@2.1.1:
     resolution: {integrity: sha512-s+vgNVmJgi9efwB30o8ly94BMDZ9Mgt/rFCuj4mOinyqK+qVfWu1sekprrMCRTTir3r93ADXs3H/y8ObWFIjkQ==}
@@ -852,7 +851,6 @@ packages:
     dependencies:
       '@cesium/engine': 3.0.1
       nosleep.js: 0.12.0
-    dev: false
 
   /@changesets/types@4.1.0:
     resolution: {integrity: sha512-LDQvVDv5Kb50ny2s25Fhm3d9QSZimsoUGBsUioj6MC3qbMUCuC8GPIvk/M6IvXx3lYhAs0lwWUQLb+VIEUCECw==}
@@ -3805,7 +3803,6 @@ packages:
 
   /@tweenjs/tween.js@21.0.0:
     resolution: {integrity: sha512-qVfOiFh0U8ZSkLgA6tf7kj2MciqRbSCWaJZRwftVO7UbtVDNsZAXpWXqvCDtIefvjC83UJB+vHTDOGm5ibXjEA==}
-    dev: false
 
   /@types/babel__core@7.20.0:
     resolution: {integrity: sha512-+n8dL/9GWblDO0iU6eZAwEIJVr5DWigtle+Q6HLOrh/pdbXOhOtqzq8VPPE2zvNJzSKY4vH/z3iT3tn0A3ypiQ==}
@@ -5684,7 +5681,6 @@ packages:
     dependencies:
       '@cesium/engine': 3.0.1
       '@cesium/widgets': 3.0.1
-    dev: false
 
   /chai@4.3.7:
     resolution: {integrity: sha512-HLnAzZ2iupm25PlN0xFreAlBA5zaBSv3og0DdeGA4Ar6h6rJ3A0rolRUKJhSF2V10GZKDgWF/VmAEsNWjCRB+A==}
@@ -6860,7 +6856,6 @@ packages:
 
   /dompurify@3.0.3:
     resolution: {integrity: sha512-axQ9zieHLnAnHh0sfAamKYiqXMJAVwu+LM/alQ7WDagoWessyWvMSFyW65CqF3owufNu8HBcE4cM2Vflu7YWcQ==}
-    dev: false
 
   /domutils@1.7.0:
     resolution: {integrity: sha512-Lgd2XcJ/NjEw+7tFvfKxOzCYKZsdct5lczQ2ZaQY8Djz7pfAD3Gbp8ySJWtreII/vDlMVmxwa6pHmdxIYgttDg==}
@@ -9688,7 +9683,6 @@ packages:
 
   /kdbush@4.0.2:
     resolution: {integrity: sha512-WbCVYJ27Sz8zi9Q7Q0xHC+05iwkm3Znipc2XTlrnJbsHMYktW4hPhXUE8Ys1engBrvffoSCqbil1JQAa7clRpA==}
-    dev: false
 
   /kind-of@3.2.2:
     resolution: {integrity: sha512-NOW9QQXMoZGg/oqnVNoNTTIFEIid1627WCffUBJEdMxYApq7mNE7CpzucIPc+ZQg25Phej7IJSmX3hO+oblOtQ==}
@@ -9721,7 +9715,6 @@ packages:
 
   /ktx-parse@0.5.0:
     resolution: {integrity: sha512-5IZrv5s1byUeDTIee1jjJQBiD5LPDB0w9pJJ0oT9BCKKJf16Tuj123vm1Ps0GOHSHmeWPgKM0zuViCVuTRpqaA==}
-    dev: false
 
   /latest-version@3.1.0:
     resolution: {integrity: sha512-Be1YRHWWlZaSsrz2U+VInk+tO0EwLIyV+23RhWLINJYwg/UIikxjlj3MhH37/6/EDCAusjajvMkMMUXRaMWl/w==}
@@ -10482,7 +10475,6 @@ packages:
 
   /meshoptimizer@0.19.0:
     resolution: {integrity: sha512-58qz5Qc/6Geu8Ib3bBWERE5R7pM5ErrJVo16fAtu6ryxVaE3VAtM/u2vurDxaq8AGZ3yWxuM/DnylTga5a4XCQ==}
-    dev: false
 
   /micromark-core-commonmark@1.0.6:
     resolution: {integrity: sha512-K+PkJTxqjFfSNkfAhp4GB+cZPfQd6dxtTXnf+RjZOV7T4EEXnvgzOcnp+eSTmpGk9d1S9sL6/lqrgSNn/s0HZA==}
