@@ -1,3 +1,13 @@
+## cesium-extends [1.8.3](https://github.com/hongfaqiu/cesium-extends/compare/cesium-extends@1.8.2...cesium-extends@1.8.3) (2023-07-18)
+
+
+
+
+
+### Dependencies
+
+* **@cesium-extends/heat:** upgraded to 1.0.2
+
 ## cesium-extends [1.8.2](https://github.com/hongfaqiu/cesium-extends/compare/cesium-extends@1.8.1...cesium-extends@1.8.2) (2023-07-18)
 
 
