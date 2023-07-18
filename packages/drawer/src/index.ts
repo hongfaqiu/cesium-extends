@@ -257,7 +257,10 @@ export default class Drawer {
 
     // 开始事件
     const startId = this._subscriber.addExternal((move) => {
-      isStartDraw = true;
+      if (this._oneInstance && this.$Instance) {
+        this._viewer.entities.remove(this.$Instance);
+        this.$AddedInstance = [];
+      }
 
       this._dropPoint(move);
       if (this._action) this._action(this._operateType.START, move);
@@ -271,14 +274,18 @@ export default class Drawer {
       }
 
       this._updateTips();
+      // 100ms后才能继续,避免热键冲突
+      setTimeout(() => {
+        isStartDraw = true;
+      }, 100);
     }, this._operateType.START);
 
     // 移动事件
     const moveId = this._subscriber.addExternal((move) => {
+      this._viewer.canvas.style.cursor = 'crosshair';
       if (!isStartDraw) return;
 
       this._moving(move);
-      this._viewer.canvas.style.cursor = 'crosshair';
 
       // ActionCallback
       if (this._action) this._action(this._operateType.MOVING, move);

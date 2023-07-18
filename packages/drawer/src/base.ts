@@ -82,7 +82,7 @@ export default class BasicGraphices {
   }
 
   protected _moving(event: EventArgs): void {
-    if (!event.endPosition) return;
+    if (!event.endPosition || this.painter._activeShapePoints.length === 0) return;
     const earthPosition = this.painter.pickCartesian3(event.endPosition);
     if (earthPosition && defined(earthPosition)) {
       this.painter._activeShapePoints.pop();

@@ -21,9 +21,9 @@ const Map: React.FC<MapProps> = () => {
     });
 
     return () => {
-      viewer.current?.destroy()
       DrawerTool.current?.destroy();
       DrawerTool.current = undefined;
+      viewer.current?.destroy()
     }
   }, []);
 
