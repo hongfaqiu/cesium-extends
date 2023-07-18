@@ -1,3 +1,10 @@
+## @cesium-extends/drawer [1.2.4](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/drawer@1.2.3...@cesium-extends/drawer@1.2.4) (2023-07-18)
+
+
+### Bug Fixes
+
+* fix continuous drawing no dynamic graphics ([ee91da5](https://github.com/hongfaqiu/cesium-extends/commit/ee91da5defde4776770cb9c3b37b9f2b337b003a))
+
 ## @cesium-extends/drawer [1.2.3](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/drawer@1.2.2...@cesium-extends/drawer@1.2.3) (2023-05-11)
 
 
