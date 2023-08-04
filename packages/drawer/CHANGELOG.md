@@ -1,3 +1,10 @@
+# @cesium-extends/drawer [1.3.0](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/drawer@1.2.5...@cesium-extends/drawer@1.3.0) (2023-08-04)
+
+
+### Features
+
+* **drawer:** enable draw on model ([e23df17](https://github.com/hongfaqiu/cesium-extends/commit/e23df176b92d20589d55b30b2da7afb2ca9a1956))
+
 ## @cesium-extends/drawer [1.2.5](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/drawer@1.2.4...@cesium-extends/drawer@1.2.5) (2023-07-18)
 
 
