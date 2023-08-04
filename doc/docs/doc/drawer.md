@@ -62,15 +62,15 @@ drawer.start({
 
 以下是 `config` 可配置选项:
 
-| 属性             | 类型                                                | 默认值      | 描述                             |
-| ---------------- | --------------------------------------------------- | ----------- | -------------------------------- | -------- | ------------ | --- | -------- |
-| `type`           | `'POLYGON'                                          | 'POLYLINE'  | 'POINT'                          | 'CIRCLE' | 'RECTANGLE'` | -   | 勾画类型 |
-| `once`           | `boolean`                                           | `undefined` | 是否只勾画一次                   |
-| `oneInstance`    | `boolean`                                           | `false`     | 是否使用单例模式                 |
-| `finalOptions`   | `object`                                            | `{}`        | 勾画的 Entity 选项               |
-| `dynamicOptions` | `object`                                            | `{}`        | 动态勾画没有确定图形时的图形配置 |
-| `onPointsChange` | `(points: Cartesian3[]) => void`                    | -           | 点改变的回调函数                 |
-| `onEnd`          | `(entity: Entity, positions: Cartesian3[]) => void` | -           | 结束绘制的回调函数               |
+| 属性             | 类型                                                        | 默认值      | 描述                             |
+| ---------------- | ----------------------------------------------------------- | ----------- | -------------------------------- |
+| `type`           | `'POLYGON' / 'POLYLINE' / 'POINT' / 'CIRCLE' / 'RECTANGLE'` | -           | 勾画类型                         |
+| `once`           | `boolean`                                                   | `undefined` | 是否只勾画一次                   |
+| `oneInstance`    | `boolean`                                                   | `false`     | 是否使用单例模式                 |
+| `finalOptions`   | `object`                                                    | `{}`        | 勾画的 Entity 选项               |
+| `dynamicOptions` | `object`                                                    | `{}`        | 动态勾画没有确定图形时的图形配置 |
+| `onPointsChange` | `(points: Cartesian3[]) => void`                            | -           | 点改变的回调函数                 |
+| `onEnd`          | `(entity: Entity, positions: Cartesian3[]) => void`         | -           | 结束绘制的回调函数               |
 
 ## 实例方法
 
