@@ -35,6 +35,9 @@ subscriber.addExternal((movement, result) => {
   console.log(result);
 }, EventType.MOUSE_MOVE);
 
+// 暂停执行监听回调
+subscriber.enable = false;
+
 // 销毁订阅者
 subscriber.destroy();
 ```

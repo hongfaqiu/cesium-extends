@@ -1,5 +1,4 @@
 import { ScreenSpaceEventHandler, ScreenSpaceEventType } from 'cesium';
-import { nanoid } from 'nanoid';
 
 import type { Cartesian2, Entity, Viewer } from 'cesium';
 
@@ -34,6 +33,16 @@ type EventCollection = Record<EventType, Map<string, ListenCallback<Entity>>>;
 
 type ExternalEventCollection = Record<EventType, Map<string, ListenCallback<Entity>>>;
 
+function uniqueId(): string {
+  let _val = '';
+
+  do {
+    _val = Math.random().toString(36).slice(-8);
+  } while (_val.length < 8);
+
+  return _val;
+}
+
 export class Subscriber {
   private _viewer: Viewer;
 
@@ -64,6 +73,8 @@ export class Subscriber {
   private _lastTime: number;
   private _enablePickResult: boolean;
   private _lastResult: any;
+  private _enable: boolean = true;
+  private _isDestroy: boolean;
 
   /**
    * 是否被销毁
@@ -72,7 +83,14 @@ export class Subscriber {
     return this._isDestroy;
   }
 
-  private _isDestroy: boolean;
+  /** 是否执行监听回调 */
+  get enable() {
+    return this._enable;
+  }
+
+  set enable(val: boolean) {
+    this._enable = val;
+  }
 
   constructor(
     viewer: Viewer,
@@ -102,7 +120,7 @@ export class Subscriber {
 
   private _shouldUpdate(update = true) {
     if (!this._moveDebounce) return true;
-    
+
     const timeNow = new Date().getTime();
     if (timeNow - this._lastTime < this._moveDebounce) {
       return false;
@@ -117,7 +135,7 @@ export class Subscriber {
     const eventCollection = this._eventCollection[eventType];
     const externalEventCollection = this._externalEventCollection[eventType];
     this._handler.setInputAction((movement: EventArgs) => {
-      if (this._isDestroy || (eventType === 'MOUSE_MOVE' && !this._shouldUpdate())) return;
+      if (this._isDestroy || !this._enable || (eventType === 'MOUSE_MOVE' && !this._shouldUpdate())) return;
 
       if (this._enablePickResult) {
         if (eventType === 'MOUSE_MOVE' && movement.endPosition) {
@@ -190,7 +208,7 @@ export class Subscriber {
     )
       this._eventRegister(eventType);
 
-    const eId = nanoid();
+    const eId = uniqueId();
     this._externalEventCollection[eventType].set(eId, callback);
     return eId;
   }

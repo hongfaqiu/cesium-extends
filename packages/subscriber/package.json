@@ -31,8 +31,5 @@
   },
   "devDependencies": {
     "cesium": "^1.103.0"
-  },
-  "dependencies": {
-    "nanoid": "^4.0.2"
   }
 }

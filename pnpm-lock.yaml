@@ -248,10 +248,6 @@ importers:
         version: 1.104.0
 
   packages/subscriber:
-    dependencies:
-      nanoid:
-        specifier: ^4.0.2
-        version: 4.0.2
     devDependencies:
       cesium:
         specifier: ^1.103.0
