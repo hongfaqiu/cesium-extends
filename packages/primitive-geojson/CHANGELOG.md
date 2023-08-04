@@ -1,3 +1,13 @@
+## @cesium-extends/primitive-geojson [1.0.2](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/primitive-geojson@1.0.1...@cesium-extends/primitive-geojson@1.0.2) (2023-08-04)
+
+
+
+
+
+### Dependencies
+
+* **@cesium-extends/subscriber:** upgraded to 1.1.0
+
 ## @cesium-extends/primitive-geojson [1.0.1](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/primitive-geojson@1.0.0...@cesium-extends/primitive-geojson@1.0.1) (2023-04-14)
 
 
