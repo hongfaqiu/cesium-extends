@@ -67,6 +67,8 @@ export interface DrawOption {
    * @desc 是否使用地形，当开启时需要浏览器支持地形选取功能，如果不支持将会被关闭
    */
   terrain: boolean;
+  /** 是否在模型上选点 */
+  model: boolean;
 
   /**
    * @desc  操作方式

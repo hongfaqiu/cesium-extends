@@ -1,7 +1,7 @@
 import { Color, defaultValue, Entity, JulianDate } from 'cesium';
 import { MouseTooltip } from '@cesium-extends/tooltip';
-
 import Subscriber from '@cesium-extends/subscriber';
+
 import Painter from './painter';
 import Circle from './shape/circle';
 import Line from './shape/line';
@@ -25,6 +25,7 @@ export * from './typings';
 
 export const defaultOptions: DrawOption = {
   terrain: false,
+  model: false,
   operateType: {
     START: 'LEFT_CLICK',
     MOVING: 'MOUSE_MOVE',
@@ -72,6 +73,7 @@ export default class Drawer {
   private _viewer: Viewer;
   private _type!: StartOption['type'];
   private _terrain: boolean;
+  private _model: boolean;
   private _subscriber: Subscriber;
 
   private _status: Status;
@@ -137,6 +139,7 @@ export default class Drawer {
 
     this._viewer = viewer;
     this._terrain = defaultValue(this._option.terrain, defaultOptions.terrain);
+    this._model = defaultValue(this._option.model, defaultOptions.model);
 
     this._action = this._option.action;
 
@@ -167,7 +170,7 @@ export default class Drawer {
    * @param dynamicOptions
    */
   private _initPainter(options: BasicGraphicesOptions): void {
-    const painterOptions = { viewer: this._viewer, terrain: this._terrain };
+    const painterOptions = { viewer: this._viewer, terrain: this._terrain, model: this._model };
 
     this._painter = new Painter(painterOptions);
 
@@ -326,10 +329,6 @@ export default class Drawer {
     // 如果是线和面，则此时将实例添加到Viewer中
     if (this._once) this.pause();
 
-    if (this._oneInstance && this.$Instance) {
-      this._viewer.entities.remove(this.$Instance);
-    }
-
     this.$Instance = override.call(this, this._operateType.END, this._typeClass.result);
 
     if (this.$Instance instanceof Entity) {
@@ -365,6 +364,7 @@ export default class Drawer {
   destroy(): void {
     this._status = 'DESTROY';
     this.reset();
+    this.mouseTooltip.destroy();
     this._subscriber.destroy();
   }
 }

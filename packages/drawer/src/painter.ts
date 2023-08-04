@@ -5,6 +5,7 @@ import { defaultOptions } from '.';
 interface DrawOption {
   viewer: Viewer;
   terrain?: boolean;
+  model?: boolean;
 }
 
 /**
@@ -13,6 +14,7 @@ interface DrawOption {
 export default class Painter {
   _viewer: Viewer;
   _terrain: boolean | undefined;
+  _model?: boolean;
 
   _activeShapePoints: Cartesian3[] = [];
 
@@ -25,6 +27,7 @@ export default class Painter {
   constructor(options: DrawOption) {
     this._viewer = options.viewer;
     this._terrain = options.terrain;
+    this._model = options.model;
   }
 
   /**
@@ -64,6 +67,9 @@ export default class Painter {
   pickCartesian3(position: Cartesian2): Cartesian3 | undefined {
     // We use `viewer.scene.pickPosition` here instead of `viewer.camera.pickEllipsoid` so that
     // we get the correct point when mousing over terrain.
+    if (this._model) {
+      return this._viewer.scene.pickPosition(position);
+    }
     if (this._terrain) {
       const ray = this._viewer.camera.getPickRay(position);
       if (ray) return this._viewer.scene.globe.pick(ray, this._viewer.scene);
