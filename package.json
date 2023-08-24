@@ -2,7 +2,7 @@
   "name": "cesium-extends-monorepo",
   "private": true,
   "npmClient": "pnpm",
-  "packageManager": "pnpm@7.26.3",
+  "packageManager": "pnpm@8.6.7",
   "type": "module",
   "scripts": {
     "dev": "pnpm -r --parallel --filter \"./packages/**\" run dev",
