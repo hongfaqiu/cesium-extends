@@ -18,6 +18,7 @@
     "directory": "packages/primitive-geojson"
   },
   "scripts": {
+    "test": "vitest",
     "build": "rimraf dist && rollup -c",
     "dev": "rollup -c --watch"
   },
