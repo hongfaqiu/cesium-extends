@@ -1,3 +1,10 @@
+## @cesium-extends/primitive-geojson [1.0.3](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/primitive-geojson@1.0.2...@cesium-extends/primitive-geojson@1.0.3) (2023-10-08)
+
+
+### Bug Fixes
+
+* fix line drawing becoming a curve ([37ac972](https://github.com/hongfaqiu/cesium-extends/commit/37ac972add184f9c0ea8edd85c8b15dbf2dbae6e))
+
 ## @cesium-extends/primitive-geojson [1.0.2](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/primitive-geojson@1.0.1...@cesium-extends/primitive-geojson@1.0.2) (2023-08-04)
 
 
