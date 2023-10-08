@@ -1,3 +1,10 @@
+## @cesium-extends/drawer [1.3.1](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/drawer@1.3.0...@cesium-extends/drawer@1.3.1) (2023-10-08)
+
+
+### Bug Fixes
+
+* fix line drawing becoming a curve ([37ac972](https://github.com/hongfaqiu/cesium-extends/commit/37ac972add184f9c0ea8edd85c8b15dbf2dbae6e))
+
 # @cesium-extends/drawer [1.3.0](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/drawer@1.2.5...@cesium-extends/drawer@1.3.0) (2023-08-04)
 
 
