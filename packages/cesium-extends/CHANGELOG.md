@@ -1,3 +1,15 @@
+## cesium-extends [1.8.5](https://github.com/hongfaqiu/cesium-extends/compare/cesium-extends@1.8.4...cesium-extends@1.8.5) (2023-10-08)
+
+
+
+
+
+### Dependencies
+
+* **@cesium-extends/drawer:** upgraded to 1.3.1
+* **@cesium-extends/geojson-render:** upgraded to 1.0.3
+* **@cesium-extends/primitive-geojson:** upgraded to 1.0.3
+
 ## cesium-extends [1.8.4](https://github.com/hongfaqiu/cesium-extends/compare/cesium-extends@1.8.3...cesium-extends@1.8.4) (2023-08-04)
 
 
