@@ -1,16 +1,16 @@
-import * as Cesium from 'cesium';
-
+import { ArcType, Entity } from 'cesium';
 import BasicGraphices from '../base';
 
-import type { EventArgs } from '@cesium-extends/subscriber';
 import type { LifeCycle } from '../base';
+import type { CallbackProperty, Cartesian3, PolylineGraphics } from 'cesium';
+import type { EventArgs } from '@cesium-extends/subscriber';
 
 export default class Line extends BasicGraphices implements LifeCycle {
   dropPoint(event: EventArgs): void {
     this._dropPoint(event, this.createShape.bind(this));
   }
 
-  playOff(): Cesium.Entity {
+  playOff(): Entity {
     return this._playOff(this.createShape.bind(this));
   }
 
@@ -19,15 +19,18 @@ export default class Line extends BasicGraphices implements LifeCycle {
   }
 
   createShape(
-    positions: Cesium.Cartesian3[] | Cesium.CallbackProperty,
+    positions: Cartesian3[] | CallbackProperty,
     isDynamic = false,
-  ): Cesium.Entity {
-    const polyline: Cesium.PolylineGraphics.ConstructorOptions = Object.assign(
+  ): Entity {
+    const polyline: PolylineGraphics.ConstructorOptions = Object.assign(
       {},
       isDynamic && !this.sameStyle ? this.dynamicOptions : this.finalOptions,
-      { positions },
+      {
+        positions,
+        arcType: ArcType.RHUMB,
+      },
     );
 
-    return new Cesium.Entity({ polyline });
+    return new Entity({ polyline });
   }
 }

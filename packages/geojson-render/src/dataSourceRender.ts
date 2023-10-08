@@ -1,4 +1,5 @@
 import {
+  ArcType,
   BillboardGraphics,
   Cartesian2,
   Color,
@@ -88,6 +89,7 @@ export const dataSourceRender = async (dataSource: DataSource, style: EntityStyl
           ...paint,
           ...customStyle,
           clampToGround: true,
+          arcType: ArcType.RHUMB,
         });
         break;
       case 'polygon':
@@ -97,12 +99,14 @@ export const dataSourceRender = async (dataSource: DataSource, style: EntityStyl
           ...paint,
           ...customStyle,
           extrudedHeight: height ? height * 1000 : undefined,
+          arcType: ArcType.RHUMB,
         });
         entity.polyline = new PolylineGraphics({
           positions: (entity.polygon.hierarchy as any)?._value.positions,
           width: paint.outlineWidth,
           material: paint.outlineColor,
           clampToGround: true,
+          arcType: ArcType.RHUMB,
         });
         break;
       case 'mix':
@@ -130,18 +134,21 @@ export const dataSourceRender = async (dataSource: DataSource, style: EntityStyl
           material: paint.fill,
           width: paint.strokeWidth,
           clampToGround: true,
+          arcType: ArcType.RHUMB,
         })
 
         if (entity.polygon) {
           entity.polygon = new PolygonGraphics({
             hierarchy: entity.polygon?.hierarchy,
-            material: paint.fill
+            material: paint.fill,
+            arcType: ArcType.RHUMB,
           })
           entity.polyline = new PolylineGraphics({
             positions: (entity.polygon.hierarchy as any)?._value.positions,
             width: paint.strokeWidth,
             material: paint.stroke,
             clampToGround: true,
+            arcType: ArcType.RHUMB,
           });
         }
 

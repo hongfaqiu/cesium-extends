@@ -1,4 +1,5 @@
 import {
+  ArcType,
   BillboardCollection,
   BlendingState,
   CircleGeometry,
@@ -326,6 +327,7 @@ export default class GeoJsonPrimitiveLayer extends BasicGraphicLayer {
       polygonHierarchy: new PolygonHierarchy(positions),
       vertexFormat: PerInstanceColorAppearance.VERTEX_FORMAT,
       extrudedHeight: style?.extrudedHeight,
+      arcType: ArcType.RHUMB,
     });
     const instance = new GeometryInstance({
       geometry,
@@ -366,6 +368,7 @@ export default class GeoJsonPrimitiveLayer extends BasicGraphicLayer {
       positions,
       vertexFormat: PolylineColorAppearance.VERTEX_FORMAT,
       width: style?.width,
+      arcType: ArcType.RHUMB,
     });
     const instance = new GeometryInstance({
       geometry,
