@@ -6,7 +6,7 @@ import { DomUtil, Widget } from '@cesium-extends/common';
 
 import type { Camera, Scene, Viewer } from 'cesium';
 
-interface ZoomControllerProps {
+export interface ZoomControllerProps {
   container?: Element;
   home?: Cartesian3;
   tips?: {

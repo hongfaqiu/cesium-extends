@@ -18,7 +18,7 @@ import './styles/Compass.scss';
 
 import type { Viewer } from 'cesium';
 
-interface CompassOptions {
+export interface CompassOptions {
   container?: Element;
   tips?: {
     inner?: string;
