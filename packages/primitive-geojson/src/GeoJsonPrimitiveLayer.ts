@@ -1,6 +1,7 @@
 import {
   ArcType,
   BillboardCollection,
+  BlendOption,
   BlendingState,
   CircleGeometry,
   Color,
@@ -96,7 +97,9 @@ export default class GeoJsonPrimitiveLayer extends BasicGraphicLayer {
     this._primitiveCollection = new PrimitiveCollection();
     this._billboardCollection = new BillboardCollection();
     this._labelCollection = new LabelCollection();
-    this._pointCollection = new PointPrimitiveCollection();
+    this._pointCollection = new PointPrimitiveCollection({
+      blendOption: BlendOption.TRANSLUCENT,
+    });
     this._options = { ...DefaultOptions, ...options.options };
 
     this._promises = [];
@@ -580,7 +583,9 @@ export default class GeoJsonPrimitiveLayer extends BasicGraphicLayer {
     this.primitiveCollection.removeAll();
     this._billboardCollection = new BillboardCollection();
     this._labelCollection = new LabelCollection();
-    this._pointCollection = new PointPrimitiveCollection();
+    this._pointCollection = new PointPrimitiveCollection({
+      blendOption: BlendOption.TRANSLUCENT,
+    });
     this._featureItems = [];
     this._circleInstances = [];
     this._polygonInstances = [];
