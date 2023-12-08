@@ -6,11 +6,9 @@ import {
   Color,
   ColorGeometryInstanceAttribute,
   Credit,
-  defined,
   DeveloperError,
   Event,
   GeometryInstance,
-  getFilenameFromUri,
   LabelCollection,
   PerInstanceColorAppearance,
   PinBuilder,
@@ -23,19 +21,22 @@ import {
   PrimitiveCollection,
   Resource,
   RuntimeError,
-} from 'cesium';
-import { nanoid } from 'nanoid';
+  defined,
+  getFilenameFromUri,
+} from "cesium";
+import { nanoid } from "nanoid";
 
-import { BasicGraphicLayer } from './BasicGraphicLayer';
+import { BasicGraphicLayer } from "./BasicGraphicLayer";
 import {
   crsLinkHrefs,
   crsLinkTypes,
   crsNames,
   defaultCrsFunction,
   geoJsonObjectTypes,
-} from './GeoJsonLayer-util';
+} from "./GeoJsonLayer-util";
+import getPositionsCenter from "./getPositionsCenter";
 
-import type Subscriber from '@cesium-extends/subscriber';
+import type Subscriber from "@cesium-extends/subscriber";
 import type {
   BillboardPrimitiveItem,
   CirclePrimitiveItem,
@@ -45,10 +46,9 @@ import type {
   PolygonPrimitiveItem,
   PolylinePrimitiveItem,
   PrimitiveItem,
-} from './typings';
-import getPositionsCenter from './getPositionsCenter';
+} from "./typings";
 
-const DefaultColor = Color.fromCssColorString('#FC4C02');
+const DefaultColor = Color.fromCssColorString("#FC4C02");
 
 const DefaultOptions: GeoJsonPrimitiveLayerOptions = {
   markerSize: 10,
@@ -238,7 +238,7 @@ export default class GeoJsonPrimitiveLayer extends BasicGraphicLayer {
   }
 
   get geojson() {
-    return this._geojson
+    return this._geojson;
   }
 
   private _generateId() {
@@ -302,7 +302,9 @@ export default class GeoJsonPrimitiveLayer extends BasicGraphicLayer {
     const instance = new GeometryInstance({
       geometry,
       attributes: {
-        color: ColorGeometryInstanceAttribute.fromColor(style?.color ?? this._options.fill),
+        color: ColorGeometryInstanceAttribute.fromColor(
+          style?.color ?? this._options.fill,
+        ),
       },
       id,
     });
@@ -332,7 +334,9 @@ export default class GeoJsonPrimitiveLayer extends BasicGraphicLayer {
     const instance = new GeometryInstance({
       geometry,
       attributes: {
-        color: ColorGeometryInstanceAttribute.fromColor(style?.material ?? this._options.fill),
+        color: ColorGeometryInstanceAttribute.fromColor(
+          style?.material ?? this._options.fill,
+        ),
       },
       id,
     });
@@ -347,7 +351,7 @@ export default class GeoJsonPrimitiveLayer extends BasicGraphicLayer {
     });
     this.addPolyline(
       {
-        type: 'Polyline',
+        type: "Polyline",
         positions,
         style: {
           width: style?.outlineWidth,
@@ -373,7 +377,9 @@ export default class GeoJsonPrimitiveLayer extends BasicGraphicLayer {
     const instance = new GeometryInstance({
       geometry,
       attributes: {
-        color: ColorGeometryInstanceAttribute.fromColor(style?.material ?? this._options.stroke),
+        color: ColorGeometryInstanceAttribute.fromColor(
+          style?.material ?? this._options.stroke,
+        ),
       },
       id,
     });
@@ -385,9 +391,11 @@ export default class GeoJsonPrimitiveLayer extends BasicGraphicLayer {
         ...item,
         id,
         instance: geometry,
-        center: { cartesian3: item.positions[Math.floor(item.positions.length / 2)] },
+        center: {
+          cartesian3: item.positions[Math.floor(item.positions.length / 2)],
+        },
       });
-    
+
     return instance;
   }
 
@@ -413,13 +421,13 @@ export default class GeoJsonPrimitiveLayer extends BasicGraphicLayer {
     const feature = this._featureItems.find((item) => item.id === id);
     if (feature && feature.instance) {
       switch (feature.type) {
-        case 'Point':
+        case "Point":
           this._pointCollection.remove(feature.instance);
           break;
-        case 'Billboard':
+        case "Billboard":
           this._billboardCollection.remove(feature.instance);
           break;
-        case 'Label':
+        case "Label":
           this._labelCollection.remove(feature.instance);
           break;
         default:
@@ -445,7 +453,7 @@ export default class GeoJsonPrimitiveLayer extends BasicGraphicLayer {
     let data = url;
     //>>includeStart('debug', pragmas.debug)
     if (!defined(data)) {
-      throw new DeveloperError('data is required.');
+      throw new DeveloperError("data is required.");
     }
     //>>includeEnd('debug')
 
@@ -453,14 +461,14 @@ export default class GeoJsonPrimitiveLayer extends BasicGraphicLayer {
 
     // User specified credit
     let credit = options.credit;
-    if (typeof credit === 'string') {
+    if (typeof credit === "string") {
       credit = new Credit(credit);
     }
     this._credit = credit;
 
     let promise: any = data;
     let sourceUri = options.sourceUri;
-    if (typeof data === 'string') {
+    if (typeof data === "string") {
       data = new Resource({ url: data });
     }
     if (data instanceof Resource) {
@@ -500,7 +508,9 @@ export default class GeoJsonPrimitiveLayer extends BasicGraphicLayer {
 
     const typeHandler = geoJsonObjectTypes[geoJson.type];
     if (!defined(typeHandler)) {
-      throw new RuntimeError(`Unsupported GeoJSON object type: ${geoJson.type}`);
+      throw new RuntimeError(
+        `Unsupported GeoJSON object type: ${geoJson.type}`,
+      );
     }
 
     //Check for a Coordinate Reference System.
@@ -509,27 +519,29 @@ export default class GeoJsonPrimitiveLayer extends BasicGraphicLayer {
 
     if (defined(crs)) {
       if (!defined(crs.properties)) {
-        throw new RuntimeError('crs.properties is undefined.');
+        throw new RuntimeError("crs.properties is undefined.");
       }
 
       const properties = crs.properties;
-      if (crs.type === 'name') {
+      if (crs.type === "name") {
         crsFunction = crsNames[properties.name];
         if (!defined(crsFunction)) {
           throw new RuntimeError(`Unknown crs name: ${properties.name}`);
         }
-      } else if (crs.type === 'link') {
+      } else if (crs.type === "link") {
         let handler = crsLinkHrefs[properties.href];
         if (!defined(handler)) {
           handler = crsLinkTypes[properties.type];
         }
 
         if (!defined(handler)) {
-          throw new RuntimeError(`Unable to resolve crs link: ${JSON.stringify(properties)}`);
+          throw new RuntimeError(
+            `Unable to resolve crs link: ${JSON.stringify(properties)}`,
+          );
         }
 
         crsFunction = handler(properties);
-      } else if (crs.type === 'EPSG') {
+      } else if (crs.type === "EPSG") {
         crsFunction = crsNames[`EPSG:${properties.code}`];
         if (!defined(crsFunction)) {
           throw new RuntimeError(`Unknown crs EPSG code: ${properties.code}`);
@@ -547,7 +559,13 @@ export default class GeoJsonPrimitiveLayer extends BasicGraphicLayer {
       // null is a valid value for the crs, but means the entire load process becomes a no-op
       // because we can't assume anything about the coordinates.
       if (crsFunc !== null) {
-        typeHandler(this, geoJson, geoJson, crsFunc, options as GeoJsonPrimitiveLayerOptions);
+        typeHandler(
+          this,
+          geoJson,
+          geoJson,
+          crsFunc,
+          options as GeoJsonPrimitiveLayerOptions,
+        );
       }
 
       await Promise.all(this._promises);
@@ -571,15 +589,15 @@ export default class GeoJsonPrimitiveLayer extends BasicGraphicLayer {
 
   reloadPrimitive() {
     const appearance = new PerInstanceColorAppearance({
+      flat: true,
       translucent: false,
+      closed: true,
       renderState: {
-        depthTest: {
-          enabled: true,
-        },
-        depthMask: true,
-        blending: BlendingState.PRE_MULTIPLIED_ALPHA_BLEND
+        depthTest: false,
+        depthMask: false,
+        blending: BlendingState.PRE_MULTIPLIED_ALPHA_BLEND,
       },
-    })
+    });
 
     this._circlePrimitive = new Primitive({
       geometryInstances: this._circleInstances,
@@ -593,7 +611,9 @@ export default class GeoJsonPrimitiveLayer extends BasicGraphicLayer {
     });
     this._polylinePrimitive = new Primitive({
       geometryInstances: this._polylineInstances,
-      appearance: new PolylineColorAppearance(),
+      appearance: new PolylineColorAppearance({
+        translucent: false,
+      }),
       asynchronous: false,
     });
     this._primitiveCollection.add(this._circlePrimitive);
@@ -603,7 +623,6 @@ export default class GeoJsonPrimitiveLayer extends BasicGraphicLayer {
     this._primitiveCollection.add(this._labelCollection);
     this._primitiveCollection.add(this._pointCollection);
   }
-
 
   destroy() {
     this.primitiveCollection.removeAll();
