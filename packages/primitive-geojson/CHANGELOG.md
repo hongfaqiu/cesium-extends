@@ -1,3 +1,10 @@
+## @cesium-extends/primitive-geojson [1.0.5](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/primitive-geojson@1.0.4...@cesium-extends/primitive-geojson@1.0.5) (2023-12-08)
+
+
+### Performance Improvements
+
+* improve point performance by up to 2x ([6dfdced](https://github.com/hongfaqiu/cesium-extends/commit/6dfdced411cdb8089a4a4c62c1807f22aec78e49))
+
 ## @cesium-extends/primitive-geojson [1.0.4](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/primitive-geojson@1.0.3...@cesium-extends/primitive-geojson@1.0.4) (2023-12-08)
 
 
