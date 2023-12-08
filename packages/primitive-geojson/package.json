@@ -1,6 +1,6 @@
 {
   "name": "@cesium-extends/primitive-geojson",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A faster method to load geojson on cesium by primitive",
   "type": "module",
   "main": "./dist/index.js",

@@ -1,3 +1,10 @@
+## @cesium-extends/primitive-geojson [1.0.4](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/primitive-geojson@1.0.3...@cesium-extends/primitive-geojson@1.0.4) (2023-12-08)
+
+
+### Bug Fixes
+
+* polygon overlap render error ([61614b4](https://github.com/hongfaqiu/cesium-extends/commit/61614b47dc1eb8d383041ab9ddac95d4e746d01a))
+
 ## @cesium-extends/primitive-geojson [1.0.3](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/primitive-geojson@1.0.2...@cesium-extends/primitive-geojson@1.0.3) (2023-10-08)
 
 
