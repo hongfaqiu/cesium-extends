@@ -1,3 +1,10 @@
+## @cesium-extends/heat [1.0.3](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/heat@1.0.2...@cesium-extends/heat@1.0.3) (2023-12-14)
+
+
+### Bug Fixes
+
+* heatmap Cannot assign to read only property ([f1b8f22](https://github.com/hongfaqiu/cesium-extends/commit/f1b8f22131824dfdbc6bbf7eeb96061259e1c46a))
+
 ## @cesium-extends/heat [1.0.2](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/heat@1.0.1...@cesium-extends/heat@1.0.2) (2023-07-18)
 
 
