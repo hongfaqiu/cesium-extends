@@ -1,8 +1,8 @@
 import type { ImageryLayer, Viewer } from 'cesium';
-import type { BaseHeatmapConfiguration, DataPoint, HeatmapConfiguration } from 'heatmap.js';
+import type { BaseHeatmapConfiguration, DataPoint, HeatmapConfiguration } from '@mars3d/heatmap.js';
 
 import { Rectangle, SingleTileImageryProvider } from 'cesium';
-import * as h337 from 'heatmap.js';
+import * as h337 from '@mars3d/heatmap.js';
 
 type HeatMapDataItem = {
   pos: number[];

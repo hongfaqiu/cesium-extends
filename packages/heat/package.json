@@ -30,10 +30,9 @@
     "cesium": "*"
   },
   "devDependencies": {
-    "@types/heatmap.js": "^2.0.37",
     "cesium": "^1.107.2"
   },
   "dependencies": {
-    "heatmap.js": "^2.0.5"
+    "@mars3d/heatmap.js": "^2.0.7"
   }
 }

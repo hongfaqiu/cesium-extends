@@ -100,7 +100,7 @@ importers:
   packages/cesium-extends:
     dependencies:
       '@cesium-extends/compass':
-        specifier: 1.1.0
+        specifier: 1.1.1
         version: link:../compass
       '@cesium-extends/drawer':
         specifier: 1.3.1
@@ -118,7 +118,7 @@ importers:
         specifier: 1.0.0
         version: link:../popup
       '@cesium-extends/primitive-geojson':
-        specifier: 1.0.3
+        specifier: 1.0.5
         version: link:../primitive-geojson
       '@cesium-extends/subscriber':
         specifier: 1.1.0
@@ -130,7 +130,7 @@ importers:
         specifier: 1.2.2
         version: link:../tooltip
       '@cesium-extends/zoom-control':
-        specifier: 1.1.0
+        specifier: 1.1.1
         version: link:../zoom-controller
       cesium:
         specifier: '*'
@@ -180,13 +180,10 @@ importers:
 
   packages/heat:
     dependencies:
-      heatmap.js:
-        specifier: ^2.0.5
-        version: 2.0.5
+      '@mars3d/heatmap.js':
+        specifier: ^2.0.7
+        version: 2.0.7
     devDependencies:
-      '@types/heatmap.js':
-        specifier: ^2.0.37
-        version: 2.0.37
       cesium:
         specifier: ^1.107.2
         version: 1.107.2
@@ -1939,6 +1936,10 @@ packages:
       globby: 11.1.0
       read-yaml-file: 1.1.0
     dev: true
+
+  /@mars3d/heatmap.js@2.0.7:
+    resolution: {integrity: sha512-cIXF6XF761d0ZS0XB43UlNvvXZrHj9VIJv4H6da2AiGS/R1gUs7KvSeu0XEEztiG4FdoeLrwIjIV0yZYDwIDZg==}
+    dev: false
 
   /@nicolo-ribaudo/eslint-scope-5-internals@5.1.1-v1:
     resolution: {integrity: sha512-54/JRvkLIzzDWshCWfuhadfrfZVPiElY8Fcgmg1HroEly/EDSszzhBAsarCux+D/kOslTRquNzuyGSmUSTTHGg==}
@@ -3910,12 +3911,6 @@ packages:
       '@types/unist': 2.0.6
     dev: true
 
-  /@types/heatmap.js@2.0.37:
-    resolution: {integrity: sha512-Zd1m6WaRSPnXcR1fETGnIvyRSE2rcQK21S0zIU/LWjwsrNyKBA3xdckrQhQpIdG+UTeu7WODv237s30Ky7IVXg==}
-    dependencies:
-      '@types/leaflet': 0.7.35
-    dev: true
-
   /@types/hoist-non-react-statics@3.3.1:
     resolution: {integrity: sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==}
     dependencies:
@@ -3951,12 +3946,6 @@ packages:
     resolution: {integrity: sha512-BQ5aZNSCpj7D6K2ksrRCTmKRLEpnPvWDiLPfoGyhZ++8YtiK9d/3DBKPJgry359X/P1PfruyYwvnvwFjuEiEIg==}
     dependencies:
       '@types/node': 18.16.7
-    dev: true
-
-  /@types/leaflet@0.7.35:
-    resolution: {integrity: sha512-BK+pa9a9dYC1qJyYQulqkRI9N+ZnV4ycAmNSOUmom7C6xaAdmrhOoiCiDMhSQklyjPpasy3KWRTkTRTJuDbBSw==}
-    dependencies:
-      '@types/geojson': 7946.0.10
     dev: true
 
   /@types/mdast@3.0.11:
@@ -8575,10 +8564,6 @@ packages:
     resolution: {integrity: sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==}
     hasBin: true
     dev: true
-
-  /heatmap.js@2.0.5:
-    resolution: {integrity: sha1-Rm07hlE/XUkRKknSVwCrJzAUkVM=}
-    dev: false
 
   /heti-findandreplacedomtext@0.5.0:
     resolution: {integrity: sha512-GFZjqU8LAdu1uR72GqrReI+lzNLMlcWtvdz1TKNJiofyo1mfTecFYSZEoEbcLcRMl+KwEldnNQoS4BwO8wtg0A==}
