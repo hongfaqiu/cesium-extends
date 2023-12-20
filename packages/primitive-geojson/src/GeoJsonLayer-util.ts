@@ -1,7 +1,7 @@
 import { Cartesian3, defined, HeightReference, RuntimeError, VerticalOrigin } from 'cesium';
 
 import type { GeoJSON } from 'geojson';
-import type GeoJsonPrimitiveLayer from './GeoJsonPrimitiveLayer';
+import type { GeoJsonPrimitiveLayer } from './GeoJsonPrimitiveLayer';
 import type { GeoJsonPrimitiveLayerOptions } from './typings';
 
 export type CrsFunction = (coors: number[]) => Cartesian3;

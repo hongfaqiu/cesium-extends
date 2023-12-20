@@ -1,6 +1,6 @@
 ![npm latest version](https://img.shields.io/npm/v/cesium-extends.svg) ![license](https://img.shields.io/npm/l/cesium-extends)
 
-cesium-extends 是一个从[DDE-Earth](https://deep-time.org/map/#/)中抽离的、用于 CesiumJS 的扩展库，它与前端框架无关，提供了一些常用的功能和组件，方便开发者快速构建 Cesium 应用。
+cesium-extends 是一个从[DDE-Earth](https://alpha.deep-time.org/map/#/)中抽离的、用于 CesiumJS 的扩展库，它与前端框架无关，提供了一些常用的功能和组件，方便开发者快速构建 Cesium 应用。
 
 ## 安装
 

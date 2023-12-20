@@ -59,7 +59,7 @@ const DefaultOptions: GeoJsonPrimitiveLayerOptions = {
   fill: DefaultColor,
   clampToGround: false,
 };
-export default class GeoJsonPrimitiveLayer extends BasicGraphicLayer {
+export class GeoJsonPrimitiveLayer extends BasicGraphicLayer {
   private _name: string | undefined;
   private _isLoading: boolean;
   private _error: Event;
