@@ -1,3 +1,10 @@
+## @cesium-extends/primitive-geojson [1.0.6](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/primitive-geojson@1.0.5...@cesium-extends/primitive-geojson@1.0.6) (2023-12-20)
+
+
+### Bug Fixes
+
+* ts defined ([3be9d5c](https://github.com/hongfaqiu/cesium-extends/commit/3be9d5c8fa6eba8be6f689a0d656c36d9d61e7d0))
+
 ## @cesium-extends/primitive-geojson [1.0.5](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/primitive-geojson@1.0.4...@cesium-extends/primitive-geojson@1.0.5) (2023-12-08)
 
 
