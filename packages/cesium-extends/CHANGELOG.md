@@ -1,3 +1,18 @@
+## cesium-extends [1.8.10](https://github.com/hongfaqiu/cesium-extends/compare/cesium-extends@1.8.9...cesium-extends@1.8.10) (2023-12-20)
+
+
+### Bug Fixes
+
+* ts defined ([3be9d5c](https://github.com/hongfaqiu/cesium-extends/commit/3be9d5c8fa6eba8be6f689a0d656c36d9d61e7d0))
+
+
+
+
+
+### Dependencies
+
+* **@cesium-extends/primitive-geojson:** upgraded to 1.0.6
+
 ## cesium-extends [1.8.9](https://github.com/hongfaqiu/cesium-extends/compare/cesium-extends@1.8.8...cesium-extends@1.8.9) (2023-12-14)
 
 
