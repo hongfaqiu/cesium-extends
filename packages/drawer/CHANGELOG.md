@@ -1,3 +1,10 @@
+## @cesium-extends/drawer [1.3.2](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/drawer@1.3.1...@cesium-extends/drawer@1.3.2) (2023-12-21)
+
+
+### Bug Fixes
+
+* dont show shape on terrain when use model mode [#10](https://github.com/hongfaqiu/cesium-extends/issues/10) ([e14f175](https://github.com/hongfaqiu/cesium-extends/commit/e14f17560271bb48576c269c7779a559f793d6e6))
+
 ## @cesium-extends/drawer [1.3.1](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/drawer@1.3.0...@cesium-extends/drawer@1.3.1) (2023-10-08)
 
 
