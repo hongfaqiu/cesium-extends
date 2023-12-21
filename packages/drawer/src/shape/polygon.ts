@@ -1,4 +1,4 @@
-import { ArcType, CallbackProperty, defined, Entity, PolygonHierarchy } from 'cesium';
+import { ArcType, CallbackProperty, ClassificationType, defined, Entity, PolygonHierarchy } from 'cesium';
 
 import BasicGraphices from '../base';
 
@@ -43,6 +43,7 @@ export default class Polygon extends BasicGraphices implements LifeCycle {
     const polygon = Object.assign({}, options, {
       hierarchy: Array.isArray(hierarchy) ? new PolygonHierarchy(hierarchy) : hierarchy,
       arcType: ArcType.RHUMB,
+      classificationType: this.painter._model ? ClassificationType.CESIUM_3D_TILE : undefined
     });
 
     const polyline: PolylineGraphics.ConstructorOptions = {
@@ -55,6 +56,7 @@ export default class Polygon extends BasicGraphices implements LifeCycle {
           }, false),
       clampToGround: true,
       arcType: ArcType.RHUMB,
+      classificationType: this.painter._model ? ClassificationType.CESIUM_3D_TILE : undefined
     };
 
     return new Entity({ polygon, polyline });

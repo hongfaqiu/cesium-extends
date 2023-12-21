@@ -1,4 +1,4 @@
-import { ArcType, Entity } from 'cesium';
+import { ArcType, ClassificationType, Entity } from 'cesium';
 import BasicGraphices from '../base';
 
 import type { LifeCycle } from '../base';
@@ -28,6 +28,7 @@ export default class Line extends BasicGraphices implements LifeCycle {
       {
         positions,
         arcType: ArcType.RHUMB,
+        classificationType: this.painter._model ? ClassificationType.CESIUM_3D_TILE : undefined
       },
     );
 

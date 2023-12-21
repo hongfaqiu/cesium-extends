@@ -1,4 +1,4 @@
-import { CallbackProperty, Entity, JulianDate } from 'cesium';
+import { CallbackProperty, ClassificationType, Entity, JulianDate } from 'cesium';
 
 import BasicGraphices from '../base';
 
@@ -43,6 +43,7 @@ export default class Circle extends BasicGraphices implements LifeCycle {
           );
           return radius || radius + 1;
         }, false),
+        classificationType: this.painter._model ? ClassificationType.CESIUM_3D_TILE : undefined
       },
     );
 
