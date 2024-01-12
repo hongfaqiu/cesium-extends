@@ -186,6 +186,7 @@ layer.load('path/to/data.json').then(() => {
   - `fill`: 填充区域的颜色。
   - `clampToGround`: 是否贴地。
   - `credit`可选: 图层的信用信息。
+  - `depthTest`可选: 是否开启深度测试。
 
 该方法返回一个 `Promise` 对象，在 GeoJSON 加载完成时解析为当前实例。
 

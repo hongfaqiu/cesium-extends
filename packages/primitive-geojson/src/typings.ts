@@ -26,6 +26,7 @@ export type GeoJsonPrimitiveLayerOptions = {
   fill: Color;
   clampToGround: boolean;
   credit?: Credit | string;
+  depthTest?: boolean;
 };
 
 export type PrimitiveItem =

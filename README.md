@@ -27,7 +27,7 @@ cesium-extends 提供了以下功能：
 - 热力图 `@cesium-extends/heat`
 - ...
 
-详细信息及 demo，请参阅 [API 文档](https://cesium-extends.pages.dev/)。
+详细信息及 demo，请参阅 [API 文档](https://extends.opendde.com/)。
 
 ## 示例
 

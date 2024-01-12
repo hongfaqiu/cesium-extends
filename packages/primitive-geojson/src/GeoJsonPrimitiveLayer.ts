@@ -592,8 +592,17 @@ export class GeoJsonPrimitiveLayer extends BasicGraphicLayer {
     this._polylineInstances = [];
   }
 
-  reloadPrimitive() {
-    const appearance = new PerInstanceColorAppearance({
+  reloadPrimitive(depthTest: boolean = this._options.depthTest ?? false) {
+    const appearance = depthTest ? new PerInstanceColorAppearance({
+      translucent: false,
+      renderState: {
+        depthTest: {
+          enabled: true,
+        },
+        depthMask: true,
+        blending: BlendingState.PRE_MULTIPLIED_ALPHA_BLEND
+      },
+    }) : new PerInstanceColorAppearance({
       flat: true,
       translucent: false,
       closed: true,

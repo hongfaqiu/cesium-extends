@@ -9,7 +9,8 @@ export default defineConfig({
     name: 'cesium-extends',
     socialLinks: {
       github: 'https://github.com/hongfaqiu/cesium-extends',
-    }
+    },
+    logo: "/logo.svg"
   },
   alias: {
     '@': path.resolve(__dirname, 'src'),

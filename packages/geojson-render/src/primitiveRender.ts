@@ -15,6 +15,7 @@ export const primitiveGeoJsonRender = async (
   const featureItems = [...primitiveLayer.featureItems];
   primitiveLayer.removeAllPrimitive();
   const { label, paint, type, custom } = style;
+  let depthTest: undefined | boolean = undefined;
   featureItems.map((feature) => {
     const customStyle: any = {};
 
@@ -31,6 +32,7 @@ export const primitiveGeoJsonRender = async (
 
     const height = customStyle?.extrudedHeight;
     const extrudedHeight = height ? height * 1000 : undefined;
+    if (depthTest === undefined && height) depthTest = true;
 
     switch (type) {
       case 'point':
@@ -156,7 +158,7 @@ export const primitiveGeoJsonRender = async (
       });
     }
   });
-  primitiveLayer.reloadPrimitive();
+  primitiveLayer.reloadPrimitive(depthTest);
 };
 
 export const renderPrimitiveGeoJson = async (
