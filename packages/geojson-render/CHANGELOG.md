@@ -1,3 +1,10 @@
+## @cesium-extends/geojson-render [1.0.4](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/geojson-render@1.0.3...@cesium-extends/geojson-render@1.0.4) (2024-01-12)
+
+
+### Bug Fixes
+
+* use depthTest when render height ([6215682](https://github.com/hongfaqiu/cesium-extends/commit/6215682dafcf7d723c4cb60694eebf1222a18496))
+
 ## @cesium-extends/geojson-render [1.0.3](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/geojson-render@1.0.2...@cesium-extends/geojson-render@1.0.3) (2023-10-08)
 
 
