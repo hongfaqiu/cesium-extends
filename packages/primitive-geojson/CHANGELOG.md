@@ -1,3 +1,10 @@
+## @cesium-extends/primitive-geojson [1.0.7](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/primitive-geojson@1.0.6...@cesium-extends/primitive-geojson@1.0.7) (2024-01-12)
+
+
+### Bug Fixes
+
+* use depthTest when render height ([6215682](https://github.com/hongfaqiu/cesium-extends/commit/6215682dafcf7d723c4cb60694eebf1222a18496))
+
 ## @cesium-extends/primitive-geojson [1.0.6](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/primitive-geojson@1.0.5...@cesium-extends/primitive-geojson@1.0.6) (2023-12-20)
 
 
