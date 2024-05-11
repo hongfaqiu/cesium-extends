@@ -1,3 +1,14 @@
+## cesium-extends [1.8.13](https://github.com/hongfaqiu/cesium-extends/compare/cesium-extends@1.8.12...cesium-extends@1.8.13) (2024-05-11)
+
+
+
+
+
+### Dependencies
+
+* **@cesium-extends/compass:** upgraded to 1.2.0
+* **@cesium-extends/zoom-control:** upgraded to 1.2.0
+
 ## cesium-extends [1.8.12](https://github.com/hongfaqiu/cesium-extends/compare/cesium-extends@1.8.11...cesium-extends@1.8.12) (2024-01-12)
 
 
