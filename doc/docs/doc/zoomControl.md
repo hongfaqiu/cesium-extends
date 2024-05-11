@@ -57,6 +57,7 @@ const zoomController = new ZoomController(viewer, {
   - `container`：一个可选属性，表示需要将部件添加到的 HTML 元素。
   - `home`：一个可选属性，表示点击重置缩放按钮时相机应飞回的 Cartesian3 位置。
   - `tips`：一个可选属性，表示包含要显示在按钮工具提示中的文本消息的对象。默认为`{ zoomIn: 'Zoom In', zoomOut: 'Zoom Out', refresh: 'Reset Zoom' }`
+  - `Icons`: 一个可选属性，表示使用的 svg 部件，默认对象 `{ controller_decrease: string, controller_increase: string, controller_refresh: string }`
 
 ### 使用部件方法
 

@@ -73,3 +73,4 @@ The following options can be passed when creating a new instance of the `Compass
 
 - `container` (optional): The DOM element to mount the widget to. Defaults to `viewer.container`.
 - `tips` (optional): An object containing strings for the inner and outer tips of the compass. Defaults to `{ inner: '', outer: 'Drag outer ring: rotate view.\nDrag inner gyroscope: free orbit.\nDouble-click: reset view.\nTIP: You can also free orbit by holding the CTRL key and dragging the map.' }`.
+- `Icons`: (Optional): The compass icon SVG used. Default to `{ compass_outer: string, compass_inner: string, compass_rotation_marker: string }`

@@ -14,6 +14,7 @@ export interface ZoomControllerProps {
     zoomOut?: string;
     refresh?: string;
   };
+  icons?: typeof Icons;
 }
 
 class ZoomController extends Widget {
@@ -27,7 +28,13 @@ class ZoomController extends Widget {
       viewer,
       DomUtil.create('div', 'cesium-zoom-controller', options.container ?? viewer.container),
     );
-    this._options = options;
+    this._options = {
+      ...options,
+      icons: {
+        ...Icons,
+        ...options?.icons
+      }
+    };
     this.enabled = true;
   }
 

@@ -24,6 +24,7 @@ export interface CompassOptions {
     inner?: string;
     outer?: string;
   };
+  icons?: typeof Icons;
 }
 
 class Compass extends Widget {
@@ -46,7 +47,13 @@ class Compass extends Widget {
 
   constructor(viewer: Viewer, options: CompassOptions = {}) {
     super(viewer, DomUtil.create('div', 'cesium-compass', options.container ?? viewer.container));
-    this._options = options;
+    this._options = {
+      ...options,
+      icons: {
+        ...Icons,
+        ...options?.icons
+      }
+    };
     this._wrapper.onmousedown = (e) => {
       this._handleMouseDown(e);
     };
