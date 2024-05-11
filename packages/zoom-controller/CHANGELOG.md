@@ -1,3 +1,10 @@
+# @cesium-extends/zoom-control [1.2.0](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/zoom-control@1.1.1...@cesium-extends/zoom-control@1.2.0) (2024-05-11)
+
+
+### Features
+
+* add icons option ([e01f250](https://github.com/hongfaqiu/cesium-extends/commit/e01f2500267a700585155e2ab1a462368c7a62b0))
+
 ## @cesium-extends/zoom-control [1.1.1](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/zoom-control@1.1.0...@cesium-extends/zoom-control@1.1.1) (2023-10-31)
 
 
