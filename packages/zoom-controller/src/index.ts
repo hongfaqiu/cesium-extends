@@ -22,6 +22,7 @@ class ZoomController extends Widget {
   private _zoomOutEl!: HTMLElement;
   private _refreshEl!: HTMLElement;
   private _options: ZoomControllerProps;
+  private _icons: typeof Icons;
 
   constructor(viewer: Viewer, options: ZoomControllerProps = {}) {
     super(
@@ -35,6 +36,7 @@ class ZoomController extends Widget {
         ...options?.icons
       }
     };
+    this._icons = this._options.icons as typeof Icons;
     this.enabled = true;
   }
 
@@ -149,15 +151,15 @@ class ZoomController extends Widget {
   _mountContent() {
     const { tips } = this._options;
     this._zoomInEl = DomUtil.parseDom(
-      Icons.controller_increase,
+      this._icons.controller_increase,
       'zoom-in cesium-toolbar-button cesium-button',
     );
     this._refreshEl = DomUtil.parseDom(
-      Icons.controller_refresh,
+      this._icons.controller_refresh,
       'refresh cesium-toolbar-button cesium-button',
     );
     this._zoomOutEl = DomUtil.parseDom(
-      Icons.controller_decrease,
+      this._icons.controller_decrease,
       'zoom-out cesium-toolbar-button cesium-button',
     );
     this._wrapper.appendChild(this._refreshEl);

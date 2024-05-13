@@ -44,6 +44,7 @@ class Compass extends Widget {
   private _rotateInitialCameraAngle: number;
   private _options: CompassOptions;
   private _ifHover: boolean = false;
+  private _icons: typeof Icons;
 
   constructor(viewer: Viewer, options: CompassOptions = {}) {
     super(viewer, DomUtil.create('div', 'cesium-compass', options.container ?? viewer.container));
@@ -54,6 +55,7 @@ class Compass extends Widget {
         ...options?.icons
       }
     };
+    this._icons = this._options.icons as typeof Icons;
     this._wrapper.onmousedown = (e) => {
       this._handleMouseDown(e);
     };
@@ -122,15 +124,15 @@ class Compass extends Widget {
   protected _mountContent() {
     const { tips } = this._options;
     DomUtil.create('div', 'out-ring-bg', this._wrapper);
-    this._outRing = DomUtil.parseDom(Icons.compass_outer, 'out-ring');
+    this._outRing = DomUtil.parseDom(this._icons.compass_outer, 'out-ring');
     this._wrapper.appendChild(this._outRing);
-    this._gyro = DomUtil.parseDom(Icons.compass_inner, 'gyro');
+    this._gyro = DomUtil.parseDom(this._icons.compass_inner, 'gyro');
     this._wrapper.appendChild(this._gyro);
     this._outRing.title =
       tips?.outer ??
       'Drag outer ring: rotate view.\nDrag inner gyroscope: free orbit.\nDouble-click: reset view.\nTIP: You can also free orbit by holding the CTRL key and dragging the map.';
     this._gyro.title = tips?.inner ?? '';
-    this._rotation_marker = DomUtil.parseDom(Icons.compass_rotation_marker, 'rotation_marker');
+    this._rotation_marker = DomUtil.parseDom(this._icons.compass_rotation_marker, 'rotation_marker');
     this._wrapper.appendChild(this._rotation_marker);
     this._rotation_marker.style.visibility = 'hidden';
     this._ready = true;

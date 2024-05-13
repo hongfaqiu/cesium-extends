@@ -40,7 +40,7 @@ The constructor of `ZoomController` takes two arguments:
   - `container`: An optional property representing the HTML element where the widget needs to be added to.
   - `home`: An optional property representing the Cartesian3 position to which the camera should fly back when reset zoom button is clicked.
   - `tips`: An optional property representing an object containing text messages to display as tooltip for the buttons.Defaults to `{ zoomIn: 'Zoom In', zoomOut: 'Zoom Out', refresh: 'Reset Zoom' }`
-  - `Icons`: An optional attribute representing the SVG component used, default object `{ controller_decrease: string, controller_increase: string, controller_refresh: string }`
+  - `icons`: An optional attribute representing the SVG component used, default object `{ controller_decrease: string, controller_increase: string, controller_refresh: string }`
 
 ### Using the widget methods
 

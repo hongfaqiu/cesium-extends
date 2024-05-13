@@ -66,4 +66,4 @@ const compass = new Compass(viewer);
 
 - `container` (可选): 要将小部件挂载到的 DOM 元素。默认为 `viewer.container`。
 - `tips` (可选): 包含指南针内部和外部提示字符串的对象。默认为 `{ inner: '', outer: 'Drag outer ring: rotate view.\nDrag inner gyroscope: free orbit.\nDouble-click: reset view.\nTIP: You can also free orbit by holding the CTRL key and dragging the map.' }`。
-- `Icons`: (可选): 使用的指南针图标 svg，默认 `{ compass_outer: string, compass_inner: string, compass_rotation_marker: string }`
+- `icons`: (可选): 使用的指南针图标 svg，默认 `{ compass_outer: string, compass_inner: string, compass_rotation_marker: string }`
