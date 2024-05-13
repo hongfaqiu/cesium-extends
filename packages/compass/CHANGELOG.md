@@ -1,3 +1,10 @@
+## @cesium-extends/compass [1.2.1](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/compass@1.2.0...@cesium-extends/compass@1.2.1) (2024-05-13)
+
+
+### Bug Fixes
+
+* icons options dont working ([50bec0c](https://github.com/hongfaqiu/cesium-extends/commit/50bec0ccc2ad2275fd86e478b771f6bdf3216660))
+
 # @cesium-extends/compass [1.2.0](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/compass@1.1.1...@cesium-extends/compass@1.2.0) (2024-05-11)
 
 
