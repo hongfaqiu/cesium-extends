@@ -16,7 +16,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/react": "^18.2.6",
-    "dumi": "^2.2.1"
+    "dumi": "^2.4.7"
   },
   "dependencies": {
     "cesium": "^1.107.2",
