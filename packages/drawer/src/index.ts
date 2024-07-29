@@ -363,8 +363,8 @@ export default class Drawer {
 
   destroy(): void {
     this.reset();
-    this._status = 'DESTROY';
     this.mouseTooltip.destroy();
     this._subscriber.destroy();
+    this._status = 'DESTROY';
   }
 }
