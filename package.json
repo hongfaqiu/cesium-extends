@@ -47,7 +47,7 @@
     "rollup-plugin-styles": "^4.0.0",
     "sass": "^1.62.1",
     "ts-node": "^10.9.1",
-    "turbo": "latest",
+    "turbo": "^2.0.9",
     "typescript": "^5.0.4",
     "vitest": "^0.29.8"
   }
