@@ -1,3 +1,10 @@
+## @cesium-extends/drawer [1.3.3](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/drawer@1.3.2...@cesium-extends/drawer@1.3.3) (2024-07-29)
+
+
+### Bug Fixes
+
+* **drawer:** fix the destroy function does not correctly mark  _status as 'DESTROY' ([d053b93](https://github.com/hongfaqiu/cesium-extends/commit/d053b9305acd200e323a1115f39842523b6508b2))
+
 ## @cesium-extends/drawer [1.3.2](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/drawer@1.3.1...@cesium-extends/drawer@1.3.2) (2023-12-21)
 
 
