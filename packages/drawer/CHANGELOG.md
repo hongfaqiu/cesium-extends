@@ -1,3 +1,10 @@
+## @cesium-extends/drawer [1.3.4](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/drawer@1.3.3...@cesium-extends/drawer@1.3.4) (2024-07-31)
+
+
+### Bug Fixes
+
+* ts error MouseTooltip without enabled ([741a80d](https://github.com/hongfaqiu/cesium-extends/commit/741a80d0d69ce67e5db95b2e62b175d701989b7c))
+
 ## @cesium-extends/drawer [1.3.3](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/drawer@1.3.2...@cesium-extends/drawer@1.3.3) (2024-07-29)
 
 

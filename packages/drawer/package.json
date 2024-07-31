@@ -1,6 +1,6 @@
 {
   "name": "@cesium-extends/drawer",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
