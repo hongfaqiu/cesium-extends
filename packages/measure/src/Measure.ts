@@ -5,16 +5,16 @@ import {
   LabelStyle,
   Math as CMath,
   NearFarScalar,
-  HeightReference
-} from 'cesium';
+  HeightReference,
+} from "cesium";
 
-import {MouseTooltip} from '@cesium-extends/tooltip';
-import Drawer from '@cesium-extends/drawer';
+import { MouseTooltip } from "@cesium-extends/tooltip";
+import Drawer from "@cesium-extends/drawer";
 
-import type { Units } from '@turf/helpers';
-import type { Cartesian3, Entity, Viewer } from 'cesium';
-import type { DrawOption } from '@cesium-extends/drawer';
-import { formatArea, formatLength } from './utils';
+import type { Units } from "@turf/helpers";
+import type { Cartesian3, Entity, Viewer } from "cesium";
+import type { DrawOption } from "@cesium-extends/drawer";
+import { formatArea, formatLength } from "./utils";
 
 export type MeasureUnits = Units;
 
@@ -23,18 +23,22 @@ export type MeasureLocaleOptions = {
   total: string;
   area: string;
   /**
- * 格式化显示长度
- * @param length 单位米
- * @param unit 目标单位
- */
-  formatLength(length: number, unitedLength: number, unit: MeasureUnits): string;
+   * 格式化显示长度
+   * @param length 单位米
+   * @param unit 目标单位
+   */
+  formatLength(
+    length: number,
+    unitedLength: number,
+    unit: MeasureUnits,
+  ): string;
   /**
- * 格式化显示面积
- * @param area 单位米
- * @param unit 目标单位
- */
+   * 格式化显示面积
+   * @param area 单位米
+   * @param unit 目标单位
+   */
   formatArea(area: number, unitedArea: number, unit: MeasureUnits): string;
-}
+};
 
 export type MeasureOptions = {
   labelStyle?: {
@@ -73,10 +77,10 @@ export type MeasureOptions = {
         }
       }
    */
-  locale?: Partial<MeasureLocaleOptions>
+  locale?: Partial<MeasureLocaleOptions>;
 };
 
-export type Status = 'INIT' | 'WORKING' | 'DESTROY';
+export type Status = "INIT" | "WORKING" | "DESTROY";
 
 const DefaultOptions: MeasureOptions = {
   labelStyle: {
@@ -89,15 +93,15 @@ const DefaultOptions: MeasureOptions = {
     pixelOffset: new Cartesian2(4, 0),
     scale: 1,
     scaleByDistance: new NearFarScalar(1, 0.85, 8.0e6, 0.75),
-    heightReference : HeightReference.CLAMP_TO_GROUND,
-  }
+    heightReference: HeightReference.CLAMP_TO_GROUND,
+  },
 };
 
 export default class Measure {
   protected _viewer: Viewer;
   protected _status: Status;
   protected _labels: LabelCollection;
-  protected _labelStyle: MeasureOptions['labelStyle'];
+  protected _labelStyle: MeasureOptions["labelStyle"];
   protected _units: MeasureUnits;
   protected _locale: MeasureLocaleOptions;
 
@@ -111,22 +115,22 @@ export default class Measure {
    * @param {MeasureOptions['locale']} [options.locale] 绘制时的提示信息
    */
   constructor(viewer: Viewer, options: MeasureOptions = {}) {
-    if (!viewer) throw new Error('undefined viewer');
+    if (!viewer) throw new Error("undefined viewer");
     this._viewer = viewer;
     this._labelStyle = {
       ...DefaultOptions.labelStyle,
       ...options.labelStyle,
     };
-    this._units = options.units ?? 'kilometers';
+    this._units = options.units ?? "kilometers";
     this._onEnd = options.onEnd;
     this._locale = {
-      area: 'Area',
-      start: 'start',
-      total: 'Total',
+      area: "Area",
+      start: "start",
+      total: "Total",
       formatLength,
       formatArea,
       ...options.locale,
-    }
+    };
 
     this.mouseTooltip = new MouseTooltip(viewer);
     this.mouseTooltip.hide();
@@ -138,18 +142,18 @@ export default class Measure {
     });
 
     this._labels = new LabelCollection({
-      scene: this._viewer.scene
+      scene: this._viewer.scene,
     });
     this._viewer.scene.primitives.add(this._labels);
 
-    this._status = 'INIT';
+    this._status = "INIT";
   }
 
   /**
    * @return {boolean} 返回量算工具是否已销毁
    */
   get destroyed() {
-    return this._status === 'DESTROY';
+    return this._status === "DESTROY";
   }
 
   /**
@@ -161,7 +165,8 @@ export default class Measure {
 
   protected _cartesian2Lonlat(positions: Cartesian3[]) {
     return positions.map((pos) => {
-      const cartographic = this._viewer.scene.globe.ellipsoid.cartesianToCartographic(pos);
+      const cartographic =
+        this._viewer.scene.globe.ellipsoid.cartesianToCartographic(pos);
       const lon = +CMath.toDegrees(cartographic.longitude);
       const lat = +CMath.toDegrees(cartographic.latitude);
       return [lon, lat];
@@ -176,14 +181,14 @@ export default class Measure {
    * @param {boolean} clampToGround 是否贴地
    */
   protected _start(
-    type: 'POLYGON' | 'POLYLINE' | 'POINT' | 'CIRCLE' | 'RECTANGLE',
+    type: "POLYGON" | "POLYLINE" | "POINT" | "CIRCLE" | "RECTANGLE",
     options?: {
       style?: object;
       clampToGround?: boolean;
     },
   ) {
     const { style, clampToGround } = options ?? {};
-    if (this._status !== 'INIT') return;
+    if (this._status !== "INIT") return;
     // eslint-disable-next-line @typescript-eslint/no-this-alias
     const self = this;
     this.drawer.start({
@@ -199,7 +204,7 @@ export default class Measure {
       },
       onEnd: this._onEnd,
     });
-    this._status = 'WORKING';
+    this._status = "WORKING";
   }
 
   /**
@@ -208,7 +213,7 @@ export default class Measure {
   end() {
     this.drawer.reset();
     this._labels.removeAll();
-    this._status = 'INIT';
+    this._status = "INIT";
   }
 
   destroy() {
@@ -217,6 +222,6 @@ export default class Measure {
     if (this._viewer && !this._viewer.isDestroyed()) {
       this._viewer.scene.primitives.remove(this._labels);
     }
-    this._status = 'DESTROY';
+    this._status = "DESTROY";
   }
 }

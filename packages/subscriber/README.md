@@ -26,7 +26,7 @@ subscriber.add(
     console.log(movement);
     console.log(entity);
   },
-  EventType.LEFT_CLICK
+  EventType.LEFT_CLICK,
 );
 
 // 添加特定事件监听器

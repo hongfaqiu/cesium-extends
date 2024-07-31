@@ -7,17 +7,17 @@ import './index.less';
 interface MapProps {}
 
 const Map: React.FC<MapProps> = () => {
-  const viewer = useRef<Viewer>()
+  const viewer = useRef<Viewer>();
 
   useEffect(() => {
-    viewer.current = initMap('cesiumContainer')
+    viewer.current = initMap('cesiumContainer');
 
     return () => {
-      viewer.current?.destroy()
-    }
+      viewer.current?.destroy();
+    };
   }, []);
 
-  return <div id="cesiumContainer"/>;
+  return <div id="cesiumContainer" />;
 };
 
 export default Map;

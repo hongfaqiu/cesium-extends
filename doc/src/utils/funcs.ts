@@ -1,4 +1,4 @@
-import { Cartesian2, Cartesian3, Viewer, defined, Math as CMath } from "cesium";
+import { Cartesian2, Cartesian3, Viewer, defined, Math as CMath } from 'cesium';
 
 /**
  * Cartesian2 坐标转经纬度

@@ -1,9 +1,13 @@
-import { Cartesian2, ScreenSpaceEventHandler, ScreenSpaceEventType } from 'cesium';
-import Tooltip from './Tooltip';
+import {
+  Cartesian2,
+  ScreenSpaceEventHandler,
+  ScreenSpaceEventType,
+} from "cesium";
+import Tooltip from "./Tooltip";
 
-import type { Viewer } from 'cesium';
-import type { EventArgs } from '@cesium-extends/subscriber';
-import type { TooltipOptions } from './Tooltip';
+import type { Viewer } from "cesium";
+import type { EventArgs } from "@cesium-extends/subscriber";
+import type { TooltipOptions } from "./Tooltip";
 
 type MouseTooltipOptions = TooltipOptions;
 class MouseTooltip extends Tooltip {
@@ -32,7 +36,10 @@ class MouseTooltip extends Tooltip {
       if (endPosition) {
         const ray = this._viewer.camera.getPickRay(endPosition);
         if (!ray) return;
-        const cartesian = this._viewer.scene.globe.pick(ray, this._viewer.scene);
+        const cartesian = this._viewer.scene.globe.pick(
+          ray,
+          this._viewer.scene,
+        );
         if (cartesian) this._updateWindowCoord(endPosition);
       }
     }, ScreenSpaceEventType.MOUSE_MOVE);

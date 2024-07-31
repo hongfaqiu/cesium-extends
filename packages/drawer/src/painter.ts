@@ -1,6 +1,6 @@
-import type { Cartesian2, Cartesian3, PointGraphics, Viewer } from 'cesium';
-import { Entity } from 'cesium';
-import { defaultOptions } from '.';
+import type { Cartesian2, Cartesian3, PointGraphics, Viewer } from "cesium";
+import { Entity } from "cesium";
+import { defaultOptions } from ".";
 
 interface DrawOption {
   viewer: Viewer;
@@ -54,7 +54,10 @@ export default class Painter {
     return bool;
   }
 
-  createPoint(worldPosition: Cartesian3, options?: PointGraphics.ConstructorOptions): Entity {
+  createPoint(
+    worldPosition: Cartesian3,
+    options?: PointGraphics.ConstructorOptions,
+  ): Entity {
     return new Entity({
       position: worldPosition,
       point: {

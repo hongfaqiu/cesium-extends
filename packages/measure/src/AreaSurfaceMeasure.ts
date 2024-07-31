@@ -1,14 +1,19 @@
-import { Cartesian2, Cartographic, EllipsoidGeodesic, SceneTransforms } from 'cesium';
-import { Polygon, polygon } from '@turf/helpers'
-import intersect from '@turf/intersect';
-import { randomPoint } from '@turf/random';
-import voronoi from '@turf/voronoi';
+import {
+  Cartesian2,
+  Cartographic,
+  EllipsoidGeodesic,
+  SceneTransforms,
+} from "cesium";
+import { Polygon, polygon } from "@turf/helpers";
+import intersect from "@turf/intersect";
+import { randomPoint } from "@turf/random";
+import voronoi from "@turf/voronoi";
 
-import AreaMeasure from './AreaMeasure';
-import { getBounds, pickCartesian3 } from './utils';
+import AreaMeasure from "./AreaMeasure";
+import { getBounds, pickCartesian3 } from "./utils";
 
-import type { Cartesian3, Viewer } from 'cesium';
-import type { MeasureOptions } from './Measure';
+import type { Cartesian3, Viewer } from "cesium";
+import type { MeasureOptions } from "./Measure";
 
 /**
  * 贴地面积量算类
@@ -80,7 +85,8 @@ class AreaSurfaceMeasure extends AreaMeasure {
       const lon2 = point1cartographic.longitude * radiansPerDegree;
       let angle = -Math.atan2(
         Math.sin(lon1 - lon2) * Math.cos(lat2),
-        Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2),
+        Math.cos(lat1) * Math.sin(lat2) -
+          Math.sin(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2),
       );
       if (angle < 0) {
         angle += Math.PI * 2.0;
@@ -117,7 +123,9 @@ class AreaSurfaceMeasure extends AreaMeasure {
     }
   }
   private _turfPloygon2CartesianArr(polygon: Polygon): Cartesian2[] {
-    return polygon.coordinates[0].map((item) => new Cartesian2(item[0], item[1]));
+    return polygon.coordinates[0].map(
+      (item) => new Cartesian2(item[0], item[1]),
+    );
   }
 
   /**
@@ -127,7 +135,9 @@ class AreaSurfaceMeasure extends AreaMeasure {
    */
   getArea(positions: Cartesian3[]): number {
     return this._calculateSurfaceArea(
-      positions.map((item) => SceneTransforms.wgs84ToWindowCoordinates(this._viewer.scene, item)),
+      positions.map((item) =>
+        SceneTransforms.wgs84ToWindowCoordinates(this._viewer.scene, item),
+      ),
     );
   }
 }

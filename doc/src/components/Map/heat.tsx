@@ -5,27 +5,33 @@ import { initMap } from '../../utils/initMap';
 import './index.less';
 import { HeatMapLayer } from 'cesium-extends';
 
-interface MapProps { }
+interface MapProps {}
 
-function generateHeatmapData(valRange: number[], lonRange: number[], latRange: number[], len: number) {
+function generateHeatmapData(
+  valRange: number[],
+  lonRange: number[],
+  latRange: number[],
+  len: number,
+) {
   const data = [];
   for (let i = 0; i < len; i++) {
     const lon = Math.random() * (lonRange[1] - lonRange[0]) + lonRange[0];
     const lat = Math.random() * (latRange[1] - latRange[0]) + latRange[0];
-    const value = Math.floor(Math.random() * (valRange[1] - valRange[0] + 1)) + valRange[0];
+    const value =
+      Math.floor(Math.random() * (valRange[1] - valRange[0] + 1)) + valRange[0];
     data.push({ pos: [lon, lat], value });
   }
   return data;
 }
 
 const Map: React.FC<MapProps> = () => {
-  const viewer = useRef<Viewer>()
+  const viewer = useRef<Viewer>();
   const heatMap = useRef<HeatMapLayer>();
 
   useEffect(() => {
     viewer.current = initMap('cesiumContainer', {
-      home: [120.5, 30.5, 200000]
-    })
+      home: [120.5, 30.5, 200000],
+    });
 
     // 热力图的数据
     const valRange = [0, 100];
@@ -49,16 +55,16 @@ const Map: React.FC<MapProps> = () => {
       heatmap.data = generateHeatmapData(valRange, lonRage, latRage, len);
     }, 2000);
 
-    heatMap.current = heatmap
+    heatMap.current = heatmap;
 
     return () => {
       // 移除热力图
       heatMap.current?.destroy();
       viewer.current?.destroy();
-    }
+    };
   }, []);
 
-  return <div id="cesiumContainer"/>;
+  return <div id="cesiumContainer" />;
 };
 
 export default Map;

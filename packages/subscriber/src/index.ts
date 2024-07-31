@@ -1,6 +1,6 @@
-import { ScreenSpaceEventHandler, ScreenSpaceEventType } from 'cesium';
+import { ScreenSpaceEventHandler, ScreenSpaceEventType } from "cesium";
 
-import type { Cartesian2, Entity, Viewer } from 'cesium';
+import type { Cartesian2, Entity, Viewer } from "cesium";
 
 export interface EventArgs {
   position?: Cartesian2;
@@ -13,28 +13,31 @@ export type ListenCallback<T> = (movement: EventArgs, substance: T) => void;
 export type ExternalListenCallback = (movement: EventArgs, result: any) => void;
 
 export type EventType =
-  | 'LEFT_DOWN'
-  | 'LEFT_UP'
-  | 'LEFT_CLICK'
-  | 'LEFT_DOUBLE_CLICK'
-  | 'RIGHT_DOWN'
-  | 'RIGHT_UP'
-  | 'RIGHT_CLICK'
-  | 'MIDDLE_DOWN'
-  | 'MIDDLE_UP'
-  | 'MIDDLE_CLICK'
-  | 'MOUSE_MOVE'
-  | 'WHEEL'
-  | 'PINCH_START'
-  | 'PINCH_MOVE'
-  | 'PINCH_END';
+  | "LEFT_DOWN"
+  | "LEFT_UP"
+  | "LEFT_CLICK"
+  | "LEFT_DOUBLE_CLICK"
+  | "RIGHT_DOWN"
+  | "RIGHT_UP"
+  | "RIGHT_CLICK"
+  | "MIDDLE_DOWN"
+  | "MIDDLE_UP"
+  | "MIDDLE_CLICK"
+  | "MOUSE_MOVE"
+  | "WHEEL"
+  | "PINCH_START"
+  | "PINCH_MOVE"
+  | "PINCH_END";
 
 type EventCollection = Record<EventType, Map<string, ListenCallback<Entity>>>;
 
-type ExternalEventCollection = Record<EventType, Map<string, ListenCallback<Entity>>>;
+type ExternalEventCollection = Record<
+  EventType,
+  Map<string, ListenCallback<Entity>>
+>;
 
 function uniqueId(): string {
-  let _val = '';
+  let _val = "";
 
   do {
     _val = Math.random().toString(36).slice(-8);
@@ -53,21 +56,21 @@ export class Subscriber {
   private _externalEventCollection: ExternalEventCollection = Object.create({});
 
   private readonly _eventTypeList: EventType[] = [
-    'LEFT_DOWN',
-    'LEFT_UP',
-    'LEFT_CLICK',
-    'LEFT_DOUBLE_CLICK',
-    'RIGHT_DOWN',
-    'RIGHT_UP',
-    'RIGHT_CLICK',
-    'MIDDLE_DOWN',
-    'MIDDLE_UP',
-    'MIDDLE_CLICK',
-    'MOUSE_MOVE',
-    'WHEEL',
-    'PINCH_START',
-    'PINCH_MOVE',
-    'PINCH_END',
+    "LEFT_DOWN",
+    "LEFT_UP",
+    "LEFT_CLICK",
+    "LEFT_DOUBLE_CLICK",
+    "RIGHT_DOWN",
+    "RIGHT_UP",
+    "RIGHT_CLICK",
+    "MIDDLE_DOWN",
+    "MIDDLE_UP",
+    "MIDDLE_CLICK",
+    "MOUSE_MOVE",
+    "WHEEL",
+    "PINCH_START",
+    "PINCH_MOVE",
+    "PINCH_END",
   ];
   private _moveDebounce: number | undefined;
   private _lastTime: number;
@@ -103,7 +106,9 @@ export class Subscriber {
     } = {},
   ) {
     this._viewer = viewer;
-    this._handler = new ScreenSpaceEventHandler(options.element || this._viewer.canvas);
+    this._handler = new ScreenSpaceEventHandler(
+      options.element || this._viewer.canvas,
+    );
     this._moveDebounce = options.pickResult?.moveDebounce;
     this._enablePickResult = options.pickResult?.enable ?? false;
     this._lastTime = new Date().getTime();
@@ -135,10 +140,15 @@ export class Subscriber {
     const eventCollection = this._eventCollection[eventType];
     const externalEventCollection = this._externalEventCollection[eventType];
     this._handler.setInputAction((movement: EventArgs) => {
-      if (this._isDestroy || !this._enable || (eventType === 'MOUSE_MOVE' && !this._shouldUpdate())) return;
+      if (
+        this._isDestroy ||
+        !this._enable ||
+        (eventType === "MOUSE_MOVE" && !this._shouldUpdate())
+      )
+        return;
 
       if (this._enablePickResult) {
-        if (eventType === 'MOUSE_MOVE' && movement.endPosition) {
+        if (eventType === "MOUSE_MOVE" && movement.endPosition) {
           this._lastResult = this._viewer.scene.pick(movement.endPosition);
         } else if (movement.position) {
           this._lastResult = this._viewer.scene.pick(movement.position);
@@ -159,7 +169,7 @@ export class Subscriber {
         if (
           entity &&
           eventCollection.has(entity.id) &&
-          typeof eventCollection.get(entity.id) === 'function'
+          typeof eventCollection.get(entity.id) === "function"
         ) {
           const func = eventCollection.get(entity.id);
           if (func) func(movement, entity);
@@ -177,7 +187,11 @@ export class Subscriber {
    *
    * @param {EventType} eventType 事件类型
    */
-  add(substances: Entity | Entity[], callback: ListenCallback<Entity>, eventType: EventType): void {
+  add(
+    substances: Entity | Entity[],
+    callback: ListenCallback<Entity>,
+    eventType: EventType,
+  ): void {
     if (this._isDestroy) return;
 
     if (
@@ -186,7 +200,9 @@ export class Subscriber {
     )
       this._eventRegister(eventType);
 
-    const substancesArray = Array.isArray(substances) ? substances : [substances];
+    const substancesArray = Array.isArray(substances)
+      ? substances
+      : [substances];
 
     for (const substance of substancesArray) {
       this._eventCollection[eventType].set(substance.id, callback);
@@ -200,7 +216,7 @@ export class Subscriber {
    * @return {string} Event Id  事件移除时需要提供事件ID
    */
   addExternal(callback: ExternalListenCallback, eventType: EventType): string {
-    if (this._isDestroy) return '';
+    if (this._isDestroy) return "";
 
     if (
       this._eventCollection[eventType].size === 0 &&
@@ -221,7 +237,9 @@ export class Subscriber {
   remove<T extends Entity>(substances: T | T[], eventType: EventType): void {
     if (this._isDestroy) return;
 
-    const substancesArray = Array.isArray(substances) ? substances : [substances];
+    const substancesArray = Array.isArray(substances)
+      ? substances
+      : [substances];
     for (const substance of substancesArray) {
       if (this._eventCollection[eventType].has(substance.id)) {
         this._eventCollection[eventType].delete(substance.id);
@@ -245,7 +263,9 @@ export class Subscriber {
   private _searchExternal(id: string): EventType | undefined {
     if (this._isDestroy) return;
 
-    const types: EventType[] = Object.keys(this._externalEventCollection) as any;
+    const types: EventType[] = Object.keys(
+      this._externalEventCollection,
+    ) as any;
 
     for (const type of types) {
       const events = this._externalEventCollection[type];
@@ -255,10 +275,14 @@ export class Subscriber {
   }
 
   removeNative(viewer: Viewer, eventType: EventType): void {
-    viewer.screenSpaceEventHandler.removeInputAction(this.convertCesiumEventType(eventType));
+    viewer.screenSpaceEventHandler.removeInputAction(
+      this.convertCesiumEventType(eventType),
+    );
   }
 
-  private convertCesiumEventType(subscriberEventType: EventType): ScreenSpaceEventType {
+  private convertCesiumEventType(
+    subscriberEventType: EventType,
+  ): ScreenSpaceEventType {
     return ScreenSpaceEventType[subscriberEventType];
   }
 
@@ -268,4 +292,4 @@ export class Subscriber {
   }
 }
 
-export default Subscriber
+export default Subscriber;

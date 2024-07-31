@@ -1,14 +1,19 @@
-import { CallbackProperty, ClassificationType, Entity, JulianDate } from 'cesium';
+import {
+  CallbackProperty,
+  ClassificationType,
+  Entity,
+  JulianDate,
+} from "cesium";
 
-import BasicGraphices from '../base';
+import BasicGraphices from "../base";
 
-import type { Cartesian3 } from 'cesium';
-import type { EventArgs } from '@cesium-extends/subscriber';
-import type { LifeCycle } from '../base';
+import type { Cartesian3 } from "cesium";
+import type { EventArgs } from "@cesium-extends/subscriber";
+import type { LifeCycle } from "../base";
 
 export default class Circle extends BasicGraphices implements LifeCycle {
   dropPoint(move: EventArgs): void {
-    if(this.painter._breakPointEntities.length < 1) {
+    if (this.painter._breakPointEntities.length < 1) {
       this._dropPoint(move, this.createShape.bind(this));
     }
   }
@@ -19,10 +24,14 @@ export default class Circle extends BasicGraphices implements LifeCycle {
 
   cancel(): void {
     this.painter.clear();
-    if (this._onPointsChange) this._onPointsChange([...this.painter._activeShapePoints]);
+    if (this._onPointsChange)
+      this._onPointsChange([...this.painter._activeShapePoints]);
   }
 
-  createShape(hierarchy: Cartesian3[] | CallbackProperty, isDynamic = false): Entity {
+  createShape(
+    hierarchy: Cartesian3[] | CallbackProperty,
+    isDynamic = false,
+  ): Entity {
     const target: Cartesian3[] = Array.isArray(hierarchy)
       ? hierarchy
       : hierarchy.getValue(JulianDate.now());
@@ -46,7 +55,9 @@ export default class Circle extends BasicGraphices implements LifeCycle {
           );
           return radius || radius + 1;
         }, false),
-        classificationType: this.painter._model ? ClassificationType.CESIUM_3D_TILE : undefined
+        classificationType: this.painter._model
+          ? ClassificationType.CESIUM_3D_TILE
+          : undefined,
       },
     );
 

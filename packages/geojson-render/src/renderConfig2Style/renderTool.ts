@@ -1,13 +1,13 @@
-import { Color, JulianDate } from 'cesium';
+import { Color, JulianDate } from "cesium";
 
-import geojsonStatisticQuery from '../geojsonStatisticQuery';
-import { DefaultColor } from '../renderConfig';
-import { NoDataColor } from '../renderConfig/ConstantEnum';
+import geojsonStatisticQuery from "../geojsonStatisticQuery";
+import { DefaultColor } from "../renderConfig";
+import { NoDataColor } from "../renderConfig/ConstantEnum";
 
-import type { SpriteConfig } from './pbf';
-import type { Entity } from 'cesium';
-import type { CustomPaintItem } from '../renderConfig/entityStyle';
-import type { RGBColor } from '../renderConfig/typing';
+import type { SpriteConfig } from "./pbf";
+import type { Entity } from "cesium";
+import type { CustomPaintItem } from "../renderConfig/entityStyle";
+import type { RGBColor } from "../renderConfig/typing";
 
 export type CustomColorItem = {
   label: string | number | [number, number];
@@ -20,25 +20,34 @@ export type CustomNumberItem = {
 };
 
 const DefaultItem = {
-  label: 'default',
+  label: "default",
   value: DefaultColor,
 };
 
 const DefaultItem2 = {
-  label: 'default',
+  label: "default",
   value: NoDataColor,
 };
 
 /**
  * 将颜色转换为Cesium color
  */
-export const single2paintColor = (color?: RGBColor | string, opacity: number = 1) => {
+export const single2paintColor = (
+  color?: RGBColor | string,
+  opacity: number = 1,
+) => {
   if (!color) return Color.fromCssColorString(DefaultColor).withAlpha(opacity);
-  if (typeof color === 'string') return Color.fromCssColorString(color).withAlpha(opacity);
-  return Color.fromCssColorString(`rgba(${color.r}, ${color.g}, ${color.b}, ${color.a})`);
+  if (typeof color === "string")
+    return Color.fromCssColorString(color).withAlpha(opacity);
+  return Color.fromCssColorString(
+    `rgba(${color.r}, ${color.g}, ${color.b}, ${color.a})`,
+  );
 };
 
-export const transCustomColorItem = (items: CustomColorItem[], opacity: number = 1) => {
+export const transCustomColorItem = (
+  items: CustomColorItem[],
+  opacity: number = 1,
+) => {
   return items.map((item) => ({
     label: item.label,
     value: single2paintColor(item.value, opacity),
@@ -53,27 +62,28 @@ export const section2CustomColor = async (
   config: {
     field?: string;
     color?: string[];
-    'section-type'?: 'natural' | 'average' | 'auto';
+    "section-type"?: "natural" | "average" | "auto";
   },
 ) => {
   const { field, color: colors } = config;
-  const sectionType = config['section-type'];
+  const sectionType = config["section-type"];
   const result: CustomColorItem[] = [];
   const colorNum = colors?.length;
   if (!data || !colorNum || !field) return [DefaultItem];
 
   if (sectionType) {
     const res = await geojsonStatisticQuery(data, {
-      hasMinMax: sectionType === 'average',
+      hasMinMax: sectionType === "average",
       columnName: field,
-      segNum: sectionType === 'natural' ? colorNum : 0,
+      segNum: sectionType === "natural" ? colorNum : 0,
     });
     if (!res) return [DefaultItem];
 
-    if (sectionType === 'average') {
+    if (sectionType === "average") {
       const min = res.min;
       const max = res.max;
-      if (typeof min !== 'number' || typeof max !== 'number') return [DefaultItem];
+      if (typeof min !== "number" || typeof max !== "number")
+        return [DefaultItem];
       const step = (max - min) / colorNum;
       for (let i = 0; i < colorNum; i += 1) {
         result.push({
@@ -82,11 +92,12 @@ export const section2CustomColor = async (
         });
       }
     }
-    if (sectionType === 'natural') {
+    if (sectionType === "natural") {
       for (let i = 0; i < colorNum; i += 1) {
         const section0 = res.sections[i];
         const section1 = res.sections[i + 1];
-        if (typeof section0 !== 'number' || typeof section1 !== 'number') return [DefaultItem];
+        if (typeof section0 !== "number" || typeof section1 !== "number")
+          return [DefaultItem];
         result.push({
           label: [section0, section1],
           value: colors[i],
@@ -107,15 +118,15 @@ export const section2CustomSize = async (
     field?: string;
     num?: number;
     sizeRange?: number[];
-    'section-type'?: 'natural' | 'average' | 'auto';
+    "section-type"?: "natural" | "average" | "auto";
   },
 ) => {
   const { field, num, sizeRange } = config;
-  const sectionType = config['section-type'];
+  const sectionType = config["section-type"];
   const result: CustomNumberItem[] = [];
 
   const DefaultSectionItem = {
-    label: 'default',
+    label: "default",
     value: sizeRange?.[0] ?? 1,
   };
 
@@ -123,9 +134,9 @@ export const section2CustomSize = async (
 
   if (sectionType) {
     const res = await geojsonStatisticQuery(data, {
-      hasMinMax: sectionType === 'average',
+      hasMinMax: sectionType === "average",
       columnName: field,
-      segNum: sectionType === 'natural' ? num : 0,
+      segNum: sectionType === "natural" ? num : 0,
     });
     if (!res) return [DefaultSectionItem];
 
@@ -134,9 +145,9 @@ export const section2CustomSize = async (
 
     const sizeStep = (sizeRange[1] - sizeRange[0]) / (num - 1);
 
-    if (sectionType === 'average') {
-
-      if (typeof min !== 'number' || typeof max !== 'number') return [DefaultSectionItem];
+    if (sectionType === "average") {
+      if (typeof min !== "number" || typeof max !== "number")
+        return [DefaultSectionItem];
       const step = (max - min) / num;
       for (let i = 0; i < num; i += 1) {
         result.push({
@@ -145,11 +156,11 @@ export const section2CustomSize = async (
         });
       }
     }
-    if (sectionType === 'natural') {
+    if (sectionType === "natural") {
       for (let i = 0; i < num; i += 1) {
         const section0 = res.sections[i];
         const section1 = res.sections[i + 1];
-        if (typeof section0 !== 'number' || typeof section1 !== 'number')
+        if (typeof section0 !== "number" || typeof section1 !== "number")
           return [DefaultSectionItem];
         result.push({
           label: [section0, section1],
@@ -157,14 +168,17 @@ export const section2CustomSize = async (
         });
       }
     }
-    if (sectionType === 'auto') {
-      result.push({
-        label: min,
-        value: sizeRange[0]
-      }, {
-        label: max,
-        value: sizeRange[1]
-      })
+    if (sectionType === "auto") {
+      result.push(
+        {
+          label: min,
+          value: sizeRange[0],
+        },
+        {
+          label: max,
+          value: sizeRange[1],
+        },
+      );
     }
   }
   result.push(DefaultSectionItem);
@@ -219,8 +233,10 @@ export function custom2value(value: any, customConfig: CustomPaintItem) {
 
     const valueRangeSize = valueRange[1] - valueRange[0];
     const normalRangeSize = normalRange[1] - normalRange[0];
-    const newValue = ((value - valueRange[0]) / valueRangeSize) * normalRangeSize + normalRange[0];
-    return typeof newValue !== 'number' ? defaultValue : newValue;
+    const newValue =
+      ((value - valueRange[0]) / valueRangeSize) * normalRangeSize +
+      normalRange[0];
+    return typeof newValue !== "number" ? defaultValue : newValue;
   }
 
   if (custom) {
@@ -242,36 +258,39 @@ export function custom2value(value: any, customConfig: CustomPaintItem) {
 export function getEntityValue(entity: Entity, field?: string) {
   if (!field) return undefined;
   const property = entity.properties?.getValue(JulianDate.now());
-  return property[field] ? String(property[field]) : '';
+  return property[field] ? String(property[field]) : "";
 }
 
 export function loadImage(url: string, params?: Record<string, any>) {
   let png = url;
   if (params) {
     const entries = Object.entries(params);
-    png = url + '?';
+    png = url + "?";
     for (let i = 0; i < entries.length; i += 1) {
-      if (i > 0) png += '&';
-      png += entries[i][0] + '=' + entries[i][1];
+      if (i > 0) png += "&";
+      png += entries[i][0] + "=" + entries[i][1];
     }
   }
   return new Promise<HTMLImageElement>((resolve) => {
     const img = new Image();
     img.src = png;
-    img.crossOrigin = 'Anonymous';
+    img.crossOrigin = "Anonymous";
     img.onload = function () {
       resolve(img);
     };
   });
 }
 
-export const image2canvas = (image: CanvasImageSource, config?: SpriteConfig) => {
+export const image2canvas = (
+  image: CanvasImageSource,
+  config?: SpriteConfig,
+) => {
   if (!config || !image) return undefined;
 
-  const newCanvas = document.createElement('canvas');
+  const newCanvas = document.createElement("canvas");
   newCanvas.height = config.height;
   newCanvas.width = config.width;
-  const context = newCanvas.getContext('2d');
+  const context = newCanvas.getContext("2d");
   context?.drawImage(
     image,
     config.x,

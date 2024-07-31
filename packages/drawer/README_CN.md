@@ -130,7 +130,7 @@ type OperationType = {
 type OverrideEntityFunc = (
   this: Drawer,
   action: EventType,
-  entity: Entity
+  entity: Entity,
 ) => Entity | void;
 ```
 

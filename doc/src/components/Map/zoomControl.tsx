@@ -16,21 +16,19 @@ const Map: React.FC<MapProps> = () => {
   };
 
   useEffect(() => {
-    viewer = initMap('cesiumContainer')
+    viewer = initMap('cesiumContainer');
 
     ZoomControlObj.current = new ZoomControl(viewer, {
-      home: Cartesian3.fromDegrees(116.3, 39.9, 15000000)
+      home: Cartesian3.fromDegrees(116.3, 39.9, 15000000),
     });
 
     return () => {
       reset();
-      viewer?.destroy()
-    }
+      viewer?.destroy();
+    };
   }, []);
 
-  return (
-    <div id="cesiumContainer"/>
-  );
+  return <div id="cesiumContainer" />;
 };
 
 export default Map;

@@ -1,1 +1,1 @@
-export { DefaultColor, NoDataColor } from './ConstantEnum';
+export { DefaultColor, NoDataColor } from "./ConstantEnum";

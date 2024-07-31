@@ -2,10 +2,7 @@
   "compilerOptions": {
     "module": "esnext",
     "target": "esnext",
-    "lib": [
-      "esnext",
-      "dom"
-    ],
+    "lib": ["esnext", "dom"],
     "moduleResolution": "node",
     "strict": true,
     "skipLibCheck": true,
@@ -14,16 +11,9 @@
     "baseUrl": "./",
     "jsx": "react-jsx",
     "paths": {
-      "@@/*": [
-        ".dumi/tmp/*"
-      ],
-      "@/*": [
-        "./src/*"
-      ]
+      "@@/*": [".dumi/tmp/*"],
+      "@/*": ["./src/*"]
     }
   },
-  "include": [
-    ".dumirc.ts",
-    "src/**/*"
-  ]
+  "include": [".dumirc.ts", "src/**/*"]
 }

@@ -5,9 +5,9 @@ import {
   Occluder,
   SceneMode,
   SceneTransforms,
-} from 'cesium';
+} from "cesium";
 
-import type { Viewer } from 'cesium';
+import type { Viewer } from "cesium";
 
 interface PopupOptions {
   /** 经纬度坐标 */
@@ -30,7 +30,7 @@ export default class Popup {
     this._options = options;
     const { position, element, offset } = options;
     if (!element) {
-      throw Error('no element!');
+      throw Error("no element!");
     }
     this._position = position
       ? Cartesian3.fromDegrees(position[0], position[1], position[2])
@@ -62,7 +62,7 @@ export default class Popup {
 
   switchElementShow(val: boolean) {
     if (this._element) {
-      this._element.style.display = val ? 'block' : 'none';
+      this._element.style.display = val ? "block" : "none";
     }
   }
 
@@ -75,7 +75,10 @@ export default class Popup {
       if (this._viewer.scene.mode === SceneMode.SCENE3D) {
         // 判断点是否在球的背面
         const cameraPosition = this._viewer.scene.camera.position;
-        const littleSphere = new BoundingSphere(new Cartesian3(0, 0, 0), 6350000);
+        const littleSphere = new BoundingSphere(
+          new Cartesian3(0, 0, 0),
+          6350000,
+        );
         const occluder = new Occluder(littleSphere, cameraPosition);
         const visible = occluder.isPointVisible(this._position);
 

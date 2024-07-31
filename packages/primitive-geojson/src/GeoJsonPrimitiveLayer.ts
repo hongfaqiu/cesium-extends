@@ -593,25 +593,27 @@ export class GeoJsonPrimitiveLayer extends BasicGraphicLayer {
   }
 
   reloadPrimitive(depthTest: boolean = this._options.depthTest ?? false) {
-    const appearance = depthTest ? new PerInstanceColorAppearance({
-      translucent: false,
-      renderState: {
-        depthTest: {
-          enabled: true,
-        },
-        depthMask: true,
-        blending: BlendingState.PRE_MULTIPLIED_ALPHA_BLEND
-      },
-    }) : new PerInstanceColorAppearance({
-      flat: true,
-      translucent: false,
-      closed: true,
-      renderState: {
-        depthTest: false,
-        depthMask: false,
-        blending: BlendingState.PRE_MULTIPLIED_ALPHA_BLEND,
-      },
-    });
+    const appearance = depthTest
+      ? new PerInstanceColorAppearance({
+          translucent: false,
+          renderState: {
+            depthTest: {
+              enabled: true,
+            },
+            depthMask: true,
+            blending: BlendingState.PRE_MULTIPLIED_ALPHA_BLEND,
+          },
+        })
+      : new PerInstanceColorAppearance({
+          flat: true,
+          translucent: false,
+          closed: true,
+          renderState: {
+            depthTest: false,
+            depthMask: false,
+            blending: BlendingState.PRE_MULTIPLIED_ALPHA_BLEND,
+          },
+        });
 
     this._circlePrimitive = new Primitive({
       geometryInstances: this._circleInstances,

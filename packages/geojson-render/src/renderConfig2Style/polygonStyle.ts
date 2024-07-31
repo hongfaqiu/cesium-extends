@@ -1,38 +1,42 @@
-import geojsonStatisticQuery from '../geojsonStatisticQuery';
-import { DefaultColor } from '../renderConfig';
+import geojsonStatisticQuery from "../geojsonStatisticQuery";
+import { DefaultColor } from "../renderConfig";
 import {
   section2CustomColor,
   single2paintColor,
   transCustomColorItem,
   value2Custom,
-} from './renderTool';
+} from "./renderTool";
 
-import type { PolygonEntityStyle } from '../renderConfig/entityStyle';
-import type { GeoJsonPolygonStyle } from '../renderConfig/typing';
+import type { PolygonEntityStyle } from "../renderConfig/entityStyle";
+import type { GeoJsonPolygonStyle } from "../renderConfig/typing";
 
-const PolygonConfig2Style = async (data: Record<string, any>[], jsonStyle: GeoJsonPolygonStyle) => {
+const PolygonConfig2Style = async (
+  data: Record<string, any>[],
+  jsonStyle: GeoJsonPolygonStyle,
+) => {
   const { type, config } = jsonStyle;
   const style: PolygonEntityStyle = {
-    type: 'polygon',
+    type: "polygon",
     paint: {},
   };
   const opacity = config.opacity;
-  const commonPaint: typeof style['paint'] = {
+  const commonPaint: (typeof style)["paint"] = {
     outline: true,
-    outlineColor: single2paintColor(config['outline-color'], opacity),
-    outlineWidth: config['outline-width'],
+    outlineColor: single2paintColor(config["outline-color"], opacity),
+    outlineWidth: config["outline-width"],
   };
 
   switch (type) {
-    case 'single':
+    case "single":
       style.paint = {
         material: single2paintColor(config.color, opacity),
         ...commonPaint,
       };
       return style;
 
-    case 'section':
-      const sectionCustom = config.custom ?? (await section2CustomColor(data, config));
+    case "section":
+      const sectionCustom =
+        config.custom ?? (await section2CustomColor(data, config));
 
       style.paint = {
         ...commonPaint,
@@ -46,7 +50,7 @@ const PolygonConfig2Style = async (data: Record<string, any>[], jsonStyle: GeoJs
       };
       break;
 
-    case 'value':
+    case "value":
       const valueCustom = config.custom ?? (await value2Custom(data, config));
 
       style.paint = {
@@ -61,8 +65,9 @@ const PolygonConfig2Style = async (data: Record<string, any>[], jsonStyle: GeoJs
       };
       break;
 
-    case 'height':
-      const heightCustom = config.custom ?? (await section2CustomColor(data, config));
+    case "height":
+      const heightCustom =
+        config.custom ?? (await section2CustomColor(data, config));
 
       const res = await geojsonStatisticQuery(data, {
         hasMinMax: true,
@@ -83,9 +88,9 @@ const PolygonConfig2Style = async (data: Record<string, any>[], jsonStyle: GeoJs
           field: config.field,
           normalization: {
             valueRange: [res?.min ?? 0, res?.max ?? 0],
-            normalRange: config['height-range'],
+            normalRange: config["height-range"],
           },
-          default: config['height-range']?.[0] ?? 0,
+          default: config["height-range"]?.[0] ?? 0,
         },
       };
       break;

@@ -1,5 +1,5 @@
-import type { Cartesian2, Cartesian3, HeightReference, Viewer } from 'cesium';
-import { MeasureUnits } from './Measure';
+import type { Cartesian2, Cartesian3, HeightReference, Viewer } from "cesium";
+import { MeasureUnits } from "./Measure";
 
 export type PickResult = {
   cartesian: Cartesian3;
@@ -9,7 +9,10 @@ export type PickResult = {
   altitudeMode: HeightReference;
 };
 
-export function pickCartesian3(viewer: Viewer, position: Cartesian2): Cartesian3 | undefined {
+export function pickCartesian3(
+  viewer: Viewer,
+  position: Cartesian2,
+): Cartesian3 | undefined {
   // We use `viewer.scene.pickPosition` here instead of `viewer.camera.pickEllipsoid` so that
   // we get the correct point when mousing over terrain.
   const ray = viewer.camera.getPickRay(position);
@@ -32,9 +35,13 @@ export function getBounds(points: Cartesian2[]): number[] {
  * @param length 单位米
  * @param unit 目标单位
  */
-export function formatLength(length: number, unitedLength: number, unit: MeasureUnits) {
+export function formatLength(
+  length: number,
+  unitedLength: number,
+  unit: MeasureUnits,
+) {
   if (length < 1000) {
-    return length + 'meters';
+    return length + "meters";
   }
   return unitedLength + unit;
 }
@@ -44,13 +51,20 @@ export function formatLength(length: number, unitedLength: number, unit: Measure
  * @param area 单位米
  * @param unit 目标单位
  */
-export function formatArea(area: number, unitedArea: number, unit: MeasureUnits) {
+export function formatArea(
+  area: number,
+  unitedArea: number,
+  unit: MeasureUnits,
+) {
   if (area < 1000000) {
-    return area + ' square meters ';
+    return area + " square meters ";
   }
-  return unitedArea + ' square ' + unit;
+  return unitedArea + " square " + unit;
 }
 
 export function mean(array: number[]): number {
-  return array.reduce((accumulator, currentValue) => accumulator + currentValue, 0) / array.length;
+  return (
+    array.reduce((accumulator, currentValue) => accumulator + currentValue, 0) /
+    array.length
+  );
 }

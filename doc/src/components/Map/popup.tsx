@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import { Popup } from 'cesium-extends';
 
 import { initMap } from '../../utils/initMap';
-import './index.less'
+import './index.less';
 import NowDate from '../NowDate';
 import PopupComponent from '../PopupComponent';
 
@@ -19,7 +19,7 @@ const Map: React.FC<MapProps> = () => {
   };
 
   useEffect(() => {
-    viewer = initMap('cesiumContainer')
+    viewer = initMap('cesiumContainer');
 
     reset();
 
@@ -30,19 +30,18 @@ const Map: React.FC<MapProps> = () => {
         position: [120, 30],
         element,
       });
-
     }
 
     return () => {
       reset();
-      viewer?.destroy()
-    }
+      viewer?.destroy();
+    };
   }, []);
 
   return (
     <div id="cesiumContainer">
-      <PopupComponent id='popup'>
-        <NowDate/>
+      <PopupComponent id="popup">
+        <NowDate />
       </PopupComponent>
     </div>
   );

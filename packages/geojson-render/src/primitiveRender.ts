@@ -1,12 +1,22 @@
-import { Cartesian2, LabelStyle, NearFarScalar } from 'cesium';
+import { Cartesian2, LabelStyle, NearFarScalar } from "cesium";
 
-import { custom2value } from './renderConfig2Style/renderTool';
-import RenderConfig2Style from './renderConfig2Style';
+import { custom2value } from "./renderConfig2Style/renderTool";
+import RenderConfig2Style from "./renderConfig2Style";
 
-import type { GeoJsonRenderConfig } from './renderConfig/typing';
-import type { EntityStyle, CustomPaintItem, CylinderEntityConstructor } from './renderConfig/entityStyle';
-import type GeoJsonPrimitiveLayer from '@cesium-extends/primitive-geojson';
-import type { BillboardPrimitiveItem, CirclePrimitiveItem, PointPrimitiveItem, PolylinePrimitiveItem, PolygonPrimitiveItem } from '@cesium-extends/primitive-geojson';
+import type { GeoJsonRenderConfig } from "./renderConfig/typing";
+import type {
+  EntityStyle,
+  CustomPaintItem,
+  CylinderEntityConstructor,
+} from "./renderConfig/entityStyle";
+import type GeoJsonPrimitiveLayer from "@cesium-extends/primitive-geojson";
+import type {
+  BillboardPrimitiveItem,
+  CirclePrimitiveItem,
+  PointPrimitiveItem,
+  PolylinePrimitiveItem,
+  PolygonPrimitiveItem,
+} from "@cesium-extends/primitive-geojson";
 
 export const primitiveGeoJsonRender = async (
   primitiveLayer: GeoJsonPrimitiveLayer,
@@ -20,11 +30,12 @@ export const primitiveGeoJsonRender = async (
     const customStyle: any = {};
 
     for (const k in custom) {
-      if (custom[k as (keyof typeof custom)]) {
-        const config = custom[k as (keyof typeof custom)] as CustomPaintItem;
+      if (custom[k as keyof typeof custom]) {
+        const config = custom[k as keyof typeof custom] as CustomPaintItem;
         config.default =
-          config.custom?.find((item) => item.label === 'default')?.value ?? config.default;
-        const featureVal = feature.properties?.[config.field ?? ''];
+          config.custom?.find((item) => item.label === "default")?.value ??
+          config.default;
+        const featureVal = feature.properties?.[config.field ?? ""];
         const value = custom2value(featureVal, config);
         customStyle[k] = value;
       }
@@ -35,7 +46,7 @@ export const primitiveGeoJsonRender = async (
     if (depthTest === undefined && height) depthTest = true;
 
     switch (type) {
-      case 'point':
+      case "point":
         if (style.layout?.image) {
           primitiveLayer.addBillboard({
             ...(feature as BillboardPrimitiveItem),
@@ -74,7 +85,7 @@ export const primitiveGeoJsonRender = async (
           }
         }
         break;
-      case 'line':
+      case "line":
         primitiveLayer.addPolyline({
           ...(feature as PolylinePrimitiveItem),
           style: {
@@ -84,7 +95,7 @@ export const primitiveGeoJsonRender = async (
           },
         });
         break;
-      case 'polygon':
+      case "polygon":
         primitiveLayer.addPolygon({
           ...(feature as PolygonPrimitiveItem),
           style: {
@@ -94,17 +105,17 @@ export const primitiveGeoJsonRender = async (
           },
         });
         break;
-      case 'mix':
-        if (feature.type === 'Point' || feature.type === 'Billboard') {
+      case "mix":
+        if (feature.type === "Point" || feature.type === "Billboard") {
           if (paint.markerSymbol) {
             primitiveLayer.addBillboard({
               ...(feature as BillboardPrimitiveItem),
               style: {
                 image: paint.markerSymbol,
                 color: paint.markerColor,
-                scale: (paint.markerSize ?? 5) / 5
-              }
-            })
+                scale: (paint.markerSize ?? 5) / 5,
+              },
+            });
           } else {
             primitiveLayer.addPoint({
               ...(feature as PointPrimitiveItem),
@@ -113,34 +124,34 @@ export const primitiveGeoJsonRender = async (
                 outlineColor: paint.stroke,
                 outlineWidth: paint.strokeWidth,
                 pixelSize: paint.markerSize,
-              }
-            })
+              },
+            });
           }
         }
-        if (feature.type === 'Polygon') {
+        if (feature.type === "Polygon") {
           primitiveLayer.addPolygon({
             ...feature,
             style: {
               material: paint.fill,
               outlineColor: paint.stroke,
-              outlineWidth: paint.strokeWidth
-            }
-          })
+              outlineWidth: paint.strokeWidth,
+            },
+          });
         }
-        if (feature.type === 'Polyline') {
+        if (feature.type === "Polyline") {
           primitiveLayer.addPolyline({
             ...feature,
             style: {
               material: paint.fill,
-              width: paint.strokeWidth
-            }
-          })
+              width: paint.strokeWidth,
+            },
+          });
         }
         break;
     }
     if (label?.paint.text) {
       primitiveLayer.addLabel({
-        type: 'Label',
+        type: "Label",
         position: feature.center?.cartesian3,
         style: {
           font: `bold 20px Arial`,
@@ -152,7 +163,7 @@ export const primitiveGeoJsonRender = async (
           ...label.paint,
           text: label.paint.text?.replace(
             /\{([^\{]*)\}/g,
-            (match, p1) => feature.properties?.[p1] ?? '',
+            (match, p1) => feature.properties?.[p1] ?? "",
           ),
         },
       });
@@ -171,8 +182,13 @@ export const renderPrimitiveGeoJson = async (
   const data = primitiveLayer.featureItems
     .map((feature) => feature.properties)
     .filter((item) => item !== undefined);
-  const entityStyle: EntityStyle = await RenderConfig2Style[type](data as any, style as any);
-  entityStyle.label = style.symbol ? RenderConfig2Style.symbol(style.symbol) : undefined;
+  const entityStyle: EntityStyle = await RenderConfig2Style[type](
+    data as any,
+    style as any,
+  );
+  entityStyle.label = style.symbol
+    ? RenderConfig2Style.symbol(style.symbol)
+    : undefined;
   if (entityStyle) await primitiveGeoJsonRender(primitiveLayer, entityStyle);
   return entityStyle;
 };

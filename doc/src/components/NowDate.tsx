@@ -10,11 +10,7 @@ function NowDate() {
     return () => clearInterval(timer);
   }, []);
 
-  return (
-    <div>
-      {date.toLocaleString()}
-    </div>
-  );
+  return <div>{date.toLocaleString()}</div>;
 }
 
 export default NowDate;

@@ -1,6 +1,6 @@
 import { Color, defined, DeveloperError } from "cesium";
 
-export default class BillBuilder{
+export default class BillBuilder {
   private _cache: Record<string, HTMLCanvasElement>;
 
   constructor() {
@@ -29,26 +29,36 @@ export default class BillBuilder{
     }
 
     return createPin(undefined, text, color, size, this._cache);
-  };
+  }
 }
 
 const colorScratch = new Color();
 
-function drawArc(context2D: CanvasRenderingContext2D, color: Color, size: number) {
+function drawArc(
+  context2D: CanvasRenderingContext2D,
+  color: Color,
+  size: number,
+) {
   context2D.save();
-  context2D.scale(size / 24, size / 24)
+  context2D.scale(size / 24, size / 24);
   context2D.fillStyle = color.toCssColorString(); //Modified from auto-generated code.
   context2D.strokeStyle = color.brighten(0.6, colorScratch).toCssColorString(); //Modified from auto-generated code.
   context2D.arc(12, 12, 6, 0, Math.PI * 2, true);
   context2D.fill();
-  context2D.lineWidth = 0.846
+  context2D.lineWidth = 0.846;
   context2D.stroke();
   context2D.restore();
 }
 
 const stringifyScratch = new Array(4);
 
-function createPin(url: string | undefined, label: string, color: Color, size: number, cache: Record<string, HTMLCanvasElement>) {
+function createPin(
+  url: string | undefined,
+  label: string,
+  color: Color,
+  size: number,
+  cache: Record<string, HTMLCanvasElement>,
+) {
   //Use the parameters as a unique ID for caching.
   stringifyScratch[0] = url;
   stringifyScratch[1] = label;
@@ -70,12 +80,12 @@ function createPin(url: string | undefined, label: string, color: Color, size: n
     drawArc(context2D, color, size);
     context2D.font = "16px sans-serif";
     context2D.lineJoin = "round";
-    context2D.textAlign = "center"
-    context2D.textBaseline = "middle"
-    context2D.strokeStyle = 'black';
+    context2D.textAlign = "center";
+    context2D.textBaseline = "middle";
+    context2D.strokeStyle = "black";
     context2D.lineWidth = 3;
     context2D.strokeText(label, size / 2, size / 2);
-    context2D.fillStyle = 'white'
+    context2D.fillStyle = "white";
     context2D.fillText(label, size / 2, size / 2);
   }
 

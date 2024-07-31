@@ -1,10 +1,17 @@
-import { Cartesian3, Ellipsoid, IntersectionTests, Math as CMath, Ray, SceneMode } from 'cesium';
+import {
+  Cartesian3,
+  Ellipsoid,
+  IntersectionTests,
+  Math as CMath,
+  Ray,
+  SceneMode,
+} from "cesium";
 
-import Icons from './icons';
-import './styles/zoom-controller.scss';
-import { DomUtil, Widget } from '@cesium-extends/common';
+import Icons from "./icons";
+import "./styles/zoom-controller.scss";
+import { DomUtil, Widget } from "@cesium-extends/common";
 
-import type { Camera, Scene, Viewer } from 'cesium';
+import type { Camera, Scene, Viewer } from "cesium";
 
 export interface ZoomControllerProps {
   container?: Element;
@@ -27,14 +34,18 @@ class ZoomController extends Widget {
   constructor(viewer: Viewer, options: ZoomControllerProps = {}) {
     super(
       viewer,
-      DomUtil.create('div', 'cesium-zoom-controller', options.container ?? viewer.container),
+      DomUtil.create(
+        "div",
+        "cesium-zoom-controller",
+        options.container ?? viewer.container,
+      ),
     );
     this._options = {
       ...options,
       icons: {
         ...Icons,
-        ...options?.icons
-      }
+        ...options?.icons,
+      },
     };
     this._icons = this._options.icons as typeof Icons;
     this.enabled = true;
@@ -67,8 +78,16 @@ class ZoomController extends Widget {
    */
   _getCameraPosition(camera: Camera, focus: Cartesian3, scalar: number) {
     const cartesian3Scratch = new Cartesian3();
-    const direction = Cartesian3.subtract(focus, camera.position, cartesian3Scratch);
-    const movementVector = Cartesian3.multiplyByScalar(direction, scalar, cartesian3Scratch);
+    const direction = Cartesian3.subtract(
+      focus,
+      camera.position,
+      cartesian3Scratch,
+    );
+    const movementVector = Cartesian3.multiplyByScalar(
+      direction,
+      scalar,
+      cartesian3Scratch,
+    );
     return Cartesian3.add(camera.position, movementVector, cartesian3Scratch);
   }
 
@@ -152,22 +171,22 @@ class ZoomController extends Widget {
     const { tips } = this._options;
     this._zoomInEl = DomUtil.parseDom(
       this._icons.controller_increase,
-      'zoom-in cesium-toolbar-button cesium-button',
+      "zoom-in cesium-toolbar-button cesium-button",
     );
     this._refreshEl = DomUtil.parseDom(
       this._icons.controller_refresh,
-      'refresh cesium-toolbar-button cesium-button',
+      "refresh cesium-toolbar-button cesium-button",
     );
     this._zoomOutEl = DomUtil.parseDom(
       this._icons.controller_decrease,
-      'zoom-out cesium-toolbar-button cesium-button',
+      "zoom-out cesium-toolbar-button cesium-button",
     );
     this._wrapper.appendChild(this._refreshEl);
     this._wrapper.appendChild(this._zoomInEl);
     this._wrapper.appendChild(this._zoomOutEl);
-    this._zoomInEl.title = tips?.zoomIn ?? 'Zoom in';
-    this._zoomOutEl.title = tips?.zoomOut ?? 'Zoom out';
-    this._refreshEl.title = tips?.refresh ?? 'Reset zoom';
+    this._zoomInEl.title = tips?.zoomIn ?? "Zoom in";
+    this._zoomOutEl.title = tips?.zoomOut ?? "Zoom out";
+    this._refreshEl.title = tips?.refresh ?? "Reset zoom";
     this._zoomInEl.onclick = () => {
       this._zoomIn();
     };

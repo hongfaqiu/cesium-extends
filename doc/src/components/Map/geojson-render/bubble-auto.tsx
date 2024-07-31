@@ -1,6 +1,13 @@
 import { DataSource, Viewer } from 'cesium';
 import React, { useEffect } from 'react';
-import { renderGeoJson, GeoJsonPrimitiveLayer, renderPrimitiveGeoJson, GeoJsonStyle, GeoJsonRenderConfig, updateDataSourcePosition } from 'cesium-extends';
+import {
+  renderGeoJson,
+  GeoJsonPrimitiveLayer,
+  renderPrimitiveGeoJson,
+  GeoJsonStyle,
+  GeoJsonRenderConfig,
+  updateDataSourcePosition,
+} from 'cesium-extends';
 import { GeoJsonDataSource } from 'cesium';
 
 import { initMap } from '@/utils/initMap';
@@ -18,12 +25,16 @@ const config: GeoJsonRenderConfig = {
       'section-num': 10,
       'label-size': [2, 40],
       'circle-stroke-width': 1,
-      'circle-stroke-color': 'white'
-    }
-  }
-}
+      'circle-stroke-color': 'white',
+    },
+  },
+};
 
-async function addGeojsonByDataSource(viewer: Viewer, url: string, config: GeoJsonRenderConfig) {
+async function addGeojsonByDataSource(
+  viewer: Viewer,
+  url: string,
+  config: GeoJsonRenderConfig,
+) {
   const dataSource: DataSource = await GeoJsonDataSource.load(url);
   updateDataSourcePosition(dataSource);
   await renderGeoJson(dataSource, config);
@@ -31,9 +42,13 @@ async function addGeojsonByDataSource(viewer: Viewer, url: string, config: GeoJs
   return dataSource;
 }
 
-async function addGeojsonByPrimitive(viewer: Viewer, url: string, config: GeoJsonRenderConfig) {
+async function addGeojsonByPrimitive(
+  viewer: Viewer,
+  url: string,
+  config: GeoJsonRenderConfig,
+) {
   const primitiveLayer = await primitiveObj.load(url);
-  await renderPrimitiveGeoJson(primitiveObj, config)
+  await renderPrimitiveGeoJson(primitiveObj, config);
   viewer.scene.primitives.add(primitiveLayer.primitiveCollection);
   viewer.scene.primitives.lowerToBottom(primitiveLayer.primitiveCollection);
 
@@ -42,17 +57,16 @@ async function addGeojsonByPrimitive(viewer: Viewer, url: string, config: GeoJso
 
 let viewer: Viewer;
 const Map: React.FC = () => {
-
   useEffect(() => {
-    viewer = initMap('cesiumContainer')
-    addGeojsonByDataSource(viewer, '/earthquack.geojson', config)
+    viewer = initMap('cesiumContainer');
+    addGeojsonByDataSource(viewer, '/earthquack.geojson', config);
 
     return () => {
-      viewer?.destroy()
-    }
+      viewer?.destroy();
+    };
   }, []);
 
-  return <div id="cesiumContainer"/>;
+  return <div id="cesiumContainer" />;
 };
 
 export default Map;

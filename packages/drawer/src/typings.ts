@@ -1,4 +1,4 @@
-import type Cesium from 'cesium';
+import type Cesium from "cesium";
 import type {
   Cartesian3,
   EllipseGraphics,
@@ -7,16 +7,20 @@ import type {
   PolygonGraphics,
   PolylineGraphics,
   RectangleGraphics,
-} from 'cesium';
-import type { EventArgs, EventType } from '@cesium-extends/subscriber';
-import type { BasicGraphicesOptions } from './base';
-import Drawer from '.';
+} from "cesium";
+import type { EventArgs, EventType } from "@cesium-extends/subscriber";
+import type { BasicGraphicesOptions } from "./base";
+import Drawer from ".";
 
 export type hierarchyHandler = (
   hierarchy: Cesium.Cartesian3[] | Cesium.CallbackProperty | Cartesian3,
 ) => Cesium.Entity.ConstructorOptions;
 
-export type OverrideEntityFunc = (this: Drawer, action: EventType, entity: Entity) => Entity | void;
+export type OverrideEntityFunc = (
+  this: Drawer,
+  action: EventType,
+  entity: Entity,
+) => Entity | void;
 
 /**
  * @todo 为了防止产生侵入性bug，请在配置前确认相关事件是否可用，不再默认移除原生事件
@@ -60,7 +64,7 @@ export type ActionCallback = (action: EventType, move: EventArgs) => void;
 /**
  * 绘制状态
  */
-export type Status = 'INIT' | 'START' | 'PAUSE' | 'DESTROY';
+export type Status = "INIT" | "START" | "PAUSE" | "DESTROY";
 
 export interface DrawOption {
   /**
@@ -87,7 +91,7 @@ export interface DrawOption {
    */
   action?: ActionCallback;
   sameStyle: boolean;
-  
+
   /** 自定义编辑时鼠标移动的提示 */
   tips: {
     /** 默认为 'Click to draw' */
@@ -103,7 +107,7 @@ export type StartOption = {
   /**
    * @desc 勾画类型 目前支持 Polygon、Line、Point、Circle、Rectangle
    */
-  type: 'POLYGON' | 'POLYLINE' | 'POINT' | 'CIRCLE' | 'RECTANGLE';
+  type: "POLYGON" | "POLYLINE" | "POINT" | "CIRCLE" | "RECTANGLE";
 
   /**
    * 是否只勾画一次，如果设为true，则在第一勾画结束时停止
@@ -127,7 +131,7 @@ export type StartOption = {
   /**
    * 点改变的回调
    */
-  onPointsChange?: BasicGraphicesOptions['onPointsChange'];
+  onPointsChange?: BasicGraphicesOptions["onPointsChange"];
   /** 结束绘制的回调 */
   onEnd?: (entity: Entity, positions: Cartesian3[]) => void;
 };

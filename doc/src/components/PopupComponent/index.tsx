@@ -1,11 +1,12 @@
 import { PropsWithChildren } from 'react';
 import './index.less';
 
-export type PopupComponentProps = {
-} & React.HTMLAttributes<HTMLDivElement>
+export type PopupComponentProps = {} & React.HTMLAttributes<HTMLDivElement>;
 
-export default function PopupComponent({ children, ...props }: PropsWithChildren<PopupComponentProps>): JSX.Element {
-
+export default function PopupComponent({
+  children,
+  ...props
+}: PropsWithChildren<PopupComponentProps>): JSX.Element {
   return (
     <div {...props} className={`popupComponent ${props.className}`}>
       <div className="pop-content">{children}</div>
@@ -13,5 +14,5 @@ export default function PopupComponent({ children, ...props }: PropsWithChildren
         <span className="pop-arrow-content" />
       </div>
     </div>
-  )
+  );
 }

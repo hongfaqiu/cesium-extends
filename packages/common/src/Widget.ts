@@ -1,4 +1,4 @@
-import type { Viewer } from 'cesium';
+import type { Viewer } from "cesium";
 
 class Widget {
   protected _viewer: Viewer;
@@ -47,11 +47,13 @@ class Widget {
   private _enableHook() {
     if (!this._ready) this._mountContent();
     if (this._enabled) {
-      if (!this._wrapper.parentNode) this._viewer.container.appendChild(this._wrapper);
+      if (!this._wrapper.parentNode)
+        this._viewer.container.appendChild(this._wrapper);
       this._bindEvent();
     } else {
       this._unbindEvent();
-      if (this._wrapper.parentNode) this._viewer.container.removeChild(this._wrapper);
+      if (this._wrapper.parentNode)
+        this._viewer.container.removeChild(this._wrapper);
     }
   }
 
@@ -61,11 +63,12 @@ class Widget {
    * @returns {Widget}
    */
   setContent(content: string | Element): Widget {
-    if (content && typeof content === 'string') {
+    if (content && typeof content === "string") {
       this._wrapper.innerHTML = content;
     } else if (content && content instanceof Element) {
       while (this._wrapper.hasChildNodes()) {
-        if (this._wrapper.firstChild) this._wrapper.removeChild(this._wrapper.firstChild);
+        if (this._wrapper.firstChild)
+          this._wrapper.removeChild(this._wrapper.firstChild);
       }
       this._wrapper.appendChild(content);
     }
@@ -76,14 +79,14 @@ class Widget {
    * hide widget
    */
   hide() {
-    if (this._wrapper) this._wrapper.style.display = 'none';
+    if (this._wrapper) this._wrapper.style.display = "none";
   }
 
   /**
    * show widget
    */
   show() {
-    if (this._wrapper) this._wrapper.style.display = 'block';
+    if (this._wrapper) this._wrapper.style.display = "block";
   }
 
   destroy() {

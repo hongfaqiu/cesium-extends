@@ -9,9 +9,12 @@ Ion.defaultAccessToken =
  * 初始化地图
  * @param cesiumContainer 地图容器div id
  */
-export function initMap(cesiumContainer: string, options: {
-  home?: number[]
-} = {}) {
+export function initMap(
+  cesiumContainer: string,
+  options: {
+    home?: number[];
+  } = {},
+) {
   const viewer: Viewer = new Viewer(cesiumContainer, {
     baseLayerPicker: false, // 图层选择器
     animation: false, // 左下角仪表
@@ -35,7 +38,7 @@ export function initMap(cesiumContainer: string, options: {
   viewer.scene.debugShowFramesPerSecond = true;
   viewer.scene.skyBox.show = false;
 
-  const home = options.home ?? [116.3, 39.9, 15000000]
+  const home = options.home ?? [116.3, 39.9, 15000000];
 
   viewer.camera.setView({
     destination: Cartesian3.fromDegrees(home[0], home[1], home[2]),
@@ -47,4 +50,4 @@ export function initMap(cesiumContainer: string, options: {
   });
 
   return viewer;
-};
+}

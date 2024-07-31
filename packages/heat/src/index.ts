@@ -1,8 +1,12 @@
-import type { ImageryLayer, Viewer } from 'cesium';
-import type { BaseHeatmapConfiguration, DataPoint, HeatmapConfiguration } from '@mars3d/heatmap.js';
+import type { ImageryLayer, Viewer } from "cesium";
+import type {
+  BaseHeatmapConfiguration,
+  DataPoint,
+  HeatmapConfiguration,
+} from "@mars3d/heatmap.js";
 
-import { Rectangle, SingleTileImageryProvider } from 'cesium';
-import * as h337 from '@mars3d/heatmap.js';
+import { Rectangle, SingleTileImageryProvider } from "cesium";
+import * as h337 from "@mars3d/heatmap.js";
 
 type HeatMapDataItem = {
   pos: number[];
@@ -37,7 +41,7 @@ export interface HeatMapLayerContructorOptions {
 export default class HeatMapLayer {
   private _viewer: Viewer;
   private _container: HTMLDivElement;
-  heatMap: h337.Heatmap<'value', 'x', 'y'>;
+  heatMap: h337.Heatmap<"value", "x", "y">;
   private _layer: ImageryLayer | undefined;
   _data: HeatMapDataItem[];
   private _autoRadiusConfig: Required<AutoRadiusConfig>;
@@ -119,8 +123,8 @@ export default class HeatMapLayer {
         position: `absolute`,
         top: 0,
         left: 0,
-        'z-index': -100,
-        overflow: 'hidden',
+        "z-index": -100,
+        overflow: "hidden",
         width: 0,
         height: 0,
       },
@@ -153,8 +157,8 @@ export default class HeatMapLayer {
         length > canvasConfig.maxSize
           ? canvasConfig.maxSize
           : length < canvasConfig.minSize
-            ? canvasConfig.minSize
-            : length;
+          ? canvasConfig.minSize
+          : length;
       const h = w * radius;
       this._canvasConfig = {
         ...canvasConfig,
@@ -163,7 +167,7 @@ export default class HeatMapLayer {
       };
     } else {
       if (!canvasConfig.width || !canvasConfig.height) {
-        throw Error('specify width and height if not auto resize');
+        throw Error("specify width and height if not auto resize");
       }
       this._canvasConfig = canvasConfig;
     }
@@ -200,7 +204,8 @@ export default class HeatMapLayer {
     if (this._autoRadiusConfig.enabled) {
       const h = this.viewer.camera.getMagnitude();
       const { min, max, minRadius, maxRadius } = this._autoRadiusConfig;
-      const newRadius = minRadius + ((maxRadius - minRadius) * (h - min)) / (max - min);
+      const newRadius =
+        minRadius + ((maxRadius - minRadius) * (h - min)) / (max - min);
       data = data.map(({ x, y, value }) => {
         return {
           x,
@@ -286,7 +291,7 @@ export default class HeatMapLayer {
       bool = this._viewer.scene.imageryLayers.remove(this.layer);
       this.viewer.scene.requestRender();
     } else {
-      bool = true
+      bool = true;
     }
     return bool;
   }
@@ -302,11 +307,11 @@ export default class HeatMapLayer {
  * 创建一个标签
  */
 function newDiv(style: Record<string, any>, parent: HTMLElement) {
-  const div = document.createElement('div') as any;
+  const div = document.createElement("div") as any;
   if (parent) parent.append(div);
   for (const k in style) {
-    if (typeof style[k] === 'number') {
-      div.style[k] = style[k] + 'px';
+    if (typeof style[k] === "number") {
+      div.style[k] = style[k] + "px";
       continue;
     }
     div.style[k] = style[k];

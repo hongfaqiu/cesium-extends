@@ -12,9 +12,12 @@ export type SpriteJson = Record<string, SpriteConfig>;
 /**
  * 获取精灵图json
  */
-export const getSpriteJson = (url: string, params: Record<string, string> = {}): Promise<SpriteJson> => {
+export const getSpriteJson = (
+  url: string,
+  params: Record<string, string> = {},
+): Promise<SpriteJson> => {
   return Resource.fetchJson({
     url,
     queryParameters: params,
-  })
+  });
 };

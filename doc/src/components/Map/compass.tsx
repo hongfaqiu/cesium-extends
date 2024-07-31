@@ -16,19 +16,17 @@ const Map: React.FC<MapProps> = () => {
   };
 
   useEffect(() => {
-    viewer = initMap('cesiumContainer')
+    viewer = initMap('cesiumContainer');
 
     CompassObj.current = new Compass(viewer);
 
     return () => {
       reset();
-      viewer?.destroy()
-    }
+      viewer?.destroy();
+    };
   }, []);
 
-  return (
-    <div id="cesiumContainer"/>
-  );
+  return <div id="cesiumContainer" />;
 };
 
 export default Map;

@@ -1,12 +1,12 @@
-import { Cartesian2, Cartesian3 } from 'cesium';
-import { convertArea, polygon } from '@turf/helpers';
+import { Cartesian2, Cartesian3 } from "cesium";
+import { convertArea, polygon } from "@turf/helpers";
 
-import Measure from './Measure';
-import { mean } from './utils';
+import Measure from "./Measure";
+import { mean } from "./utils";
 
-import area from '@turf/area';
+import area from "@turf/area";
 
-import type { PolygonGraphics } from 'cesium';
+import type { PolygonGraphics } from "cesium";
 
 /**
  * 距离测量类
@@ -16,7 +16,9 @@ class AreaMeasure extends Measure {
     this._labels.removeAll();
     if (positions.length < 3) return;
     const position = new Cartesian3(
-      ...['x', 'y', 'z'].map((key) => mean(positions.map((item) => (item as any)[key]))),
+      ...["x", "y", "z"].map((key) =>
+        mean(positions.map((item) => (item as any)[key])),
+      ),
     );
     this._labels.add({
       position,
@@ -41,8 +43,12 @@ class AreaMeasure extends Measure {
   protected _updateLabelTexts(positions: Cartesian3[]) {
     const label = this._labels.get(0);
     const area = +this.getArea(positions).toFixed(2);
-    const unitedArea = +convertArea(area, 'meters', this._units).toFixed(2)
-    label.text = `${this._locale.area}: ${this._locale.formatArea(area, unitedArea, this._units)}`;
+    const unitedArea = +convertArea(area, "meters", this._units).toFixed(2);
+    label.text = `${this._locale.area}: ${this._locale.formatArea(
+      area,
+      unitedArea,
+      this._units,
+    )}`;
   }
 
   protected _getDistance(pos1: Cartesian3, pos2: Cartesian3): number {
@@ -51,7 +57,7 @@ class AreaMeasure extends Measure {
 
   start(style: PolygonGraphics.ConstructorOptions = {}) {
     this.end();
-    this._start('POLYGON', {
+    this._start("POLYGON", {
       style,
     });
   }

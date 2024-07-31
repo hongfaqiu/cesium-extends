@@ -11,9 +11,9 @@ import type {
   PointPrimitive,
   PolygonGeometry,
   PolylineGeometry,
-} from 'cesium';
+} from "cesium";
 
-export type GeoJSONType = 'point' | 'line' | 'polygon' | 'mix';
+export type GeoJSONType = "point" | "line" | "polygon" | "mix";
 
 // Primitive相关
 export type GeoJsonPrimitiveLayerOptions = {
@@ -47,7 +47,7 @@ export type GeoJsonFeatureItem = {
 };
 
 export type PointPrimitiveItem = {
-  type: 'Point';
+  type: "Point";
   position: Cartesian3;
   style?: {
     pixelSize?: number;
@@ -60,7 +60,7 @@ export type PointPrimitiveItem = {
 } & GeoJsonFeatureItem;
 
 export type CirclePrimitiveItem = {
-  type: 'Circle';
+  type: "Circle";
   position: Cartesian3;
   style?: {
     color?: Color;
@@ -71,21 +71,21 @@ export type CirclePrimitiveItem = {
 } & GeoJsonFeatureItem;
 
 export type BillboardPrimitiveItem = {
-  type: 'Billboard';
+  type: "Billboard";
   position: Cartesian3;
   style?: BillboardGraphics.ConstructorOptions;
   instance?: Billboard;
 } & GeoJsonFeatureItem;
 
 export type LabelPrimitiveItem = {
-  type: 'Label';
+  type: "Label";
   position?: Cartesian3;
   style?: LabelGraphics.ConstructorOptions;
   instance?: Label;
 } & GeoJsonFeatureItem;
 
 export type PolygonPrimitiveItem = {
-  type: 'Polygon';
+  type: "Polygon";
   positions: Cartesian3[];
   style?: {
     material?: Color;
@@ -100,7 +100,7 @@ export type PolygonPrimitiveItem = {
 } & GeoJsonFeatureItem;
 
 export type PolylinePrimitiveItem = {
-  type: 'Polyline';
+  type: "Polyline";
   positions: Cartesian3[];
   style?: {
     material?: Color;

@@ -1,10 +1,22 @@
-import { ArcType, CallbackProperty, ClassificationType, defined, Entity, PolygonHierarchy } from 'cesium';
+import {
+  ArcType,
+  CallbackProperty,
+  ClassificationType,
+  defined,
+  Entity,
+  PolygonHierarchy,
+} from "cesium";
 
-import BasicGraphices from '../base';
+import BasicGraphices from "../base";
 
-import type { Cartesian3, Color, PolygonGraphics, PolylineGraphics } from 'cesium';
-import type { EventArgs } from '@cesium-extends/subscriber';
-import type { LifeCycle } from '../base';
+import type {
+  Cartesian3,
+  Color,
+  PolygonGraphics,
+  PolylineGraphics,
+} from "cesium";
+import type { EventArgs } from "@cesium-extends/subscriber";
+import type { LifeCycle } from "../base";
 
 export default class Polygon extends BasicGraphices implements LifeCycle {
   dropPoint(event: EventArgs): void {
@@ -37,13 +49,20 @@ export default class Polygon extends BasicGraphices implements LifeCycle {
     this._cancel(this.createShape.bind(this));
   }
 
-  createShape(hierarchy: Cartesian3[] | CallbackProperty, isDynamic = false): Entity {
+  createShape(
+    hierarchy: Cartesian3[] | CallbackProperty,
+    isDynamic = false,
+  ): Entity {
     const options: PolygonGraphics.ConstructorOptions =
       isDynamic && !this.sameStyle ? this.dynamicOptions : this.finalOptions;
     const polygon = Object.assign({}, options, {
-      hierarchy: Array.isArray(hierarchy) ? new PolygonHierarchy(hierarchy) : hierarchy,
+      hierarchy: Array.isArray(hierarchy)
+        ? new PolygonHierarchy(hierarchy)
+        : hierarchy,
       arcType: ArcType.RHUMB,
-      classificationType: this.painter._model ? ClassificationType.CESIUM_3D_TILE : undefined
+      classificationType: this.painter._model
+        ? ClassificationType.CESIUM_3D_TILE
+        : undefined,
     });
 
     const polyline: PolylineGraphics.ConstructorOptions = {
@@ -52,11 +71,16 @@ export default class Polygon extends BasicGraphices implements LifeCycle {
       positions: Array.isArray(hierarchy)
         ? [...hierarchy, hierarchy[0]]
         : new CallbackProperty(() => {
-            return [...this.painter._activeShapePoints, this.painter._activeShapePoints[0]];
+            return [
+              ...this.painter._activeShapePoints,
+              this.painter._activeShapePoints[0],
+            ];
           }, false),
       clampToGround: true,
       arcType: ArcType.RHUMB,
-      classificationType: this.painter._model ? ClassificationType.CESIUM_3D_TILE : undefined
+      classificationType: this.painter._model
+        ? ClassificationType.CESIUM_3D_TILE
+        : undefined,
     };
 
     return new Entity({ polygon, polyline });

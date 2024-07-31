@@ -5,9 +5,9 @@ import {
   SceneMode,
   ScreenSpaceEventHandler,
   ScreenSpaceEventType,
-} from 'cesium';
+} from "cesium";
 
-import type { Viewer } from 'cesium';
+import type { Viewer } from "cesium";
 
 interface SyncViewProps {
   percentageChanged?: number;
@@ -18,7 +18,7 @@ export default class SyncViewer {
   private _options: SyncViewProps;
   private _leftHandler: ScreenSpaceEventHandler;
   private _rightHandler: ScreenSpaceEventHandler;
-  private _currentOperation: 'left' | 'right' = 'left';
+  private _currentOperation: "left" | "right" = "left";
   private _originRate: {
     left: number;
     right: number;
@@ -30,7 +30,11 @@ export default class SyncViewer {
     return this._destroyed;
   }
 
-  constructor(leftViewer: Viewer, rightViewer: Viewer, options: SyncViewProps = {}) {
+  constructor(
+    leftViewer: Viewer,
+    rightViewer: Viewer,
+    options: SyncViewProps = {},
+  ) {
     if (!leftViewer || !rightViewer) throw Error("viewer can't be empty!");
     this._leftViewer = leftViewer;
     this._rightViewer = rightViewer;
@@ -73,9 +77,12 @@ export default class SyncViewer {
   }
 
   private leftChangeEvent = () => {
-    if (this._currentOperation === 'left' && this.synchronous) {
+    if (this._currentOperation === "left" && this.synchronous) {
       const viewPoint = this.getViewPoint(this._leftViewer);
-      if (this._leftViewer.scene.mode !== SceneMode.SCENE3D && viewPoint.worldPosition) {
+      if (
+        this._leftViewer.scene.mode !== SceneMode.SCENE3D &&
+        viewPoint.worldPosition
+      ) {
         this._rightViewer.scene.camera.lookAt(
           viewPoint.worldPosition,
           new Cartesian3(0, 0, viewPoint.height),
@@ -90,9 +97,12 @@ export default class SyncViewer {
   };
 
   private rightChangeEvent = () => {
-    if (this._currentOperation === 'right' && this.synchronous) {
+    if (this._currentOperation === "right" && this.synchronous) {
       const viewPoint = this.getViewPoint(this._rightViewer);
-      if (this._rightViewer.scene.mode !== SceneMode.SCENE3D && viewPoint.worldPosition) {
+      if (
+        this._rightViewer.scene.mode !== SceneMode.SCENE3D &&
+        viewPoint.worldPosition
+      ) {
         this._leftViewer.scene.camera.lookAt(
           viewPoint.worldPosition,
           new Cartesian3(0, 0, viewPoint.height),
@@ -107,14 +117,14 @@ export default class SyncViewer {
   };
 
   private leftViewerMouseMove = () => {
-    this._currentOperation = 'left';
+    this._currentOperation = "left";
     // 解除lookAt视角锁定
     if (this._rightViewer.scene.mode !== SceneMode.MORPHING)
       this._rightViewer.scene.camera.lookAtTransform(Matrix4.IDENTITY);
   };
 
   private rightViewerMouseMove = () => {
-    this._currentOperation = 'right';
+    this._currentOperation = "right";
     // 解除lookAt视角锁定
     if (this._leftViewer.scene.mode !== SceneMode.MORPHING)
       this._leftViewer.scene.camera.lookAtTransform(Matrix4.IDENTITY);
@@ -124,8 +134,14 @@ export default class SyncViewer {
     this.synchronous = true;
     // 视图同步
 
-    this._leftHandler.setInputAction(this.leftViewerMouseMove, ScreenSpaceEventType.MOUSE_MOVE);
-    this._rightHandler.setInputAction(this.rightViewerMouseMove, ScreenSpaceEventType.MOUSE_MOVE);
+    this._leftHandler.setInputAction(
+      this.leftViewerMouseMove,
+      ScreenSpaceEventType.MOUSE_MOVE,
+    );
+    this._rightHandler.setInputAction(
+      this.rightViewerMouseMove,
+      ScreenSpaceEventType.MOUSE_MOVE,
+    );
 
     this._leftViewer.camera.changed.addEventListener(this.leftChangeEvent);
     this._rightViewer.camera.changed.addEventListener(this.rightChangeEvent);
@@ -140,7 +156,9 @@ export default class SyncViewer {
     }
     if (!this._rightViewer.isDestroyed()) {
       this._rightViewer.camera.percentageChanged = this._originRate.right;
-      this._rightViewer.camera.changed.removeEventListener(this.rightChangeEvent);
+      this._rightViewer.camera.changed.removeEventListener(
+        this.rightChangeEvent,
+      );
       this._rightHandler.destroy();
     }
     this._destroyed = true;

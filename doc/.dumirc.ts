@@ -10,11 +10,11 @@ export default defineConfig({
     socialLinks: {
       github: 'https://github.com/hongfaqiu/cesium-extends',
     },
-    logo: "/logo.svg"
+    logo: '/logo.svg',
   },
   alias: {
     '@': path.resolve(__dirname, 'src'),
-    cesium: path.resolve(__dirname, 'node_modules/cesium')
+    cesium: path.resolve(__dirname, 'node_modules/cesium'),
   },
   copy: [
     { from: path.join(cesiumSource, cesiumWorkers), to: 'dist/cesium/Workers' },
@@ -24,5 +24,5 @@ export default defineConfig({
   define: {
     CESIUM_BASE_URL: '/cesium',
   },
-  jsMinifier: 'terser'
+  jsMinifier: 'terser',
 });

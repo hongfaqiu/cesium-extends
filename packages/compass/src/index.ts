@@ -10,13 +10,13 @@ import {
   Ray,
   SceneMode,
   Transforms,
-} from 'cesium';
-import { DomUtil, Widget } from '@cesium-extends/common';
+} from "cesium";
+import { DomUtil, Widget } from "@cesium-extends/common";
 
-import Icons from './icons';
-import './styles/Compass.scss';
+import Icons from "./icons";
+import "./styles/Compass.scss";
 
-import type { Viewer } from 'cesium';
+import type { Viewer } from "cesium";
 
 export interface CompassOptions {
   container?: Element;
@@ -47,13 +47,20 @@ class Compass extends Widget {
   private _icons: typeof Icons;
 
   constructor(viewer: Viewer, options: CompassOptions = {}) {
-    super(viewer, DomUtil.create('div', 'cesium-compass', options.container ?? viewer.container));
+    super(
+      viewer,
+      DomUtil.create(
+        "div",
+        "cesium-compass",
+        options.container ?? viewer.container,
+      ),
+    );
     this._options = {
       ...options,
       icons: {
         ...Icons,
-        ...options?.icons
-      }
+        ...options?.icons,
+      },
     };
     this._icons = this._options.icons as typeof Icons;
     this._wrapper.onmousedown = (e) => {
@@ -91,7 +98,10 @@ class Compass extends Widget {
    * @private
    */
   protected _bindEvent() {
-    this._viewer.scene.postRender.addEventListener(this._postRenderHandler, this);
+    this._viewer.scene.postRender.addEventListener(
+      this._postRenderHandler,
+      this,
+    );
   }
 
   /**
@@ -99,7 +109,10 @@ class Compass extends Widget {
    * @private
    */
   protected _unbindEvent() {
-    this._viewer.scene.postRender.removeEventListener(this._postRenderHandler, this);
+    this._viewer.scene.postRender.removeEventListener(
+      this._postRenderHandler,
+      this,
+    );
   }
 
   /**
@@ -110,8 +123,8 @@ class Compass extends Widget {
     const heading = this._viewer.camera.heading;
     if (this._outRing)
       this._outRing.style.cssText = `
-      transform :  ${this._ifHover ? 'scale(1.17)' : ''};
-      -webkit-transform :  ${this._ifHover ? 'scale(1.17)' : ''};
+      transform :  ${this._ifHover ? "scale(1.17)" : ""};
+      -webkit-transform :  ${this._ifHover ? "scale(1.17)" : ""};
       `;
     const innerSvg = this._outRing.children.item(0);
     if (innerSvg)
@@ -123,18 +136,21 @@ class Compass extends Widget {
 
   protected _mountContent() {
     const { tips } = this._options;
-    DomUtil.create('div', 'out-ring-bg', this._wrapper);
-    this._outRing = DomUtil.parseDom(this._icons.compass_outer, 'out-ring');
+    DomUtil.create("div", "out-ring-bg", this._wrapper);
+    this._outRing = DomUtil.parseDom(this._icons.compass_outer, "out-ring");
     this._wrapper.appendChild(this._outRing);
-    this._gyro = DomUtil.parseDom(this._icons.compass_inner, 'gyro');
+    this._gyro = DomUtil.parseDom(this._icons.compass_inner, "gyro");
     this._wrapper.appendChild(this._gyro);
     this._outRing.title =
       tips?.outer ??
-      'Drag outer ring: rotate view.\nDrag inner gyroscope: free orbit.\nDouble-click: reset view.\nTIP: You can also free orbit by holding the CTRL key and dragging the map.';
-    this._gyro.title = tips?.inner ?? '';
-    this._rotation_marker = DomUtil.parseDom(this._icons.compass_rotation_marker, 'rotation_marker');
+      "Drag outer ring: rotate view.\nDrag inner gyroscope: free orbit.\nDouble-click: reset view.\nTIP: You can also free orbit by holding the CTRL key and dragging the map.";
+    this._gyro.title = tips?.inner ?? "";
+    this._rotation_marker = DomUtil.parseDom(
+      this._icons.compass_rotation_marker,
+      "rotation_marker",
+    );
     this._wrapper.appendChild(this._rotation_marker);
-    this._rotation_marker.style.visibility = 'hidden';
+    this._rotation_marker.style.visibility = "hidden";
     this._ready = true;
   }
 
@@ -182,7 +198,10 @@ class Compass extends Widget {
     if (scene.mode === SceneMode.COLUMBUS_VIEW && !sscc.enableTranslate) {
       return;
     }
-    if (scene.mode === SceneMode.SCENE3D || scene.mode === SceneMode.COLUMBUS_VIEW) {
+    if (
+      scene.mode === SceneMode.SCENE3D ||
+      scene.mode === SceneMode.COLUMBUS_VIEW
+    ) {
       if (!sscc.enableLook) {
         return;
       }
@@ -204,7 +223,8 @@ class Compass extends Widget {
     camera.flyToBoundingSphere(focusBoundingSphere, {
       offset: new HeadingPitchRange(
         0,
-        CMath.PI_OVER_TWO - Cartesian3.angleBetween(surfaceNormal, camera.directionWC),
+        CMath.PI_OVER_TWO -
+          Cartesian3.angleBetween(surfaceNormal, camera.directionWC),
         Cartesian3.distance(cameraPosition, center),
       ),
       duration: 1.5,
@@ -226,7 +246,9 @@ class Compass extends Widget {
       return undefined;
     }
     if (this._viewer.trackedEntity?.position) {
-      result = this._viewer.trackedEntity.position.getValue(this._viewer.clock.currentTime);
+      result = this._viewer.trackedEntity.position.getValue(
+        this._viewer.clock.currentTime,
+      );
     } else {
       const rayScratch = new Ray();
       rayScratch.origin = camera.positionWC;
@@ -236,7 +258,10 @@ class Compass extends Widget {
     if (!result) {
       return undefined;
     }
-    if (scene.mode === SceneMode.SCENE2D || scene.mode === SceneMode.COLUMBUS_VIEW) {
+    if (
+      scene.mode === SceneMode.SCENE2D ||
+      scene.mode === SceneMode.COLUMBUS_VIEW
+    ) {
       result = camera.worldToCameraCoordinatesPoint(result);
       const unprojectedScratch = new Cartographic();
       if (inWorldCoordinates) {
@@ -295,8 +320,8 @@ class Compass extends Widget {
       this._orbitMouseUpFunction();
     };
 
-    document.removeEventListener('mousemove', this._mouseMoveHandle, false);
-    document.removeEventListener('mouseup', this._mouseUpHandle, false);
+    document.removeEventListener("mousemove", this._mouseMoveHandle, false);
+    document.removeEventListener("mouseup", this._mouseUpHandle, false);
 
     this._orbitLastTimestamp = getTimestamp();
 
@@ -313,15 +338,18 @@ class Compass extends Widget {
         );
         this._orbitIsLook = true;
       } else {
-        this._orbitFrame = Transforms.eastNorthUpToFixedFrame(center, scene.globe.ellipsoid);
+        this._orbitFrame = Transforms.eastNorthUpToFixedFrame(
+          center,
+          scene.globe.ellipsoid,
+        );
         this._orbitIsLook = false;
       }
     }
 
-    this._rotation_marker.style.visibility = 'visible';
-    this._gyro.className += ' gyro-active';
-    document.addEventListener('mousemove', this._mouseMoveHandle, false);
-    document.addEventListener('mouseup', this._mouseUpHandle, false);
+    this._rotation_marker.style.visibility = "visible";
+    this._gyro.className += " gyro-active";
+    document.addEventListener("mousemove", this._mouseMoveHandle, false);
+    document.addEventListener("mouseup", this._mouseUpHandle, false);
     this._viewer.clock.onTick.addEventListener(this._orbitTickFunction, this);
     this._updateAngleAndOpacity(vector, this._compassRectangle.width);
   }
@@ -347,8 +375,8 @@ class Compass extends Widget {
       camera.move(
         new Cartesian3(x, y, 0),
         (Math.max(scene.canvas.clientWidth, scene.canvas.clientHeight) / 100) *
-        camera.positionCartographic.height *
-        distance,
+          camera.positionCartographic.height *
+          distance,
       );
     } else {
       if (this._orbitIsLook) {
@@ -389,7 +417,10 @@ class Compass extends Widget {
    * @private
    */
   private _orbitMouseMoveFunction(e: MouseEvent) {
-    this._updateAngleAndOpacity(this._getVector(e), this._compassRectangle.width);
+    this._updateAngleAndOpacity(
+      this._getVector(e),
+      this._compassRectangle.width,
+    );
   }
 
   /**
@@ -398,13 +429,16 @@ class Compass extends Widget {
    */
   private _orbitMouseUpFunction() {
     if (!this._mouseMoveHandle || !this._mouseUpHandle) return;
-    document.removeEventListener('mousemove', this._mouseMoveHandle, false);
-    document.removeEventListener('mouseup', this._mouseUpHandle, false);
-    this._viewer.clock.onTick.removeEventListener(this._orbitTickFunction, this);
+    document.removeEventListener("mousemove", this._mouseMoveHandle, false);
+    document.removeEventListener("mouseup", this._mouseUpHandle, false);
+    this._viewer.clock.onTick.removeEventListener(
+      this._orbitTickFunction,
+      this,
+    );
     this._mouseMoveHandle = undefined;
     this._mouseUpHandle = undefined;
-    this._rotation_marker.style.visibility = 'hidden';
-    this._gyro.className = this._gyro.className.replace(' gyro-active', '');
+    this._rotation_marker.style.visibility = "hidden";
+    this._gyro.className = this._gyro.className.replace(" gyro-active", "");
   }
 
   /**
@@ -436,8 +470,8 @@ class Compass extends Widget {
     this._mouseUpHandle = () => {
       this._rotateMouseUpFunction();
     };
-    document.removeEventListener('mousemove', this._mouseMoveHandle, false);
-    document.removeEventListener('mouseup', this._mouseUpHandle, false);
+    document.removeEventListener("mousemove", this._mouseMoveHandle, false);
+    document.removeEventListener("mouseup", this._mouseUpHandle, false);
     this._rotateInitialCursorAngle = Math.atan2(-vector.y, vector.x);
     if (this._viewer.trackedEntity) {
       this._rotateFrame = undefined;
@@ -445,14 +479,19 @@ class Compass extends Widget {
       const center = this._getCameraFocus(true);
       if (
         !center ||
-        (scene.mode === SceneMode.COLUMBUS_VIEW && !sscc.enableLook && !sscc.enableTranslate)
+        (scene.mode === SceneMode.COLUMBUS_VIEW &&
+          !sscc.enableLook &&
+          !sscc.enableTranslate)
       ) {
         this._rotateFrame = Transforms.eastNorthUpToFixedFrame(
           camera.positionWC,
           scene.globe.ellipsoid,
         );
       } else {
-        this._rotateFrame = Transforms.eastNorthUpToFixedFrame(center, scene.globe.ellipsoid);
+        this._rotateFrame = Transforms.eastNorthUpToFixedFrame(
+          center,
+          scene.globe.ellipsoid,
+        );
       }
     }
     let oldTransform;
@@ -464,8 +503,8 @@ class Compass extends Widget {
     if (this._rotateFrame && oldTransform) {
       camera.lookAtTransform(oldTransform);
     }
-    document.addEventListener('mousemove', this._mouseMoveHandle, false);
-    document.addEventListener('mouseup', this._mouseUpHandle, false);
+    document.addEventListener("mousemove", this._mouseMoveHandle, false);
+    document.addEventListener("mouseup", this._mouseUpHandle, false);
   }
 
   private _rotateMouseMoveFunction(e: MouseEvent) {
@@ -473,7 +512,9 @@ class Compass extends Widget {
     const vector = this._getVector(e);
     const angle = Math.atan2(-vector.y, vector.x);
     const angleDifference = angle - this._rotateInitialCursorAngle;
-    const newCameraAngle = CMath.zeroToTwoPi(this._rotateInitialCameraAngle - angleDifference);
+    const newCameraAngle = CMath.zeroToTwoPi(
+      this._rotateInitialCameraAngle - angleDifference,
+    );
     let oldTransform;
     if (this._rotateFrame) {
       oldTransform = Matrix4.clone(camera.transform);
@@ -488,8 +529,8 @@ class Compass extends Widget {
 
   private _rotateMouseUpFunction() {
     if (!this._mouseMoveHandle || !this._mouseUpHandle) return;
-    document.removeEventListener('mousemove', this._mouseMoveHandle, false);
-    document.removeEventListener('mouseup', this._mouseUpHandle, false);
+    document.removeEventListener("mousemove", this._mouseMoveHandle, false);
+    document.removeEventListener("mouseup", this._mouseUpHandle, false);
     this._mouseMoveHandle = undefined;
     this._mouseUpHandle = undefined;
   }

@@ -1,8 +1,14 @@
-import { Cartesian3, defined, HeightReference, RuntimeError, VerticalOrigin } from 'cesium';
+import {
+  Cartesian3,
+  defined,
+  HeightReference,
+  RuntimeError,
+  VerticalOrigin,
+} from "cesium";
 
-import type { GeoJSON } from 'geojson';
-import type { GeoJsonPrimitiveLayer } from './GeoJsonPrimitiveLayer';
-import type { GeoJsonPrimitiveLayerOptions } from './typings';
+import type { GeoJSON } from "geojson";
+import type { GeoJsonPrimitiveLayer } from "./GeoJsonPrimitiveLayer";
+import type { GeoJsonPrimitiveLayerOptions } from "./typings";
 
 export type CrsFunction = (coors: number[]) => Cartesian3;
 export function defaultCrsFunction(coordinates: number[]) {
@@ -10,13 +16,15 @@ export function defaultCrsFunction(coordinates: number[]) {
 }
 
 export const crsNames: Record<string, CrsFunction> = {
-  'urn:ogc:def:crs:OGC:1.3:CRS84': defaultCrsFunction,
-  'EPSG:4326': defaultCrsFunction,
-  'urn:ogc:def:crs:EPSG::4326': defaultCrsFunction,
+  "urn:ogc:def:crs:OGC:1.3:CRS84": defaultCrsFunction,
+  "EPSG:4326": defaultCrsFunction,
+  "urn:ogc:def:crs:EPSG::4326": defaultCrsFunction,
 };
 
-export const crsLinkHrefs: Record<string, (properties: any) => CrsFunction> = {};
-export const crsLinkTypes: Record<string, (properties: any) => CrsFunction> = {};
+export const crsLinkHrefs: Record<string, (properties: any) => CrsFunction> =
+  {};
+export const crsLinkTypes: Record<string, (properties: any) => CrsFunction> =
+  {};
 
 export function coordinatesArrayToCartesianArray(
   coordinates: number[][],
@@ -30,7 +38,7 @@ export function coordinatesArrayToCartesianArray(
 }
 
 type GetKey<T extends { type: string }> = {
-  [K in T['type']]: (
+  [K in T["type"]]: (
     geoJsonLayer: GeoJsonPrimitiveLayer,
     geoJson: any,
     geometryCollection: any,
@@ -74,7 +82,7 @@ export function processFeature(
   }
 
   if (!defined(feature.geometry)) {
-    throw new RuntimeError('feature.geometry is required.');
+    throw new RuntimeError("feature.geometry is required.");
   }
 
   const geometryType = feature.geometry.type;
@@ -82,7 +90,13 @@ export function processFeature(
   if (!defined(geometryHandler)) {
     throw new RuntimeError(`Unknown geometry type: ${geometryType}`);
   }
-  geometryHandler(geoJsonLayer, feature, feature.geometry, crsFunction, options);
+  geometryHandler(
+    geoJsonLayer,
+    feature,
+    feature.geometry,
+    crsFunction,
+    options,
+  );
 }
 
 export function processFeatureCollection(
@@ -130,7 +144,7 @@ export function createPoint(
   const properties = geoJson.properties ?? {};
 
   geoJsonLayer.addPoint({
-    type: 'Point',
+    type: "Point",
     position: crsFunction(coordinates),
     style: {
       color: color,
@@ -144,18 +158,26 @@ export function createPoint(
   /** add billboard */
   if (!symbol) return;
   let canvasOrPromise;
-  if (symbol !== '' && defined(symbol)) {
+  if (symbol !== "" && defined(symbol)) {
     if (symbol.length === 1) {
-      canvasOrPromise = geoJsonLayer.pinBuilder.fromText(symbol.toUpperCase(), color, size);
+      canvasOrPromise = geoJsonLayer.pinBuilder.fromText(
+        symbol.toUpperCase(),
+        color,
+        size,
+      );
     } else {
-      canvasOrPromise = geoJsonLayer.pinBuilder.fromMakiIconId(symbol, color, size);
+      canvasOrPromise = geoJsonLayer.pinBuilder.fromMakiIconId(
+        symbol,
+        color,
+        size,
+      );
     }
   } else {
     canvasOrPromise = geoJsonLayer.pinBuilder.fromColor(color, size);
   }
 
   const billboard = geoJsonLayer.addBillboard({
-    type: 'Billboard',
+    type: "Billboard",
     position: crsFunction(coordinates),
     style: {
       verticalOrigin: VerticalOrigin.BOTTOM,
@@ -187,7 +209,13 @@ export function processPoint(
   crsFunction: CrsFunction,
   options: GeoJsonPrimitiveLayerOptions,
 ) {
-  createPoint(geoJsonLayer, geoJson, crsFunction, geometry.coordinates, options);
+  createPoint(
+    geoJsonLayer,
+    geoJson,
+    crsFunction,
+    geometry.coordinates,
+    options,
+  );
 }
 
 export function processMultiPoint(
@@ -212,7 +240,7 @@ export function createLineString(
   const properties = geoJson.properties ?? {};
   const positions = coordinatesArrayToCartesianArray(coordinates, crsFunction);
   geoJsonLayer.addPolyline({
-    type: 'Polyline',
+    type: "Polyline",
     positions,
     properties,
     style: {
@@ -229,7 +257,13 @@ export function processLineString(
   crsFunction: CrsFunction,
   options: GeoJsonPrimitiveLayerOptions,
 ) {
-  createLineString(geoJsonLayer, geoJson, crsFunction, geometry.coordinates, options);
+  createLineString(
+    geoJsonLayer,
+    geoJson,
+    crsFunction,
+    geometry.coordinates,
+    options,
+  );
 }
 
 export function processMultiLineString(
@@ -257,9 +291,12 @@ export function createPolygon(
   }
   const properties = geoJson.properties ?? {};
 
-  const positions = coordinatesArrayToCartesianArray(coordinates[0], crsFunction);
+  const positions = coordinatesArrayToCartesianArray(
+    coordinates[0],
+    crsFunction,
+  );
   geoJsonLayer.addPolygon({
-    type: 'Polygon',
+    type: "Polygon",
     positions,
     style: {
       material: options.fill,
@@ -277,7 +314,13 @@ export function processPolygon(
   crsFunction: CrsFunction,
   options: GeoJsonPrimitiveLayerOptions,
 ) {
-  createPolygon(geoJsonLayer, geoJson, crsFunction, geometry.coordinates, options);
+  createPolygon(
+    geoJsonLayer,
+    geoJson,
+    crsFunction,
+    geometry.coordinates,
+    options,
+  );
 }
 
 export function processMultiPolygon(

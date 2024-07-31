@@ -1,35 +1,39 @@
-import { DefaultColor } from '../renderConfig';
+import { DefaultColor } from "../renderConfig";
 import {
   section2CustomColor,
   single2paintColor,
   transCustomColorItem,
   value2Custom,
-} from './renderTool';
+} from "./renderTool";
 
-import type { PolylineEntityStyle } from '../renderConfig/entityStyle';
-import type { GeoJsonLineStyle } from '../renderConfig/typing';
+import type { PolylineEntityStyle } from "../renderConfig/entityStyle";
+import type { GeoJsonLineStyle } from "../renderConfig/typing";
 
-const LineConfig2Style = async (data: Record<string, any>[], jsonStyle: GeoJsonLineStyle) => {
+const LineConfig2Style = async (
+  data: Record<string, any>[],
+  jsonStyle: GeoJsonLineStyle,
+) => {
   const { type, config } = jsonStyle;
   const style: PolylineEntityStyle = {
-    type: 'line',
+    type: "line",
     paint: {},
   };
   const opacity = config.opacity;
-  const commonPaint: typeof style['paint'] = {
-    width: config['line-width'],
+  const commonPaint: (typeof style)["paint"] = {
+    width: config["line-width"],
   };
 
   switch (type) {
-    case 'single':
+    case "single":
       style.paint = {
         material: single2paintColor(config.color, opacity),
         ...commonPaint,
       };
       return style;
 
-    case 'section':
-      const sectionCustom = config.custom ?? (await section2CustomColor(data, config));
+    case "section":
+      const sectionCustom =
+        config.custom ?? (await section2CustomColor(data, config));
 
       style.paint = {
         ...commonPaint,
@@ -43,7 +47,7 @@ const LineConfig2Style = async (data: Record<string, any>[], jsonStyle: GeoJsonL
       };
       break;
 
-    case 'value':
+    case "value":
       const valueCustom = config.custom ?? (await value2Custom(data, config));
 
       style.paint = {

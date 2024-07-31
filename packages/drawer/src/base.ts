@@ -1,8 +1,8 @@
-import { CallbackProperty, Cartesian2, defined } from 'cesium';
+import { CallbackProperty, Cartesian2, defined } from "cesium";
 
-import type { Cartesian3, Entity } from 'cesium';
-import type Painter from './painter';
-import type { EventArgs } from '@cesium-extends/subscriber';
+import type { Cartesian3, Entity } from "cesium";
+import type Painter from "./painter";
+import type { EventArgs } from "@cesium-extends/subscriber";
 
 type CreateFunc = (callback: CallbackProperty, bool: boolean) => Entity;
 
@@ -36,7 +36,9 @@ export default class BasicGraphices {
   dynamicOptions: object = {};
   sameStyle: boolean;
   protected _onPointsChange: ((points: Cartesian3[]) => void) | undefined;
-  protected _onEnd: ((entity: Entity, positions: Cartesian3[]) => void) | undefined;
+  protected _onEnd:
+    | ((entity: Entity, positions: Cartesian3[]) => void)
+    | undefined;
 
   /**
    *
@@ -63,8 +65,9 @@ export default class BasicGraphices {
     // 如果最近两个点的距离过小则return
     if (
       this._lastClickPosition &&
-      Cartesian2.magnitude(Cartesian2.subtract(this._lastClickPosition, move.position, {} as any)) <
-        this._mouseDelta
+      Cartesian2.magnitude(
+        Cartesian2.subtract(this._lastClickPosition, move.position, {} as any),
+      ) < this._mouseDelta
     )
       return;
 
@@ -82,32 +85,40 @@ export default class BasicGraphices {
   }
 
   protected _moving(event: EventArgs): void {
-    if (!event.endPosition || this.painter._activeShapePoints.length === 0) return;
+    if (!event.endPosition || this.painter._activeShapePoints.length === 0)
+      return;
     const earthPosition = this.painter.pickCartesian3(event.endPosition);
     if (earthPosition && defined(earthPosition)) {
       this.painter._activeShapePoints.pop();
       this.painter._activeShapePoints.push(earthPosition);
-      if (this._onPointsChange) this._onPointsChange([...this.painter._activeShapePoints]);
+      if (this._onPointsChange)
+        this._onPointsChange([...this.painter._activeShapePoints]);
     }
     this.painter._viewer.scene.requestRender();
   }
 
   protected _playOff(createShape: (positions: Cartesian3[]) => Entity): Entity {
     this.painter._activeShapePoints.pop();
-    if (this._onPointsChange) this._onPointsChange([...this.painter._activeShapePoints]);
+    if (this._onPointsChange)
+      this._onPointsChange([...this.painter._activeShapePoints]);
 
     this.result = createShape(this.painter._activeShapePoints);
-    if (this._onEnd) this._onEnd(this.result, [...this.painter._activeShapePoints]);
+    if (this._onEnd)
+      this._onEnd(this.result, [...this.painter._activeShapePoints]);
 
     this.painter.reset();
 
-    this._lastClickPosition = new Cartesian2(Number.POSITIVE_INFINITY, Number.POSITIVE_INFINITY);
+    this._lastClickPosition = new Cartesian2(
+      Number.POSITIVE_INFINITY,
+      Number.POSITIVE_INFINITY,
+    );
     return this.result;
   }
 
   protected _cancel(createShape: (positions: Cartesian3[]) => Entity): void {
     this.painter._activeShapePoints.pop();
-    if (this._onPointsChange) this._onPointsChange([...this.painter._activeShapePoints]);
+    if (this._onPointsChange)
+      this._onPointsChange([...this.painter._activeShapePoints]);
     this.result = createShape(this.painter._activeShapePoints);
 
     const entity = this.painter._breakPointEntities.pop();
@@ -116,7 +127,8 @@ export default class BasicGraphices {
 
   SetBreakpoint(earthPosition: Cartesian3): void {
     this.painter._activeShapePoints.push(earthPosition);
-    if (this._onPointsChange) this._onPointsChange([...this.painter._activeShapePoints]);
+    if (this._onPointsChange)
+      this._onPointsChange([...this.painter._activeShapePoints]);
     const $point = this.painter.createPoint(earthPosition);
 
     this.painter._breakPointEntities.push($point);
