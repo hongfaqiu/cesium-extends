@@ -113,7 +113,7 @@ export default class Drawer {
    */
   private _action: ActionCallback | undefined;
 
-  private _sameStyle!: boolean;
+  private _sameStyle: boolean;
   mouseTooltip: MouseTooltip;
   private _tips: Required<DrawOption['tips']>;
 
@@ -142,6 +142,8 @@ export default class Drawer {
     this._model = defaultValue(this._option.model, defaultOptions.model);
 
     this._action = this._option.action;
+
+    this._sameStyle = options?.sameStyle ?? true
 
     this._tips = {
       ...defaultOptions.tips,
