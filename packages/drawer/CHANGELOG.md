@@ -1,3 +1,10 @@
+## @cesium-extends/drawer [1.3.5](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/drawer@1.3.4...@cesium-extends/drawer@1.3.5) (2024-07-31)
+
+
+### Bug Fixes
+
+* **drawer:** sameStyle的配置没有正确生效 ([b9c6160](https://github.com/hongfaqiu/cesium-extends/commit/b9c6160ac17eae4515ba0e463b7ce5a73789fb88))
+
 ## @cesium-extends/drawer [1.3.4](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/drawer@1.3.3...@cesium-extends/drawer@1.3.4) (2024-07-31)
 
 
