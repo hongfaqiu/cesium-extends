@@ -10,6 +10,7 @@
     "build:doc": "turbo build --filter=doc",
     "clean": "turbo clean",
     "test": "turbo test",
+    "format": "prettier --write .",
     "coverage": "vitest run --coverage",
     "release": "multi-semantic-release --ignore-private-packages=true --deps.bump=inherit",
     "prepare": "husky install"

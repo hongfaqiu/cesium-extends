@@ -11,6 +11,7 @@
       "dependsOn": ["^test"]
     },
     "lint": {},
+    "format": {},
     "dev": {
       "cache": false,
       "persistent": true

@@ -101,37 +101,37 @@ importers:
     dependencies:
       '@cesium-extends/compass':
         specifier: 1.2.1
-        version: 1.2.1(cesium@1.105.1)
+        version: link:../compass
       '@cesium-extends/drawer':
-        specifier: 1.3.3
-        version: 1.3.3(cesium@1.105.1)
+        specifier: 1.3.5
+        version: link:../drawer
       '@cesium-extends/geojson-render':
         specifier: 1.0.4
-        version: 1.0.4(cesium@1.105.1)
+        version: link:../geojson-render
       '@cesium-extends/heat':
         specifier: 1.0.3
-        version: 1.0.3(cesium@1.105.1)
+        version: link:../heat
       '@cesium-extends/measure':
         specifier: 1.1.2
-        version: 1.1.2(cesium@1.105.1)
+        version: link:../measure
       '@cesium-extends/popup':
         specifier: 1.0.0
-        version: 1.0.0(cesium@1.105.1)
+        version: link:../popup
       '@cesium-extends/primitive-geojson':
         specifier: 1.0.7
-        version: 1.0.7(cesium@1.105.1)
+        version: link:../primitive-geojson
       '@cesium-extends/subscriber':
         specifier: 1.1.0
-        version: 1.1.0(cesium@1.105.1)
+        version: link:../subscriber
       '@cesium-extends/sync-viewer':
         specifier: 1.0.0
-        version: 1.0.0(cesium@1.105.1)
+        version: link:../sync-viewer
       '@cesium-extends/tooltip':
         specifier: 1.2.2
-        version: 1.2.2(cesium@1.105.1)
+        version: link:../tooltip
       '@cesium-extends/zoom-control':
         specifier: 1.2.1
-        version: 1.2.1(cesium@1.105.1)
+        version: link:../zoom-controller
       cesium:
         specifier: '*'
         version: 1.105.1
@@ -146,7 +146,7 @@ importers:
     dependencies:
       '@cesium-extends/common':
         specifier: ^1.0.1
-        version: 1.0.1(cesium@1.104.0)
+        version: link:../common
     devDependencies:
       cesium:
         specifier: ^1.103.0
@@ -156,13 +156,13 @@ importers:
     dependencies:
       '@cesium-extends/common':
         specifier: ^1.0.1
-        version: 1.0.1(cesium@1.104.0)
+        version: link:../common
       '@cesium-extends/subscriber':
         specifier: ^1.0.1
-        version: 1.1.0(cesium@1.104.0)
+        version: link:../subscriber
       '@cesium-extends/tooltip':
         specifier: ^1.2.1
-        version: 1.2.2(cesium@1.104.0)
+        version: link:../tooltip
     devDependencies:
       cesium:
         specifier: ^1.104.0
@@ -172,7 +172,7 @@ importers:
     dependencies:
       '@cesium-extends/primitive-geojson':
         specifier: ^1.0.1
-        version: 1.0.7(cesium@1.104.0)
+        version: link:../primitive-geojson
       '@turf/turf':
         specifier: ^6.5.0
         version: 6.5.0
@@ -198,10 +198,10 @@ importers:
         version: 1.3.2(cesium@1.104.0)
       '@cesium-extends/subscriber':
         specifier: ^1.0.1
-        version: 1.1.0(cesium@1.104.0)
+        version: link:../subscriber
       '@cesium-extends/tooltip':
         specifier: ^1.2.1
-        version: 1.2.2(cesium@1.104.0)
+        version: link:../tooltip
       '@turf/area':
         specifier: ^6.5.0
         version: 6.5.0
@@ -242,7 +242,7 @@ importers:
     devDependencies:
       '@cesium-extends/subscriber':
         specifier: 1.1.0
-        version: 1.1.0(cesium@1.104.0)
+        version: link:../subscriber
       '@types/geojson':
         specifier: ^7946.0.10
         version: 7946.0.10
@@ -266,11 +266,11 @@ importers:
     dependencies:
       '@cesium-extends/common':
         specifier: ^1.0.1
-        version: 1.0.1(cesium@1.104.0)
+        version: link:../common
     devDependencies:
       '@cesium-extends/subscriber':
         specifier: ^1.0.1
-        version: 1.1.0(cesium@1.104.0)
+        version: link:../subscriber
       cesium:
         specifier: ^1.103.0
         version: 1.104.0
@@ -279,7 +279,7 @@ importers:
     dependencies:
       '@cesium-extends/common':
         specifier: ^1.0.1
-        version: 1.0.1(cesium@1.104.0)
+        version: link:../common
     devDependencies:
       cesium:
         specifier: ^1.103.0
@@ -491,43 +491,8 @@ packages:
     peerDependencies:
       cesium: '*'
 
-  '@cesium-extends/compass@1.2.1':
-    resolution: {integrity: sha512-OwnhZUksQfuUbWrRDoF6bElQuByeCZxyN+Sup6fL/pPNUJSMiFCGqz61LZLgLMdpMtAo7vickniUgWjY/OnAKQ==}
-    peerDependencies:
-      cesium: '*'
-
   '@cesium-extends/drawer@1.3.2':
     resolution: {integrity: sha512-sb0kaNsOFozXRUwPWyO7tvTkyWdq9T7+WzEOvdkjgSk7b6O0ovnqga0j6eOEGLTAgaL+pQhHyjM9d1rz//6ZoQ==}
-    peerDependencies:
-      cesium: '*'
-
-  '@cesium-extends/drawer@1.3.3':
-    resolution: {integrity: sha512-gjjENQRNxMdeFncn/h+ERssomC41oqpyAxfZHeO2P8art70yzwfmWHWVBF/zF+v07ZCi3bcwYkAPK4RbUzEF2g==}
-    peerDependencies:
-      cesium: '*'
-
-  '@cesium-extends/geojson-render@1.0.4':
-    resolution: {integrity: sha512-o4sdxdqyofhySD63F1F6TyhSU0ZUnY2AkqUmFk7njkkWbJylZ7NgcRPitzI1BfQYKjME2Plpv0+oBYGW/qFTWQ==}
-    peerDependencies:
-      cesium: '*'
-
-  '@cesium-extends/heat@1.0.3':
-    resolution: {integrity: sha512-NCjlaXyP6CST4J+m23GkLWXZC7me+/6EvZQ3WD/4aUZyZyCX0wQFHiODRWjOp503WRIdCOkBGl4GXO3T4AXndA==}
-    peerDependencies:
-      cesium: '*'
-
-  '@cesium-extends/measure@1.1.2':
-    resolution: {integrity: sha512-4v8ekdpOkUg0O6AVuClpuOk7BW/tV//9RS19WtOTggiBk3cGmA2oRlcl+rO6JGsk3S7CDdTn2/0In1qwY/nZaw==}
-    peerDependencies:
-      cesium: '*'
-
-  '@cesium-extends/popup@1.0.0':
-    resolution: {integrity: sha512-7B8Yhqc4qPwi1I6VL540PCpLKFoMosOa7FbX4pvakrokr1pGCQk4h+8xO8dFP1RBRIOAdYFJ43THPm6iuRMyPA==}
-    peerDependencies:
-      cesium: '*'
-
-  '@cesium-extends/primitive-geojson@1.0.7':
-    resolution: {integrity: sha512-v9CZ1Eru9M1TV3Dt0lSpiDohWdIAR+202nlrpMEryJeWGm60QlxjpV04udBNsvYWLeVlI3d7nyzPwZhW4GbynQ==}
     peerDependencies:
       cesium: '*'
 
@@ -536,18 +501,8 @@ packages:
     peerDependencies:
       cesium: '*'
 
-  '@cesium-extends/sync-viewer@1.0.0':
-    resolution: {integrity: sha512-sF89andMbGY7O6DGu2jbV8Viy51wktsCGlclDQ9j/OJlrE67MJm9KEktu+Mhl2+9HbhxuLMHWIqk5lKXe0kUwg==}
-    peerDependencies:
-      cesium: '*'
-
   '@cesium-extends/tooltip@1.2.2':
     resolution: {integrity: sha512-RhCjbmol+K2cs7JBbRk6A3cOjNQYm4y5LIGch0UgQ8Zyu+Q8DBpQwOjY8E7oZNMm6vMwJi+Pzv8jmOqfge82nA==}
-    peerDependencies:
-      cesium: '*'
-
-  '@cesium-extends/zoom-control@1.2.1':
-    resolution: {integrity: sha512-TpHL3/laQQs9LSZnKPahRb2OLfCuGt/WMEYxASBfgXRnEyP/9wbZXghCGw6nCGt5IzkXhGkJ/jz/5Cu497trdA==}
     peerDependencies:
       cesium: '*'
 
@@ -9436,94 +9391,20 @@ snapshots:
     dependencies:
       cesium: 1.104.0
 
-  '@cesium-extends/common@1.0.1(cesium@1.105.1)':
-    dependencies:
-      cesium: 1.105.1
-
-  '@cesium-extends/compass@1.2.1(cesium@1.105.1)':
-    dependencies:
-      '@cesium-extends/common': 1.0.1(cesium@1.105.1)
-      cesium: 1.105.1
-
   '@cesium-extends/drawer@1.3.2(cesium@1.104.0)':
     dependencies:
       '@cesium-extends/subscriber': 1.1.0(cesium@1.104.0)
       '@cesium-extends/tooltip': 1.2.2(cesium@1.104.0)
       cesium: 1.104.0
 
-  '@cesium-extends/drawer@1.3.3(cesium@1.105.1)':
-    dependencies:
-      '@cesium-extends/subscriber': 1.1.0(cesium@1.105.1)
-      '@cesium-extends/tooltip': 1.2.2(cesium@1.105.1)
-      cesium: 1.105.1
-
-  '@cesium-extends/geojson-render@1.0.4(cesium@1.105.1)':
-    dependencies:
-      '@cesium-extends/primitive-geojson': 1.0.7(cesium@1.105.1)
-      '@turf/turf': 6.5.0
-      cesium: 1.105.1
-
-  '@cesium-extends/heat@1.0.3(cesium@1.105.1)':
-    dependencies:
-      '@mars3d/heatmap.js': 2.0.7
-      cesium: 1.105.1
-
-  '@cesium-extends/measure@1.1.2(cesium@1.105.1)':
-    dependencies:
-      '@cesium-extends/drawer': 1.3.3(cesium@1.105.1)
-      '@cesium-extends/subscriber': 1.1.0(cesium@1.105.1)
-      '@cesium-extends/tooltip': 1.2.2(cesium@1.105.1)
-      '@turf/area': 6.5.0
-      '@turf/helpers': 6.5.0
-      '@turf/intersect': 6.5.0
-      '@turf/random': 6.5.0
-      '@turf/voronoi': 6.5.0
-      cesium: 1.105.1
-
-  '@cesium-extends/popup@1.0.0(cesium@1.105.1)':
-    dependencies:
-      cesium: 1.105.1
-
-  '@cesium-extends/primitive-geojson@1.0.7(cesium@1.104.0)':
-    dependencies:
-      '@turf/centroid': 6.5.0
-      '@turf/helpers': 6.5.0
-      cesium: 1.104.0
-      nanoid: 4.0.2
-
-  '@cesium-extends/primitive-geojson@1.0.7(cesium@1.105.1)':
-    dependencies:
-      '@turf/centroid': 6.5.0
-      '@turf/helpers': 6.5.0
-      cesium: 1.105.1
-      nanoid: 4.0.2
-
   '@cesium-extends/subscriber@1.1.0(cesium@1.104.0)':
     dependencies:
       cesium: 1.104.0
-
-  '@cesium-extends/subscriber@1.1.0(cesium@1.105.1)':
-    dependencies:
-      cesium: 1.105.1
-
-  '@cesium-extends/sync-viewer@1.0.0(cesium@1.105.1)':
-    dependencies:
-      cesium: 1.105.1
 
   '@cesium-extends/tooltip@1.2.2(cesium@1.104.0)':
     dependencies:
       '@cesium-extends/common': 1.0.1(cesium@1.104.0)
       cesium: 1.104.0
-
-  '@cesium-extends/tooltip@1.2.2(cesium@1.105.1)':
-    dependencies:
-      '@cesium-extends/common': 1.0.1(cesium@1.105.1)
-      cesium: 1.105.1
-
-  '@cesium-extends/zoom-control@1.2.1(cesium@1.105.1)':
-    dependencies:
-      '@cesium-extends/common': 1.0.1(cesium@1.105.1)
-      cesium: 1.105.1
 
   '@cesium/engine@2.2.0':
     dependencies:
