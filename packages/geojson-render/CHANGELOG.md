@@ -1,3 +1,10 @@
+## @cesium-extends/geojson-render [1.0.5](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/geojson-render@1.0.4...@cesium-extends/geojson-render@1.0.5) (2024-08-12)
+
+
+### Bug Fixes
+
+* **geojsn-render:** fix icon label render ([fa083a0](https://github.com/hongfaqiu/cesium-extends/commit/fa083a051494caa9f1cb20fe5ca8f797cef52d35))
+
 ## @cesium-extends/geojson-render [1.0.4](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/geojson-render@1.0.3...@cesium-extends/geojson-render@1.0.4) (2024-01-12)
 
 ### Bug Fixes
