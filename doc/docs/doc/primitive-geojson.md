@@ -23,13 +23,8 @@ npm install @cesium-extends/primitive-geojson
 
 ```javascript
 import { GeoJsonPrimitiveLayer } from '@cesium-extends/primitive-geojson';
-```
 
-然后创建 `GeoJsonPrimitiveLayer` 类的新实例并加载您的 GeoJSON 数据：
-
-```javascript
-const layer = new GeoJsonPrimitiveLayer();
-layer.load('path/to/data.json').then(() => {
+GeoJsonPrimitiveLayer.load('path/to/data.json').then(() => {
   viewer.scene.primitives.add(primitiveLayer.primitiveCollection);
 });
 ```
@@ -173,7 +168,7 @@ layer.load('path/to/data.json').then(() => {
 
 其中 `options` 的类型说明：
 
-`load(url, options)` 方法用于异步加载提供的 GeoJSON 或 TopoJSON 数据，并替换任何现有数据。其中：
+`load(url, options)` 方法用于异步加载提供的 GeoJSON 或 TopoJSON 数据。其中：
 
 - `url`: 要加载的 GeoJSON 文件路径或 `Resource` 对象。
 - `options`: 可选参数对象，包含如下属性：

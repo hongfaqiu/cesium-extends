@@ -102,7 +102,7 @@ describe("GeoJsonPrimitiveLayer", () => {
       properties: {},
     };
 
-    await layer.load(feature);
-    expect(layer.featureItems.length).to.equal(1);
+    const newLayer = await GeoJsonPrimitiveLayer.load(feature);
+    expect(newLayer.featureItems.length).to.equal(1);
   });
 });
