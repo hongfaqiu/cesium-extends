@@ -1,3 +1,11 @@
+## @cesium-extends/primitive-geojson [1.0.8](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/primitive-geojson@1.0.7...@cesium-extends/primitive-geojson@1.0.8) (2024-08-12)
+
+
+### Bug Fixes
+
+* change load to static function ([ba1a6ca](https://github.com/hongfaqiu/cesium-extends/commit/ba1a6ca1781f00be422bd355e6e125b65f0e0f2c))
+* **geojsn-render:** fix icon label render ([fa083a0](https://github.com/hongfaqiu/cesium-extends/commit/fa083a051494caa9f1cb20fe5ca8f797cef52d35))
+
 ## @cesium-extends/primitive-geojson [1.0.7](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/primitive-geojson@1.0.6...@cesium-extends/primitive-geojson@1.0.7) (2024-01-12)
 
 ### Bug Fixes
