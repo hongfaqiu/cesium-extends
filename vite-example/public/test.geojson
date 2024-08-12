@@ -1,0 +1,38 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "点1",
+        "value": 10
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [116.3, 39.9]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "点2",
+        "value": 20
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [116.4, 39.95]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "点3",
+        "value": 30
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [116.5, 39.85]
+      }
+    }
+  ]
+}

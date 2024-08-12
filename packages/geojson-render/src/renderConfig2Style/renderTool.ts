@@ -4,7 +4,7 @@ import geojsonStatisticQuery from "../geojsonStatisticQuery";
 import { DefaultColor } from "../renderConfig";
 import { NoDataColor } from "../renderConfig/ConstantEnum";
 
-import type { SpriteConfig } from "./pbf";
+import type { SpriteConfig } from "./sprite";
 import type { Entity } from "cesium";
 import type { CustomPaintItem } from "../renderConfig/entityStyle";
 import type { RGBColor } from "../renderConfig/typing";

@@ -47,12 +47,14 @@ export const primitiveGeoJsonRender = async (
 
     switch (type) {
       case "point":
-        if (style.layout?.image) {
+        const image = style.layout?.image ?? customStyle.image;
+        if (image) {
           primitiveLayer.addBillboard({
             ...(feature as BillboardPrimitiveItem),
             style: {
               ...style.layout,
               ...customStyle,
+              image
             },
           });
         }

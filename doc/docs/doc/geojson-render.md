@@ -136,6 +136,18 @@ renderPrimitiveGeoJson(primitiveLayer, config).then((entityStyle) => {
 
 <code src="@/components/Map/geojson-render/bubble-auto.tsx"></code>
 
+### 精灵图图标渲染
+
+下面的示例在 bubble 的基础上，使用精灵图对点进行渲染
+
+<code src="@/components/Map/geojson-render/single-sprite.tsx"></code>
+
+### 点聚合
+
+下面的示例中在 bubble 的基础上，做了分段多色的聚合，只能使用 `GeoJsonDataSource` 类渲染
+
+<code src="@/components/Map/geojson-render/bubble-cluster.tsx"></code>
+
 ### 面 height
 
 下面的示例中添加了一个大约有 4w 个面的美国加利福尼亚州地热数据的 geojson，并按照 est 字段对每个方格进行高度和颜色渲染

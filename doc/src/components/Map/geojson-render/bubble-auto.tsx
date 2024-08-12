@@ -12,8 +12,6 @@ import { GeoJsonDataSource } from 'cesium';
 
 import { initMap } from '@/utils/initMap';
 
-const primitiveObj = new GeoJsonPrimitiveLayer();
-
 const config: GeoJsonRenderConfig = {
   type: 'point',
   style: {
@@ -21,16 +19,29 @@ const config: GeoJsonRenderConfig = {
     config: {
       field: 'MAG',
       'fill-type': 'multi',
-      'section-type': 'auto',
+      'section-type': 'average',
       'section-num': 10,
       'label-size': [2, 40],
       'circle-stroke-width': 1,
       'circle-stroke-color': 'white',
+      colors: [
+        '#313695',
+        '#4575b4',
+        '#74add1',
+        '#abd9e9',
+        '#e0f3f8',
+        '#ffffbf',
+        '#fee090',
+        '#fdae61',
+        '#f46d43',
+        '#d73027',
+        '#a50026',
+      ]
     },
   },
 };
 
-async function addGeojsonByDataSource(
+export async function addGeojsonByDataSource(
   viewer: Viewer,
   url: string,
   config: GeoJsonRenderConfig,
@@ -42,13 +53,13 @@ async function addGeojsonByDataSource(
   return dataSource;
 }
 
-async function addGeojsonByPrimitive(
+export async function addGeojsonByPrimitive(
   viewer: Viewer,
   url: string,
   config: GeoJsonRenderConfig,
 ) {
-  const primitiveLayer = await primitiveObj.load(url);
-  await renderPrimitiveGeoJson(primitiveObj, config);
+  const primitiveLayer = await GeoJsonPrimitiveLayer.load(url);
+  await renderPrimitiveGeoJson(primitiveLayer, config);
   viewer.scene.primitives.add(primitiveLayer.primitiveCollection);
   viewer.scene.primitives.lowerToBottom(primitiveLayer.primitiveCollection);
 
@@ -59,7 +70,7 @@ let viewer: Viewer;
 const Map: React.FC = () => {
   useEffect(() => {
     viewer = initMap('cesiumContainer');
-    addGeojsonByDataSource(viewer, '/earthquack.geojson', config);
+    addGeojsonByPrimitive(viewer, '/earthquack.geojson', config);
 
     return () => {
       viewer?.destroy();

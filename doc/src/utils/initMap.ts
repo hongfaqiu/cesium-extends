@@ -28,6 +28,7 @@ export function initMap(
     navigationHelpButton: false, // 右上角帮助按钮
     shouldAnimate: true,
     useBrowserRecommendedResolution: false,
+    maximumRenderTimeChange: Infinity, // 静止时不刷新,减少系统消耗
   });
 
   viewer.scene.fog.density = 0.0001; // 雾气中水分含量

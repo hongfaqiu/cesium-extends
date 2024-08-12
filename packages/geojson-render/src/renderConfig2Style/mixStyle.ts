@@ -1,4 +1,4 @@
-import { getSpriteJson } from "./pbf";
+import { getSpriteJson } from "./sprite";
 import { image2canvas, loadImage, single2paintColor } from "./renderTool";
 
 import type { MixEntityStyle } from "../renderConfig/entityStyle";
@@ -12,8 +12,8 @@ const MixConfig2Style = async (
   const spriteOption = !sprite
     ? undefined
     : {
-        spriteImage: await loadImage(sprite.url + ".png", sprite.params),
-        json: await getSpriteJson(sprite.url + ".json", sprite.params),
+      spriteImage: await loadImage(sprite.url.replace(/(.*)\.(.*)/, "$1.png"), sprite.params),
+      json: await getSpriteJson(sprite.url.replace(/(.*)\.(.*)/, "$1.json"), sprite.params),
       };
   const imageName = config.markerSymbol;
   const image =

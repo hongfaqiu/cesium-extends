@@ -99,8 +99,8 @@ export type PointSingleStyle = {
   type: "single";
   config: {
     "label-type"?: "vector" | "icon";
-    color?: GeoJsonColor;
     "icon-image"?: string;
+    color?: GeoJsonColor;
     "label-size"?: number;
   } & PointCommonOptions;
 };
@@ -108,6 +108,8 @@ export type PointSingleStyle = {
 export type PointSectionStyle = {
   type: "section";
   config: {
+    "label-type"?: "vector" | "icon";
+    "icon-image"?: string;
     field?: string;
     "section-type"?: "natural" | "average";
     color?: string[];
@@ -118,6 +120,8 @@ export type PointSectionStyle = {
 export type PointValueStyle = {
   type: "value";
   config: {
+    "label-type"?: "vector" | "icon";
+    "icon-image"?: string;
     field?: string;
     color?: string[];
     "label-size"?: number;
@@ -127,6 +131,8 @@ export type PointValueStyle = {
 export type PointBubbleStyle = {
   type: "bubble";
   config: {
+    "label-type"?: "vector" | "icon";
+    "icon-image"?: string;
     field?: string;
     "section-type": "natural" | "average" | "auto";
     "section-num"?: number;

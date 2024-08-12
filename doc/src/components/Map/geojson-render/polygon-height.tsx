@@ -8,8 +8,6 @@ import {
 
 import { initMap } from '@/utils/initMap';
 
-const primitiveObj = new GeoJsonPrimitiveLayer();
-
 const config: GeoJsonRenderConfig = {
   type: 'polygon',
   style: {
@@ -50,8 +48,8 @@ async function addGeojsonByPrimitive(
   url: string,
   config: GeoJsonRenderConfig,
 ) {
-  const primitiveLayer = await primitiveObj.load(url);
-  await renderPrimitiveGeoJson(primitiveObj, config);
+  const primitiveLayer = await GeoJsonPrimitiveLayer.load(url);
+  await renderPrimitiveGeoJson(primitiveLayer, config);
   viewer.scene.primitives.add(primitiveLayer.primitiveCollection);
   viewer.scene.primitives.lowerToBottom(primitiveLayer.primitiveCollection);
 

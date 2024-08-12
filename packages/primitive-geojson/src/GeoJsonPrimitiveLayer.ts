@@ -449,25 +449,26 @@ export class GeoJsonPrimitiveLayer extends BasicGraphicLayer {
    * @param {String} [options.sourceUri] Overrides the url to use for resolving relative links.
    * @returns {Promise.<GeoJsonPrimitiveLayer>} a promise that will resolve when the GeoJSON is loaded.
    */
-  async load(
+  static async load(
     url: string | Resource | GeoJSON.GeoJSON,
     options: Partial<GeoJsonPrimitiveLayerOptions> = {},
   ): Promise<GeoJsonPrimitiveLayer> {
     let data = url;
+    const layer = new GeoJsonPrimitiveLayer({options});
     //>>includeStart('debug', pragmas.debug)
     if (!defined(data)) {
       throw new DeveloperError("data is required.");
     }
     //>>includeEnd('debug')
 
-    this._isLoading = true;
+    layer._isLoading = true;
 
     // User specified credit
     let credit = options.credit;
     if (typeof credit === "string") {
       credit = new Credit(credit);
     }
-    this._credit = credit;
+    layer._credit = credit;
 
     let promise: any = data;
     let sourceUri = options.sourceUri;
@@ -481,11 +482,12 @@ export class GeoJsonPrimitiveLayer extends BasicGraphicLayer {
 
     try {
       const geoJson = await Promise.resolve(promise);
-      this._geojson = geoJson;
-      return await this.preload(geoJson, options, sourceUri, true);
+      layer._geojson = geoJson;
+      await layer.preload(geoJson, options, sourceUri, true);
+      return layer;
     } catch (error: any) {
-      this._isLoading = false;
-      this._error.raiseEvent(error);
+      layer._isLoading = false;
+      layer._error.raiseEvent(error);
       throw error;
     }
   }

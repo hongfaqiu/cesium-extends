@@ -47,6 +47,11 @@ const PointConfig2Style = async (
 
   const labelSize = (config as any)["label-size"];
   const imageSize = labelSize + (config["circle-stroke-width"] ?? 0) * 2;
+  let image: HTMLCanvasElement | undefined = undefined;
+  if ((config as any)["label-type"] === "icon") {
+    const imageName = (config as any)["icon-image"];
+    image = SpriteIcons?.getImageByName(imageName);
+  }
 
   switch (type) {
     case "single":
@@ -77,6 +82,7 @@ const PointConfig2Style = async (
       };
 
       style.layout = {
+        image,
         width: imageSize,
         height: imageSize,
       };
@@ -103,6 +109,7 @@ const PointConfig2Style = async (
       };
 
       style.layout = {
+        image,
         width: imageSize,
         height: imageSize,
       };
@@ -132,10 +139,11 @@ const PointConfig2Style = async (
         }));
       const colorType = config["fill-type"];
       const strokeSize = config["circle-stroke-width"] ?? 0;
+      const color = single2paintColor(config.color, opacity)
 
       style.paint = {
         ...commonPaint,
-        color: single2paintColor(config.color, opacity),
+        color,
       };
 
       const sizeCustom = await section2CustomSize(data, {
@@ -173,6 +181,13 @@ const PointConfig2Style = async (
           normalRange: labelSize,
         };
       }
+
+      style.layout = {
+        image,
+        color,
+        width: imageSize,
+        height: imageSize,
+      };
 
       style.custom = {
         color:

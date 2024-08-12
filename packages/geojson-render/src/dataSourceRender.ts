@@ -38,6 +38,7 @@ export const dataSourceRender = async (
 ) => {
   const entities = dataSource.entities.values;
   const { label, paint, type, custom } = style;
+  
   entities.map((entity) => {
     const customStyle: Record<string, any> = {};
 
@@ -58,11 +59,13 @@ export const dataSourceRender = async (
         entity.point = undefined;
         entity.billboard = undefined;
         entity.cylinder = undefined;
-
-        if (style.layout?.image || customStyle.image) {
+        
+        const image = style.layout?.image ?? customStyle.image;
+        if (image) {
           const billboardStyle = {
             ...style.layout,
             ...customStyle,
+            image
           };
           if (billboardStyle.image) {
             entity.billboard = new BillboardGraphics(billboardStyle);
