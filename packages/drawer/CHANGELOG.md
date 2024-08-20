@@ -1,3 +1,10 @@
+## @cesium-extends/drawer [1.3.6](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/drawer@1.3.5...@cesium-extends/drawer@1.3.6) (2024-08-20)
+
+
+### Bug Fixes
+
+* **drawer:** incorrect drawing of circles and rectangles ([9ff29f1](https://github.com/hongfaqiu/cesium-extends/commit/9ff29f16fc6a142a7098de67763d3f792b8b95e8))
+
 ## @cesium-extends/drawer [1.3.5](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/drawer@1.3.4...@cesium-extends/drawer@1.3.5) (2024-07-31)
 
 ### Bug Fixes
