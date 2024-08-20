@@ -15,9 +15,7 @@ import type { LifeCycle } from "../base";
 
 export default class Rectangle extends BasicGraphices implements LifeCycle {
   dropPoint(move: EventArgs): void {
-    if (this.painter._breakPointEntities.length < 1) {
-      this._dropPoint(move, this.createShape.bind(this));
-    }
+    this._dropPoint(move, this.createShape.bind(this));
   }
 
   playOff(): Entity {
@@ -49,9 +47,7 @@ export default class Rectangle extends BasicGraphices implements LifeCycle {
   }
 
   cancel(): void {
-    this.painter.clear();
-    if (this._onPointsChange)
-      this._onPointsChange([...this.painter._activeShapePoints]);
+    this._cancel(this.createShape.bind(this));
   }
 
   createShape(

@@ -1,4 +1,4 @@
-import { Viewer, Cartesian3, Math as CMath, DataSource, GeoJsonDataSource } from 'cesium';
+import { Viewer, Cartesian3, Math as CMath, DataSource, GeoJsonDataSource, ArcGisMapServerImageryProvider, ImageryLayer } from 'cesium';
 import './style.css';
 import 'cesium/Build/Cesium/Widgets/widgets.css';
 import { GeoJsonRenderConfig, updateDataSourcePosition, renderGeoJson, GeoJsonPrimitiveLayer, renderPrimitiveGeoJson } from 'cesium-extends';
@@ -14,6 +14,9 @@ function initMap(
   } = {},
 ) {
   const viewer: Viewer = new Viewer(cesiumContainer, {
+    baseLayer: ImageryLayer.fromProviderAsync(ArcGisMapServerImageryProvider.fromUrl('https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer', {
+      enablePickFeatures: false
+    }), {}),
     baseLayerPicker: false, // 图层选择器
     animation: false, // 左下角仪表
     fullscreenButton: false, // 全屏按钮

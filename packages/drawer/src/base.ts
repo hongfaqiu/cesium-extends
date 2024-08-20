@@ -71,6 +71,7 @@ export default class BasicGraphices {
     )
       return;
 
+    // 如果当前没有点则动态绘制
     if (!this.painter._activeShapePoints.length) {
       this.dynamicUpdate(earthPosition, createShape);
     }
@@ -116,7 +117,12 @@ export default class BasicGraphices {
   }
 
   protected _cancel(createShape: (positions: Cartesian3[]) => Entity): void {
-    this.painter._activeShapePoints.pop();
+    if (this.painter._activeShapePoints.length < 3) {
+      this.painter.reset();
+      return;
+    }
+    // 移除最后一个固定点
+    this.painter._activeShapePoints.splice(-2, 1);
     if (this._onPointsChange)
       this._onPointsChange([...this.painter._activeShapePoints]);
     this.result = createShape(this.painter._activeShapePoints);
