@@ -1,3 +1,13 @@
+## cesium-extends [1.8.19](https://github.com/hongfaqiu/cesium-extends/compare/cesium-extends@1.8.18...cesium-extends@1.8.19) (2024-08-20)
+
+
+
+
+
+### Dependencies
+
+* **@cesium-extends/drawer:** upgraded to 1.3.6
+
 ## cesium-extends [1.8.18](https://github.com/hongfaqiu/cesium-extends/compare/cesium-extends@1.8.17...cesium-extends@1.8.18) (2024-08-12)
 
 
