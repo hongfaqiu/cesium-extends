@@ -151,10 +151,10 @@ export const primitiveGeoJsonRender = async (
         }
         break;
     }
-    if (label?.paint.text) {
+    if (label?.paint.text && feature.center) {
       primitiveLayer.addLabel({
         type: 'Label',
-        position: feature.center?.cartesian3,
+        position: feature.center.cartesian3,
         style: {
           font: `bold 20px Arial`,
           outlineWidth: 4,

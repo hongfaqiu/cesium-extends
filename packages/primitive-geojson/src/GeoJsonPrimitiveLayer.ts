@@ -1,5 +1,6 @@
 import {
   ArcType,
+  Billboard,
   BillboardCollection,
   BlendOption,
   BlendingState,
@@ -10,6 +11,7 @@ import {
   DeveloperError,
   Event,
   GeometryInstance,
+  Label,
   LabelCollection,
   PerInstanceColorAppearance,
   PinBuilder,
@@ -253,8 +255,8 @@ export class GeoJsonPrimitiveLayer extends BasicGraphicLayer {
     const id = this._generateId();
     const instance = this._billboardCollection.add({
       id,
+      ...(style as Billboard.ConstructorOptions),
       position,
-      ...style,
     });
     this.addFeatureItem({
       ...item,
@@ -270,8 +272,8 @@ export class GeoJsonPrimitiveLayer extends BasicGraphicLayer {
     const id = this._generateId();
     const instance = this._labelCollection.add({
       id,
+      ...(style as Label.ConstructorOptions),
       position,
-      ...style,
     });
     return instance;
   }

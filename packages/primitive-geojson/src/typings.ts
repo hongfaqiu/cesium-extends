@@ -79,7 +79,7 @@ export type BillboardPrimitiveItem = {
 
 export type LabelPrimitiveItem = {
   type: 'Label';
-  position?: Cartesian3;
+  position: Cartesian3;
   style?: LabelGraphics.ConstructorOptions;
   instance?: Label;
 } & GeoJsonFeatureItem;
