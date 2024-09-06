@@ -14,8 +14,8 @@
     "coverage": "vitest run --coverage",
     "release": "multi-semantic-release --ignore-private-packages=true --deps.bump=inherit",
     "prepare": "husky install",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
+    "lint": "turbo lint",
+    "lint:fix": "turbo lint:fix",
     "lint:report": "eslint . --output-file eslint_report.json --format json"
   },
   "commitlint": {

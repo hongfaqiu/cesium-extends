@@ -7,6 +7,14 @@ export default [
   ...tseslint.configs.recommended,
   {
     files: ['**/*.{js,jsx,cjs,mjs,ts,tsx,cts,mts}'],
+    ignores: [
+      'node_modules/',
+      'dist/',
+      'build/',
+      '.turbo',
+      '/doc/.dumi',
+      'public',
+    ],
     plugins: {
       '@typescript-eslint': tseslint.plugin,
       prettier: prettierPlugin,

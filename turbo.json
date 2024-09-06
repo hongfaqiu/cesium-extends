@@ -10,7 +10,12 @@
       "outputs": ["coverage/**"],
       "dependsOn": ["^test"]
     },
-    "lint": {},
+    "lint": {
+      "outputs": []
+    },
+    "lint:fix": {
+      "outputs": []
+    },
     "format": {},
     "dev": {
       "cache": false,
