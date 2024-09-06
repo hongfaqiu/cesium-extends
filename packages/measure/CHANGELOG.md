@@ -1,3 +1,10 @@
+## @cesium-extends/measure [1.1.3](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/measure@1.1.2...@cesium-extends/measure@1.1.3) (2024-09-06)
+
+
+### Bug Fixes
+
+* replace wgs84ToWindowCoordinates [#27](https://github.com/hongfaqiu/cesium-extends/issues/27) ([0d7b68a](https://github.com/hongfaqiu/cesium-extends/commit/0d7b68adb6c3244416792fdaef860e86ba3f6f9b))
+
 ## @cesium-extends/measure [1.1.2](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/measure@1.1.1...@cesium-extends/measure@1.1.2) (2023-07-18)
 
 ### Bug Fixes
