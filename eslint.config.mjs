@@ -3,6 +3,9 @@ import tseslint from 'typescript-eslint';
 import prettierPlugin from 'eslint-plugin-prettier';
 
 export default [
+  {
+    ignores: ['**/dist/**', '**/node_modules/**', '**/turbo/**'],
+  },
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {
@@ -29,6 +32,7 @@ export default [
       '@typescript-eslint/consistent-type-imports': 'off',
       '@typescript-eslint/no-unused-vars': 'off',
       'prettier/prettier': 'error',
+      'no-case-declarations': 'off',
     },
   },
   {

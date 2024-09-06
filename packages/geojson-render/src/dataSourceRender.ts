@@ -174,7 +174,7 @@ export const dataSourceRender = async (
         scaleByDistance: new NearFarScalar(1, 0.85, 8.0e6, 0.75),
         ...label.paint,
         text: label.paint.text?.replace(
-          /\{([^\{]*)\}/g,
+          /{([^{}]*)}/g,
           (match, p1) => getEntityValue(entity, p1) ?? '',
         ),
       });
