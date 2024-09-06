@@ -23,14 +23,6 @@
       "@commitlint/config-conventional"
     ]
   },
-  "lint-staged": {
-    "*.{md,json}": [
-      "prettier --write --no-error-on-unmatched-pattern"
-    ],
-    "*.{js,ts,jsx,tsx}": [
-      "eslint --fix"
-    ]
-  },
   "engines": {
     "node": ">= 16"
   },
@@ -47,7 +39,6 @@
     "eslint-plugin-prettier": "^5.2.1",
     "happy-dom": "^8.9.0",
     "husky": "^8.0.3",
-    "lint-staged": "^13.2.2",
     "multi-semantic-release": "^3.0.2",
     "prettier": "^3.3.3",
     "rimraf": "^6.0.1",

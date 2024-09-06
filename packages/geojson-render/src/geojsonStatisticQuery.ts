@@ -25,7 +25,7 @@ export default async function geojsonStatisticQuery(
   const total = data.length;
   const values = data.map((item) => item[columnName]);
   const numValues = values
-    .filter((item) => typeof item === "number")
+    .filter((item) => typeof item === 'number')
     .sort((a, b) => a - b);
   const numCount = numValues.length;
   const result: StatisticResult = {

@@ -32,14 +32,14 @@ export type GeoJsonStyle = GeoJsonCommonStyle &
  * 标签渲染条件
  */
 export type SymbolStyle = {
-  "text-field"?: string;
-  "text-font"?: string;
-  "text-size"?: number;
-  "text-color"?: GeoJsonColor;
-  "text-halo-color"?: GeoJsonColor;
-  "text-halo-width"?: number;
-  "text-offsetX"?: number;
-  "text-offsetY"?: number;
+  'text-field'?: string;
+  'text-font'?: string;
+  'text-size'?: number;
+  'text-color'?: GeoJsonColor;
+  'text-halo-color'?: GeoJsonColor;
+  'text-halo-width'?: number;
+  'text-offsetX'?: number;
+  'text-offsetY'?: number;
 };
 
 /**
@@ -77,8 +77,8 @@ export type GeoJsonPointStyle =
  */
 export type PointCommonOptions = {
   custom?: CustomStyle;
-  "circle-stroke-color"?: GeoJsonColor | undefined;
-  "circle-stroke-width"?: number | undefined;
+  'circle-stroke-color'?: GeoJsonColor | undefined;
+  'circle-stroke-width'?: number | undefined;
   opacity?: number;
 };
 
@@ -96,48 +96,48 @@ export type ClusterOptions = {
 };
 
 export type PointSingleStyle = {
-  type: "single";
+  type: 'single';
   config: {
-    "label-type"?: "vector" | "icon";
-    "icon-image"?: string;
+    'label-type'?: 'vector' | 'icon';
+    'icon-image'?: string;
     color?: GeoJsonColor;
-    "label-size"?: number;
+    'label-size'?: number;
   } & PointCommonOptions;
 };
 
 export type PointSectionStyle = {
-  type: "section";
+  type: 'section';
   config: {
-    "label-type"?: "vector" | "icon";
-    "icon-image"?: string;
+    'label-type'?: 'vector' | 'icon';
+    'icon-image'?: string;
     field?: string;
-    "section-type"?: "natural" | "average";
+    'section-type'?: 'natural' | 'average';
     color?: string[];
-    "label-size"?: number;
+    'label-size'?: number;
   } & PointCommonOptions;
 };
 
 export type PointValueStyle = {
-  type: "value";
+  type: 'value';
   config: {
-    "label-type"?: "vector" | "icon";
-    "icon-image"?: string;
+    'label-type'?: 'vector' | 'icon';
+    'icon-image'?: string;
     field?: string;
     color?: string[];
-    "label-size"?: number;
+    'label-size'?: number;
   } & PointCommonOptions;
 };
 
 export type PointBubbleStyle = {
-  type: "bubble";
+  type: 'bubble';
   config: {
-    "label-type"?: "vector" | "icon";
-    "icon-image"?: string;
+    'label-type'?: 'vector' | 'icon';
+    'icon-image'?: string;
     field?: string;
-    "section-type": "natural" | "average" | "auto";
-    "section-num"?: number;
-    "label-size": number[];
-    "fill-type": "single" | "multi";
+    'section-type': 'natural' | 'average' | 'auto';
+    'section-num'?: number;
+    'label-size': number[];
+    'fill-type': 'single' | 'multi';
     color?: GeoJsonColor;
     /** unvalid when section-type is auto  */
     colors?: string[];
@@ -145,13 +145,13 @@ export type PointBubbleStyle = {
 };
 
 export type PointHeightStyle = {
-  type: "height";
+  type: 'height';
   config: {
     field?: string;
-    "section-type"?: "natural" | "average";
+    'section-type'?: 'natural' | 'average';
     color?: string[];
-    "radius-size"?: number;
-    "height-range": [number, number];
+    'radius-size'?: number;
+    'height-range': [number, number];
   } & PointCommonOptions;
 };
 
@@ -168,28 +168,28 @@ export type GeoJsonLineStyle =
  */
 export type LineCommonOptions = {
   custom?: CustomStyle;
-  "line-width"?: number;
+  'line-width'?: number;
   opacity?: number;
 };
 
 export type LineSingleStyle = {
-  type: "single";
+  type: 'single';
   config: {
     color?: GeoJsonColor;
   } & LineCommonOptions;
 };
 
 export type LineSectionStyle = {
-  type: "section";
+  type: 'section';
   config: {
     field?: string;
-    "section-type"?: "natural" | "average";
+    'section-type'?: 'natural' | 'average';
     color?: string[];
   } & LineCommonOptions;
 };
 
 export type LineValueStyle = {
-  type: "value";
+  type: 'value';
   config: {
     field?: string;
     color?: string[];
@@ -211,28 +211,28 @@ export type GeoJsonPolygonStyle =
 export type PolygonCommonOptions = {
   custom?: CustomStyle;
   opacity?: number;
-  "outline-color"?: GeoJsonColor;
-  "outline-width"?: number;
+  'outline-color'?: GeoJsonColor;
+  'outline-width'?: number;
 };
 
 export type PolygonSingleStyle = {
-  type: "single";
+  type: 'single';
   config: {
     color?: GeoJsonColor;
   } & PolygonCommonOptions;
 };
 
 export type PolygonSectionStyle = {
-  type: "section";
+  type: 'section';
   config: {
     field?: string;
-    "section-type"?: "natural" | "average";
+    'section-type'?: 'natural' | 'average';
     color?: string[];
   } & PolygonCommonOptions;
 };
 
 export type PolygonValueStyle = {
-  type: "value";
+  type: 'value';
   config: {
     field?: string;
     color?: string[];
@@ -240,25 +240,25 @@ export type PolygonValueStyle = {
 };
 
 export type PolygonHeightStyle = {
-  type: "height";
+  type: 'height';
   config: {
     field?: string;
-    "section-type"?: "natural" | "average";
+    'section-type'?: 'natural' | 'average';
     color?: string[];
-    "height-range": [number, number];
+    'height-range': [number, number];
   } & PolygonCommonOptions;
 };
 
 /** 混合类型的geojson渲染条件 */
 export type GeoJsonMixStyle = {
-  type: "single";
+  type: 'single';
   // 精灵图
   sprite?: {
     url: string;
     params?: Record<string, any>;
   };
   config: {
-    "label-type": "vector" | "icon";
+    'label-type': 'vector' | 'icon';
     markerSize?: number;
     markerSymbol?: string;
     markerColor?: GeoJsonColor;
@@ -270,18 +270,18 @@ export type GeoJsonMixStyle = {
 
 export type GeoJsonRenderConfig =
   | {
-      type: "point";
+      type: 'point';
       style?: GeoJsonCommonStyle & GeoJsonPointStyle;
     }
   | {
-      type: "line";
+      type: 'line';
       style?: GeoJsonCommonStyle & GeoJsonLineStyle;
     }
   | {
-      type: "polygon";
+      type: 'polygon';
       style?: GeoJsonCommonStyle & GeoJsonPolygonStyle;
     }
   | {
-      type: "mix";
+      type: 'mix';
       style?: GeoJsonCommonStyle & GeoJsonMixStyle;
     };

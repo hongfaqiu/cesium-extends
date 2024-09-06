@@ -1,22 +1,22 @@
-import { Cartesian2, LabelStyle, NearFarScalar } from "cesium";
+import { Cartesian2, LabelStyle, NearFarScalar } from 'cesium';
 
-import { custom2value } from "./renderConfig2Style/renderTool";
-import RenderConfig2Style from "./renderConfig2Style";
+import { custom2value } from './renderConfig2Style/renderTool';
+import RenderConfig2Style from './renderConfig2Style';
 
-import type { GeoJsonRenderConfig } from "./renderConfig/typing";
+import type { GeoJsonRenderConfig } from './renderConfig/typing';
 import type {
   EntityStyle,
   CustomPaintItem,
   CylinderEntityConstructor,
-} from "./renderConfig/entityStyle";
-import type GeoJsonPrimitiveLayer from "@cesium-extends/primitive-geojson";
+} from './renderConfig/entityStyle';
+import type GeoJsonPrimitiveLayer from '@cesium-extends/primitive-geojson';
 import type {
   BillboardPrimitiveItem,
   CirclePrimitiveItem,
   PointPrimitiveItem,
   PolylinePrimitiveItem,
   PolygonPrimitiveItem,
-} from "@cesium-extends/primitive-geojson";
+} from '@cesium-extends/primitive-geojson';
 
 export const primitiveGeoJsonRender = async (
   primitiveLayer: GeoJsonPrimitiveLayer,
@@ -33,9 +33,9 @@ export const primitiveGeoJsonRender = async (
       if (custom[k as keyof typeof custom]) {
         const config = custom[k as keyof typeof custom] as CustomPaintItem;
         config.default =
-          config.custom?.find((item) => item.label === "default")?.value ??
+          config.custom?.find((item) => item.label === 'default')?.value ??
           config.default;
-        const featureVal = feature.properties?.[config.field ?? ""];
+        const featureVal = feature.properties?.[config.field ?? ''];
         const value = custom2value(featureVal, config);
         customStyle[k] = value;
       }
@@ -46,7 +46,7 @@ export const primitiveGeoJsonRender = async (
     if (depthTest === undefined && height) depthTest = true;
 
     switch (type) {
-      case "point":
+      case 'point':
         const image = style.layout?.image ?? customStyle.image;
         if (image) {
           primitiveLayer.addBillboard({
@@ -54,7 +54,7 @@ export const primitiveGeoJsonRender = async (
             style: {
               ...style.layout,
               ...customStyle,
-              image
+              image,
             },
           });
         }
@@ -87,7 +87,7 @@ export const primitiveGeoJsonRender = async (
           }
         }
         break;
-      case "line":
+      case 'line':
         primitiveLayer.addPolyline({
           ...(feature as PolylinePrimitiveItem),
           style: {
@@ -97,7 +97,7 @@ export const primitiveGeoJsonRender = async (
           },
         });
         break;
-      case "polygon":
+      case 'polygon':
         primitiveLayer.addPolygon({
           ...(feature as PolygonPrimitiveItem),
           style: {
@@ -107,8 +107,8 @@ export const primitiveGeoJsonRender = async (
           },
         });
         break;
-      case "mix":
-        if (feature.type === "Point" || feature.type === "Billboard") {
+      case 'mix':
+        if (feature.type === 'Point' || feature.type === 'Billboard') {
           if (paint.markerSymbol) {
             primitiveLayer.addBillboard({
               ...(feature as BillboardPrimitiveItem),
@@ -130,7 +130,7 @@ export const primitiveGeoJsonRender = async (
             });
           }
         }
-        if (feature.type === "Polygon") {
+        if (feature.type === 'Polygon') {
           primitiveLayer.addPolygon({
             ...feature,
             style: {
@@ -140,7 +140,7 @@ export const primitiveGeoJsonRender = async (
             },
           });
         }
-        if (feature.type === "Polyline") {
+        if (feature.type === 'Polyline') {
           primitiveLayer.addPolyline({
             ...feature,
             style: {
@@ -153,7 +153,7 @@ export const primitiveGeoJsonRender = async (
     }
     if (label?.paint.text) {
       primitiveLayer.addLabel({
-        type: "Label",
+        type: 'Label',
         position: feature.center?.cartesian3,
         style: {
           font: `bold 20px Arial`,
@@ -165,7 +165,7 @@ export const primitiveGeoJsonRender = async (
           ...label.paint,
           text: label.paint.text?.replace(
             /\{([^\{]*)\}/g,
-            (match, p1) => feature.properties?.[p1] ?? "",
+            (match, p1) => feature.properties?.[p1] ?? '',
           ),
         },
       });

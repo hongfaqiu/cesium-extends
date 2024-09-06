@@ -1,4 +1,4 @@
-import { Color, defined, DeveloperError } from "cesium";
+import { Color, defined, DeveloperError } from 'cesium';
 
 export default class BillBuilder {
   private _cache: Record<string, HTMLCanvasElement>;
@@ -19,13 +19,13 @@ export default class BillBuilder {
   fromText(text: string, color: Color, size: number): HTMLCanvasElement {
     //>>includeStart('debug', pragmas.debug);
     if (!defined(text)) {
-      throw new DeveloperError("text is required");
+      throw new DeveloperError('text is required');
     }
     if (!defined(color)) {
-      throw new DeveloperError("color is required");
+      throw new DeveloperError('color is required');
     }
     if (!defined(size)) {
-      throw new DeveloperError("size is required");
+      throw new DeveloperError('size is required');
     }
 
     return createPin(undefined, text, color, size, this._cache);
@@ -71,21 +71,21 @@ function createPin(
     return item;
   }
 
-  const canvas = document.createElement("canvas");
+  const canvas = document.createElement('canvas');
   canvas.width = size;
   canvas.height = size;
 
-  const context2D = canvas.getContext("2d");
+  const context2D = canvas.getContext('2d');
   if (context2D) {
     drawArc(context2D, color, size);
-    context2D.font = "16px sans-serif";
-    context2D.lineJoin = "round";
-    context2D.textAlign = "center";
-    context2D.textBaseline = "middle";
-    context2D.strokeStyle = "black";
+    context2D.font = '16px sans-serif';
+    context2D.lineJoin = 'round';
+    context2D.textAlign = 'center';
+    context2D.textBaseline = 'middle';
+    context2D.strokeStyle = 'black';
     context2D.lineWidth = 3;
     context2D.strokeText(label, size / 2, size / 2);
-    context2D.fillStyle = "white";
+    context2D.fillStyle = 'white';
     context2D.fillText(label, size / 2, size / 2);
   }
 

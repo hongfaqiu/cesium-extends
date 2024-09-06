@@ -6,15 +6,15 @@ import {
   Math as CMath,
   NearFarScalar,
   HeightReference,
-} from "cesium";
+} from 'cesium';
 
-import { MouseTooltip } from "@cesium-extends/tooltip";
-import Drawer from "@cesium-extends/drawer";
+import { MouseTooltip } from '@cesium-extends/tooltip';
+import Drawer from '@cesium-extends/drawer';
 
-import type { Units } from "@turf/helpers";
-import type { Cartesian3, Entity, Viewer } from "cesium";
-import type { DrawOption } from "@cesium-extends/drawer";
-import { formatArea, formatLength } from "./utils";
+import type { Units } from '@turf/helpers';
+import type { Cartesian3, Entity, Viewer } from 'cesium';
+import type { DrawOption } from '@cesium-extends/drawer';
+import { formatArea, formatLength } from './utils';
 
 export type MeasureUnits = Units;
 
@@ -80,7 +80,7 @@ export type MeasureOptions = {
   locale?: Partial<MeasureLocaleOptions>;
 };
 
-export type Status = "INIT" | "WORKING" | "DESTROY";
+export type Status = 'INIT' | 'WORKING' | 'DESTROY';
 
 const DefaultOptions: MeasureOptions = {
   labelStyle: {
@@ -101,7 +101,7 @@ export default class Measure {
   protected _viewer: Viewer;
   protected _status: Status;
   protected _labels: LabelCollection;
-  protected _labelStyle: MeasureOptions["labelStyle"];
+  protected _labelStyle: MeasureOptions['labelStyle'];
   protected _units: MeasureUnits;
   protected _locale: MeasureLocaleOptions;
 
@@ -115,18 +115,18 @@ export default class Measure {
    * @param {MeasureOptions['locale']} [options.locale] 绘制时的提示信息
    */
   constructor(viewer: Viewer, options: MeasureOptions = {}) {
-    if (!viewer) throw new Error("undefined viewer");
+    if (!viewer) throw new Error('undefined viewer');
     this._viewer = viewer;
     this._labelStyle = {
       ...DefaultOptions.labelStyle,
       ...options.labelStyle,
     };
-    this._units = options.units ?? "kilometers";
+    this._units = options.units ?? 'kilometers';
     this._onEnd = options.onEnd;
     this._locale = {
-      area: "Area",
-      start: "start",
-      total: "Total",
+      area: 'Area',
+      start: 'start',
+      total: 'Total',
       formatLength,
       formatArea,
       ...options.locale,
@@ -146,21 +146,21 @@ export default class Measure {
     });
     this._viewer.scene.primitives.add(this._labels);
 
-    this._status = "INIT";
+    this._status = 'INIT';
   }
 
   /**
    * @return {boolean} 返回量算工具是否已销毁
    */
   get destroyed() {
-    return this._status === "DESTROY";
+    return this._status === 'DESTROY';
   }
 
   /**
    * 根据传入的坐标信息更新标签
    * @param {Cartesian3[]} positions
    */
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
   protected _updateLabelFunc(positions: Cartesian3[]): void {}
 
   protected _cartesian2Lonlat(positions: Cartesian3[]) {
@@ -181,15 +181,15 @@ export default class Measure {
    * @param {boolean} clampToGround 是否贴地
    */
   protected _start(
-    type: "POLYGON" | "POLYLINE" | "POINT" | "CIRCLE" | "RECTANGLE",
+    type: 'POLYGON' | 'POLYLINE' | 'POINT' | 'CIRCLE' | 'RECTANGLE',
     options?: {
       style?: object;
       clampToGround?: boolean;
     },
   ) {
     const { style, clampToGround } = options ?? {};
-    if (this._status !== "INIT") return;
-    // eslint-disable-next-line @typescript-eslint/no-this-alias
+    if (this._status !== 'INIT') return;
+
     const self = this;
     this.drawer.start({
       type,
@@ -204,7 +204,7 @@ export default class Measure {
       },
       onEnd: this._onEnd,
     });
-    this._status = "WORKING";
+    this._status = 'WORKING';
   }
 
   /**
@@ -213,7 +213,7 @@ export default class Measure {
   end() {
     this.drawer.reset();
     this._labels.removeAll();
-    this._status = "INIT";
+    this._status = 'INIT';
   }
 
   destroy() {
@@ -222,6 +222,6 @@ export default class Measure {
     if (this._viewer && !this._viewer.isDestroyed()) {
       this._viewer.scene.primitives.remove(this._labels);
     }
-    this._status = "DESTROY";
+    this._status = 'DESTROY';
   }
 }

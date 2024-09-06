@@ -24,20 +24,20 @@ import {
   RuntimeError,
   defined,
   getFilenameFromUri,
-} from "cesium";
-import { nanoid } from "nanoid";
+} from 'cesium';
+import { nanoid } from 'nanoid';
 
-import { BasicGraphicLayer } from "./BasicGraphicLayer";
+import { BasicGraphicLayer } from './BasicGraphicLayer';
 import {
   crsLinkHrefs,
   crsLinkTypes,
   crsNames,
   defaultCrsFunction,
   geoJsonObjectTypes,
-} from "./GeoJsonLayer-util";
-import getPositionsCenter from "./getPositionsCenter";
+} from './GeoJsonLayer-util';
+import getPositionsCenter from './getPositionsCenter';
 
-import type Subscriber from "@cesium-extends/subscriber";
+import type Subscriber from '@cesium-extends/subscriber';
 import type {
   BillboardPrimitiveItem,
   CirclePrimitiveItem,
@@ -47,9 +47,9 @@ import type {
   PolygonPrimitiveItem,
   PolylinePrimitiveItem,
   PrimitiveItem,
-} from "./typings";
+} from './typings';
 
-const DefaultColor = Color.fromCssColorString("#FC4C02");
+const DefaultColor = Color.fromCssColorString('#FC4C02');
 
 const DefaultOptions: GeoJsonPrimitiveLayerOptions = {
   markerSize: 10,
@@ -354,7 +354,7 @@ export class GeoJsonPrimitiveLayer extends BasicGraphicLayer {
     });
     this.addPolyline(
       {
-        type: "Polyline",
+        type: 'Polyline',
         positions,
         style: {
           width: style?.outlineWidth,
@@ -424,13 +424,13 @@ export class GeoJsonPrimitiveLayer extends BasicGraphicLayer {
     const feature = this._featureItems.find((item) => item.id === id);
     if (feature && feature.instance) {
       switch (feature.type) {
-        case "Point":
+        case 'Point':
           this._pointCollection.remove(feature.instance);
           break;
-        case "Billboard":
+        case 'Billboard':
           this._billboardCollection.remove(feature.instance);
           break;
-        case "Label":
+        case 'Label':
           this._labelCollection.remove(feature.instance);
           break;
         default:
@@ -454,10 +454,10 @@ export class GeoJsonPrimitiveLayer extends BasicGraphicLayer {
     options: Partial<GeoJsonPrimitiveLayerOptions> = {},
   ): Promise<GeoJsonPrimitiveLayer> {
     let data = url;
-    const layer = new GeoJsonPrimitiveLayer({options});
+    const layer = new GeoJsonPrimitiveLayer({ options });
     //>>includeStart('debug', pragmas.debug)
     if (!defined(data)) {
-      throw new DeveloperError("data is required.");
+      throw new DeveloperError('data is required.');
     }
     //>>includeEnd('debug')
 
@@ -465,14 +465,14 @@ export class GeoJsonPrimitiveLayer extends BasicGraphicLayer {
 
     // User specified credit
     let credit = options.credit;
-    if (typeof credit === "string") {
+    if (typeof credit === 'string') {
       credit = new Credit(credit);
     }
     layer._credit = credit;
 
     let promise: any = data;
     let sourceUri = options.sourceUri;
-    if (typeof data === "string") {
+    if (typeof data === 'string') {
       data = new Resource({ url: data });
     }
     if (data instanceof Resource) {
@@ -524,16 +524,16 @@ export class GeoJsonPrimitiveLayer extends BasicGraphicLayer {
 
     if (defined(crs)) {
       if (!defined(crs.properties)) {
-        throw new RuntimeError("crs.properties is undefined.");
+        throw new RuntimeError('crs.properties is undefined.');
       }
 
       const properties = crs.properties;
-      if (crs.type === "name") {
+      if (crs.type === 'name') {
         crsFunction = crsNames[properties.name];
         if (!defined(crsFunction)) {
           throw new RuntimeError(`Unknown crs name: ${properties.name}`);
         }
-      } else if (crs.type === "link") {
+      } else if (crs.type === 'link') {
         let handler = crsLinkHrefs[properties.href];
         if (!defined(handler)) {
           handler = crsLinkTypes[properties.type];
@@ -546,7 +546,7 @@ export class GeoJsonPrimitiveLayer extends BasicGraphicLayer {
         }
 
         crsFunction = handler(properties);
-      } else if (crs.type === "EPSG") {
+      } else if (crs.type === 'EPSG') {
         crsFunction = crsNames[`EPSG:${properties.code}`];
         if (!defined(crsFunction)) {
           throw new RuntimeError(`Unknown crs EPSG code: ${properties.code}`);

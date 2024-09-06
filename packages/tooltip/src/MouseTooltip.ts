@@ -2,12 +2,12 @@ import {
   Cartesian2,
   ScreenSpaceEventHandler,
   ScreenSpaceEventType,
-} from "cesium";
-import Tooltip from "./Tooltip";
+} from 'cesium';
+import Tooltip from './Tooltip';
 
-import type { Viewer } from "cesium";
-import type { EventArgs } from "@cesium-extends/subscriber";
-import type { TooltipOptions } from "./Tooltip";
+import type { Viewer } from 'cesium';
+import type { EventArgs } from '@cesium-extends/subscriber';
+import type { TooltipOptions } from './Tooltip';
 
 type MouseTooltipOptions = TooltipOptions;
 class MouseTooltip extends Tooltip {

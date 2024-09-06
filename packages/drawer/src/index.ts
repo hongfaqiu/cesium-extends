@@ -1,17 +1,17 @@
-import { Color, defaultValue, Entity, JulianDate } from "cesium";
-import { MouseTooltip } from "@cesium-extends/tooltip";
-import Subscriber from "@cesium-extends/subscriber";
+import { Color, defaultValue, Entity, JulianDate } from 'cesium';
+import { MouseTooltip } from '@cesium-extends/tooltip';
+import Subscriber from '@cesium-extends/subscriber';
 
-import Painter from "./painter";
-import Circle from "./shape/circle";
-import Line from "./shape/line";
-import Point from "./shape/point";
-import Polygon from "./shape/polygon";
-import Rectangle from "./shape/rectangle";
+import Painter from './painter';
+import Circle from './shape/circle';
+import Line from './shape/line';
+import Point from './shape/point';
+import Polygon from './shape/polygon';
+import Rectangle from './shape/rectangle';
 
-import type { Viewer } from "cesium";
-import type { EventArgs, EventType } from "@cesium-extends/subscriber";
-import type { BasicGraphicesOptions } from "./base";
+import type { Viewer } from 'cesium';
+import type { EventArgs, EventType } from '@cesium-extends/subscriber';
+import type { BasicGraphicesOptions } from './base';
 import type {
   ActionCallback,
   DrawOption,
@@ -19,18 +19,18 @@ import type {
   OverrideEntityFunc,
   StartOption,
   Status,
-} from "./typings";
+} from './typings';
 
-export * from "./typings";
+export * from './typings';
 
 export const defaultOptions: DrawOption = {
   terrain: false,
   model: false,
   operateType: {
-    START: "LEFT_CLICK",
-    MOVING: "MOUSE_MOVE",
-    CANCEL: "RIGHT_CLICK",
-    END: "LEFT_DOUBLE_CLICK",
+    START: 'LEFT_CLICK',
+    MOVING: 'MOUSE_MOVE',
+    CANCEL: 'RIGHT_CLICK',
+    END: 'LEFT_DOUBLE_CLICK',
   },
 
   /**
@@ -63,16 +63,16 @@ export const defaultOptions: DrawOption = {
   },
   sameStyle: true,
   tips: {
-    init: "Click to draw",
+    init: 'Click to draw',
     start:
-      "LeftClick to add a point, rightClick remove point, doubleClick end drawing",
-    end: "",
+      'LeftClick to add a point, rightClick remove point, doubleClick end drawing',
+    end: '',
   },
 };
 
 export default class Drawer {
   private _viewer: Viewer;
-  private _type!: StartOption["type"];
+  private _type!: StartOption['type'];
   private _terrain: boolean;
   private _model: boolean;
   private _subscriber: Subscriber;
@@ -116,7 +116,7 @@ export default class Drawer {
 
   private _sameStyle: boolean;
   mouseTooltip: MouseTooltip;
-  private _tips: Required<DrawOption["tips"]>;
+  private _tips: Required<DrawOption['tips']>;
 
   get status(): Status {
     return this._status;
@@ -127,13 +127,13 @@ export default class Drawer {
   }
 
   get isDestroyed(): boolean {
-    return this._status === "DESTROY";
+    return this._status === 'DESTROY';
   }
 
   constructor(viewer: Viewer, options?: Partial<DrawOption>) {
     this._option = defaultValue(options, {});
 
-    if (!viewer) throw new Error("请输入Viewer对象！");
+    if (!viewer) throw new Error('请输入Viewer对象！');
 
     // 设置操作方式
     this._operateType = {
@@ -152,11 +152,11 @@ export default class Drawer {
     this._tips = {
       ...defaultOptions.tips,
       ...options?.tips,
-    } as Required<DrawOption["tips"]>;
+    } as Required<DrawOption['tips']>;
 
     if (this._terrain && !this._viewer.scene.pickPositionSupported) {
       console.warn(
-        "浏览器不支持 pickPosition属性，无法在有地形的情况下正确选点",
+        '浏览器不支持 pickPosition属性，无法在有地形的情况下正确选点',
       );
       this._terrain = false;
     }
@@ -166,7 +166,7 @@ export default class Drawer {
     this.mouseTooltip = new MouseTooltip(viewer);
     this.mouseTooltip.enabled = false;
 
-    this._status = "INIT";
+    this._status = 'INIT';
     // 为了防止产生侵入性bug，请在使用前确认相关事件是否可用，不再默认移除原生事件
     // Object.keys(this._option.keyboard).forEach(key =>
     //   Subscriber.removeNative(this._viewer, this._option.keyboard[key])
@@ -186,15 +186,15 @@ export default class Drawer {
 
     this._painter = new Painter(painterOptions);
 
-    if (this._type === "POLYGON") {
+    if (this._type === 'POLYGON') {
       this._typeClass = new Polygon(this._painter, options);
-    } else if (this._type === "POLYLINE") {
+    } else if (this._type === 'POLYLINE') {
       this._typeClass = new Line(this._painter, options);
-    } else if (this._type === "POINT") {
+    } else if (this._type === 'POINT') {
       this._typeClass = new Point(this._painter, options);
-    } else if (this._type === "CIRCLE") {
+    } else if (this._type === 'CIRCLE') {
       this._typeClass = new Circle(this._painter, options);
-    } else if (this._type === "RECTANGLE") {
+    } else if (this._type === 'RECTANGLE') {
       this._typeClass = new Rectangle(this._painter, options);
     }
 
@@ -206,11 +206,11 @@ export default class Drawer {
 
   private _updateTips() {
     if (!this._painter) return;
-    if (this._status === "INIT" || this._status === "DESTROY") {
+    if (this._status === 'INIT' || this._status === 'DESTROY') {
       this.mouseTooltip.enabled = false;
       return;
     }
-    if (this._status === "PAUSE") {
+    if (this._status === 'PAUSE') {
       this.mouseTooltip.content = this._tips.end;
       if (this._once === true) this.mouseTooltip.enabled = false;
       return;
@@ -233,7 +233,6 @@ export default class Drawer {
     overrideFunc: OverrideEntityFunc = (action: EventType, entity: Entity) =>
       entity,
   ): void {
-    // eslint-disable-next-line no-param-reassign
     config = defaultValue(config, {});
     this._once = defaultValue(config.once, true);
     this._oneInstance = defaultValue(config.oneInstance, false);
@@ -259,10 +258,10 @@ export default class Drawer {
       onPointsChange: config.onPointsChange,
     });
 
-    if (this._status === "START") return;
+    if (this._status === 'START') return;
 
-    this._status = "START";
-    this._viewer.canvas.style.cursor = "crosshair";
+    this._status = 'START';
+    this._viewer.canvas.style.cursor = 'crosshair';
     this._updateTips();
 
     /**
@@ -281,7 +280,7 @@ export default class Drawer {
       if (this._action) this._action(this._operateType.START, move);
 
       // 如果是点，则此时执行点的结束绘制操作
-      if (this._type === "POINT") {
+      if (this._type === 'POINT') {
         this._complete(overrideFunc);
         isStartDraw = false;
         const positions = this.$Instance?.position?.getValue(new JulianDate());
@@ -298,7 +297,7 @@ export default class Drawer {
 
     // 移动事件
     const moveId = this._subscriber.addExternal((move) => {
-      this._viewer.canvas.style.cursor = "crosshair";
+      this._viewer.canvas.style.cursor = 'crosshair';
       if (!isStartDraw) return;
 
       this._moving(move);
@@ -328,7 +327,7 @@ export default class Drawer {
       // ActionCallback
       if (this._action) this._action(this._operateType.END, move);
 
-      if (this._type === "POINT") return;
+      if (this._type === 'POINT') return;
 
       this._complete(overrideFunc);
       this._updateTips();
@@ -353,18 +352,18 @@ export default class Drawer {
       this._viewer.entities.add(this.$Instance);
       this.$AddedInstance.push(this.$Instance);
     }
-    this._viewer.canvas.style.cursor = "default";
+    this._viewer.canvas.style.cursor = 'default';
   }
 
   private _isSupport(type: string) {
-    return ["POLYGON", "POLYLINE", "POINT", "CIRCLE", "RECTANGLE"].includes(
+    return ['POLYGON', 'POLYLINE', 'POINT', 'CIRCLE', 'RECTANGLE'].includes(
       type,
     );
   }
 
   reset() {
     this.pause();
-    this._status = "INIT";
+    this._status = 'INIT';
     this._painter?.clear();
     this.$AddedInstance.map((entity) => {
       this._viewer.entities.remove(entity);
@@ -374,17 +373,17 @@ export default class Drawer {
   }
 
   pause(): void {
-    this._status = "PAUSE";
+    this._status = 'PAUSE';
     this._updateTips();
     this._subscriber.removeExternal(this._events);
     this._events = [];
-    this._viewer.canvas.style.cursor = "default";
+    this._viewer.canvas.style.cursor = 'default';
   }
 
   destroy(): void {
     this.reset();
     this.mouseTooltip.destroy();
     this._subscriber.destroy();
-    this._status = "DESTROY";
+    this._status = 'DESTROY';
   }
 }

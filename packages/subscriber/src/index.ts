@@ -1,6 +1,6 @@
-import { ScreenSpaceEventHandler, ScreenSpaceEventType } from "cesium";
+import { ScreenSpaceEventHandler, ScreenSpaceEventType } from 'cesium';
 
-import type { Cartesian2, Entity, Viewer } from "cesium";
+import type { Cartesian2, Entity, Viewer } from 'cesium';
 
 export interface EventArgs {
   position?: Cartesian2;
@@ -13,21 +13,21 @@ export type ListenCallback<T> = (movement: EventArgs, substance: T) => void;
 export type ExternalListenCallback = (movement: EventArgs, result: any) => void;
 
 export type EventType =
-  | "LEFT_DOWN"
-  | "LEFT_UP"
-  | "LEFT_CLICK"
-  | "LEFT_DOUBLE_CLICK"
-  | "RIGHT_DOWN"
-  | "RIGHT_UP"
-  | "RIGHT_CLICK"
-  | "MIDDLE_DOWN"
-  | "MIDDLE_UP"
-  | "MIDDLE_CLICK"
-  | "MOUSE_MOVE"
-  | "WHEEL"
-  | "PINCH_START"
-  | "PINCH_MOVE"
-  | "PINCH_END";
+  | 'LEFT_DOWN'
+  | 'LEFT_UP'
+  | 'LEFT_CLICK'
+  | 'LEFT_DOUBLE_CLICK'
+  | 'RIGHT_DOWN'
+  | 'RIGHT_UP'
+  | 'RIGHT_CLICK'
+  | 'MIDDLE_DOWN'
+  | 'MIDDLE_UP'
+  | 'MIDDLE_CLICK'
+  | 'MOUSE_MOVE'
+  | 'WHEEL'
+  | 'PINCH_START'
+  | 'PINCH_MOVE'
+  | 'PINCH_END';
 
 type EventCollection = Record<EventType, Map<string, ListenCallback<Entity>>>;
 
@@ -37,7 +37,7 @@ type ExternalEventCollection = Record<
 >;
 
 function uniqueId(): string {
-  let _val = "";
+  let _val = '';
 
   do {
     _val = Math.random().toString(36).slice(-8);
@@ -56,21 +56,21 @@ export class Subscriber {
   private _externalEventCollection: ExternalEventCollection = Object.create({});
 
   private readonly _eventTypeList: EventType[] = [
-    "LEFT_DOWN",
-    "LEFT_UP",
-    "LEFT_CLICK",
-    "LEFT_DOUBLE_CLICK",
-    "RIGHT_DOWN",
-    "RIGHT_UP",
-    "RIGHT_CLICK",
-    "MIDDLE_DOWN",
-    "MIDDLE_UP",
-    "MIDDLE_CLICK",
-    "MOUSE_MOVE",
-    "WHEEL",
-    "PINCH_START",
-    "PINCH_MOVE",
-    "PINCH_END",
+    'LEFT_DOWN',
+    'LEFT_UP',
+    'LEFT_CLICK',
+    'LEFT_DOUBLE_CLICK',
+    'RIGHT_DOWN',
+    'RIGHT_UP',
+    'RIGHT_CLICK',
+    'MIDDLE_DOWN',
+    'MIDDLE_UP',
+    'MIDDLE_CLICK',
+    'MOUSE_MOVE',
+    'WHEEL',
+    'PINCH_START',
+    'PINCH_MOVE',
+    'PINCH_END',
   ];
   private _moveDebounce: number | undefined;
   private _lastTime: number;
@@ -143,12 +143,12 @@ export class Subscriber {
       if (
         this._isDestroy ||
         !this._enable ||
-        (eventType === "MOUSE_MOVE" && !this._shouldUpdate())
+        (eventType === 'MOUSE_MOVE' && !this._shouldUpdate())
       )
         return;
 
       if (this._enablePickResult) {
-        if (eventType === "MOUSE_MOVE" && movement.endPosition) {
+        if (eventType === 'MOUSE_MOVE' && movement.endPosition) {
           this._lastResult = this._viewer.scene.pick(movement.endPosition);
         } else if (movement.position) {
           this._lastResult = this._viewer.scene.pick(movement.position);
@@ -169,7 +169,7 @@ export class Subscriber {
         if (
           entity &&
           eventCollection.has(entity.id) &&
-          typeof eventCollection.get(entity.id) === "function"
+          typeof eventCollection.get(entity.id) === 'function'
         ) {
           const func = eventCollection.get(entity.id);
           if (func) func(movement, entity);
@@ -216,7 +216,7 @@ export class Subscriber {
    * @return {string} Event Id  事件移除时需要提供事件ID
    */
   addExternal(callback: ExternalListenCallback, eventType: EventType): string {
-    if (this._isDestroy) return "";
+    if (this._isDestroy) return '';
 
     if (
       this._eventCollection[eventType].size === 0 &&

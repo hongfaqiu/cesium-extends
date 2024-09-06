@@ -1,9 +1,9 @@
-import { ArcType, ClassificationType, Entity } from "cesium";
-import BasicGraphices from "../base";
+import { ArcType, ClassificationType, Entity } from 'cesium';
+import BasicGraphices from '../base';
 
-import type { LifeCycle } from "../base";
-import type { CallbackProperty, Cartesian3, PolylineGraphics } from "cesium";
-import type { EventArgs } from "@cesium-extends/subscriber";
+import type { LifeCycle } from '../base';
+import type { CallbackProperty, Cartesian3, PolylineGraphics } from 'cesium';
+import type { EventArgs } from '@cesium-extends/subscriber';
 
 export default class Line extends BasicGraphices implements LifeCycle {
   dropPoint(event: EventArgs): void {

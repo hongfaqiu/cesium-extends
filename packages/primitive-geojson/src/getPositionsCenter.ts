@@ -1,6 +1,6 @@
-import centroid from "@turf/centroid";
-import { polygon as tfpolygon } from "@turf/helpers";
-import { Cartesian3, BoundingSphere, Ellipsoid } from "cesium";
+import centroid from '@turf/centroid';
+import { polygon as tfpolygon } from '@turf/helpers';
+import { Cartesian3, BoundingSphere, Ellipsoid } from 'cesium';
 
 /**
  * 计算一组多边形坐标的质心

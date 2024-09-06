@@ -3,17 +3,17 @@ import {
   Cartographic,
   EllipsoidGeodesic,
   SceneTransforms,
-} from "cesium";
-import { Polygon, polygon } from "@turf/helpers";
-import intersect from "@turf/intersect";
-import { randomPoint } from "@turf/random";
-import voronoi from "@turf/voronoi";
+} from 'cesium';
+import { Polygon, polygon } from '@turf/helpers';
+import intersect from '@turf/intersect';
+import { randomPoint } from '@turf/random';
+import voronoi from '@turf/voronoi';
 
-import AreaMeasure from "./AreaMeasure";
-import { getBounds, pickCartesian3 } from "./utils";
+import AreaMeasure from './AreaMeasure';
+import { getBounds, pickCartesian3 } from './utils';
 
-import type { Cartesian3, Viewer } from "cesium";
-import type { MeasureOptions } from "./Measure";
+import type { Cartesian3, Viewer } from 'cesium';
+import type { MeasureOptions } from './Measure';
 
 /**
  * 贴地面积量算类

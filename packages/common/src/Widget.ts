@@ -1,4 +1,4 @@
-import type { Viewer } from "cesium";
+import type { Viewer } from 'cesium';
 
 class Widget {
   protected _viewer: Viewer;
@@ -63,7 +63,7 @@ class Widget {
    * @returns {Widget}
    */
   setContent(content: string | Element): Widget {
-    if (content && typeof content === "string") {
+    if (content && typeof content === 'string') {
       this._wrapper.innerHTML = content;
     } else if (content && content instanceof Element) {
       while (this._wrapper.hasChildNodes()) {
@@ -79,14 +79,14 @@ class Widget {
    * hide widget
    */
   hide() {
-    if (this._wrapper) this._wrapper.style.display = "none";
+    if (this._wrapper) this._wrapper.style.display = 'none';
   }
 
   /**
    * show widget
    */
   show() {
-    if (this._wrapper) this._wrapper.style.display = "block";
+    if (this._wrapper) this._wrapper.style.display = 'block';
   }
 
   destroy() {

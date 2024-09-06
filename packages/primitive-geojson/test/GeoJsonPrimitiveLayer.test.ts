@@ -1,26 +1,26 @@
-import { afterEach, describe, expect, it } from "vitest";
-import GeoJsonPrimitiveLayer from "../src";
-import { Cartesian3, Color } from "cesium";
+import { afterEach, describe, expect, it } from 'vitest';
+import GeoJsonPrimitiveLayer from '../src';
+import { Cartesian3, Color } from 'cesium';
 import {
   BillboardPrimitiveItem,
   CirclePrimitiveItem,
   LabelPrimitiveItem,
   PolygonPrimitiveItem,
   PolylinePrimitiveItem,
-} from "../src/typings";
+} from '../src/typings';
 
-describe("GeoJsonPrimitiveLayer", () => {
+describe('GeoJsonPrimitiveLayer', () => {
   const layer = new GeoJsonPrimitiveLayer();
 
   afterEach(() => {
     layer.removeAllPrimitive();
   });
-  it("should add a billboard", () => {
+  it('should add a billboard', () => {
     const billboard: BillboardPrimitiveItem = {
-      type: "Billboard",
+      type: 'Billboard',
       position: new Cartesian3(0, 0, 0),
       style: {
-        image: "path/to/image.png",
+        image: 'path/to/image.png',
         scale: 2,
       },
     };
@@ -28,12 +28,12 @@ describe("GeoJsonPrimitiveLayer", () => {
     expect(layer.billboardCollection.contains(instance)).toBe(true);
   });
 
-  it("should add a label", () => {
+  it('should add a label', () => {
     const label: LabelPrimitiveItem = {
-      type: "Label",
+      type: 'Label',
       position: new Cartesian3(0, 0, 0),
       style: {
-        font: "24px sans-serif",
+        font: '24px sans-serif',
         fillColor: Color.TRANSPARENT,
         outlineColor: Color.WHITE,
         outlineWidth: 2,
@@ -43,9 +43,9 @@ describe("GeoJsonPrimitiveLayer", () => {
     expect(layer.labelCollection.contains(instance)).toBe(true);
   });
 
-  it("should add a circle", () => {
+  it('should add a circle', () => {
     const circle: CirclePrimitiveItem = {
-      type: "Circle",
+      type: 'Circle',
       position: new Cartesian3(0, 0, 0),
       style: {
         color: Color.WHITE,
@@ -56,9 +56,9 @@ describe("GeoJsonPrimitiveLayer", () => {
     expect(layer.getFeatureItemById(instance.id)).not.toBeNull();
   });
 
-  it("should add a polygon", () => {
+  it('should add a polygon', () => {
     const polygon: PolygonPrimitiveItem = {
-      type: "Polygon",
+      type: 'Polygon',
       positions: [
         [0, 0, 0],
         [0, 1, 0],
@@ -74,9 +74,9 @@ describe("GeoJsonPrimitiveLayer", () => {
     expect(layer.getFeatureItemById(instance.id)).not.toBeNull();
   });
 
-  it("should add a Polyline", () => {
+  it('should add a Polyline', () => {
     const polyline: PolylinePrimitiveItem = {
-      type: "Polyline",
+      type: 'Polyline',
       positions: [
         [0, 0, 0],
         [0, 1, 0],
@@ -92,11 +92,11 @@ describe("GeoJsonPrimitiveLayer", () => {
     expect(layer.getFeatureItemById(instance.id)).not.toBeNull();
   });
 
-  it("should add a feature", async () => {
+  it('should add a feature', async () => {
     const feature: GeoJSON.GeoJSON = {
-      type: "Feature",
+      type: 'Feature',
       geometry: {
-        type: "Point",
+        type: 'Point',
         coordinates: [0, 0],
       },
       properties: {},

@@ -1,8 +1,8 @@
-import { getSpriteJson } from "./sprite";
-import { image2canvas, loadImage, single2paintColor } from "./renderTool";
+import { getSpriteJson } from './sprite';
+import { image2canvas, loadImage, single2paintColor } from './renderTool';
 
-import type { MixEntityStyle } from "../renderConfig/entityStyle";
-import type { GeoJsonMixStyle } from "../renderConfig/typing";
+import type { MixEntityStyle } from '../renderConfig/entityStyle';
+import type { GeoJsonMixStyle } from '../renderConfig/typing';
 
 const MixConfig2Style = async (
   data: Record<string, any>[],
@@ -12,8 +12,14 @@ const MixConfig2Style = async (
   const spriteOption = !sprite
     ? undefined
     : {
-      spriteImage: await loadImage(sprite.url.replace(/(.*)\.(.*)/, "$1.png"), sprite.params),
-      json: await getSpriteJson(sprite.url.replace(/(.*)\.(.*)/, "$1.json"), sprite.params),
+        spriteImage: await loadImage(
+          sprite.url.replace(/(.*)\.(.*)/, '$1.png'),
+          sprite.params,
+        ),
+        json: await getSpriteJson(
+          sprite.url.replace(/(.*)\.(.*)/, '$1.json'),
+          sprite.params,
+        ),
       };
   const imageName = config.markerSymbol;
   const image =
@@ -25,12 +31,12 @@ const MixConfig2Style = async (
       : undefined;
 
   const style: MixEntityStyle = {
-    type: "mix",
+    type: 'mix',
     paint: {
       ...config,
       fill: single2paintColor(config.fill),
       markerColor: single2paintColor(config.markerColor),
-      markerSymbol: config["label-type"] === "icon" ? image : undefined,
+      markerSymbol: config['label-type'] === 'icon' ? image : undefined,
       stroke: single2paintColor(config.stroke),
       clampToGround: true,
     },

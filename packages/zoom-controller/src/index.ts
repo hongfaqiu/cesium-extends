@@ -5,13 +5,13 @@ import {
   Math as CMath,
   Ray,
   SceneMode,
-} from "cesium";
+} from 'cesium';
 
-import Icons from "./icons";
-import "./styles/zoom-controller.scss";
-import { DomUtil, Widget } from "@cesium-extends/common";
+import Icons from './icons';
+import './styles/zoom-controller.scss';
+import { DomUtil, Widget } from '@cesium-extends/common';
 
-import type { Camera, Scene, Viewer } from "cesium";
+import type { Camera, Scene, Viewer } from 'cesium';
 
 export interface ZoomControllerProps {
   container?: Element;
@@ -35,8 +35,8 @@ class ZoomController extends Widget {
     super(
       viewer,
       DomUtil.create(
-        "div",
-        "cesium-zoom-controller",
+        'div',
+        'cesium-zoom-controller',
         options.container ?? viewer.container,
       ),
     );
@@ -171,22 +171,22 @@ class ZoomController extends Widget {
     const { tips } = this._options;
     this._zoomInEl = DomUtil.parseDom(
       this._icons.controller_increase,
-      "zoom-in cesium-toolbar-button cesium-button",
+      'zoom-in cesium-toolbar-button cesium-button',
     );
     this._refreshEl = DomUtil.parseDom(
       this._icons.controller_refresh,
-      "refresh cesium-toolbar-button cesium-button",
+      'refresh cesium-toolbar-button cesium-button',
     );
     this._zoomOutEl = DomUtil.parseDom(
       this._icons.controller_decrease,
-      "zoom-out cesium-toolbar-button cesium-button",
+      'zoom-out cesium-toolbar-button cesium-button',
     );
     this._wrapper.appendChild(this._refreshEl);
     this._wrapper.appendChild(this._zoomInEl);
     this._wrapper.appendChild(this._zoomOutEl);
-    this._zoomInEl.title = tips?.zoomIn ?? "Zoom in";
-    this._zoomOutEl.title = tips?.zoomOut ?? "Zoom out";
-    this._refreshEl.title = tips?.refresh ?? "Reset zoom";
+    this._zoomInEl.title = tips?.zoomIn ?? 'Zoom in';
+    this._zoomOutEl.title = tips?.zoomOut ?? 'Zoom out';
+    this._refreshEl.title = tips?.refresh ?? 'Reset zoom';
     this._zoomInEl.onclick = () => {
       this._zoomIn();
     };

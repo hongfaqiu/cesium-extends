@@ -1,6 +1,6 @@
-import type { Cartesian2, Cartesian3, PointGraphics, Viewer } from "cesium";
-import { Entity } from "cesium";
-import { defaultOptions } from ".";
+import type { Cartesian2, Cartesian3, PointGraphics, Viewer } from 'cesium';
+import { Entity } from 'cesium';
+import { defaultOptions } from '.';
 
 interface DrawOption {
   viewer: Viewer;

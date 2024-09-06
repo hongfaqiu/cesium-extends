@@ -3,13 +3,13 @@ import {
   ClassificationType,
   Entity,
   JulianDate,
-} from "cesium";
+} from 'cesium';
 
-import BasicGraphices from "../base";
+import BasicGraphices from '../base';
 
-import { Cartesian3 } from "cesium";
-import type { EventArgs } from "@cesium-extends/subscriber";
-import type { LifeCycle } from "../base";
+import { Cartesian3 } from 'cesium';
+import type { EventArgs } from '@cesium-extends/subscriber';
+import type { LifeCycle } from '../base';
 
 export default class Circle extends BasicGraphices implements LifeCycle {
   dropPoint(move: EventArgs): void {
@@ -29,13 +29,16 @@ export default class Circle extends BasicGraphices implements LifeCycle {
     isDynamic = false,
   ): Entity {
     const target: Cartesian3[] = Array.isArray(hierarchy)
-    ? hierarchy
-    : hierarchy.getValue(JulianDate.now());
-    
+      ? hierarchy
+      : hierarchy.getValue(JulianDate.now());
+
     const radiusFuc = new CallbackProperty(function () {
-      const distance = Cartesian3.distance(target[0], target[target.length - 1]);
+      const distance = Cartesian3.distance(
+        target[0],
+        target[target.length - 1],
+      );
       return distance || 1;
-    }, false)
+    }, false);
 
     const ellipse = Object.assign(
       {},

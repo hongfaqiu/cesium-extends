@@ -17,7 +17,7 @@ class DomUtil {
     container: Element | null = null,
   ): HTMLElement {
     const el = document.createElement(tagName);
-    el.className = className || "";
+    el.className = className || '';
     if (container) {
       container.appendChild(el);
     }
@@ -32,8 +32,8 @@ class DomUtil {
    * @returns {HTMLDivElement}
    */
   static parseDom(domStr: string, className: string): HTMLDivElement {
-    const el = document.createElement("div");
-    el.className = className || "";
+    const el = document.createElement('div');
+    el.className = className || '';
     el.innerHTML = domStr;
     return el;
   }

@@ -3,13 +3,13 @@ import {
   Cartographic,
   EllipsoidGeodesic,
   SceneTransforms,
-} from "cesium";
+} from 'cesium';
 
-import DistanceMeasure from "./DistanceMeasure";
-import { pickCartesian3 } from "./utils";
+import DistanceMeasure from './DistanceMeasure';
+import { pickCartesian3 } from './utils';
 
-import type { Cartesian3, PolylineGraphics, Viewer } from "cesium";
-import type { MeasureOptions } from "./Measure";
+import type { Cartesian3, PolylineGraphics, Viewer } from 'cesium';
+import type { MeasureOptions } from './Measure';
 
 /**
  * 贴地距离测量类
@@ -136,7 +136,7 @@ class DistanceSurfaceMeasure extends DistanceMeasure {
   }
 
   start(style: PolylineGraphics.ConstructorOptions = {}) {
-    this._start("POLYLINE", {
+    this._start('POLYLINE', {
       clampToGround: true,
       style,
     });

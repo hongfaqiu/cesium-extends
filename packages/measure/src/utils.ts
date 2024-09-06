@@ -1,5 +1,5 @@
-import type { Cartesian2, Cartesian3, HeightReference, Viewer } from "cesium";
-import { MeasureUnits } from "./Measure";
+import type { Cartesian2, Cartesian3, HeightReference, Viewer } from 'cesium';
+import { MeasureUnits } from './Measure';
 
 export type PickResult = {
   cartesian: Cartesian3;
@@ -41,7 +41,7 @@ export function formatLength(
   unit: MeasureUnits,
 ) {
   if (length < 1000) {
-    return length + "meters";
+    return length + 'meters';
   }
   return unitedLength + unit;
 }
@@ -57,9 +57,9 @@ export function formatArea(
   unit: MeasureUnits,
 ) {
   if (area < 1000000) {
-    return area + " square meters ";
+    return area + ' square meters ';
   }
-  return unitedArea + " square " + unit;
+  return unitedArea + ' square ' + unit;
 }
 
 export function mean(array: number[]): number {

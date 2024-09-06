@@ -1,10 +1,10 @@
-import { Event } from "cesium";
+import { Event } from 'cesium';
 
-import type Subscriber from "@cesium-extends/subscriber";
+import type Subscriber from '@cesium-extends/subscriber';
 import type {
   EventType,
   ExternalListenCallback,
-} from "@cesium-extends/subscriber";
+} from '@cesium-extends/subscriber';
 
 /**
  * GraphicLayer 基类

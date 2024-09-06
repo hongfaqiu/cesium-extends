@@ -15,11 +15,11 @@ import {
   PolygonGraphics,
   PolylineGraphics,
   VerticalOrigin,
-} from "cesium";
+} from 'cesium';
 
-import RenderConfig2Style from "./renderConfig2Style";
-import BillBuilder from "./BillBuilder";
-import { custom2value, getEntityValue } from "./renderConfig2Style/renderTool";
+import RenderConfig2Style from './renderConfig2Style';
+import BillBuilder from './BillBuilder';
+import { custom2value, getEntityValue } from './renderConfig2Style/renderTool';
 
 import type {
   DataSource,
@@ -27,10 +27,10 @@ import type {
   Billboard,
   Label,
   PointPrimitive,
-} from "cesium";
-import type { GeoJsonRenderConfig } from "./renderConfig/typing";
-import type { EntityStyle, CustomPaintItem } from "./renderConfig/entityStyle";
-import { getPositionsCenter } from "@cesium-extends/primitive-geojson";
+} from 'cesium';
+import type { GeoJsonRenderConfig } from './renderConfig/typing';
+import type { EntityStyle, CustomPaintItem } from './renderConfig/entityStyle';
+import { getPositionsCenter } from '@cesium-extends/primitive-geojson';
 
 export const dataSourceRender = async (
   dataSource: DataSource,
@@ -38,7 +38,7 @@ export const dataSourceRender = async (
 ) => {
   const entities = dataSource.entities.values;
   const { label, paint, type, custom } = style;
-  
+
   entities.map((entity) => {
     const customStyle: Record<string, any> = {};
 
@@ -46,7 +46,7 @@ export const dataSourceRender = async (
       if (custom[k as keyof typeof custom]) {
         const config = custom[k as keyof typeof custom] as CustomPaintItem;
         config.default =
-          config.custom?.find((item) => item.label === "default")?.value ??
+          config.custom?.find((item) => item.label === 'default')?.value ??
           config.default;
         const entityVal = getEntityValue(entity, config.field);
         const value = custom2value(entityVal, config);
@@ -55,17 +55,17 @@ export const dataSourceRender = async (
     }
 
     switch (type) {
-      case "point":
+      case 'point':
         entity.point = undefined;
         entity.billboard = undefined;
         entity.cylinder = undefined;
-        
+
         const image = style.layout?.image ?? customStyle.image;
         if (image) {
           const billboardStyle = {
             ...style.layout,
             ...customStyle,
-            image
+            image,
           };
           if (billboardStyle.image) {
             entity.billboard = new BillboardGraphics(billboardStyle);
@@ -92,7 +92,7 @@ export const dataSourceRender = async (
           }
         }
         break;
-      case "line":
+      case 'line':
         entity.polygon = undefined;
         entity.polyline = new PolylineGraphics({
           positions: entity.polyline?.positions,
@@ -102,7 +102,7 @@ export const dataSourceRender = async (
           arcType: ArcType.RHUMB,
         });
         break;
-      case "polygon":
+      case 'polygon':
         const height = customStyle?.extrudedHeight;
         entity.polygon = new PolygonGraphics({
           hierarchy: entity.polygon?.hierarchy,
@@ -119,7 +119,7 @@ export const dataSourceRender = async (
           arcType: ArcType.RHUMB,
         });
         break;
-      case "mix":
+      case 'mix':
         if (entity.billboard) {
           if (paint.markerSymbol) {
             entity.point = undefined;
@@ -175,13 +175,13 @@ export const dataSourceRender = async (
         ...label.paint,
         text: label.paint.text?.replace(
           /\{([^\{]*)\}/g,
-          (match, p1) => getEntityValue(entity, p1) ?? "",
+          (match, p1) => getEntityValue(entity, p1) ?? '',
         ),
       });
     } else entity.label = undefined;
   });
 
-  if (style.type === "point") {
+  if (style.type === 'point') {
     dataSourceCluster(dataSource, style.cluster);
   }
 };
@@ -225,17 +225,17 @@ const clusterEvent = (
     alpha = 1,
     scale = 1,
     colorBar = [
-      "#313695",
-      "#4575b4",
-      "#74add1",
-      "#abd9e9",
-      "#e0f3f8",
-      "#ffffbf",
-      "#fee090",
-      "#fdae61",
-      "#f46d43",
-      "#d73027",
-      "#a50026",
+      '#313695',
+      '#4575b4',
+      '#74add1',
+      '#abd9e9',
+      '#e0f3f8',
+      '#ffffbf',
+      '#fee090',
+      '#fdae61',
+      '#f46d43',
+      '#d73027',
+      '#a50026',
     ],
     maxNum = 1000,
   } = options;

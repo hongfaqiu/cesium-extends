@@ -5,18 +5,18 @@ import {
   defined,
   Entity,
   PolygonHierarchy,
-} from "cesium";
+} from 'cesium';
 
-import BasicGraphices from "../base";
+import BasicGraphices from '../base';
 
 import type {
   Cartesian3,
   Color,
   PolygonGraphics,
   PolylineGraphics,
-} from "cesium";
-import type { EventArgs } from "@cesium-extends/subscriber";
-import type { LifeCycle } from "../base";
+} from 'cesium';
+import type { EventArgs } from '@cesium-extends/subscriber';
+import type { LifeCycle } from '../base';
 
 export default class Polygon extends BasicGraphices implements LifeCycle {
   dropPoint(event: EventArgs): void {

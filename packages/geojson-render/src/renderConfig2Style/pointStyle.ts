@@ -1,22 +1,22 @@
-import { DefaultColor } from "../renderConfig";
-import geojsonStatisticQuery from "../geojsonStatisticQuery";
+import { DefaultColor } from '../renderConfig';
+import geojsonStatisticQuery from '../geojsonStatisticQuery';
 import {
   section2CustomColor,
   section2CustomSize,
   single2paintColor,
   transCustomColorItem,
   value2Custom,
-} from "./renderTool";
-import SpriteIcon from "./SpriteIcon";
+} from './renderTool';
+import SpriteIcon from './SpriteIcon';
 
 import type {
   CustomPaintItem,
   PointEntityStyle,
-} from "../renderConfig/entityStyle";
+} from '../renderConfig/entityStyle';
 import type {
   GeoJsonCommonStyle,
   GeoJsonPointStyle,
-} from "../renderConfig/typing";
+} from '../renderConfig/typing';
 
 const PointConfig2Style = async (
   data: Record<string, any>[],
@@ -24,13 +24,13 @@ const PointConfig2Style = async (
 ) => {
   const { type, config } = jsonStyle;
   const style: PointEntityStyle = {
-    type: "point",
-    cluster: type === "height" ? undefined : jsonStyle.cluster,
+    type: 'point',
+    cluster: type === 'height' ? undefined : jsonStyle.cluster,
   };
   const opacity = config.opacity;
-  const commonPaint: (typeof style)["paint"] = {
-    outlineWidth: config["circle-stroke-width"],
-    outlineColor: single2paintColor(config["circle-stroke-color"], opacity),
+  const commonPaint: (typeof style)['paint'] = {
+    outlineWidth: config['circle-stroke-width'],
+    outlineColor: single2paintColor(config['circle-stroke-color'], opacity),
   };
 
   let SpriteIcons: SpriteIcon | undefined;
@@ -45,18 +45,18 @@ const PointConfig2Style = async (
     value: SpriteIcons?.getImageByName(item.image),
   }));
 
-  const labelSize = (config as any)["label-size"];
-  const imageSize = labelSize + (config["circle-stroke-width"] ?? 0) * 2;
+  const labelSize = (config as any)['label-size'];
+  const imageSize = labelSize + (config['circle-stroke-width'] ?? 0) * 2;
   let image: HTMLCanvasElement | undefined = undefined;
-  if ((config as any)["label-type"] === "icon") {
-    const imageName = (config as any)["icon-image"];
+  if ((config as any)['label-type'] === 'icon') {
+    const imageName = (config as any)['icon-image'];
     image = SpriteIcons?.getImageByName(imageName);
   }
 
   switch (type) {
-    case "single":
-      if (config["label-type"] === "icon") {
-        const imageName = config["icon-image"];
+    case 'single':
+      if (config['label-type'] === 'icon') {
+        const imageName = config['icon-image'];
         const image = SpriteIcons?.getImageByName(imageName);
         style.layout = {
           image,
@@ -73,7 +73,7 @@ const PointConfig2Style = async (
       }
       break;
 
-    case "section":
+    case 'section':
       const sectionCustom =
         config.custom ?? (await section2CustomColor(data, config));
       style.paint = {
@@ -100,7 +100,7 @@ const PointConfig2Style = async (
       };
       break;
 
-    case "value":
+    case 'value':
       const valueCustom = config.custom ?? (await value2Custom(data, config));
 
       style.paint = {
@@ -127,19 +127,19 @@ const PointConfig2Style = async (
       };
       break;
 
-    case "bubble":
-      const sectionType = config["section-type"];
+    case 'bubble':
+      const sectionType = config['section-type'];
 
       const bubbleColorCustom =
         config.custom ??
         (await section2CustomColor(data, {
           field: config.field,
           color: config.colors,
-          "section-type": sectionType,
+          'section-type': sectionType,
         }));
-      const colorType = config["fill-type"];
-      const strokeSize = config["circle-stroke-width"] ?? 0;
-      const color = single2paintColor(config.color, opacity)
+      const colorType = config['fill-type'];
+      const strokeSize = config['circle-stroke-width'] ?? 0;
+      const color = single2paintColor(config.color, opacity);
 
       style.paint = {
         ...commonPaint,
@@ -148,8 +148,8 @@ const PointConfig2Style = async (
 
       const sizeCustom = await section2CustomSize(data, {
         field: config.field,
-        num: config["section-num"],
-        "section-type": sectionType,
+        num: config['section-num'],
+        'section-type': sectionType,
         sizeRange: labelSize,
       });
 
@@ -166,7 +166,7 @@ const PointConfig2Style = async (
         default: labelSize?.[0] ?? 5,
       };
 
-      if (sectionType === "auto") {
+      if (sectionType === 'auto') {
         const valueRange = [sizeCustom[0].label, sizeCustom[1].label] as [
           number,
           number,
@@ -191,7 +191,7 @@ const PointConfig2Style = async (
 
       style.custom = {
         color:
-          colorType === "multi" && sectionType !== "auto"
+          colorType === 'multi' && sectionType !== 'auto'
             ? {
                 field: config.field,
                 custom: transCustomColorItem(bubbleColorCustom, opacity),
@@ -199,7 +199,7 @@ const PointConfig2Style = async (
               }
             : undefined,
         image:
-          colorType === "multi"
+          colorType === 'multi'
             ? {
                 field: config.field,
                 custom: ImageCustom,
@@ -212,7 +212,7 @@ const PointConfig2Style = async (
 
       break;
 
-    case "height":
+    case 'height':
       const heightCustom =
         config.custom ?? (await section2CustomColor(data, config));
 
@@ -223,8 +223,8 @@ const PointConfig2Style = async (
       });
 
       style.cylinder = {
-        topRadius: config["radius-size"],
-        bottomRadius: config["radius-size"],
+        topRadius: config['radius-size'],
+        bottomRadius: config['radius-size'],
       };
       style.custom = {
         material: {
@@ -236,7 +236,7 @@ const PointConfig2Style = async (
           field: config.field,
           normalization: {
             valueRange: [res?.min ?? 0, res?.max ?? 0],
-            normalRange: config["height-range"],
+            normalRange: config['height-range'],
           },
           default: 100,
         },

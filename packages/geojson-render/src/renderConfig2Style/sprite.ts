@@ -1,4 +1,4 @@
-import { Resource } from "cesium";
+import { Resource } from 'cesium';
 
 export type SpriteConfig = {
   height: number;

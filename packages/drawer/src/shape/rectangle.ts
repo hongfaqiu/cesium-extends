@@ -5,13 +5,13 @@ import {
   Rectangle as CesiumRectangle,
   Cartesian3,
   Cartesian2,
-} from "cesium";
+} from 'cesium';
 
-import BasicGraphices from "../base";
+import BasicGraphices from '../base';
 
-import type { Rectangle as TRectangle } from "cesium";
-import type { EventArgs } from "@cesium-extends/subscriber";
-import type { LifeCycle } from "../base";
+import type { Rectangle as TRectangle } from 'cesium';
+import type { EventArgs } from '@cesium-extends/subscriber';
+import type { LifeCycle } from '../base';
 
 export default class Rectangle extends BasicGraphices implements LifeCycle {
   dropPoint(move: EventArgs): void {

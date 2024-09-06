@@ -10,13 +10,13 @@ import {
   Ray,
   SceneMode,
   Transforms,
-} from "cesium";
-import { DomUtil, Widget } from "@cesium-extends/common";
+} from 'cesium';
+import { DomUtil, Widget } from '@cesium-extends/common';
 
-import Icons from "./icons";
-import "./styles/Compass.scss";
+import Icons from './icons';
+import './styles/Compass.scss';
 
-import type { Viewer } from "cesium";
+import type { Viewer } from 'cesium';
 
 export interface CompassOptions {
   container?: Element;
@@ -50,8 +50,8 @@ class Compass extends Widget {
     super(
       viewer,
       DomUtil.create(
-        "div",
-        "cesium-compass",
+        'div',
+        'cesium-compass',
         options.container ?? viewer.container,
       ),
     );
@@ -123,8 +123,8 @@ class Compass extends Widget {
     const heading = this._viewer.camera.heading;
     if (this._outRing)
       this._outRing.style.cssText = `
-      transform :  ${this._ifHover ? "scale(1.17)" : ""};
-      -webkit-transform :  ${this._ifHover ? "scale(1.17)" : ""};
+      transform :  ${this._ifHover ? 'scale(1.17)' : ''};
+      -webkit-transform :  ${this._ifHover ? 'scale(1.17)' : ''};
       `;
     const innerSvg = this._outRing.children.item(0);
     if (innerSvg)
@@ -136,21 +136,21 @@ class Compass extends Widget {
 
   protected _mountContent() {
     const { tips } = this._options;
-    DomUtil.create("div", "out-ring-bg", this._wrapper);
-    this._outRing = DomUtil.parseDom(this._icons.compass_outer, "out-ring");
+    DomUtil.create('div', 'out-ring-bg', this._wrapper);
+    this._outRing = DomUtil.parseDom(this._icons.compass_outer, 'out-ring');
     this._wrapper.appendChild(this._outRing);
-    this._gyro = DomUtil.parseDom(this._icons.compass_inner, "gyro");
+    this._gyro = DomUtil.parseDom(this._icons.compass_inner, 'gyro');
     this._wrapper.appendChild(this._gyro);
     this._outRing.title =
       tips?.outer ??
-      "Drag outer ring: rotate view.\nDrag inner gyroscope: free orbit.\nDouble-click: reset view.\nTIP: You can also free orbit by holding the CTRL key and dragging the map.";
-    this._gyro.title = tips?.inner ?? "";
+      'Drag outer ring: rotate view.\nDrag inner gyroscope: free orbit.\nDouble-click: reset view.\nTIP: You can also free orbit by holding the CTRL key and dragging the map.';
+    this._gyro.title = tips?.inner ?? '';
     this._rotation_marker = DomUtil.parseDom(
       this._icons.compass_rotation_marker,
-      "rotation_marker",
+      'rotation_marker',
     );
     this._wrapper.appendChild(this._rotation_marker);
-    this._rotation_marker.style.visibility = "hidden";
+    this._rotation_marker.style.visibility = 'hidden';
     this._ready = true;
   }
 
@@ -320,8 +320,8 @@ class Compass extends Widget {
       this._orbitMouseUpFunction();
     };
 
-    document.removeEventListener("mousemove", this._mouseMoveHandle, false);
-    document.removeEventListener("mouseup", this._mouseUpHandle, false);
+    document.removeEventListener('mousemove', this._mouseMoveHandle, false);
+    document.removeEventListener('mouseup', this._mouseUpHandle, false);
 
     this._orbitLastTimestamp = getTimestamp();
 
@@ -346,10 +346,10 @@ class Compass extends Widget {
       }
     }
 
-    this._rotation_marker.style.visibility = "visible";
-    this._gyro.className += " gyro-active";
-    document.addEventListener("mousemove", this._mouseMoveHandle, false);
-    document.addEventListener("mouseup", this._mouseUpHandle, false);
+    this._rotation_marker.style.visibility = 'visible';
+    this._gyro.className += ' gyro-active';
+    document.addEventListener('mousemove', this._mouseMoveHandle, false);
+    document.addEventListener('mouseup', this._mouseUpHandle, false);
     this._viewer.clock.onTick.addEventListener(this._orbitTickFunction, this);
     this._updateAngleAndOpacity(vector, this._compassRectangle.width);
   }
@@ -429,16 +429,16 @@ class Compass extends Widget {
    */
   private _orbitMouseUpFunction() {
     if (!this._mouseMoveHandle || !this._mouseUpHandle) return;
-    document.removeEventListener("mousemove", this._mouseMoveHandle, false);
-    document.removeEventListener("mouseup", this._mouseUpHandle, false);
+    document.removeEventListener('mousemove', this._mouseMoveHandle, false);
+    document.removeEventListener('mouseup', this._mouseUpHandle, false);
     this._viewer.clock.onTick.removeEventListener(
       this._orbitTickFunction,
       this,
     );
     this._mouseMoveHandle = undefined;
     this._mouseUpHandle = undefined;
-    this._rotation_marker.style.visibility = "hidden";
-    this._gyro.className = this._gyro.className.replace(" gyro-active", "");
+    this._rotation_marker.style.visibility = 'hidden';
+    this._gyro.className = this._gyro.className.replace(' gyro-active', '');
   }
 
   /**
@@ -470,8 +470,8 @@ class Compass extends Widget {
     this._mouseUpHandle = () => {
       this._rotateMouseUpFunction();
     };
-    document.removeEventListener("mousemove", this._mouseMoveHandle, false);
-    document.removeEventListener("mouseup", this._mouseUpHandle, false);
+    document.removeEventListener('mousemove', this._mouseMoveHandle, false);
+    document.removeEventListener('mouseup', this._mouseUpHandle, false);
     this._rotateInitialCursorAngle = Math.atan2(-vector.y, vector.x);
     if (this._viewer.trackedEntity) {
       this._rotateFrame = undefined;
@@ -503,8 +503,8 @@ class Compass extends Widget {
     if (this._rotateFrame && oldTransform) {
       camera.lookAtTransform(oldTransform);
     }
-    document.addEventListener("mousemove", this._mouseMoveHandle, false);
-    document.addEventListener("mouseup", this._mouseUpHandle, false);
+    document.addEventListener('mousemove', this._mouseMoveHandle, false);
+    document.addEventListener('mouseup', this._mouseUpHandle, false);
   }
 
   private _rotateMouseMoveFunction(e: MouseEvent) {
@@ -529,8 +529,8 @@ class Compass extends Widget {
 
   private _rotateMouseUpFunction() {
     if (!this._mouseMoveHandle || !this._mouseUpHandle) return;
-    document.removeEventListener("mousemove", this._mouseMoveHandle, false);
-    document.removeEventListener("mouseup", this._mouseUpHandle, false);
+    document.removeEventListener('mousemove', this._mouseMoveHandle, false);
+    document.removeEventListener('mouseup', this._mouseUpHandle, false);
     this._mouseMoveHandle = undefined;
     this._mouseUpHandle = undefined;
   }
