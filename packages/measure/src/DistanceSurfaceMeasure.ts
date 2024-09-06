@@ -123,14 +123,14 @@ class DistanceSurfaceMeasure extends DistanceMeasure {
   }
 
   getDistance(pos1: Cartesian3, pos2: Cartesian3): number {
-    const start = SceneTransforms.wgs84ToWindowCoordinates(
+    const start = SceneTransforms.worldToWindowCoordinates(
       this._viewer.scene,
       pos1,
-    );
-    const end = SceneTransforms.wgs84ToWindowCoordinates(
+    )!;
+    const end = SceneTransforms.worldToWindowCoordinates(
       this._viewer.scene,
       pos2,
-    );
+    )!;
 
     return this._calculateSurfaceDistance(start, end);
   }

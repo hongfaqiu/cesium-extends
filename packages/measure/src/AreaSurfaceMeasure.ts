@@ -135,8 +135,9 @@ class AreaSurfaceMeasure extends AreaMeasure {
    */
   getArea(positions: Cartesian3[]): number {
     return this._calculateSurfaceArea(
-      positions.map((item) =>
-        SceneTransforms.wgs84ToWindowCoordinates(this._viewer.scene, item),
+      positions.map(
+        (item) =>
+          SceneTransforms.worldToWindowCoordinates(this._viewer.scene, item)!,
       ),
     );
   }

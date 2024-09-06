@@ -88,7 +88,7 @@ export default class Popup {
         }
       }
 
-      const screenPosition = SceneTransforms.wgs84ToWindowCoordinates(
+      const screenPosition = SceneTransforms.worldToWindowCoordinates(
         this._viewer.scene,
         this._position,
       );
