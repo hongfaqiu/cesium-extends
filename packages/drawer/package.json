@@ -30,7 +30,7 @@
     "cesium": "*"
   },
   "devDependencies": {
-    "cesium": "^1.104.0"
+    "cesium": "^1.121.1"
   },
   "dependencies": {
     "@cesium-extends/common": "^1.0.1",

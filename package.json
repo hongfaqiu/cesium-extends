@@ -13,7 +13,10 @@
     "format": "prettier --write .",
     "coverage": "vitest run --coverage",
     "release": "multi-semantic-release --ignore-private-packages=true --deps.bump=inherit",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "lint:report": "eslint . --output-file eslint_report.json --format json"
   },
   "commitlint": {
     "extends": [
@@ -23,6 +26,9 @@
   "lint-staged": {
     "*.{md,json}": [
       "prettier --write --no-error-on-unmatched-pattern"
+    ],
+    "*.{js,ts,jsx,tsx}": [
+      "eslint --fix"
     ]
   },
   "engines": {
@@ -36,6 +42,9 @@
     "@types/node": "^18.16.7",
     "@vitest/coverage-c8": "^0.33.0",
     "esbuild": "^0.17.18",
+    "eslint": "^9.9.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
     "happy-dom": "^8.9.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.2",
@@ -50,6 +59,7 @@
     "ts-node": "^10.9.1",
     "turbo": "^2.0.9",
     "typescript": "^5.5.4",
+    "typescript-eslint": "^8.0.1",
     "vitest": "^2.0.4"
   }
 }

@@ -37,7 +37,7 @@
     "cesium": "*"
   },
   "devDependencies": {
-    "cesium": "^1.103.0"
+    "cesium": "^1.121.1"
   },
   "dependencies": {
     "@cesium-extends/primitive-geojson": "^1.0.1",
