@@ -1,3 +1,10 @@
+## @cesium-extends/geojson-render [1.0.6](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/geojson-render@1.0.5...@cesium-extends/geojson-render@1.0.6) (2024-09-06)
+
+
+### Bug Fixes
+
+* some ts error ([f9b33f6](https://github.com/hongfaqiu/cesium-extends/commit/f9b33f6097d79900c9ed8de8f667012305433c7d))
+
 ## @cesium-extends/geojson-render [1.0.5](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/geojson-render@1.0.4...@cesium-extends/geojson-render@1.0.5) (2024-08-12)
 
 
