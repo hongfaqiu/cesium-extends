@@ -1,6 +1,6 @@
 {
   "name": "cesium-extends",
-  "version": "1.8.20",
+  "version": "1.8.21",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -34,7 +34,7 @@
   "dependencies": {
     "@cesium-extends/compass": "1.2.1",
     "@cesium-extends/drawer": "1.3.6",
-    "@cesium-extends/geojson-render": "1.0.6",
+    "@cesium-extends/geojson-render": "1.0.7",
     "@cesium-extends/heat": "1.0.3",
     "@cesium-extends/measure": "1.1.3",
     "@cesium-extends/popup": "1.0.1",
