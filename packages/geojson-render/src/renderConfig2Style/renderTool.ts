@@ -225,7 +225,7 @@ export const value2Custom = async (
 export function custom2value(value: any, customConfig: CustomPaintItem) {
   const { custom, normalization, default: defaultValue } = customConfig;
 
-  if (!value) return defaultValue;
+  if (value === undefined || value === null) return defaultValue;
 
   // 优先处理
   if (normalization) {
