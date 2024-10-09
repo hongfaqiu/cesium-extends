@@ -37,7 +37,7 @@ const Map: React.FC<MapProps> = () => {
     const valRange = [0, 100];
     const lonRage = [120, 121];
     const latRage = [30, 31];
-    let len = 200;
+    const len = 200;
 
     // 创建热力图层
     const heatmap = new HeatMapLayer({

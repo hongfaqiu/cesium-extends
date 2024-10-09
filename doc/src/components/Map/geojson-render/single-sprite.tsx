@@ -1,8 +1,6 @@
 import { Viewer } from 'cesium';
 import React, { useEffect } from 'react';
-import {
-  GeoJsonRenderConfig,
-} from 'cesium-extends';
+import { GeoJsonRenderConfig } from 'cesium-extends';
 
 import { initMap } from '@/utils/initMap';
 import { addGeojsonByDataSource, addGeojsonByPrimitive } from './bubble-auto';
@@ -36,7 +34,7 @@ const config: GeoJsonRenderConfig = {
         '#a50026',
       ],
       'label-type': 'icon',
-      'icon-image': 'aerialway'
+      'icon-image': 'aerialway',
     },
   },
 };

@@ -1,8 +1,6 @@
 import { Viewer } from 'cesium';
 import React, { useEffect } from 'react';
-import {
-  GeoJsonRenderConfig,
-} from 'cesium-extends';
+import { GeoJsonRenderConfig } from 'cesium-extends';
 
 import { initMap } from '@/utils/initMap';
 import { addGeojsonByDataSource } from './bubble-auto';
@@ -39,7 +37,7 @@ const config: GeoJsonRenderConfig = {
         '#d73027',
         '#a50026',
       ],
-      maxNum: 1000
+      maxNum: 1000,
     },
   },
 };

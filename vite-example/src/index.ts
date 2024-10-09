@@ -1,7 +1,21 @@
-import { Viewer, Cartesian3, Math as CMath, DataSource, GeoJsonDataSource, ArcGisMapServerImageryProvider, ImageryLayer } from 'cesium';
+import {
+  Viewer,
+  Cartesian3,
+  Math as CMath,
+  DataSource,
+  GeoJsonDataSource,
+  ArcGisMapServerImageryProvider,
+  ImageryLayer,
+} from 'cesium';
 import './style.css';
 import 'cesium/Build/Cesium/Widgets/widgets.css';
-import { GeoJsonRenderConfig, updateDataSourcePosition, renderGeoJson, GeoJsonPrimitiveLayer, renderPrimitiveGeoJson } from 'cesium-extends';
+import {
+  GeoJsonRenderConfig,
+  updateDataSourcePosition,
+  renderGeoJson,
+  GeoJsonPrimitiveLayer,
+  renderPrimitiveGeoJson,
+} from 'cesium-extends';
 
 /**
  * 初始化地图
@@ -14,9 +28,15 @@ function initMap(
   } = {},
 ) {
   const viewer: Viewer = new Viewer(cesiumContainer, {
-    baseLayer: ImageryLayer.fromProviderAsync(ArcGisMapServerImageryProvider.fromUrl('https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer', {
-      enablePickFeatures: false
-    }), {}),
+    baseLayer: ImageryLayer.fromProviderAsync(
+      ArcGisMapServerImageryProvider.fromUrl(
+        'https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer',
+        {
+          enablePickFeatures: false,
+        },
+      ),
+      {},
+    ),
     baseLayerPicker: false, // 图层选择器
     animation: false, // 左下角仪表
     fullscreenButton: false, // 全屏按钮
@@ -53,7 +73,6 @@ function initMap(
 
   return viewer;
 }
-
 
 async function addGeojsonByDataSource(
   viewer: Viewer,
@@ -100,6 +119,6 @@ const config: GeoJsonRenderConfig = {
 };
 
 const viewer = initMap('cesiumContainer');
-addGeojsonByDataSource(viewer, '/test.geojson', config).then(res => {
-  viewer.zoomTo(res)
-})
+addGeojsonByDataSource(viewer, '/test.geojson', config).then((res) => {
+  viewer.zoomTo(res);
+});

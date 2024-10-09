@@ -36,7 +36,7 @@ const config: GeoJsonRenderConfig = {
         '#f46d43',
         '#d73027',
         '#a50026',
-      ]
+      ],
     },
   },
 };
