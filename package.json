@@ -16,7 +16,8 @@
     "prepare": "husky install",
     "lint": "turbo lint",
     "lint:fix": "turbo lint:fix",
-    "lint:report": "eslint . --output-file eslint_report.json --format json"
+    "lint:report": "eslint . --output-file eslint_report.json --format json",
+    "postinstall": "pnpm run build"
   },
   "commitlint": {
     "extends": [
