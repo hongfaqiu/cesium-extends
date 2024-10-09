@@ -1,6 +1,6 @@
 {
   "name": "@cesium-extends/geojson-render",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Load geojson on cesium with deep custom style",
   "type": "module",
   "main": "./dist/index.js",

@@ -1,3 +1,10 @@
+## @cesium-extends/geojson-render [1.0.7](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/geojson-render@1.0.6...@cesium-extends/geojson-render@1.0.7) (2024-10-09)
+
+
+### Bug Fixes
+
+* fix the bug that use defaultstyle when value is 0 ([a73f339](https://github.com/hongfaqiu/cesium-extends/commit/a73f3397a2eff8176637b75155de268afd068680))
+
 ## @cesium-extends/geojson-render [1.0.6](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/geojson-render@1.0.5...@cesium-extends/geojson-render@1.0.6) (2024-09-06)
 
 
