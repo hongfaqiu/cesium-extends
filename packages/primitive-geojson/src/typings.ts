@@ -87,6 +87,7 @@ export type LabelPrimitiveItem = {
 export type PolygonPrimitiveItem = {
   type: 'Polygon';
   positions: Cartesian3[];
+  holes: Cartesian3[][];
   style?: {
     material?: Color;
     /**The distance in meters between the polygon and the ellipsoid surface. */
