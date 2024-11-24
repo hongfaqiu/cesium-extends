@@ -327,11 +327,11 @@ export class GeoJsonPrimitiveLayer extends BasicGraphicLayer {
   }
 
   addPolygon(item: PolygonPrimitiveItem) {
-    const { positions, style } = item;
+    const { positions, style, holes } = item;
     const id = this._generateId();
 
     const geometry = new PolygonGeometry({
-      polygonHierarchy: new PolygonHierarchy(positions),
+      polygonHierarchy: new PolygonHierarchy(positions, holes.map(it => new PolygonHierarchy(hole))),
       vertexFormat: PerInstanceColorAppearance.VERTEX_FORMAT,
       extrudedHeight: style?.extrudedHeight,
       arcType: ArcType.RHUMB,
