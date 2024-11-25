@@ -1,3 +1,10 @@
+## @cesium-extends/heat [1.0.4](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/heat@1.0.3...@cesium-extends/heat@1.0.4) (2024-11-25)
+
+
+### Bug Fixes
+
+* **release:** import json with { type: "json" } ([5f533a2](https://github.com/hongfaqiu/cesium-extends/commit/5f533a2ea9b3864c2f70a52f6a55a5514440e133))
+
 ## @cesium-extends/heat [1.0.3](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/heat@1.0.2...@cesium-extends/heat@1.0.3) (2023-12-14)
 
 ### Bug Fixes
