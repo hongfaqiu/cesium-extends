@@ -1,3 +1,10 @@
+## @cesium-extends/compass [1.2.2](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/compass@1.2.1...@cesium-extends/compass@1.2.2) (2024-11-25)
+
+
+### Bug Fixes
+
+* **release:** import json with { type: "json" } ([5f533a2](https://github.com/hongfaqiu/cesium-extends/commit/5f533a2ea9b3864c2f70a52f6a55a5514440e133))
+
 ## @cesium-extends/compass [1.2.1](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/compass@1.2.0...@cesium-extends/compass@1.2.1) (2024-05-13)
 
 ### Bug Fixes
