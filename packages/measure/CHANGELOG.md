@@ -1,3 +1,10 @@
+## @cesium-extends/measure [1.1.4](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/measure@1.1.3...@cesium-extends/measure@1.1.4) (2024-11-25)
+
+
+### Bug Fixes
+
+* **release:** import json with { type: "json" } ([5f533a2](https://github.com/hongfaqiu/cesium-extends/commit/5f533a2ea9b3864c2f70a52f6a55a5514440e133))
+
 ## @cesium-extends/measure [1.1.3](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/measure@1.1.2...@cesium-extends/measure@1.1.3) (2024-09-06)
 
 
