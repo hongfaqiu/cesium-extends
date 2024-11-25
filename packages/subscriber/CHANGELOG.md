@@ -1,3 +1,10 @@
+## @cesium-extends/subscriber [1.1.1](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/subscriber@1.1.0...@cesium-extends/subscriber@1.1.1) (2024-11-25)
+
+
+### Bug Fixes
+
+* **release:** import json with { type: "json" } ([5f533a2](https://github.com/hongfaqiu/cesium-extends/commit/5f533a2ea9b3864c2f70a52f6a55a5514440e133))
+
 # @cesium-extends/subscriber [1.1.0](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/subscriber@1.0.1...@cesium-extends/subscriber@1.1.0) (2023-08-04)
 
 ### Features
