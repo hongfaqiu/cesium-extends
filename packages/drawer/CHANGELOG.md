@@ -1,3 +1,10 @@
+## @cesium-extends/drawer [1.3.7](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/drawer@1.3.6...@cesium-extends/drawer@1.3.7) (2024-11-25)
+
+
+### Bug Fixes
+
+* **release:** import json with { type: "json" } ([5f533a2](https://github.com/hongfaqiu/cesium-extends/commit/5f533a2ea9b3864c2f70a52f6a55a5514440e133))
+
 ## @cesium-extends/drawer [1.3.6](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/drawer@1.3.5...@cesium-extends/drawer@1.3.6) (2024-08-20)
 
 
