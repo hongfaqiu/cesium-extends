@@ -1,3 +1,28 @@
+## cesium-extends [1.8.22](https://github.com/hongfaqiu/cesium-extends/compare/cesium-extends@1.8.21...cesium-extends@1.8.22) (2024-11-25)
+
+
+### Bug Fixes
+
+* **release:** import json with { type: "json" } ([5f533a2](https://github.com/hongfaqiu/cesium-extends/commit/5f533a2ea9b3864c2f70a52f6a55a5514440e133))
+
+
+
+
+
+### Dependencies
+
+* **@cesium-extends/compass:** upgraded to 1.2.2
+* **@cesium-extends/drawer:** upgraded to 1.3.7
+* **@cesium-extends/geojson-render:** upgraded to 1.0.8
+* **@cesium-extends/heat:** upgraded to 1.0.4
+* **@cesium-extends/measure:** upgraded to 1.1.4
+* **@cesium-extends/popup:** upgraded to 1.0.2
+* **@cesium-extends/primitive-geojson:** upgraded to 1.0.10
+* **@cesium-extends/subscriber:** upgraded to 1.1.1
+* **@cesium-extends/sync-viewer:** upgraded to 1.0.1
+* **@cesium-extends/tooltip:** upgraded to 1.2.3
+* **@cesium-extends/zoom-control:** upgraded to 1.2.2
+
 ## cesium-extends [1.8.21](https://github.com/hongfaqiu/cesium-extends/compare/cesium-extends@1.8.20...cesium-extends@1.8.21) (2024-10-09)
 
 
