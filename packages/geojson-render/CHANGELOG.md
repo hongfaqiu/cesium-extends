@@ -1,3 +1,10 @@
+## @cesium-extends/geojson-render [1.0.8](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/geojson-render@1.0.7...@cesium-extends/geojson-render@1.0.8) (2024-11-25)
+
+
+### Bug Fixes
+
+* **release:** import json with { type: "json" } ([5f533a2](https://github.com/hongfaqiu/cesium-extends/commit/5f533a2ea9b3864c2f70a52f6a55a5514440e133))
+
 ## @cesium-extends/geojson-render [1.0.7](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/geojson-render@1.0.6...@cesium-extends/geojson-render@1.0.7) (2024-10-09)
 
 
