@@ -331,7 +331,10 @@ export class GeoJsonPrimitiveLayer extends BasicGraphicLayer {
     const id = this._generateId();
 
     const geometry = new PolygonGeometry({
-      polygonHierarchy: new PolygonHierarchy(positions, holes.map(hole => new PolygonHierarchy(hole))),
+      polygonHierarchy: new PolygonHierarchy(
+        positions,
+        holes.map((hole) => new PolygonHierarchy(hole)),
+      ),
       vertexFormat: PerInstanceColorAppearance.VERTEX_FORMAT,
       extrudedHeight: style?.extrudedHeight,
       arcType: ArcType.RHUMB,
@@ -599,25 +602,25 @@ export class GeoJsonPrimitiveLayer extends BasicGraphicLayer {
   reloadPrimitive(depthTest: boolean = this._options.depthTest ?? false) {
     const appearance = depthTest
       ? new PerInstanceColorAppearance({
-          translucent: false,
-          renderState: {
-            depthTest: {
-              enabled: true,
-            },
-            depthMask: true,
-            blending: BlendingState.PRE_MULTIPLIED_ALPHA_BLEND,
+        translucent: false,
+        renderState: {
+          depthTest: {
+            enabled: true,
           },
-        })
+          depthMask: true,
+          blending: BlendingState.PRE_MULTIPLIED_ALPHA_BLEND,
+        },
+      })
       : new PerInstanceColorAppearance({
-          flat: true,
-          translucent: false,
-          closed: true,
-          renderState: {
-            depthTest: false,
-            depthMask: false,
-            blending: BlendingState.PRE_MULTIPLIED_ALPHA_BLEND,
-          },
-        });
+        flat: true,
+        translucent: false,
+        closed: true,
+        renderState: {
+          depthTest: false,
+          depthMask: false,
+          blending: BlendingState.PRE_MULTIPLIED_ALPHA_BLEND,
+        },
+      });
 
     this._circlePrimitive = new Primitive({
       geometryInstances: this._circleInstances,

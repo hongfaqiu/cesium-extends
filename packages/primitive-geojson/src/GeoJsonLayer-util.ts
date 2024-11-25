@@ -291,20 +291,19 @@ export function createPolygon(
   }
   const properties = geoJson.properties ?? {};
 
-  const cartesian3Coords = coordinates.map((it) => coordinatesArrayToCartesianArray(
-    it,
-    crsFunction
-  ));
+  const cartesian3Coords = coordinates.map((it) =>
+    coordinatesArrayToCartesianArray(it, crsFunction),
+  );
   geoJsonLayer.addPolygon({
-    type: "Polygon",
+    type: 'Polygon',
     positions: cartesian3Coords[0],
     holes: cartesian3Coords.slice(1),
     style: {
       material: options.fill,
       outlineColor: options.stroke,
-      outlineWidth: options.strokeWidth
+      outlineWidth: options.strokeWidth,
     },
-    properties
+    properties,
   });
 }
 

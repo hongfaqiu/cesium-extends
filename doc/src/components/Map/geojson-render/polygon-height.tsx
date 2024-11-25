@@ -60,11 +60,7 @@ let viewer: Viewer;
 const Map: React.FC = () => {
   useEffect(() => {
     viewer = initMap('cesiumContainer2');
-    addGeojsonByPrimitive(
-      viewer,
-      'https://resource.deep-time.org/resource/testdem/California_heat.geojson',
-      config,
-    );
+    addGeojsonByPrimitive(viewer, '/California_heat.geojson', config);
 
     viewer.camera.setView({
       destination: Cartesian3.fromDegrees(-126, 31, 1000000),
