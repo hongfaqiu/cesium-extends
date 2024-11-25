@@ -1,3 +1,10 @@
+## @cesium-extends/tooltip [1.2.3](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/tooltip@1.2.2...@cesium-extends/tooltip@1.2.3) (2024-11-25)
+
+
+### Bug Fixes
+
+* **release:** import json with { type: "json" } ([5f533a2](https://github.com/hongfaqiu/cesium-extends/commit/5f533a2ea9b3864c2f70a52f6a55a5514440e133))
+
 ## @cesium-extends/tooltip [1.2.2](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/tooltip@1.2.1...@cesium-extends/tooltip@1.2.2) (2023-05-11)
 
 ### Bug Fixes
