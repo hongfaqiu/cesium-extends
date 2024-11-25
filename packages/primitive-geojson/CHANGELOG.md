@@ -1,3 +1,20 @@
+## @cesium-extends/primitive-geojson [1.0.10](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/primitive-geojson@1.0.9...@cesium-extends/primitive-geojson@1.0.10) (2024-11-25)
+
+
+### Bug Fixes
+
+* **doc:** add california_heat.geojson ([6d79c68](https://github.com/hongfaqiu/cesium-extends/commit/6d79c682f2c26be3447061cc74fc4cd89389782a))
+* **primitive-geojson:** 修复挖孔 ([41a552f](https://github.com/hongfaqiu/cesium-extends/commit/41a552f8b2e666b5da7fb5d7e1e6fb83c23626ed))
+* **release:** import json with { type: "json" } ([5f533a2](https://github.com/hongfaqiu/cesium-extends/commit/5f533a2ea9b3864c2f70a52f6a55a5514440e133))
+
+
+
+
+
+### Dependencies
+
+* **@cesium-extends/subscriber:** upgraded to 1.1.1
+
 ## @cesium-extends/primitive-geojson [1.0.9](https://github.com/hongfaqiu/cesium-extends/compare/@cesium-extends/primitive-geojson@1.0.8...@cesium-extends/primitive-geojson@1.0.9) (2024-09-06)
 
 
