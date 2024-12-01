@@ -160,6 +160,7 @@ export function createPoint(
     /** add billboard */
     let canvasOrPromise;
     if (symbol !== '' && defined(symbol)) {
+      // 自定义图片
       if (isCustom) {
         canvasOrPromise = processImage(symbol, size, properties);
       } else {
@@ -208,16 +209,18 @@ export function createPoint(
       });
 
     geoJsonLayer._promises.push(promise);
-
   }
 }
 
-function processImage(url: string | ((arg0: any) => string), size: number, properties: any) {
-  let height = size;
-  let width = size;
+function processImage(url: string | ((arg0: any) => string), size: number | number[], properties: any) {
+  let height = 24;
+  let width = 24;
   if (Array.isArray(size)) {
     height = size[0];
     width = size[1];
+  }else{
+    height = size;
+    width = size;
   }
   return new Promise((resolve) => {
     let canvas = document.createElement('canvas');
