@@ -27,6 +27,7 @@ export type GeoJsonPrimitiveLayerOptions = {
   clampToGround: boolean;
   credit?: Credit | string;
   depthTest?: boolean;
+  customMarker?: boolean;
 };
 
 export type PrimitiveItem =

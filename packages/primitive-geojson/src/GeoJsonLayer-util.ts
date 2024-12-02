@@ -140,66 +140,101 @@ export function createPoint(
   const symbol = options.markerSymbol;
   const color = options.markerColor;
   const size = options.markerSize;
+  const isCustom = options.customMarker;
 
   const properties = geoJson.properties ?? {};
 
-  geoJsonLayer.addPoint({
-    type: 'Point',
-    position: crsFunction(coordinates),
-    style: {
-      color: color,
-      pixelSize: size,
-      outlineColor: options.stroke,
-      outlineWidth: options.strokeWidth,
-    },
-    properties,
-  });
-
-  /** add billboard */
-  if (!symbol) return;
-  let canvasOrPromise;
-  if (symbol !== '' && defined(symbol)) {
-    if (symbol.length === 1) {
-      canvasOrPromise = geoJsonLayer.pinBuilder.fromText(
-        symbol.toUpperCase(),
-        color,
-        size,
-      );
-    } else {
-      canvasOrPromise = geoJsonLayer.pinBuilder.fromMakiIconId(
-        symbol,
-        color,
-        size,
-      );
-    }
+  if (!symbol) {
+    geoJsonLayer.addPoint({
+      type: 'Point',
+      position: crsFunction(coordinates),
+      style: {
+        color: color,
+        pixelSize: size,
+        outlineColor: options.stroke,
+        outlineWidth: options.strokeWidth,
+      },
+      properties,
+    });
   } else {
-    canvasOrPromise = geoJsonLayer.pinBuilder.fromColor(color, size);
-  }
+    /** add billboard */
+    let canvasOrPromise;
+    if (symbol !== '' && defined(symbol)) {
+      // 自定义图片
+      if (isCustom) {
+        canvasOrPromise = processImage(symbol, size, properties);
+      } else {
+        if (symbol.length === 1) {
+          canvasOrPromise = geoJsonLayer.pinBuilder.fromText(
+            symbol.toUpperCase(),
+            color,
+            size,
+          );
+        } else {
+          canvasOrPromise = geoJsonLayer.pinBuilder.fromMakiIconId(
+            symbol,
+            color,
+            size,
+          );
+        }
+      }
+    } else {
+      canvasOrPromise = geoJsonLayer.pinBuilder.fromColor(color, size);
+    }
 
-  const billboard = geoJsonLayer.addBillboard({
-    type: 'Billboard',
-    position: crsFunction(coordinates),
-    style: {
-      verticalOrigin: VerticalOrigin.BOTTOM,
-      heightReference:
-        coordinates.length === 2 && options.clampToGround
-          ? HeightReference.CLAMP_TO_GROUND
-          : undefined,
-    },
-    properties,
-  });
-
-  const promise = Promise.resolve(canvasOrPromise)
-    .then(function (image) {
-      // @ts-ignore
-      billboard.image = image;
-    })
-    .catch(function () {
-      // @ts-ignore
-      billboard.image = geoJsonLayer.pinBuilder.fromColor(color, size);
+    const billboard = geoJsonLayer.addBillboard({
+      type: 'Billboard',
+      position: crsFunction(coordinates),
+      style: {
+        verticalOrigin: VerticalOrigin.BOTTOM,
+        heightReference:
+          coordinates.length === 2 && options.clampToGround
+            ? HeightReference.CLAMP_TO_GROUND
+            : undefined,
+      },
+      properties,
     });
 
-  geoJsonLayer._promises.push(promise);
+    const promise = Promise.resolve(canvasOrPromise)
+      .then(function (image) {
+        image instanceof Promise ? image.then(i => {
+          billboard.image = i;
+        }) : (billboard.image = image)
+        // @ts-ignore
+        billboard.image = image;
+      })
+      .catch(function () {
+        // @ts-ignore
+        billboard.image = geoJsonLayer.pinBuilder.fromColor(color, size);
+      });
+
+    geoJsonLayer._promises.push(promise);
+  }
+}
+
+function processImage(url: string | ((arg0: any) => string), size: number | number[], properties: any) {
+  let height = 24;
+  let width = 24;
+  if (Array.isArray(size)) {
+    height = size[0];
+    width = size[1];
+  }else{
+    height = size;
+    width = size;
+  }
+  return new Promise((resolve) => {
+    let canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext('2d');
+    let img = new Image();
+    img.onload = () => {
+      ctx?.drawImage(img, 0, 0, width, height);
+      resolve(canvas);
+    }
+    img.src = url instanceof Function ? url(properties) : url;
+  })
+
 }
 
 export function processPoint(
