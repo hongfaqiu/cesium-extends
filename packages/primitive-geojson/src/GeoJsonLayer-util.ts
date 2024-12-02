@@ -158,7 +158,7 @@ export function createPoint(
     });
   } else {
     /** add billboard */
-    let canvasOrPromise;
+    let canvasOrPromise: HTMLCanvasElement | Promise<HTMLCanvasElement>;
     if (symbol !== '' && defined(symbol)) {
       // 自定义图片
       if (isCustom) {
@@ -197,9 +197,11 @@ export function createPoint(
 
     const promise = Promise.resolve(canvasOrPromise)
       .then(function (image) {
-        image instanceof Promise ? image.then(i => {
-          billboard.image = i;
-        }) : (billboard.image = image)
+        image instanceof Promise
+          ? image.then((i) => {
+            billboard.image = i;
+          })
+          : (billboard.image = image as unknown as string);
         // @ts-ignore
         billboard.image = image;
       })
@@ -212,29 +214,32 @@ export function createPoint(
   }
 }
 
-function processImage(url: string | ((arg0: any) => string), size: number | number[], properties: any) {
+function processImage(
+  url: string | ((arg0: any) => string),
+  size: number | number[],
+  properties: any,
+) {
   let height = 24;
   let width = 24;
   if (Array.isArray(size)) {
     height = size[0];
     width = size[1];
-  }else{
+  } else {
     height = size;
     width = size;
   }
-  return new Promise((resolve) => {
-    let canvas = document.createElement('canvas');
+  return new Promise<HTMLCanvasElement>((resolve) => {
+    const canvas = document.createElement('canvas');
     canvas.width = width;
     canvas.height = height;
     const ctx = canvas.getContext('2d');
-    let img = new Image();
+    const img = new Image();
     img.onload = () => {
       ctx?.drawImage(img, 0, 0, width, height);
       resolve(canvas);
-    }
+    };
     img.src = url instanceof Function ? url(properties) : url;
-  })
-
+  });
 }
 
 export function processPoint(
