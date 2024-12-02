@@ -1,6 +1,6 @@
 {
   "name": "cesium-extends",
-  "version": "1.8.22",
+  "version": "1.8.23",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -38,7 +38,7 @@
     "@cesium-extends/heat": "1.0.4",
     "@cesium-extends/measure": "1.1.4",
     "@cesium-extends/popup": "1.0.2",
-    "@cesium-extends/primitive-geojson": "1.0.10",
+    "@cesium-extends/primitive-geojson": "1.0.11",
     "@cesium-extends/subscriber": "1.1.1",
     "@cesium-extends/sync-viewer": "1.0.1",
     "@cesium-extends/tooltip": "1.2.3",
