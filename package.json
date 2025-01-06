@@ -5,8 +5,8 @@
   "packageManager": "pnpm@8.6.7",
   "type": "module",
   "scripts": {
-    "dev": "turbo dev --concurrency 15",
-    "build": "turbo build --filter=!doc",
+    "dev": "turbo dev --concurrency 16",
+    "build": "turbo build --filter=!doc --filter=!example",
     "build:doc": "turbo build --filter=doc",
     "clean": "turbo clean",
     "test": "turbo test",

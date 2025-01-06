@@ -32,6 +32,6 @@
     "cesium": "*"
   },
   "devDependencies": {
-    "cesium": "^1.121.1"
+    "cesium": "^1.125.0"
   }
 }

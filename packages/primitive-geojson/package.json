@@ -41,7 +41,7 @@
   "devDependencies": {
     "@cesium-extends/subscriber": "1.1.1",
     "@types/geojson": "^7946.0.10",
-    "cesium": "^1.121.1"
+    "cesium": "^1.125.0"
   },
   "dependencies": {
     "@turf/centroid": "^6.5.0",

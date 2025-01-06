@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@cesium-extends/subscriber": "^1.0.1",
-    "cesium": "^1.121.1"
+    "cesium": "^1.125.0"
   },
   "dependencies": {
     "@cesium-extends/common": "^1.0.1"

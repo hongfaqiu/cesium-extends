@@ -19,7 +19,7 @@
     "dumi": "^2.4.7"
   },
   "dependencies": {
-    "cesium": "^1.121.1",
+    "cesium": "^1.125.0",
     "cesium-extends": "workspace:*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

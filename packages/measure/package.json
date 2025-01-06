@@ -32,7 +32,7 @@
     "cesium": "*"
   },
   "devDependencies": {
-    "cesium": "^1.121.1"
+    "cesium": "^1.125.0"
   },
   "dependencies": {
     "@cesium-extends/drawer": "^1.2.2",

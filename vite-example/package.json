@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "cesium": "^1.121.1",
+    "cesium": "^1.125.0",
     "cesium-extends": "workspace:^"
   },
   "devDependencies": {
