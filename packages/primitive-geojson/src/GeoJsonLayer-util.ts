@@ -199,8 +199,8 @@ export function createPoint(
       .then(function (image) {
         image instanceof Promise
           ? image.then((i) => {
-            billboard.image = i;
-          })
+              billboard.image = i;
+            })
           : (billboard.image = image as unknown as string);
         // @ts-ignore
         billboard.image = image;

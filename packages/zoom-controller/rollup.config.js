@@ -3,7 +3,7 @@ import esbuild from 'rollup-plugin-esbuild';
 import dts from 'rollup-plugin-dts';
 import styles from 'rollup-plugin-styles';
 import { defineConfig } from 'rollup';
-import pkg from './package.json' with { type: "json" };
+import pkg from './package.json' with { type: 'json' };
 
 const external = [
   ...builtinModules,
