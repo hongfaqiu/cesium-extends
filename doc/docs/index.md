@@ -9,3 +9,5 @@ hero:
     - text: GitHub
       link: https://github.com/hongfaqiu/cesium-extends.git
 ---
+
+<code src="@/components/Analytics.tsx" inline></code>

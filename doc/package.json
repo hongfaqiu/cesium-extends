@@ -19,6 +19,7 @@
     "dumi": "^2.4.7"
   },
   "dependencies": {
+    "@vercel/analytics": "^1.5.0",
     "cesium": "^1.125.0",
     "cesium-extends": "workspace:*",
     "react": "^18.2.0",
