@@ -136,6 +136,18 @@ renderPrimitiveGeoJson(primitiveLayer, config).then((entityStyle) => {
 
 <code src="@/components/Map/geojson-render/bubble-auto.tsx"></code>
 
+### 点圆柱渲染
+
+下面的示例中添加了一个地震数据的 geojson，并按照地震层级对点进行不同高度、颜色的圆柱渲染
+
+<code src="@/components/Map/geojson-render/point-height.tsx"></code>
+
+### 点单值渲染
+
+下面的示例中添加了一个地震数据的 geojson，并按照地震层级对点进行不同颜色的渲染，并且使用地震层级字段作为标签的渲染
+
+<code src="@/components/Map/geojson-render/point-value.tsx"></code>
+
 ### 精灵图图标渲染
 
 下面的示例在 bubble 的基础上，使用精灵图对点进行渲染

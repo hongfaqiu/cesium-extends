@@ -58,7 +58,9 @@ export async function addGeojsonByPrimitive(
   url: string,
   config: GeoJsonRenderConfig,
 ) {
-  const primitiveLayer = await GeoJsonPrimitiveLayer.load(url);
+  const primitiveLayer = await GeoJsonPrimitiveLayer.load(url, {
+    depthTest: true,
+  });
   await renderPrimitiveGeoJson(primitiveLayer, config);
   viewer.scene.primitives.add(primitiveLayer.primitiveCollection);
   viewer.scene.primitives.lowerToBottom(primitiveLayer.primitiveCollection);
